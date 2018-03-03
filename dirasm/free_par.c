@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   asm.c                                              :+:      :+:    :+:   */
+/*   free_par.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/03 17:26:04 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/03 17:51:15 by ssi-moha         ###   ########.fr       */
+/*   Created: 2018/03/03 18:12:11 by ssi-moha          #+#    #+#             */
+/*   Updated: 2018/03/03 18:20:32 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-int	main(int argc, char **argv)
+int		free_par(t_par **par)
 {
-	t_instr	instr;
-
-
+	if (!*par)
+		return (0);
+	while (*par)
+	{
+		if ((*par)->par)
+			free((*par)->par);
+		free(*par);
+		*par = (*par)->next;
+	}
 	return (0);
 }

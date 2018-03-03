@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 17:02:23 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/03 17:38:11 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/03 18:22:55 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include "../gnl/get_next_line.h"
 # include "../libft/libft.h"
 # include "../printf/includes/ft_printf.h"
+# include <stdio.h>
 typedef struct		s_par
 {
 	char			*par;
@@ -28,4 +29,9 @@ typedef struct		s_instr
 	t_par			*params;
 	struct s_instr	*next;
 }					t_instr;
+
+int		free_par(t_par **par);
+void	new_par(char *par, t_par **prev);
+void	new_instr(char *cmd, t_instr **prev);
+int		free_instr(t_instr **instr);
 #endif

@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   asm.c                                              :+:      :+:    :+:   */
+/*   free_instr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/03 17:26:04 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/03 17:51:15 by ssi-moha         ###   ########.fr       */
+/*   Created: 2018/03/03 18:25:31 by ssi-moha          #+#    #+#             */
+/*   Updated: 2018/03/03 18:29:54 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-int	main(int argc, char **argv)
+int		free_instr(t_instr **instr)
 {
-	t_instr	instr;
-
-
+	if (!*instr)
+		return (0);
+	while (*instr)
+	{
+		if ((*instr)->cmd)
+			free((*instr)->cmd);
+		if ((*instr)->label)
+			free((*instr)->label);
+		if ((*instr)->params)
+			free_par(&(*instr)->params);
+		free(*instr);
+		*instr = (*instr)->next;
+	}
 	return (0);
 }
