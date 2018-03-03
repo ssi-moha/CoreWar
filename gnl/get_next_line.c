@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 12:34:01 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/02/15 16:04:48 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/03 17:28:49 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <sys/uio.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include "../includes/get_next_line.h"
+#include "get_next_line.h"
 #include "../libft/libft.h"
 
 static char			*ft_custom_strjoin(char *s1, char const *s2)
