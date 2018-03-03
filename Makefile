@@ -6,13 +6,19 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/03/03 17:39:29 by lfujimot         ###   ########.fr        #
+#    Updated: 2018/03/03 18:54:08 by lfujimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ASM = asm
 
-SRCSASM = dirasm/asm.c
+SRCSASM = dirasm/asm.c \
+		  dirasm/free_par.c \
+		  dirasm/new_par.c \
+		  dirasm/new_instr.c \
+		  dirasm/free_instr.c \
+		  dirasm/ft_parselabel.c \
+		  dirasm/ft_isincharset.c
 
 OBJSASM = $(SRCSASM:.c=.o)
 
@@ -36,7 +42,7 @@ $(ASM): $(OBJSASM)
 	$(MAKE) -C $(LIBFT)
 	$(MAKE) -C $(PRINTF)
 	gcc -c $(GNL) $(LFT)
-	gcc $(OBJSASM) $(LFT) $(PF) -o $(ASM)
+	gcc $(OBJSASM) $(LFT) $(PF) -o $(ASM) $(GNLO)
 
 clean: $(LIBFT) $(PRINTF)
 	rm -f $(OBJSASM)
