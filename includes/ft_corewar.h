@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/04 14:27:50 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/04 16:40:14 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,13 @@ typedef struct		s_instr
 	struct s_instr	*next;
 }					t_instr;
 
+typedef struct		s_app // structure globale de l'application
+{
+	t_instr			*instr;
+	char			name[100]; // default size to check
+	char			comment[100]; // default size to check
+}					t_app;
+
 typedef struct		s_op
 {
 	char			*cmd;
@@ -57,4 +64,8 @@ int					free_instr(t_instr **instr);
 int					ft_parselabel(char *line, t_instr *new);
 int					ft_parseinstr(char *line, int pos, t_instr *new);
 void				ft_parseparams(char *line, int pos, t_instr *new);
+t_op				*ft_initop(void);
+//void				ft_skipcommentandblank --> Sinane
+//void				ft_managenameandcomment
+//void				ft_printhex
 #endif
