@@ -6,7 +6,7 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/03/04 16:36:21 by lfujimot         ###   ########.fr        #
+#    Updated: 2018/03/04 19:50:32 by lfujimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCSASM = dirasm/asm.c \
 		  dirasm/ft_parselabel.c \
 		  dirasm/ft_parseinstr.c \
 		  dirasm/ft_parseparams.c \
+		  dirasm/op.c \
 		  dirasm/ft_isincharset.c
 
 OBJSASM = $(SRCSASM:.c=.o)

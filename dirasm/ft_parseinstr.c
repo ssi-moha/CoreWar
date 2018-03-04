@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 10:11:04 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/04 10:36:37 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/04 19:56:39 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 static void ft_copycmd(char *line, int start, int newpos, t_instr *instr)
 {
 	int	i;
-
+	if (instr == 0)
+		return ;
 	instr->cmd = (char *)malloc(sizeof(char) * (newpos - start));
+	if (instr->cmd == 0)
+		return ;
 	i = 0;
 	while (start < newpos)
 	{

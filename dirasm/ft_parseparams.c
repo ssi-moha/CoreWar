@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 10:02:11 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/04 10:59:04 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/04 20:07:33 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 static void	ft_copypar(char *line, int start, int pos, t_par *par)
 {
 	int	i;
-
+	if (par == 0)
+		return ;
 	par->par = (char *)malloc(sizeof(char) * (pos - start));
+	if (par->par == 0)
+		return ;
 	i = 0;
 	while (start < pos)
 	{
@@ -31,7 +34,7 @@ void	ft_parseparams(char *line, int pos, t_instr *new)
 {
 	int start;
 	t_par *par;
-
+	
 	if (line)
 	{
 		if (pos < ft_strlen(line))
@@ -41,6 +44,7 @@ void	ft_parseparams(char *line, int pos, t_instr *new)
 			while (line[pos] && line[pos] != '\n' && line[pos] != '#')
 			{
 				start = pos;
+				par = 0;
 				while (line[pos] && (line[pos] == ' '|| line[pos] == '\t' || line[pos] == SEPARATOR_CHAR))
 					pos++;
 				while (line[pos] && line[pos] != ' ' && line[pos] != '\t' && line[pos] != SEPARATOR_CHAR)

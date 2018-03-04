@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 18:13:15 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/03 19:15:41 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/04 19:57:04 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,11 @@ static void	ft_copylabel(char *line, int size, t_instr *new)
 	int i;
 
 	i = 0;
+	if (new == 0)
+		return ;
 	new->label = (char *)malloc(sizeof(char) * size);
+	if (new->label == 0)
+		return ;
 	while (i < size)
 	{
 		new->label[i] = line[i];
