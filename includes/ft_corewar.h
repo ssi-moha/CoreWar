@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/04 09:54:04 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/04 10:44:40 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ typedef struct		s_instr
 
 int					ft_isincharset(char c, char *charset);
 int					ft_free_par(t_par **par);
-void				new_par(char *par, t_par **prev);
+t_par				*new_par(char *par, t_par **prev);
 t_instr				*new_instr(char *cmd, t_instr **prev);
 int					free_instr(t_instr **instr);
 int					ft_parselabel(char *line, t_instr *new);
+int					ft_parseinstr(char *line, int pos, t_instr *new);
+void				ft_parseparams(char *line, int pos, t_instr *new);
 #endif

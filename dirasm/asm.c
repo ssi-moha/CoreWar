@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:54:21 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/04 09:54:30 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/04 10:59:06 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,17 @@ static void	ft_parseasm(t_instr *instr, int fd)
 		if (new)
 		{
 			pos = ft_parselabel(line, new);
-			printf("%s\n", new->label);
+			pos = ft_parseinstr(line, pos, new);
+			ft_parseparams(line, pos, new);
+			printf("LABEL %s\n", new->label);
+			printf("CMD %s\n", new->cmd);
+			t_par *tmp;
+			tmp = new->params;
+			while (tmp)
+			{
+				printf("PAR %s\n", tmp->par);
+				tmp = tmp->next;
+			}
 		}
 	}
 }

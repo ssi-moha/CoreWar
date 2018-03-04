@@ -6,13 +6,13 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 17:53:55 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/03 18:30:28 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/04 10:00:42 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-void	new_par(char *par, t_par **prev)
+t_par	*new_par(char *par, t_par **prev)
 {
 	t_par *tmp;
 	t_par *tmp2;
@@ -20,7 +20,7 @@ void	new_par(char *par, t_par **prev)
 	tmp = NULL;
 	tmp2 = *prev;
 	if (!(tmp = (t_par*)malloc(sizeof(t_par))))
-		return ;
+		return (0);
 	tmp->par = ft_strdup(par);
 	tmp->next = NULL;\
 	if (!*prev)
@@ -31,4 +31,5 @@ void	new_par(char *par, t_par **prev)
 			tmp2 = tmp2->next;
 		tmp2->next = tmp;
 	}
+	return (tmp);
 }
