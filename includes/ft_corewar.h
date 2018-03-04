@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/04 10:44:40 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/04 14:27:50 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,20 @@ typedef struct		s_instr
 	struct s_instr	*next;
 }					t_instr;
 
+typedef struct		s_op
+{
+	char			*cmd;
+	int				nbpar;
+	int				typepar[3];
+	int				numcmd;
+	int				nbcycle;
+	char			*descr;
+	int				octpar; //octet de codage des parametres
+	int				dirsize; //1 = 2 0 = 4
+}					t_op;
+
 int					ft_isincharset(char c, char *charset);
-int					ft_free_par(t_par **par);
+int					free_par(t_par **par);
 t_par				*new_par(char *par, t_par **prev);
 t_instr				*new_instr(char *cmd, t_instr **prev);
 int					free_instr(t_instr **instr);
