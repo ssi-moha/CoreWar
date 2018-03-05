@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 10:02:11 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/05 12:29:24 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/05 14:28:55 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,21 @@ static void	ft_copypar(char *line, int start, int pos, t_par *par)
 static int	ft_checkpartype(t_par *par, int parindex, char *cmd)
 {
 	int i;
+	int type;
 
-	i = 0;
-	while (i < 17)
-		i++;
+	type = 0;
+	i = ft_findcmd(cmd);
+	if (i >= 0)
+	{
+		if (par->type == 1)
+			type = 1;
+		else if (par->type == 2 || par->type == 10)
+			type = 2;
+		else if (par->type ==4 || par->type == 12)
+			type = 4;
+		if (!((g_optab[i].typepar[parindex] & type) == type))
+			return (-1);
+	}
 	return (1);
 }
 
@@ -69,7 +80,6 @@ void	ft_parseparams(char *line, int pos, t_instr *new)
 					start++;
 				if (!(line[start] == ' ' || line[start] == '\t'))
 				{
-					parindex++;
 					par = new_par("", &new->params);
 					ft_copypar(line, start, pos, par);
 					par->type = ft_checkparams(par->par);
@@ -77,6 +87,7 @@ void	ft_parseparams(char *line, int pos, t_instr *new)
 						printf("ERREUR PARAMS\n");
 					if (ft_checkpartype(par, parindex, new->cmd) == -1)
 						printf("INCORECT PAR TYPE FOR THIS CMD\n");
+					parindex++;
 				}
 			}
 		}
