@@ -6,7 +6,7 @@
 /*   By: emerabet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 14:25:49 by emerabet          #+#    #+#             */
-/*   Updated: 2018/03/05 14:29:27 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/03/05 14:30:23 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@ int		ft_testhex(t_app *application)
 
 	printf("\n\n TEST WRITE HEADER\n");
 	write(1, &header, sizeof(t_header));
+	return (0);
 }
