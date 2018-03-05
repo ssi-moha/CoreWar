@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isincharset.c                                   :+:      :+:    :+:   */
+/*   is_blank.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/03 18:21:23 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/05 09:21:32 by ssi-moha         ###   ########.fr       */
+/*   Created: 2018/03/05 09:54:32 by ssi-moha          #+#    #+#             */
+/*   Updated: 2018/03/05 09:56:43 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_corewar.h"
-
-int	ft_isincharset(char c, char *charset)
+int		is_blank(char c)
 {
-	int i;
-
-	i = 0;
-	if (charset)
-	{
-		while (charset[i])
-		{
-			if (charset[i] == c)
-				return (1);
-			i++;
-		}
-	}
-	return (-1);
+	if (c == '\t' || c == ' ')
+		return (1);
+	return (0);
 }

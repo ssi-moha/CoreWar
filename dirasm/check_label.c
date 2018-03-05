@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isincharset.c                                   :+:      :+:    :+:   */
+/*   check_label.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/03 18:21:23 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/05 09:21:32 by ssi-moha         ###   ########.fr       */
+/*   Created: 2018/03/05 09:59:15 by ssi-moha          #+#    #+#             */
+/*   Updated: 2018/03/05 10:10:26 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-int	ft_isincharset(char c, char *charset)
+int		label_char(char c)
+{
+	if (ft_isalnum(c) || c == '_')
+		return (1);
+	return (0);
+}
+
+int		check_label(char *str)
 {
 	int i;
 
 	i = 0;
-	if (charset)
+	while (str[i])
 	{
-		while (charset[i])
-		{
-			if (charset[i] == c)
-				return (1);
-			i++;
-		}
+		if (!label_char(str[i]))
+			return (0);
 	}
-	return (-1);
+	return (1);
 }

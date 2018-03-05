@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:54:21 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/05 10:31:58 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/05 10:36:48 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,9 @@ int	main(int argc, char **argv)
 	t_app	app;
 	int		fd;
 
+	printf("%d\n", argc);
+	if (argc < 2)
+		exit (-1);
 	ft_init(&app);
 	fd = open(argv[1], O_RDONLY);
 	ft_parseasm(&app.instr, fd);
