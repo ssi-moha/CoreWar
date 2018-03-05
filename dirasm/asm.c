@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:54:21 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/05 09:27:06 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/05 10:36:48 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,12 @@ int	main(int argc, char **argv)
 		printf("INSTR %s\n", tmp->cmd);
 		tmp = tmp->next;
 	}
+	int i = 0;
+//	while (g_optab[i])
+//	{
+		printf("%s\n", g_optab[i].cmd);
+//		i++;
+//	}
+
 		return (0);
 }
