@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 17:53:55 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/04 10:00:42 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/05 11:06:16 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ t_par	*new_par(char *par, t_par **prev)
 	if (!(tmp = (t_par*)malloc(sizeof(t_par))))
 		return (0);
 	tmp->par = ft_strdup(par);
-	tmp->next = NULL;\
+	tmp->next = NULL;
+	tmp->type = 0;	
 	if (!*prev)
 		*prev = tmp;
 	else

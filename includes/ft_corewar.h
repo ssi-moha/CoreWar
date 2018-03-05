@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/04 20:07:41 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/05 12:26:43 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,16 @@
 typedef struct		s_par
 {
 	char			*par;
+	int				type;
 	struct s_par	*next;
 }					t_par;
+
+//TYPE:
+//REG = 1
+//DIR = 2
+//DIR + LAB = 2 + 8 = 10
+//IND = 4
+//IND + LAB = 4 + 8 = 12
 
 typedef struct		s_instr
 {
@@ -53,9 +61,7 @@ typedef struct		s_op
 typedef struct		s_app // structure globale de l'application
 {
 	t_instr			*instr;
-	char			name[100]; // default size to check
-	char			comment[100]; // default size to check
-	t_op			*op;
+	t_header		header;
 }					t_app;
 
 extern	t_op		g_optab[17];
@@ -67,11 +73,11 @@ int					free_instr(t_instr **instr);
 int					ft_parselabel(char *line, t_instr *new);
 int					ft_parseinstr(char *line, int pos, t_instr *new);
 void				ft_parseparams(char *line, int pos, t_instr *new);
-//void				ft_skipcommentandblank --> Sinane
+int					ft_skip_com_and_blank(char *line);
 //void				ft_managenameandcomment
 //void				ft_printhex
 //checkcomamnd
-//checkparam
+int					ft_checkparams(char *par); //pour l'instant renvoi -1 si nb negatif
 //checkabel
-
+int					ft_findcmd(char *cmd);
 #endif

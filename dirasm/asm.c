@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:54:21 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/05 10:36:48 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/05 11:52:09 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 static void	ft_init(t_app *app)
 {
+	t_header h;
+	h.magic = COREWAR_EXEC_MAGIC;
+	h.prog_size = 0;
 	app->instr = 0;
-	app->name[0] = '\0';
-	app->comment[0] = '\0';
-	app->op = 0;
+	app->header = h;
 }
 
 static void	ft_parseasm(t_instr **instr, int fd)
@@ -32,7 +33,9 @@ static void	ft_parseasm(t_instr **instr, int fd)
 	{
 		//	if (line[0] == '\n')
 		//		continue ;
-		if (line[0] == '\0')
+		if (ft_skip_com_and_blank(line))
+			continue ;
+		else if (line[0] == '.') //a completer
 			continue ;
 		printf("%s\n", line);
 		new = new_instr("", instr); //mettre a 0
@@ -54,11 +57,6 @@ static void	ft_parseasm(t_instr **instr, int fd)
 	}
 }
 
-static void	ft_initoptab()
-{
-	
-}
-
 int	main(int argc, char **argv)
 {
 	t_app	app;
@@ -75,15 +73,23 @@ int	main(int argc, char **argv)
 	tmp = app.instr;
 	while (tmp)
 	{
+		printf("\nLABEL %s\n", tmp->label);
 		printf("INSTR %s\n", tmp->cmd);
+		t_par *p;
+		p = tmp->params;
+		while (p)
+		{
+			printf("PAR %s TYPE %d\n", p->par, p->type);
+			p = p->next;
+		}
 		tmp = tmp->next;
 	}
 	int i = 0;
-//	while (g_optab[i])
-//	{
+	while (i < 17)
+	{
 		printf("%s\n", g_optab[i].cmd);
-//		i++;
-//	}
+		i++;
+	}
 
 		return (0);
 }
