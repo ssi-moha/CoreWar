@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 14:38:07 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/05 09:59:36 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/05 10:37:16 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		check_name_cmt(char *str)
 		{
 			if (!ft_isprint(str[i]))
 				return (0);
+			i++;
 		}
 		return (1);
 	}
@@ -32,6 +33,7 @@ int		check_name_cmt(char *str)
 		{
 			if (!ft_isprint(str[i]))
 				return (0);
+			i++;
 		}
 		return (1);
 	}
