@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/05 13:13:29 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/05 14:32:03 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct		s_app // structure globale de l'application
 }					t_app;
 
 extern	t_op		g_optab[17];
+int					ft_testhex(t_app *app);
 int					ft_isincharset(char c, char *charset);
 int					free_par(t_par **par);
 t_par				*new_par(char *par, t_par **prev);
@@ -75,6 +76,7 @@ int					ft_parselabel(char *line, t_instr *new);
 int					ft_parseinstr(char *line, int pos, t_instr *new);
 void				ft_parseparams(char *line, int pos, t_instr *new);
 int					ft_skip_com_and_blank(char *line);
+int					check_name_cmt(char *str);
 //void				ft_managenameandcomment
 //void				ft_printhex
 //checkcomamnd
