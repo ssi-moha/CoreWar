@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 14:38:07 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/05 13:12:04 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/05 15:21:17 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		check_name_cmt(char *str)
 	int i;
 
 	i = 0;
-	if (!ft_strncmp(str, NAME_CMD_STRING, ft_strlen(NAME_CMD_STRING)))
+	if (str && !ft_strncmp(str, NAME_CMD_STRING, ft_strlen(NAME_CMD_STRING)))
 	{
 		while (str[i])
 		{
@@ -25,9 +25,11 @@ int		check_name_cmt(char *str)
 				return (0);
 			i++;
 		}
+		if (i > PROG_NAME_LENGTH)
+			exit (error_mess("PROG_NAME IS TOO LARGE"));
 		return (1);
 	}
-	if (!ft_strncmp(str, COMMENT_CMD_STRING, ft_strlen(COMMENT_CMD_STRING)))
+	if (str && !ft_strncmp(str, COMMENT_CMD_STRING, ft_strlen(COMMENT_CMD_STRING)))
 	{
 		while (str[i])
 		{
@@ -35,11 +37,13 @@ int		check_name_cmt(char *str)
 				return (0);
 			i++;
 		}
-		return (1);
+		if (i > COMMENT_LENGTH)
+			exit(error_mess("COMMENT IS TOO LARGE"));
+		return (2);
 	}
 	return (0);
 }
-
+/*
 int		check_format(char *str)
 {
 	int i;
@@ -53,4 +57,4 @@ int		check_format(char *str)
 	while (str[i])
 		i++;
 	return (1);
-}
+}*/

@@ -6,7 +6,7 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/03/05 14:41:50 by emerabet         ###   ########.fr        #
+#    Updated: 2018/03/05 15:12:55 by ssi-moha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,9 @@ SRCSASM = dirasm/asm.c \
 		  dirasm/ft_checkparams.c \
 		  dirasm/ft_skip_com_and_blank.c \
 		  dirasm/ft_findcmd.c \
-		  dirasm/ft_test.c \
-		  dirasm/ft_isincharset.c
+		  dirasm/check_format.c \
+		  dirasm/ft_isincharset.c\
+		  dirasm/error_mess.c\
 
 OBJSASM = $(SRCSASM:.c=.o)
 
