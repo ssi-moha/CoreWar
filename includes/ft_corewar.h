@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/05 13:02:14 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/05 13:13:29 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int					free_par(t_par **par);
 t_par				*new_par(char *par, t_par **prev);
 t_instr				*new_instr(char *cmd, t_instr **prev);
 int					free_instr(t_instr **instr);
+int					skip_cmt(char *str);
 int					ft_parselabel(char *line, t_instr *new);
 int					ft_parseinstr(char *line, int pos, t_instr *new);
 void				ft_parseparams(char *line, int pos, t_instr *new);
