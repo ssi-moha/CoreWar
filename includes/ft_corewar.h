@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/05 14:32:03 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/05 14:41:26 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,8 @@ int					check_name_cmt(char *str);
 int					ft_checkparams(char *par); //pour l'instant renvoi -1 si nb negatif
 //checkabel
 int					ft_findcmd(char *cmd);
+
+
+int					ft_testhex(t_app *application);
 
 #endif
