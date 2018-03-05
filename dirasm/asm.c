@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:54:21 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/05 15:52:01 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/05 17:30:45 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,12 @@ int	main(int argc, char **argv)
 
 	t_instr *tmp;
 	tmp = app.instr;
+	ft_converttohex(app.instr);
+	ft_testhex(&app);	
 	while (tmp)
 	{
 		printf("\nLABEL %s\n", tmp->label);
-		printf("INSTR %s\n", tmp->cmd);
+		printf("INSTR %s SIZE %u \n", tmp->cmd, tmp->sizeoctet);
 		t_par *p;
 		p = tmp->params;
 		while (p)
@@ -100,6 +102,5 @@ int	main(int argc, char **argv)
 		printf("%s\n", g_optab[i].cmd);
 		i++;
 	}
-	ft_testhex(&app);	
 		return (0);
 }

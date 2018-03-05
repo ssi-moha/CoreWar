@@ -6,7 +6,7 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/03/05 15:32:50 by lfujimot         ###   ########.fr        #
+#    Updated: 2018/03/05 16:20:31 by lfujimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCSASM = dirasm/asm.c \
 		  dirasm/check_format.c \
 		  dirasm/ft_isincharset.c\
 		  dirasm/ft_test.c\
+		  dirasm/ft_converttohex.c\
 		  dirasm/error_mess.c\
 
 OBJSASM = $(SRCSASM:.c=.o)

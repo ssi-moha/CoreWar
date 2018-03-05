@@ -6,7 +6,7 @@
 /*   By: emerabet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 14:25:49 by emerabet          #+#    #+#             */
-/*   Updated: 2018/03/05 16:07:45 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/05 17:07:51 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ int		ft_testhex(t_app *application)
 	write(out, &header, sizeof(t_header));
 	printf("%s\n", header.prog_name);
 	printf("%s\n", header.comment);
+//	ft_converttohex(application->instr);
 	return (0);
 }
