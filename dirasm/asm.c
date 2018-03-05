@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:54:21 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/05 17:30:45 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/05 19:07:25 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,23 @@ static void	ft_parseasm(t_instr **instr, int fd, t_header *head)
 	}
 }
 
+static int	ft_checkfilename(char *name)
+{
+	int size;
+
+	size = 0;
+	if (name)
+	{
+		size = ft_strlen(name);
+		if (size > 2)
+		{
+			if (name[size - 1] == 's' && name[size - 2] == '.')
+				return (1);
+		}
+	}
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_app	app;
@@ -75,6 +92,8 @@ int	main(int argc, char **argv)
 	printf("%d\n", argc);
 	if (argc < 2)
 		exit (-1);
+	if (ft_checkfilename(argv[1]) == 0)
+		error_mess("ERROR WRONG FILE NAME\n");
 	ft_init(&app);
 	fd = open(argv[1], O_RDONLY);
 	ft_parseasm(&app.instr, fd, &app.header);
@@ -96,11 +115,11 @@ int	main(int argc, char **argv)
 		}
 		tmp = tmp->next;
 	}
-	int i = 0;
-	while (i < 17)
-	{
-		printf("%s\n", g_optab[i].cmd);
-		i++;
-	}
-		return (0);
+	int j;
+	j = 0;
+	printf("\n");
+	while (j < COMMENT_LENGTH + 1)
+		printf("%c", app.header.comment[j++]);
+	printf("\n");
+	return (0);
 }
