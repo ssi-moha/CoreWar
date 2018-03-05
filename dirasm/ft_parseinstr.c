@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 10:11:04 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/05 12:10:15 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/05 14:18:45 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void ft_copycmd(char *line, int start, int newpos, t_instr *instr)
 {
 	int	i;
+
 	if (instr == 0)
 		return ;
 	instr->cmd = (char *)malloc(sizeof(char) * (newpos - start));
@@ -36,12 +37,19 @@ int	ft_parseinstr(char *line, int pos, t_instr *new)
 	int start;
 
 	newpos = pos;
+	if (line == NULL)
+	{
+		printf("LINE IS NULL IN PARSEINSTR\n");
+		return (-1);
+	}
 	if (newpos < ft_strlen(line))
 	{
-		while (line[newpos] && (line[newpos] == LABEL_CHAR || line[newpos] == ' ' || line[newpos] == '\t'))
+		while (line[newpos] && (line[newpos] == LABEL_CHAR
+					|| line[newpos] == ' ' || line[newpos] == '\t'))
 			newpos++;
 		start = newpos;
-		while (line[newpos] && line[newpos] != ' ' && line[newpos] != '\t' && line[newpos] != DIRECT_CHAR)
+		while (line[newpos] && line[newpos] != ' '
+				&& line[newpos] != '\t' && line[newpos] != DIRECT_CHAR)
 			newpos++;
 	}
 	ft_copycmd(line, start, newpos, new);	
