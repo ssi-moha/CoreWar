@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/05 12:26:43 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/05 13:02:14 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,5 @@ int					ft_skip_com_and_blank(char *line);
 int					ft_checkparams(char *par); //pour l'instant renvoi -1 si nb negatif
 //checkabel
 int					ft_findcmd(char *cmd);
+
 #endif
