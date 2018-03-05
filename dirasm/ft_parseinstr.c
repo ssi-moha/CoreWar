@@ -6,13 +6,13 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 10:11:04 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/05 14:18:45 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/03/05 14:21:40 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-static void ft_copycmd(char *line, int start, int newpos, t_instr *instr)
+static void		ft_copycmd(char *line, int start, int newpos, t_instr *instr)
 {
 	int	i;
 
@@ -31,7 +31,7 @@ static void ft_copycmd(char *line, int start, int newpos, t_instr *instr)
 	instr->cmd[i] = '\0';
 }
 
-int	ft_parseinstr(char *line, int pos, t_instr *new)
+int				ft_parseinstr(char *line, int pos, t_instr *new)
 {
 	int newpos;
 	int start;
@@ -52,7 +52,7 @@ int	ft_parseinstr(char *line, int pos, t_instr *new)
 				&& line[newpos] != '\t' && line[newpos] != DIRECT_CHAR)
 			newpos++;
 	}
-	ft_copycmd(line, start, newpos, new);	
+	ft_copycmd(line, start, newpos, new);
 	if (ft_findcmd(new->cmd) == -1)
 		printf("ERROR THIS COMMAND DOES NOT EXIST\n");
 	return (newpos);
