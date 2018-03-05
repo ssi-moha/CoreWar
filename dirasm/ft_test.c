@@ -6,7 +6,7 @@
 /*   By: emerabet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 14:25:49 by emerabet          #+#    #+#             */
-/*   Updated: 2018/03/05 14:30:23 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/03/05 16:07:45 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,15 @@ int		ft_testhex(t_app *application)
 {
 	t_header	header;
 	t_instr		*instructions;
+	int out;
 
-	header = application.header;
-	t_instr = application->instr;
-
+	out = open("xxxxxxx.cor", O_WRONLY | O_TRUNC | O_CREAT, 777);
+	header = application->header;
+	instructions = application->instr;
+	
 	printf("\n\n TEST WRITE HEADER\n");
-	write(1, &header, sizeof(t_header));
+	write(out, &header, sizeof(t_header));
+	printf("%s\n", header.prog_name);
+	printf("%s\n", header.comment);
 	return (0);
 }

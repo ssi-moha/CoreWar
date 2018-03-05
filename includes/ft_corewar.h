@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/05 15:13:13 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/05 16:03:25 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct		s_instr
 {
 	char			*cmd;
 	char			*label;
+	unsigned int	sizeoctet;
 	t_par			*params;
 	struct s_instr	*next;
 }					t_instr;

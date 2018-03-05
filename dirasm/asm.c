@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:54:21 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/05 15:20:52 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/05 15:52:01 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,6 @@ int	main(int argc, char **argv)
 		printf("%s\n", g_optab[i].cmd);
 		i++;
 	}
-
+	ft_testhex(&app);	
 		return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 18:21:05 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/04 09:56:17 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/05 15:31:50 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_instr	*new_instr(char *cmd, t_instr **prev)
 	tmp->cmd = ft_strdup(cmd);
 	tmp->label = NULL;
 	tmp->params = NULL;
+	tmp->sizeoctet = 0;
 	tmp->next = NULL;
 	if (!*prev)
 		*prev = tmp;

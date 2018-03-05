@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 14:38:07 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/05 15:21:17 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/05 15:50:54 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		check_name_cmt(char *str)
 	{
 		while (str[i])
 		{
-			if (!ft_isprint(str[i]))
+			if (!ft_isprint(str[i]) && str[i] != ' ' && str[i] != '\t')
 				return (0);
 			i++;
 		}
@@ -33,7 +33,7 @@ int		check_name_cmt(char *str)
 	{
 		while (str[i])
 		{
-			if (!ft_isprint(str[i]))
+			if (!ft_isprint(str[i]) && str[i] != ' ' && str[i] != '\t')
 				return (0);
 			i++;
 		}
