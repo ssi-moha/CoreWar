@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:54:21 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/05 19:42:42 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/06 11:57:14 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ int	main(int argc, char **argv)
 	t_instr *tmp;
 	tmp = app.instr;
 	ft_converttohex(app.instr);
+	app.header.prog_size = prog_size(&app.instr);
 	ft_testhex(&app);	
 	while (tmp)
 	{
