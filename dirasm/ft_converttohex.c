@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 13:18:41 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/05 17:05:16 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/06 15:46:37 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static void	ft_convparams(t_instr **instr)
 		}
 		else if (tmp->type == T_IND || tmp->type == T_IND + T_LAB)
 			(*instr)->sizeoctet += 2;
+		printf("CMD %d PAR %s SIZE OCTET %d\n", cmd, tmp->par, (*instr)->sizeoctet);
 		tmp = tmp->next;
 	}
 }

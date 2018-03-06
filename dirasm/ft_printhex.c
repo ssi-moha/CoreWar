@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 13:18:41 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/06 12:45:21 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/06 15:59:47 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,9 @@ static void ft_printdir(t_par *par, int cmd, int out)
 	unsigned char	p[DIR_SIZE];
 	int				nb;
 	int				i;
+	int				d;
 
+	d = 0;
 	i = DIR_SIZE - 1;
 	nb = ft_atoi(par->par + 1);
 	if (g_optab[cmd].dirsize == 0)
@@ -78,6 +80,7 @@ static void ft_printdir(t_par *par, int cmd, int out)
 			p[i--] = nb % 256;
 			nb /= 256;
 		}
+		d = 0;
 	}
 	else if (g_optab[cmd].dirsize == 1)
 	{
@@ -86,9 +89,68 @@ static void ft_printdir(t_par *par, int cmd, int out)
 			p[i--] = nb % 256;
 			nb /= 256;
 		}
+		d = DIR_SIZE / 2;
 	}
-	i = 0;
+	i = d;
 	while (i < DIR_SIZE)
+	{
+		write(out, &p[i++], 1);
+	}
+}
+
+static void ft_printdiril(unsigned int lab, int cmd, int out)
+{
+	unsigned char	p[DIR_SIZE];
+	unsigned int	nb;
+	int				i;
+	int d;
+
+	d = 0;
+	printf("XXXXXXXXXXXXXXXXXXX %u\n", lab);
+	i = DIR_SIZE - 1;
+	nb = lab;
+	if (g_optab[cmd].dirsize == 0)
+	{
+		while (i >= 0)
+		{
+			p[i--] = nb % 256;
+			nb /= 256;
+		}
+		d = 0;
+	}
+	else if (g_optab[cmd].dirsize == 1)
+	{
+		while (i >= DIR_SIZE / 2)
+		{
+			p[i--] = nb % 256;
+			nb /= 256;
+		}
+		d = DIR_SIZE / 2;
+	}
+	i = d;
+	printf("DDDDDDDjjjj %d %so dirsize %dooo\n", d, g_optab[cmd].cmd, g_optab[cmd].dirsize);
+	while (i < DIR_SIZE)
+	{
+		write(out, &p[i++], 1);
+	}
+}
+
+static void ft_printindl(unsigned int lab, int cmd, int out)
+{
+	unsigned char	p[DIR_SIZE];
+	unsigned int	nb;
+	int				i;
+
+	printf("XXXXXXXXXXXXXXXXXXX %u\n", lab);
+	i = IND_SIZE - 1;
+	nb = lab;
+		while (i >= 0)
+		{
+			p[i--] = nb % 256;
+			nb /= 256;
+		}
+	i = 0;
+	while (i < IND_SIZE)
 	{
 		write(out, &p[i++], 1);
 	}
@@ -114,12 +176,25 @@ static void ft_printind(t_par *par, int cmd, int out)
 	}
 }
 
-static void	ft_printdirlab(t_par *par, t_instr **instr, t_instr **begin)
+static void	ft_printdirlab(t_par *par, t_instr **begin, t_instr **instr, int out)
 {
 	unsigned int sizelab;
+	int cmd;
 
-	sizelab = count_label(instr, begin, par->par + 2);
-	printf("SIZE LABEL %d", sizelab);
+	cmd = ft_findcmd((*instr)->cmd);
+	sizelab = count_label(instr, begin, par->par + 2, cmd);
+	printf("LABEL SIZE %u\n", sizelab);
+	ft_printdiril(sizelab, cmd, out);
+}
+
+static void	ft_printindlab(t_par *par, t_instr **begin, t_instr **instr, int out)
+{
+	unsigned int sizelab;
+	int cmd;
+
+	cmd = ft_findcmd((*begin)->cmd);
+	sizelab = count_label(instr, begin, par->par + 2, cmd);
+	ft_printindl(sizelab, cmd, out);
 }
 
 static void	ft_printparams(t_par **par, char *cmd, int out, t_instr **instr, t_instr **begin)
@@ -132,6 +207,7 @@ static void	ft_printparams(t_par **par, char *cmd, int out, t_instr **instr, t_i
 	tmp = *par;
 	while (tmp)
 	{
+		printf("TMP TYPE %d\n", tmp->type);
 		if (tmp->type == T_REG)
 		{
 			p[0] = (unsigned char)ft_atoi(tmp->par + 1);
@@ -142,9 +218,9 @@ static void	ft_printparams(t_par **par, char *cmd, int out, t_instr **instr, t_i
 		else if (tmp->type == T_IND)
 			ft_printind(tmp, c, out);
 		else if (tmp->type == T_DIR + T_LAB)
-			ft_printdirlab(tmp, instr, begin);
-		//else if (tmp->type == T_IND + T_LAB)
-		//	...
+			ft_printdirlab(tmp, instr, begin, out);
+		else if (tmp->type == T_IND + T_LAB)
+			ft_printindlab(tmp, instr, begin, out);
 		tmp = tmp->next;
 	}
 }

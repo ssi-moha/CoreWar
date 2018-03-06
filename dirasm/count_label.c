@@ -6,38 +6,56 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 16:20:55 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/06 12:45:19 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/06 15:40:52 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-int		count_label(t_instr **instr, t_instr **begin, char *label)
+unsigned int		count_label(t_instr **instr, t_instr **begin, char *label, int cmd)
 {
 	int i;
 	int mark;
 	t_instr *tmp;
+	unsigned int j;
 
 	tmp = *begin;
 	mark = 0;
 	i = 0;
-	while (tmp && tmp != *instr && !ft_strcmp(label, tmp->label))
+
+		printf("lllll %s\n", tmp->cmd);
+		printf("lllll %s\n", (*instr)->cmd);
+	while (tmp && tmp != *instr && ft_strcmp(label, tmp->label))
 	{
+		printf("lllllkkkk %s\n", tmp->cmd);
 		tmp = tmp->next;
 	}
 	if (tmp == *instr)
-		while (tmp && !ft_strcmp(label, tmp->label))
-		{
-			i -= tmp->sizeoctet;
-			tmp = tmp->next;
-		}
-	else if (!ft_strcmp(label, tmp->label))
-		while (tmp && !ft_strcmp(label, tmp->label))
+	{
+		printf("IIIIIIIIIIIIIIIIIIIIII\n");
+		while (tmp && ft_strcmp(label, tmp->label))
 		{
 			i += tmp->sizeoctet;
 			tmp = tmp->next;
 		}
+		printf("le i : %d\n", i);
+		j = (unsigned int)i;
+	}
+	else if (!ft_strcmp(label, tmp->label))
+	{
+		while (tmp && tmp != *instr)
+		{
+			printf("ggggg\n");
+			i -= tmp->sizeoctet;
+			tmp = tmp->next;
+		}
+		if (g_optab[cmd].dirsize == 1)
+			j = 65536 + i;
+		else
+			j = 4294967296 + i;
+	}
 	else
 		exit (error_mess(NULL));
-	return (i);
+	printf("J %u I %d\n", j, i);
+	return (j);
 }
