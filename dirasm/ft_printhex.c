@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 13:18:41 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/07 16:44:37 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/07 19:11:13 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,6 +215,7 @@ static void	ft_printparams(t_par **par, char *cmd, int out, t_instr **instr, t_i
 	t_par *tmp;
 	int c;
 	unsigned char p[4];
+	int	n;
 
 	c = ft_findcmd(cmd);
 	tmp = *par;
@@ -224,7 +225,10 @@ static void	ft_printparams(t_par **par, char *cmd, int out, t_instr **instr, t_i
 		printf("TMP TYPE %d\n", tmp->type);
 		if (tmp->type == T_REG)
 		{
-			p[0] = (unsigned char)ft_atoi(tmp->par + 1);
+			n = ft_atoi(tmp->par + 1);
+			if (n <= 0 || n > REG_NUMBER)
+				exit(error_mess("ERROR REGISTER DOES NOT EXIST\n"));
+			p[0] = (unsigned char)n;
 			write(out, &p[0], 1);
 		}
 		else if (tmp->type == T_DIR)

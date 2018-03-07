@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 16:20:55 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/07 16:41:48 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/07 19:22:15 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ unsigned int		count_label(t_instr **instr, t_instr **begin, char *label, int cmd
 			i += tmp->sizeoctet;
 			tmp = tmp->next;
 		}
+		if (tmp == 0)
+			exit(error_mess("ERROR ILLEGAL LABEL\n"));
 		printf("le i : %d\n", i);
 		j = (unsigned int)i;
 	}
@@ -56,7 +58,7 @@ unsigned int		count_label(t_instr **instr, t_instr **begin, char *label, int cmd
 			j = 4294967296 + i;
 	}
 	else
-		exit (error_mess(NULL));
+		exit (error_mess("ERROR ILLEGAL LABEL\n"));
 	printf("J %u I %d\n", j, i);
 	return (j);
 }

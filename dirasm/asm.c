@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:54:21 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/07 14:55:36 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/07 18:36:20 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ static void	ft_init(t_app *app)
 	app->header = h;
 	ft_bzero(app->header.prog_name, PROG_NAME_LENGTH + 1);
 	ft_bzero(app->header.comment, COMMENT_LENGTH + 1);
+	app->checkcmd = 0;
 }
 
-static void	ft_parseasm(t_instr **instr, int fd, t_header *head)
+static void	ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app)
 {
 	char *line;
 	int pos;
@@ -44,6 +45,7 @@ static void	ft_parseasm(t_instr **instr, int fd, t_header *head)
 		}
 		if ((ret = check_name_cmt(line)))
 		{
+			app->checkcmd++;
 			if (ret == 1)
 				ft_strncpy(head->prog_name, ft_strchr(line, '"') + 1 , ft_strclen(ft_strchr(line, '"') + 1, '"'));
 			else if (ret == 2)
@@ -52,6 +54,8 @@ static void	ft_parseasm(t_instr **instr, int fd, t_header *head)
 			continue ;
 		}
 		printf("%s\n", line);
+		if (app->checkcmd != 2)
+			exit(error_mess("ERROR NO .NAME OR NO .COMMENT\n"));
 		new = new_instr(NULL, instr); //mettre a 0
 		if (new)
 		{
@@ -100,10 +104,12 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		exit (-1);
 	if (ft_checkfilename(argv[1]) == 0)
-		error_mess("ERROR WRONG FILE NAME\n");
+		exit(error_mess("ERROR WRONG FILE NAME\n"));
 	ft_init(&app);
 	fd = open(argv[1], O_RDONLY);
-	ft_parseasm(&app.instr, fd, &app.header);
+	if (fd < 0)
+		exit(error_mess("ERROR FILE CANNOT BE FOUD OR CANNOT BE OPENNED\n"));
+	ft_parseasm(&app.instr, fd, &app.header, &app);
 
 	t_instr *tmp;
 	tmp = app.instr;

@@ -11,7 +11,7 @@ label:		zjmp %:avantdebt
 		zjmp %0				# pour eviter ecrasement
 						# de l'instruction suivante
 avantdebt:	sti   r1,%:code,%1  # 		# mets a jour le live
-		sti   r1,%:code,%15 # 		# mets a jour le live
+		sti   r1 	,    %:code,%15 # 		# mets a jour le live
 		sti   r1,%:code,%29 # 		# mets a jour le live
 		sti   r1,%:code,%43 # 		# mets a jour le live
 		sti   r1,%:code,%57 # 		# mets a jour le live

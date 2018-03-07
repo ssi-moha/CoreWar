@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 10:02:11 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/07 15:57:06 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/07 18:49:51 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,9 @@ void	ft_parseparams(char *line, int pos, t_instr *new)
 	int start;
 	t_par *par;
 	int	parindex;
+	int s;
 
+	s = 0;
 	if (line)
 	{
 		parindex = 0;	
@@ -67,7 +69,11 @@ void	ft_parseparams(char *line, int pos, t_instr *new)
 			while (line[pos] && line[pos] != '\n' && line[pos] != COMMENT_CHAR)
 			{
 				while (line[pos] && (line[pos] == ' '|| line[pos] == '\t' || line[pos] == SEPARATOR_CHAR))
+				{
+					if (line[pos] == SEPARATOR_CHAR)
+						s++;	
 					pos++;
+				}
 				start = pos;
 				par = 0;
 				while (line[pos] && line[pos] != ' ' && line[pos] != '\t' && line[pos] != SEPARATOR_CHAR)
@@ -77,7 +83,10 @@ void	ft_parseparams(char *line, int pos, t_instr *new)
 					pos++;
 				}
 				if (line[start] == SEPARATOR_CHAR)
+				{
+					s++;
 					start++;
+				}
 				if (!(line[start] == ' ' || line[start] == '\t' || line[start] == COMMENT_CHAR || line[start] == '\n') && line[start] != '\0')
 				{
 					printf("Creation Param %c \n", line[start]);
@@ -85,12 +94,14 @@ void	ft_parseparams(char *line, int pos, t_instr *new)
 					ft_copypar(line, start, pos, par);
 					par->type = ft_checkparams(par->par);
 					if (par->type == -1)
-						printf("ERREUR PARAMS\n");
+						exit(error_mess("ERREUR PARAMS\n"));
 					if (ft_checkpartype(par, parindex, new->cmd) == -1)
-						printf("INCORECT PAR TYPE FOR THIS CMD\n");
+						exit(error_mess("INCORECT PAR TYPE FOR THIS CMD\n"));
 					parindex++;
 				}
 			}
 		}
+		if (s >= parindex)
+			exit(error_mess("ERROR SYNTAX ERROR\n"));
 	}
 }

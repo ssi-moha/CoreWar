@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 10:11:04 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/06 15:49:58 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/07 18:00:27 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int				ft_parseinstr(char *line, int pos, t_instr *new)
 	newpos = pos;
 	if (line == NULL)
 	{
-		printf("LINE IS NULL IN PARSEINSTR\n");
+		exit(error_mess("LINE IS NULL IN PARSEINSTR\n"));
 		return (-1);
 	}
 	if (newpos < ft_strlen(line))
@@ -54,6 +54,6 @@ int				ft_parseinstr(char *line, int pos, t_instr *new)
 	}
 	ft_copycmd(line, start, newpos, new);
 	if (ft_findcmd(new->cmd) == -1)
-		printf("ERROR THIS COMMAND DOES NOT EXIST --> %s\n", new->cmd);
+		exit(error_mess("ERROR THIS COMMAND DOES NOT EXIST"));
 	return (newpos);
 }

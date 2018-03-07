@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/06 14:43:22 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/07 18:10:03 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct		s_app // structure globale de l'application
 {
 	t_instr			*instr;
 	t_header		header;
+	int				checkcmd;
 }					t_app;
 
 extern	t_op		g_optab[17];
