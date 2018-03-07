@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:54:21 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/07 14:49:44 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/07 14:55:36 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,17 @@ static void	ft_parseasm(t_instr **instr, int fd, t_header *head)
 		//	if (line[0] == '\n')
 		//		continue ;
 		if (ft_skip_com_and_blank(line))
+		{
+			ft_strdel(&line);
 			continue ;
+		}
 		if ((ret = check_name_cmt(line)))
 		{
 			if (ret == 1)
 				ft_strncpy(head->prog_name, ft_strchr(line, '"') + 1 , ft_strclen(ft_strchr(line, '"') + 1, '"'));
 			else if (ret == 2)
 				ft_strncpy(head->comment, ft_strchr(line, '"') + 1 , ft_strclen(ft_strchr(line, '"') + 1, '"'));
+			ft_strdel(&line);
 			continue ;
 		}
 		printf("%s\n", line);
@@ -64,6 +68,7 @@ static void	ft_parseasm(t_instr **instr, int fd, t_header *head)
 				tmp = tmp->next;
 			}
 		}
+		ft_strdel(&line);
 	}
 }
 
