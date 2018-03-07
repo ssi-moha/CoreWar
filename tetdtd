@@ -1,0 +1,2097 @@
+2$
+		ld   %0,r3		$
+Creation Param % $
+Creation Param r $
+LABEL (null)$
+CMD ld$
+PAR %0$
+PAR r3$
+label:		zjmp %:avantdebut$
+Creation Param % $
+LABEL label$
+CMD zjmp$
+PAR %:avantdebut$
+		zjmp %0				# pour eviter ecrasement$
+Creation Param % $
+LABEL (null)$
+CMD zjmp$
+PAR %0$
+code:		live %42			# 5$
+Creation Param % $
+LABEL code$
+CMD live$
+PAR %42$
+		sti  r15,%0,r14			# 6$
+Creation Param r $
+Creation Param % $
+Creation Param r $
+LABEL (null)$
+CMD sti$
+PAR r15$
+PAR %0$
+PAR r14$
+		zjmp %-200			# 3$
+Creation Param % $
+LABEL (null)$
+CMD zjmp$
+PAR %-200$
+		live %42			# 5$
+Creation Param % $
+LABEL (null)$
+CMD live$
+PAR %42$
+		sti  r15,%0,r14			# 6$
+Creation Param r $
+Creation Param % $
+Creation Param r $
+LABEL (null)$
+CMD sti$
+PAR r15$
+PAR %0$
+PAR r14$
+		zjmp %-200			# 3$
+Creation Param % $
+LABEL (null)$
+CMD zjmp$
+PAR %-200$
+		live %42			# 5$
+Creation Param % $
+LABEL (null)$
+CMD live$
+PAR %42$
+		sti  r15,%0,r14			# 6$
+Creation Param r $
+Creation Param % $
+Creation Param r $
+LABEL (null)$
+CMD sti$
+PAR r15$
+PAR %0$
+PAR r14$
+		zjmp %-200			# 3$
+Creation Param % $
+LABEL (null)$
+CMD zjmp$
+PAR %-200$
+		live %42			# 5$
+Creation Param % $
+LABEL (null)$
+CMD live$
+PAR %42$
+		sti  r15,%0,r14			# 6$
+Creation Param r $
+Creation Param % $
+Creation Param r $
+LABEL (null)$
+CMD sti$
+PAR r15$
+PAR %0$
+PAR r14$
+		zjmp %-200			# 3$
+Creation Param % $
+LABEL (null)$
+CMD zjmp$
+PAR %-200$
+		sti  r15,%0,r14			# 6$
+Creation Param r $
+Creation Param % $
+Creation Param r $
+LABEL (null)$
+CMD sti$
+PAR r15$
+PAR %0$
+PAR r14$
+		zjmp %-200			# 3$
+Creation Param % $
+LABEL (null)$
+CMD zjmp$
+PAR %-200$
+		sti  r15,%0,r14			# 6$
+Creation Param r $
+Creation Param % $
+Creation Param r $
+LABEL (null)$
+CMD sti$
+PAR r15$
+PAR %0$
+PAR r14$
+		zjmp %-200$
+Creation Param % $
+LABEL (null)$
+CMD zjmp$
+PAR %-200$
+avantdebut:	sti   r1,%:code,%1  # 		#7	$
+Creation Param r $
+Creation Param % $
+Creation Param % $
+LABEL avantdebut$
+CMD sti$
+PAR r1$
+PAR %:code$
+PAR %1$
+		sti   r1,%:code,%15 # 		#7	$
+Creation Param r $
+Creation Param % $
+Creation Param % $
+LABEL (null)$
+CMD sti$
+PAR r1$
+PAR %:code$
+PAR %15$
+		sti   r1,%:code,%29 # 		#7	$
+Creation Param r $
+Creation Param % $
+Creation Param % $
+LABEL (null)$
+CMD sti$
+PAR r1$
+PAR %:code$
+PAR %29$
+		sti   r1,%:code,%43 # 		#7	$
+Creation Param r $
+Creation Param % $
+Creation Param % $
+LABEL (null)$
+CMD sti$
+PAR r1$
+PAR %:code$
+PAR %43$
+		sti   r1,%:code,%57 # 		#7	$
+Creation Param r $
+Creation Param % $
+Creation Param % $
+LABEL (null)$
+CMD sti$
+PAR r1$
+PAR %:code$
+PAR %57$
+		sti   r1,%:code,%71 # 		#7	$
+Creation Param r $
+Creation Param % $
+Creation Param % $
+LABEL (null)$
+CMD sti$
+PAR r1$
+PAR %:code$
+PAR %71$
+init:		ld   %393216,r4		 	#7	$
+Creation Param % $
+Creation Param r $
+LABEL init$
+CMD ld$
+PAR %393216$
+PAR r4$
+		ld   %917504,r12		#7	$
+Creation Param % $
+Creation Param r $
+LABEL (null)$
+CMD ld$
+PAR %917504$
+PAR r12$
+		ld   %1,r11			#7$
+Creation Param % $
+Creation Param r $
+LABEL (null)$
+CMD ld$
+PAR %1$
+PAR r11$
+		ld   %6,r10			#7$
+Creation Param % $
+Creation Param r $
+LABEL (null)$
+CMD ld$
+PAR %6$
+PAR r10$
+debut:		live %42			#5$
+Creation Param % $
+LABEL debut$
+CMD live$
+PAR %42$
+		sti  r4,%:label , %1		#7$
+Creation Param r $
+Creation Param % $
+Creation Param % $
+LABEL (null)$
+CMD sti$
+PAR r4$
+PAR %:label$
+PAR %1$
+		add  r4,r12,r4			#5	$
+Creation Param r $
+Creation Param r $
+Creation Param r $
+LABEL (null)$
+CMD add$
+PAR r4$
+PAR r12$
+PAR r4$
+		sub  r10,r11,r10		#5$
+Creation Param r $
+Creation Param r $
+Creation Param r $
+LABEL (null)$
+CMD sub$
+PAR r10$
+PAR r11$
+PAR r10$
+		zjmp %:init			#3$
+Creation Param % $
+LABEL (null)$
+CMD zjmp$
+PAR %:init$
+		fork %:debut			$
+Creation Param % $
+LABEL (null)$
+CMD fork$
+PAR %:debut$
+		live %3$
+Creation Param % $
+LABEL (null)$
+CMD live$
+PAR %3$
+level0:		fork %:level10$
+Creation Param % $
+LABEL level0$
+CMD fork$
+PAR %:level10$
+level11:	live %4$
+Creation Param % $
+LABEL level11$
+CMD live$
+PAR %4$
+		fork %:level111$
+Creation Param % $
+LABEL (null)$
+CMD fork$
+PAR %:level111$
+level110:	live %42$
+Creation Param % $
+LABEL level110$
+CMD live$
+PAR %42$
+		ldi  %8, %:code, r15		#set des octets 9-12$
+Creation Param % $
+Creation Param % $
+Creation Param r $
+LABEL (null)$
+CMD ldi$
+PAR %8$
+PAR %:code$
+PAR r15$
+		ld   %-186, r14			#=$A-6-8$
+Creation Param % $
+Creation Param r $
+LABEL (null)$
+CMD ld$
+PAR %-186$
+PAR r14$
+		ld   %0,r2$
+Creation Param % $
+Creation Param r $
+LABEL (null)$
+CMD ld$
+PAR %0$
+PAR r2$
+		zjmp  %:label$
+Creation Param % $
+LABEL (null)$
+CMD zjmp$
+PAR %:label$
+level10:	live %42$
+Creation Param % $
+LABEL level10$
+CMD live$
+PAR %42$
+		fork %:level100$
+Creation Param % $
+LABEL (null)$
+CMD fork$
+PAR %:level100$
+level101:	live %42$
+Creation Param % $
+LABEL level101$
+CMD live$
+PAR %42$
+		ldi  %4, %:code, r15 		#set des octets 5-8$
+Creation Param % $
+Creation Param % $
+Creation Param r $
+LABEL (null)$
+CMD ldi$
+PAR %4$
+PAR %:code$
+PAR r15$
+		ld   %-190, r14			#=$A-6-4$
+Creation Param % $
+Creation Param r $
+LABEL (null)$
+CMD ld$
+PAR %-190$
+PAR r14$
+		ld   %0,r2$
+Creation Param % $
+Creation Param r $
+LABEL (null)$
+CMD ld$
+PAR %0$
+PAR r2$
+		zjmp %:label$
+Creation Param % $
+LABEL (null)$
+CMD zjmp$
+PAR %:label$
+level111:	live %42	$
+Creation Param % $
+LABEL level111$
+CMD live$
+PAR %42$
+		ldi  %12, %:code, r15		#set des octets 13-16$
+Creation Param % $
+Creation Param % $
+Creation Param r $
+LABEL (null)$
+CMD ldi$
+PAR %12$
+PAR %:code$
+PAR r15$
+		ld   %-182, r14			# $A -6 -12$
+Creation Param % $
+Creation Param r $
+LABEL (null)$
+CMD ld$
+PAR %-182$
+PAR r14$
+		ld   %0,r2$
+Creation Param % $
+Creation Param r $
+LABEL (null)$
+CMD ld$
+PAR %0$
+PAR r2$
+		zjmp %:label$
+Creation Param % $
+LABEL (null)$
+CMD zjmp$
+PAR %:label$
+level100:	live %42$
+Creation Param % $
+LABEL level100$
+CMD live$
+PAR %42$
+		ldi  %0, %:code, r15		#set des octets 1-4$
+Creation Param % $
+Creation Param % $
+Creation Param r $
+LABEL (null)$
+CMD ldi$
+PAR %0$
+PAR %:code$
+PAR r15$
+		ld   %-194, r14			# $A -6 -0$
+Creation Param % $
+Creation Param r $
+LABEL (null)$
+CMD ld$
+PAR %-194$
+PAR r14$
+		ld   %0,r2			#$
+Creation Param % $
+Creation Param r $
+LABEL (null)$
+CMD ld$
+PAR %0$
+PAR r2$
+		zjmp %:label			#$
+Creation Param % $
+LABEL (null)$
+CMD zjmp$
+PAR %:label$
+CMD 1 PAR %0 SIZE OCTET 6$
+CMD 1 PAR r3 SIZE OCTET 7$
+CMD 8 PAR %:avantdebut SIZE OCTET 3$
+CMD 8 PAR %0 SIZE OCTET 3$
+CMD 0 PAR %42 SIZE OCTET 5$
+CMD 10 PAR r15 SIZE OCTET 3$
+CMD 10 PAR %0 SIZE OCTET 5$
+CMD 10 PAR r14 SIZE OCTET 6$
+CMD 8 PAR %-200 SIZE OCTET 3$
+CMD 0 PAR %42 SIZE OCTET 5$
+CMD 10 PAR r15 SIZE OCTET 3$
+CMD 10 PAR %0 SIZE OCTET 5$
+CMD 10 PAR r14 SIZE OCTET 6$
+CMD 8 PAR %-200 SIZE OCTET 3$
+CMD 0 PAR %42 SIZE OCTET 5$
+CMD 10 PAR r15 SIZE OCTET 3$
+CMD 10 PAR %0 SIZE OCTET 5$
+CMD 10 PAR r14 SIZE OCTET 6$
+CMD 8 PAR %-200 SIZE OCTET 3$
+CMD 0 PAR %42 SIZE OCTET 5$
+CMD 10 PAR r15 SIZE OCTET 3$
+CMD 10 PAR %0 SIZE OCTET 5$
+CMD 10 PAR r14 SIZE OCTET 6$
+CMD 8 PAR %-200 SIZE OCTET 3$
+CMD 10 PAR r15 SIZE OCTET 3$
+CMD 10 PAR %0 SIZE OCTET 5$
+CMD 10 PAR r14 SIZE OCTET 6$
+CMD 8 PAR %-200 SIZE OCTET 3$
+CMD 10 PAR r15 SIZE OCTET 3$
+CMD 10 PAR %0 SIZE OCTET 5$
+CMD 10 PAR r14 SIZE OCTET 6$
+CMD 8 PAR %-200 SIZE OCTET 3$
+CMD 10 PAR r1 SIZE OCTET 3$
+CMD 10 PAR %:code SIZE OCTET 5$
+CMD 10 PAR %1 SIZE OCTET 7$
+CMD 10 PAR r1 SIZE OCTET 3$
+CMD 10 PAR %:code SIZE OCTET 5$
+CMD 10 PAR %15 SIZE OCTET 7$
+CMD 10 PAR r1 SIZE OCTET 3$
+CMD 10 PAR %:code SIZE OCTET 5$
+CMD 10 PAR %29 SIZE OCTET 7$
+CMD 10 PAR r1 SIZE OCTET 3$
+CMD 10 PAR %:code SIZE OCTET 5$
+CMD 10 PAR %43 SIZE OCTET 7$
+CMD 10 PAR r1 SIZE OCTET 3$
+CMD 10 PAR %:code SIZE OCTET 5$
+CMD 10 PAR %57 SIZE OCTET 7$
+CMD 10 PAR r1 SIZE OCTET 3$
+CMD 10 PAR %:code SIZE OCTET 5$
+CMD 10 PAR %71 SIZE OCTET 7$
+CMD 1 PAR %393216 SIZE OCTET 6$
+CMD 1 PAR r4 SIZE OCTET 7$
+CMD 1 PAR %917504 SIZE OCTET 6$
+CMD 1 PAR r12 SIZE OCTET 7$
+CMD 1 PAR %1 SIZE OCTET 6$
+CMD 1 PAR r11 SIZE OCTET 7$
+CMD 1 PAR %6 SIZE OCTET 6$
+CMD 1 PAR r10 SIZE OCTET 7$
+CMD 0 PAR %42 SIZE OCTET 5$
+CMD 10 PAR r4 SIZE OCTET 3$
+CMD 10 PAR %:label SIZE OCTET 5$
+CMD 10 PAR %1 SIZE OCTET 7$
+CMD 3 PAR r4 SIZE OCTET 3$
+CMD 3 PAR r12 SIZE OCTET 4$
+CMD 3 PAR r4 SIZE OCTET 5$
+CMD 4 PAR r10 SIZE OCTET 3$
+CMD 4 PAR r11 SIZE OCTET 4$
+CMD 4 PAR r10 SIZE OCTET 5$
+CMD 8 PAR %:init SIZE OCTET 3$
+CMD 11 PAR %:debut SIZE OCTET 3$
+CMD 0 PAR %3 SIZE OCTET 5$
+CMD 11 PAR %:level10 SIZE OCTET 3$
+CMD 0 PAR %4 SIZE OCTET 5$
+CMD 11 PAR %:level111 SIZE OCTET 3$
+CMD 0 PAR %42 SIZE OCTET 5$
+CMD 9 PAR %8 SIZE OCTET 4$
+CMD 9 PAR %:code SIZE OCTET 6$
+CMD 9 PAR r15 SIZE OCTET 7$
+CMD 1 PAR %-186 SIZE OCTET 6$
+CMD 1 PAR r14 SIZE OCTET 7$
+CMD 1 PAR %0 SIZE OCTET 6$
+CMD 1 PAR r2 SIZE OCTET 7$
+CMD 8 PAR %:label SIZE OCTET 3$
+CMD 0 PAR %42 SIZE OCTET 5$
+CMD 11 PAR %:level100 SIZE OCTET 3$
+CMD 0 PAR %42 SIZE OCTET 5$
+CMD 9 PAR %4 SIZE OCTET 4$
+CMD 9 PAR %:code SIZE OCTET 6$
+CMD 9 PAR r15 SIZE OCTET 7$
+CMD 1 PAR %-190 SIZE OCTET 6$
+CMD 1 PAR r14 SIZE OCTET 7$
+CMD 1 PAR %0 SIZE OCTET 6$
+CMD 1 PAR r2 SIZE OCTET 7$
+CMD 8 PAR %:label SIZE OCTET 3$
+CMD 0 PAR %42 SIZE OCTET 5$
+CMD 9 PAR %12 SIZE OCTET 4$
+CMD 9 PAR %:code SIZE OCTET 6$
+CMD 9 PAR r15 SIZE OCTET 7$
+CMD 1 PAR %-182 SIZE OCTET 6$
+CMD 1 PAR r14 SIZE OCTET 7$
+CMD 1 PAR %0 SIZE OCTET 6$
+CMD 1 PAR r2 SIZE OCTET 7$
+CMD 8 PAR %:label SIZE OCTET 3$
+CMD 0 PAR %42 SIZE OCTET 5$
+CMD 9 PAR %0 SIZE OCTET 4$
+CMD 9 PAR %:code SIZE OCTET 6$
+CMD 9 PAR r15 SIZE OCTET 7$
+CMD 1 PAR %-194 SIZE OCTET 6$
+CMD 1 PAR r14 SIZE OCTET 7$
+CMD 1 PAR %0 SIZE OCTET 6$
+CMD 1 PAR r2 SIZE OCTET 7$
+CMD 8 PAR %:label SIZE OCTET 3$
+$
+$
+ TEST WRITE HEADER$
+Celebration Funebre v0.99pl42$
+Jour J$
+INSTRUCTION NUM 2$
+HEXAAAAAAAAAAAAAAAAAAA 90 144$
+/*****************************************************/ ld$
+TMP TYPE 2$
+NNNNNNNBBBBBBBBBBB 0$
+OCTET 0$
+OCTET 0$
+OCTET 0$
+OCTET 0$
+TMP TYPE 1$
+INSTRUCTION NUM 9$
+/*****************************************************/ zjmp$
+TMP TYPE 10$
+lllll ld$
+lllll zjmp$
+lllllkkkk ld$
+IIIIIIIIIIIIIIIIIIIIII$
+le i : 80$
+J 80 I 80$
+LABEL SIZE 80$
+XXXXXXXXXXXXXXXXXXX 80$
+DDDDDDDjjjj 2 zjmpo dirsize 1ooo$
+INSTRUCTION NUM 9$
+/*****************************************************/ zjmp$
+TMP TYPE 2$
+INSTRUCTION NUM 1$
+/*****************************************************/ live$
+TMP TYPE 2$
+NNNNNNNBBBBBBBBBBB 42$
+OCTET 42$
+OCTET 0$
+OCTET 0$
+OCTET 0$
+INSTRUCTION NUM 11$
+HEXAAAAAAAAAAAAAAAAAAA 64 100$
+/*****************************************************/ sti$
+TMP TYPE 1$
+TMP TYPE 2$
+TMP TYPE 1$
+INSTRUCTION NUM 9$
+/*****************************************************/ zjmp$
+TMP TYPE 2$
+INSTRUCTION NUM 1$
+/*****************************************************/ live$
+TMP TYPE 2$
+NNNNNNNBBBBBBBBBBB 42$
+OCTET 42$
+OCTET 0$
+OCTET 0$
+OCTET 0$
+INSTRUCTION NUM 11$
+HEXAAAAAAAAAAAAAAAAAAA 64 100$
+/*****************************************************/ sti$
+TMP TYPE 1$
+TMP TYPE 2$
+TMP TYPE 1$
+INSTRUCTION NUM 9$
+/*****************************************************/ zjmp$
+TMP TYPE 2$
+INSTRUCTION NUM 1$
+/*****************************************************/ live$
+TMP TYPE 2$
+NNNNNNNBBBBBBBBBBB 42$
+OCTET 42$
+OCTET 0$
+OCTET 0$
+OCTET 0$
+INSTRUCTION NUM 11$
+HEXAAAAAAAAAAAAAAAAAAA 64 100$
+/*****************************************************/ sti$
+TMP TYPE 1$
+TMP TYPE 2$
+TMP TYPE 1$
+INSTRUCTION NUM 9$
+/*****************************************************/ zjmp$
+TMP TYPE 2$
+INSTRUCTION NUM 1$
+/*****************************************************/ live$
+TMP TYPE 2$
+NNNNNNNBBBBBBBBBBB 42$
+OCTET 42$
+OCTET 0$
+OCTET 0$
+OCTET 0$
+INSTRUCTION NUM 11$
+HEXAAAAAAAAAAAAAAAAAAA 64 100$
+/*****************************************************/ sti$
+TMP TYPE 1$
+TMP TYPE 2$
+TMP TYPE 1$
+INSTRUCTION NUM 9$
+/*****************************************************/ zjmp$
+TMP TYPE 2$
+INSTRUCTION NUM 11$
+HEXAAAAAAAAAAAAAAAAAAA 64 100$
+/*****************************************************/ sti$
+TMP TYPE 1$
+TMP TYPE 2$
+TMP TYPE 1$
+INSTRUCTION NUM 9$
+/*****************************************************/ zjmp$
+TMP TYPE 2$
+INSTRUCTION NUM 11$
+HEXAAAAAAAAAAAAAAAAAAA 64 100$
+/*****************************************************/ sti$
+TMP TYPE 1$
+TMP TYPE 2$
+TMP TYPE 1$
+INSTRUCTION NUM 9$
+/*****************************************************/ zjmp$
+TMP TYPE 2$
+INSTRUCTION NUM 11$
+HEXAAAAAAAAAAAAAAAAAAA 68 104$
+/*****************************************************/ sti$
+TMP TYPE 1$
+TMP TYPE 10$
+lllll ld$
+lllll sti$
+lllllkkkk ld$
+lllllkkkk zjmp$
+lllllkkkk zjmp$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+J 65462 I -74$
+LABEL SIZE 65462$
+XXXXXXXXXXXXXXXXXXX 65462$
+DDDDDDDjjjj 2 stio dirsize 1ooo$
+TMP TYPE 2$
+INSTRUCTION NUM 11$
+HEXAAAAAAAAAAAAAAAAAAA 68 104$
+/*****************************************************/ sti$
+TMP TYPE 1$
+TMP TYPE 10$
+lllll ld$
+lllll sti$
+lllllkkkk ld$
+lllllkkkk zjmp$
+lllllkkkk zjmp$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+J 65455 I -81$
+LABEL SIZE 65455$
+XXXXXXXXXXXXXXXXXXX 65455$
+DDDDDDDjjjj 2 stio dirsize 1ooo$
+TMP TYPE 2$
+INSTRUCTION NUM 11$
+HEXAAAAAAAAAAAAAAAAAAA 68 104$
+/*****************************************************/ sti$
+TMP TYPE 1$
+TMP TYPE 10$
+lllll ld$
+lllll sti$
+lllllkkkk ld$
+lllllkkkk zjmp$
+lllllkkkk zjmp$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+J 65448 I -88$
+LABEL SIZE 65448$
+XXXXXXXXXXXXXXXXXXX 65448$
+DDDDDDDjjjj 2 stio dirsize 1ooo$
+TMP TYPE 2$
+INSTRUCTION NUM 11$
+HEXAAAAAAAAAAAAAAAAAAA 68 104$
+/*****************************************************/ sti$
+TMP TYPE 1$
+TMP TYPE 10$
+lllll ld$
+lllll sti$
+lllllkkkk ld$
+lllllkkkk zjmp$
+lllllkkkk zjmp$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+J 65441 I -95$
+LABEL SIZE 65441$
+XXXXXXXXXXXXXXXXXXX 65441$
+DDDDDDDjjjj 2 stio dirsize 1ooo$
+TMP TYPE 2$
+INSTRUCTION NUM 11$
+HEXAAAAAAAAAAAAAAAAAAA 68 104$
+/*****************************************************/ sti$
+TMP TYPE 1$
+TMP TYPE 10$
+lllll ld$
+lllll sti$
+lllllkkkk ld$
+lllllkkkk zjmp$
+lllllkkkk zjmp$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+J 65434 I -102$
+LABEL SIZE 65434$
+XXXXXXXXXXXXXXXXXXX 65434$
+DDDDDDDjjjj 2 stio dirsize 1ooo$
+TMP TYPE 2$
+INSTRUCTION NUM 11$
+HEXAAAAAAAAAAAAAAAAAAA 68 104$
+/*****************************************************/ sti$
+TMP TYPE 1$
+TMP TYPE 10$
+lllll ld$
+lllll sti$
+lllllkkkk ld$
+lllllkkkk zjmp$
+lllllkkkk zjmp$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+J 65427 I -109$
+LABEL SIZE 65427$
+XXXXXXXXXXXXXXXXXXX 65427$
+DDDDDDDjjjj 2 stio dirsize 1ooo$
+TMP TYPE 2$
+INSTRUCTION NUM 2$
+HEXAAAAAAAAAAAAAAAAAAA 90 144$
+/*****************************************************/ ld$
+TMP TYPE 2$
+NNNNNNNBBBBBBBBBBB 393216$
+OCTET 0$
+OCTET 0$
+OCTET 6$
+OCTET 0$
+TMP TYPE 1$
+INSTRUCTION NUM 2$
+HEXAAAAAAAAAAAAAAAAAAA 90 144$
+/*****************************************************/ ld$
+TMP TYPE 2$
+NNNNNNNBBBBBBBBBBB 917504$
+OCTET 0$
+OCTET 0$
+OCTET 14$
+OCTET 0$
+TMP TYPE 1$
+INSTRUCTION NUM 2$
+HEXAAAAAAAAAAAAAAAAAAA 90 144$
+/*****************************************************/ ld$
+TMP TYPE 2$
+NNNNNNNBBBBBBBBBBB 1$
+OCTET 1$
+OCTET 0$
+OCTET 0$
+OCTET 0$
+TMP TYPE 1$
+INSTRUCTION NUM 2$
+HEXAAAAAAAAAAAAAAAAAAA 90 144$
+/*****************************************************/ ld$
+TMP TYPE 2$
+NNNNNNNBBBBBBBBBBB 6$
+OCTET 6$
+OCTET 0$
+OCTET 0$
+OCTET 0$
+TMP TYPE 1$
+INSTRUCTION NUM 1$
+/*****************************************************/ live$
+TMP TYPE 2$
+NNNNNNNBBBBBBBBBBB 42$
+OCTET 42$
+OCTET 0$
+OCTET 0$
+OCTET 0$
+INSTRUCTION NUM 11$
+HEXAAAAAAAAAAAAAAAAAAA 68 104$
+/*****************************************************/ sti$
+TMP TYPE 1$
+TMP TYPE 10$
+lllll ld$
+lllll sti$
+lllllkkkk ld$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+J 65381 I -155$
+LABEL SIZE 65381$
+XXXXXXXXXXXXXXXXXXX 65381$
+DDDDDDDjjjj 2 stio dirsize 1ooo$
+TMP TYPE 2$
+INSTRUCTION NUM 4$
+HEXAAAAAAAAAAAAAAAAAAA 54 84$
+/*****************************************************/ add$
+TMP TYPE 1$
+TMP TYPE 1$
+TMP TYPE 1$
+INSTRUCTION NUM 5$
+HEXAAAAAAAAAAAAAAAAAAA 54 84$
+/*****************************************************/ sub$
+TMP TYPE 1$
+TMP TYPE 1$
+TMP TYPE 1$
+INSTRUCTION NUM 9$
+/*****************************************************/ zjmp$
+TMP TYPE 10$
+lllll ld$
+lllll zjmp$
+lllllkkkk ld$
+lllllkkkk zjmp$
+lllllkkkk zjmp$
+lllllkkkk live$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk live$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk live$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk live$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk sti$
+lllllkkkk sti$
+lllllkkkk sti$
+lllllkkkk sti$
+lllllkkkk sti$
+lllllkkkk sti$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+J 65486 I -50$
+LABEL SIZE 65486$
+XXXXXXXXXXXXXXXXXXX 65486$
+DDDDDDDjjjj 2 zjmpo dirsize 1ooo$
+INSTRUCTION NUM 12$
+/*****************************************************/ fork$
+TMP TYPE 10$
+lllll ld$
+lllll fork$
+lllllkkkk ld$
+lllllkkkk zjmp$
+lllllkkkk zjmp$
+lllllkkkk live$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk live$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk live$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk live$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk sti$
+lllllkkkk sti$
+lllllkkkk sti$
+lllllkkkk sti$
+lllllkkkk sti$
+lllllkkkk sti$
+lllllkkkk ld$
+lllllkkkk ld$
+lllllkkkk ld$
+lllllkkkk ld$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+J 65511 I -25$
+LABEL SIZE 65511$
+XXXXXXXXXXXXXXXXXXX 65511$
+DDDDDDDjjjj 2 forko dirsize 1ooo$
+INSTRUCTION NUM 1$
+/*****************************************************/ live$
+TMP TYPE 2$
+NNNNNNNBBBBBBBBBBB 3$
+OCTET 3$
+OCTET 0$
+OCTET 0$
+OCTET 0$
+INSTRUCTION NUM 12$
+/*****************************************************/ fork$
+TMP TYPE 10$
+lllll ld$
+lllll fork$
+lllllkkkk ld$
+lllllkkkk zjmp$
+lllllkkkk zjmp$
+lllllkkkk live$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk live$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk live$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk live$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk sti$
+lllllkkkk sti$
+lllllkkkk sti$
+lllllkkkk sti$
+lllllkkkk sti$
+lllllkkkk sti$
+lllllkkkk ld$
+lllllkkkk ld$
+lllllkkkk ld$
+lllllkkkk ld$
+lllllkkkk live$
+lllllkkkk sti$
+lllllkkkk add$
+lllllkkkk sub$
+lllllkkkk zjmp$
+lllllkkkk fork$
+lllllkkkk live$
+IIIIIIIIIIIIIIIIIIIIII$
+le i : 40$
+J 40 I 40$
+LABEL SIZE 40$
+XXXXXXXXXXXXXXXXXXX 40$
+DDDDDDDjjjj 2 forko dirsize 1ooo$
+INSTRUCTION NUM 1$
+/*****************************************************/ live$
+TMP TYPE 2$
+NNNNNNNBBBBBBBBBBB 4$
+OCTET 4$
+OCTET 0$
+OCTET 0$
+OCTET 0$
+INSTRUCTION NUM 12$
+/*****************************************************/ fork$
+TMP TYPE 10$
+lllll ld$
+lllll fork$
+lllllkkkk ld$
+lllllkkkk zjmp$
+lllllkkkk zjmp$
+lllllkkkk live$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk live$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk live$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk live$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk sti$
+lllllkkkk sti$
+lllllkkkk sti$
+lllllkkkk sti$
+lllllkkkk sti$
+lllllkkkk sti$
+lllllkkkk ld$
+lllllkkkk ld$
+lllllkkkk ld$
+lllllkkkk ld$
+lllllkkkk live$
+lllllkkkk sti$
+lllllkkkk add$
+lllllkkkk sub$
+lllllkkkk zjmp$
+lllllkkkk fork$
+lllllkkkk live$
+lllllkkkk fork$
+lllllkkkk live$
+IIIIIIIIIIIIIIIIIIIIII$
+le i : 69$
+J 69 I 69$
+LABEL SIZE 69$
+XXXXXXXXXXXXXXXXXXX 69$
+DDDDDDDjjjj 2 forko dirsize 1ooo$
+INSTRUCTION NUM 1$
+/*****************************************************/ live$
+TMP TYPE 2$
+NNNNNNNBBBBBBBBBBB 42$
+OCTET 42$
+OCTET 0$
+OCTET 0$
+OCTET 0$
+INSTRUCTION NUM 10$
+HEXAAAAAAAAAAAAAAAAAAA a4 164$
+/*****************************************************/ ldi$
+TMP TYPE 2$
+TMP TYPE 10$
+lllll ld$
+lllll ldi$
+lllllkkkk ld$
+lllllkkkk zjmp$
+lllllkkkk zjmp$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+J 65343 I -193$
+LABEL SIZE 65343$
+XXXXXXXXXXXXXXXXXXX 65343$
+DDDDDDDjjjj 2 ldio dirsize 1ooo$
+TMP TYPE 1$
+INSTRUCTION NUM 2$
+HEXAAAAAAAAAAAAAAAAAAA 90 144$
+/*****************************************************/ ld$
+TMP TYPE 2$
+NNNNNNNBBBBBBBBBBB 4294967110$
+OCTET 70$
+OCTET 255$
+OCTET 255$
+OCTET 255$
+TMP TYPE 1$
+INSTRUCTION NUM 2$
+HEXAAAAAAAAAAAAAAAAAAA 90 144$
+/*****************************************************/ ld$
+TMP TYPE 2$
+NNNNNNNBBBBBBBBBBB 0$
+OCTET 0$
+OCTET 0$
+OCTET 0$
+OCTET 0$
+TMP TYPE 1$
+INSTRUCTION NUM 9$
+/*****************************************************/ zjmp$
+TMP TYPE 10$
+lllll ld$
+lllll zjmp$
+lllllkkkk ld$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+J 65316 I -220$
+LABEL SIZE 65316$
+XXXXXXXXXXXXXXXXXXX 65316$
+DDDDDDDjjjj 2 zjmpo dirsize 1ooo$
+INSTRUCTION NUM 1$
+/*****************************************************/ live$
+TMP TYPE 2$
+NNNNNNNBBBBBBBBBBB 42$
+OCTET 42$
+OCTET 0$
+OCTET 0$
+OCTET 0$
+INSTRUCTION NUM 12$
+/*****************************************************/ fork$
+TMP TYPE 10$
+lllll ld$
+lllll fork$
+lllllkkkk ld$
+lllllkkkk zjmp$
+lllllkkkk zjmp$
+lllllkkkk live$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk live$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk live$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk live$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk sti$
+lllllkkkk zjmp$
+lllllkkkk sti$
+lllllkkkk sti$
+lllllkkkk sti$
+lllllkkkk sti$
+lllllkkkk sti$
+lllllkkkk sti$
+lllllkkkk ld$
+lllllkkkk ld$
+lllllkkkk ld$
+lllllkkkk ld$
+lllllkkkk live$
+lllllkkkk sti$
+lllllkkkk add$
+lllllkkkk sub$
+lllllkkkk zjmp$
+lllllkkkk fork$
+lllllkkkk live$
+lllllkkkk fork$
+lllllkkkk live$
+lllllkkkk fork$
+lllllkkkk live$
+lllllkkkk ldi$
+lllllkkkk ld$
+lllllkkkk ld$
+lllllkkkk zjmp$
+lllllkkkk live$
+IIIIIIIIIIIIIIIIIIIIII$
+le i : 61$
+J 61 I 61$
+LABEL SIZE 61$
+XXXXXXXXXXXXXXXXXXX 61$
+DDDDDDDjjjj 2 forko dirsize 1ooo$
+INSTRUCTION NUM 1$
+/*****************************************************/ live$
+TMP TYPE 2$
+NNNNNNNBBBBBBBBBBB 42$
+OCTET 42$
+OCTET 0$
+OCTET 0$
+OCTET 0$
+INSTRUCTION NUM 10$
+HEXAAAAAAAAAAAAAAAAAAA a4 164$
+/*****************************************************/ ldi$
+TMP TYPE 2$
+TMP TYPE 10$
+lllll ld$
+lllll ldi$
+lllllkkkk ld$
+lllllkkkk zjmp$
+lllllkkkk zjmp$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+J 65306 I -230$
+LABEL SIZE 65306$
+XXXXXXXXXXXXXXXXXXX 65306$
+DDDDDDDjjjj 2 ldio dirsize 1ooo$
+TMP TYPE 1$
+INSTRUCTION NUM 2$
+HEXAAAAAAAAAAAAAAAAAAA 90 144$
+/*****************************************************/ ld$
+TMP TYPE 2$
+NNNNNNNBBBBBBBBBBB 4294967106$
+OCTET 66$
+OCTET 255$
+OCTET 255$
+OCTET 255$
+TMP TYPE 1$
+INSTRUCTION NUM 2$
+HEXAAAAAAAAAAAAAAAAAAA 90 144$
+/*****************************************************/ ld$
+TMP TYPE 2$
+NNNNNNNBBBBBBBBBBB 0$
+OCTET 0$
+OCTET 0$
+OCTET 0$
+OCTET 0$
+TMP TYPE 1$
+INSTRUCTION NUM 9$
+/*****************************************************/ zjmp$
+TMP TYPE 10$
+lllll ld$
+lllll zjmp$
+lllllkkkk ld$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+J 65279 I -257$
+LABEL SIZE 65279$
+XXXXXXXXXXXXXXXXXXX 65279$
+DDDDDDDjjjj 2 zjmpo dirsize 1ooo$
+INSTRUCTION NUM 1$
+/*****************************************************/ live$
+TMP TYPE 2$
+NNNNNNNBBBBBBBBBBB 42$
+OCTET 42$
+OCTET 0$
+OCTET 0$
+OCTET 0$
+INSTRUCTION NUM 10$
+HEXAAAAAAAAAAAAAAAAAAA a4 164$
+/*****************************************************/ ldi$
+TMP TYPE 2$
+TMP TYPE 10$
+lllll ld$
+lllll ldi$
+lllllkkkk ld$
+lllllkkkk zjmp$
+lllllkkkk zjmp$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+J 65277 I -259$
+LABEL SIZE 65277$
+XXXXXXXXXXXXXXXXXXX 65277$
+DDDDDDDjjjj 2 ldio dirsize 1ooo$
+TMP TYPE 1$
+INSTRUCTION NUM 2$
+HEXAAAAAAAAAAAAAAAAAAA 90 144$
+/*****************************************************/ ld$
+TMP TYPE 2$
+NNNNNNNBBBBBBBBBBB 4294967114$
+OCTET 74$
+OCTET 255$
+OCTET 255$
+OCTET 255$
+TMP TYPE 1$
+INSTRUCTION NUM 2$
+HEXAAAAAAAAAAAAAAAAAAA 90 144$
+/*****************************************************/ ld$
+TMP TYPE 2$
+NNNNNNNBBBBBBBBBBB 0$
+OCTET 0$
+OCTET 0$
+OCTET 0$
+OCTET 0$
+TMP TYPE 1$
+INSTRUCTION NUM 9$
+/*****************************************************/ zjmp$
+TMP TYPE 10$
+lllll ld$
+lllll zjmp$
+lllllkkkk ld$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+J 65250 I -286$
+LABEL SIZE 65250$
+XXXXXXXXXXXXXXXXXXX 65250$
+DDDDDDDjjjj 2 zjmpo dirsize 1ooo$
+INSTRUCTION NUM 1$
+/*****************************************************/ live$
+TMP TYPE 2$
+NNNNNNNBBBBBBBBBBB 42$
+OCTET 42$
+OCTET 0$
+OCTET 0$
+OCTET 0$
+INSTRUCTION NUM 10$
+HEXAAAAAAAAAAAAAAAAAAA a4 164$
+/*****************************************************/ ldi$
+TMP TYPE 2$
+TMP TYPE 10$
+lllll ld$
+lllll ldi$
+lllllkkkk ld$
+lllllkkkk zjmp$
+lllllkkkk zjmp$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+J 65248 I -288$
+LABEL SIZE 65248$
+XXXXXXXXXXXXXXXXXXX 65248$
+DDDDDDDjjjj 2 ldio dirsize 1ooo$
+TMP TYPE 1$
+INSTRUCTION NUM 2$
+HEXAAAAAAAAAAAAAAAAAAA 90 144$
+/*****************************************************/ ld$
+TMP TYPE 2$
+NNNNNNNBBBBBBBBBBB 4294967102$
+OCTET 62$
+OCTET 255$
+OCTET 255$
+OCTET 255$
+TMP TYPE 1$
+INSTRUCTION NUM 2$
+HEXAAAAAAAAAAAAAAAAAAA 90 144$
+/*****************************************************/ ld$
+TMP TYPE 2$
+NNNNNNNBBBBBBBBBBB 0$
+OCTET 0$
+OCTET 0$
+OCTET 0$
+OCTET 0$
+TMP TYPE 1$
+INSTRUCTION NUM 9$
+/*****************************************************/ zjmp$
+TMP TYPE 10$
+lllll ld$
+lllll zjmp$
+lllllkkkk ld$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+ggggg$
+J 65221 I -315$
+LABEL SIZE 65221$
+XXXXXXXXXXXXXXXXXXX 65221$
+DDDDDDDjjjj 2 zjmpo dirsize 1ooo$
+$
+LABEL (null)$
+INSTR ld SIZE 7 $
+PAR %0 TYPE 2$
+PAR r3 TYPE 1$
+$
+LABEL label$
+INSTR zjmp SIZE 3 $
+PAR %:avantdebut TYPE 10$
+$
+LABEL (null)$
+INSTR zjmp SIZE 3 $
+PAR %0 TYPE 2$
+$
+LABEL code$
+INSTR live SIZE 5 $
+PAR %42 TYPE 2$
+$
+LABEL (null)$
+INSTR sti SIZE 6 $
+PAR r15 TYPE 1$
+PAR %0 TYPE 2$
+PAR r14 TYPE 1$
+$
+LABEL (null)$
+INSTR zjmp SIZE 3 $
+PAR %-200 TYPE 2$
+$
+LABEL (null)$
+INSTR live SIZE 5 $
+PAR %42 TYPE 2$
+$
+LABEL (null)$
+INSTR sti SIZE 6 $
+PAR r15 TYPE 1$
+PAR %0 TYPE 2$
+PAR r14 TYPE 1$
+$
+LABEL (null)$
+INSTR zjmp SIZE 3 $
+PAR %-200 TYPE 2$
+$
+LABEL (null)$
+INSTR live SIZE 5 $
+PAR %42 TYPE 2$
+$
+LABEL (null)$
+INSTR sti SIZE 6 $
+PAR r15 TYPE 1$
+PAR %0 TYPE 2$
+PAR r14 TYPE 1$
+$
+LABEL (null)$
+INSTR zjmp SIZE 3 $
+PAR %-200 TYPE 2$
+$
+LABEL (null)$
+INSTR live SIZE 5 $
+PAR %42 TYPE 2$
+$
+LABEL (null)$
+INSTR sti SIZE 6 $
+PAR r15 TYPE 1$
+PAR %0 TYPE 2$
+PAR r14 TYPE 1$
+$
+LABEL (null)$
+INSTR zjmp SIZE 3 $
+PAR %-200 TYPE 2$
+$
+LABEL (null)$
+INSTR sti SIZE 6 $
+PAR r15 TYPE 1$
+PAR %0 TYPE 2$
+PAR r14 TYPE 1$
+$
+LABEL (null)$
+INSTR zjmp SIZE 3 $
+PAR %-200 TYPE 2$
+$
+LABEL (null)$
+INSTR sti SIZE 6 $
+PAR r15 TYPE 1$
+PAR %0 TYPE 2$
+PAR r14 TYPE 1$
+$
+LABEL (null)$
+INSTR zjmp SIZE 3 $
+PAR %-200 TYPE 2$
+$
+LABEL avantdebut$
+INSTR sti SIZE 7 $
+PAR r1 TYPE 1$
+PAR %:code TYPE 10$
+PAR %1 TYPE 2$
+$
+LABEL (null)$
+INSTR sti SIZE 7 $
+PAR r1 TYPE 1$
+PAR %:code TYPE 10$
+PAR %15 TYPE 2$
+$
+LABEL (null)$
+INSTR sti SIZE 7 $
+PAR r1 TYPE 1$
+PAR %:code TYPE 10$
+PAR %29 TYPE 2$
+$
+LABEL (null)$
+INSTR sti SIZE 7 $
+PAR r1 TYPE 1$
+PAR %:code TYPE 10$
+PAR %43 TYPE 2$
+$
+LABEL (null)$
+INSTR sti SIZE 7 $
+PAR r1 TYPE 1$
+PAR %:code TYPE 10$
+PAR %57 TYPE 2$
+$
+LABEL (null)$
+INSTR sti SIZE 7 $
+PAR r1 TYPE 1$
+PAR %:code TYPE 10$
+PAR %71 TYPE 2$
+$
+LABEL init$
+INSTR ld SIZE 7 $
+PAR %393216 TYPE 2$
+PAR r4 TYPE 1$
+$
+LABEL (null)$
+INSTR ld SIZE 7 $
+PAR %917504 TYPE 2$
+PAR r12 TYPE 1$
+$
+LABEL (null)$
+INSTR ld SIZE 7 $
+PAR %1 TYPE 2$
+PAR r11 TYPE 1$
+$
+LABEL (null)$
+INSTR ld SIZE 7 $
+PAR %6 TYPE 2$
+PAR r10 TYPE 1$
+$
+LABEL debut$
+INSTR live SIZE 5 $
+PAR %42 TYPE 2$
+$
+LABEL (null)$
+INSTR sti SIZE 7 $
+PAR r4 TYPE 1$
+PAR %:label TYPE 10$
+PAR %1 TYPE 2$
+$
+LABEL (null)$
+INSTR add SIZE 5 $
+PAR r4 TYPE 1$
+PAR r12 TYPE 1$
+PAR r4 TYPE 1$
+$
+LABEL (null)$
+INSTR sub SIZE 5 $
+PAR r10 TYPE 1$
+PAR r11 TYPE 1$
+PAR r10 TYPE 1$
+$
+LABEL (null)$
+INSTR zjmp SIZE 3 $
+PAR %:init TYPE 10$
+$
+LABEL (null)$
+INSTR fork SIZE 3 $
+PAR %:debut TYPE 10$
+$
+LABEL (null)$
+INSTR live SIZE 5 $
+PAR %3 TYPE 2$
+$
+LABEL level0$
+INSTR fork SIZE 3 $
+PAR %:level10 TYPE 10$
+$
+LABEL level11$
+INSTR live SIZE 5 $
+PAR %4 TYPE 2$
+$
+LABEL (null)$
+INSTR fork SIZE 3 $
+PAR %:level111 TYPE 10$
+$
+LABEL level110$
+INSTR live SIZE 5 $
+PAR %42 TYPE 2$
+$
+LABEL (null)$
+INSTR ldi SIZE 7 $
+PAR %8 TYPE 2$
+PAR %:code TYPE 10$
+PAR r15 TYPE 1$
+$
+LABEL (null)$
+INSTR ld SIZE 7 $
+PAR %-186 TYPE 2$
+PAR r14 TYPE 1$
+$
+LABEL (null)$
+INSTR ld SIZE 7 $
+PAR %0 TYPE 2$
+PAR r2 TYPE 1$
+$
+LABEL (null)$
+INSTR zjmp SIZE 3 $
+PAR %:label TYPE 10$
+$
+LABEL level10$
+INSTR live SIZE 5 $
+PAR %42 TYPE 2$
+$
+LABEL (null)$
+INSTR fork SIZE 3 $
+PAR %:level100 TYPE 10$
+$
+LABEL level101$
+INSTR live SIZE 5 $
+PAR %42 TYPE 2$
+$
+LABEL (null)$
+INSTR ldi SIZE 7 $
+PAR %4 TYPE 2$
+PAR %:code TYPE 10$
+PAR r15 TYPE 1$
+$
+LABEL (null)$
+INSTR ld SIZE 7 $
+PAR %-190 TYPE 2$
+PAR r14 TYPE 1$
+$
+LABEL (null)$
+INSTR ld SIZE 7 $
+PAR %0 TYPE 2$
+PAR r2 TYPE 1$
+$
+LABEL (null)$
+INSTR zjmp SIZE 3 $
+PAR %:label TYPE 10$
+$
+LABEL level111$
+INSTR live SIZE 5 $
+PAR %42 TYPE 2$
+$
+LABEL (null)$
+INSTR ldi SIZE 7 $
+PAR %12 TYPE 2$
+PAR %:code TYPE 10$
+PAR r15 TYPE 1$
+$
+LABEL (null)$
+INSTR ld SIZE 7 $
+PAR %-182 TYPE 2$
+PAR r14 TYPE 1$
+$
+LABEL (null)$
+INSTR ld SIZE 7 $
+PAR %0 TYPE 2$
+PAR r2 TYPE 1$
+$
+LABEL (null)$
+INSTR zjmp SIZE 3 $
+PAR %:label TYPE 10$
+$
+LABEL level100$
+INSTR live SIZE 5 $
+PAR %42 TYPE 2$
+$
+LABEL (null)$
+INSTR ldi SIZE 7 $
+PAR %0 TYPE 2$
+PAR %:code TYPE 10$
+PAR r15 TYPE 1$
+$
+LABEL (null)$
+INSTR ld SIZE 7 $
+PAR %-194 TYPE 2$
+PAR r14 TYPE 1$
+$
+LABEL (null)$
+INSTR ld SIZE 7 $
+PAR %0 TYPE 2$
+PAR r2 TYPE 1$
+$
+LABEL (null)$
+INSTR zjmp SIZE 3 $
+PAR %:label TYPE 10$
+$
+Jour J^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@$

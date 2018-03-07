@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 13:18:41 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/07 15:00:23 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/07 16:14:34 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,9 +172,10 @@ static void ft_printind(t_par *par, int cmd, int out)
 	int				i;
 
 	i = IND_SIZE - 1;
-	nb = ft_atoi(par->par + 1);
+	nb = ft_atoi(par->par);
 	if (nb < 0)
 		nb = 65536 + nb;
+	printf("NBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB %d\n", nb);
 	while (i >= 0)
 	{
 		p[i--] = nb % 256;

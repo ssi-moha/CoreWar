@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 10:02:11 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/07 14:51:50 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/07 15:57:06 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,22 +64,23 @@ void	ft_parseparams(char *line, int pos, t_instr *new)
 		{
 			while (line[pos] && (line[pos] == ' ' || line[pos] == '\t'))
 				pos++;
-			while (line[pos] && line[pos] != '\n' && line[pos] != '#')
+			while (line[pos] && line[pos] != '\n' && line[pos] != COMMENT_CHAR)
 			{
-				start = pos;
-				par = 0;
 				while (line[pos] && (line[pos] == ' '|| line[pos] == '\t' || line[pos] == SEPARATOR_CHAR))
 					pos++;
+				start = pos;
+				par = 0;
 				while (line[pos] && line[pos] != ' ' && line[pos] != '\t' && line[pos] != SEPARATOR_CHAR)
 				{
-					if (line[pos] == '\n' || line[pos] == '#')
+					if (line[pos] == '\n' || line[pos] == COMMENT_CHAR)
 						break ;
 					pos++;
 				}
 				if (line[start] == SEPARATOR_CHAR)
 					start++;
-				if (!(line[start] == ' ' || line[start] == '\t'))
+				if (!(line[start] == ' ' || line[start] == '\t' || line[start] == COMMENT_CHAR || line[start] == '\n') && line[start] != '\0')
 				{
+					printf("Creation Param %c \n", line[start]);
 					par = new_par(NULL, &new->params);
 					ft_copypar(line, start, pos, par);
 					par->type = ft_checkparams(par->par);
