@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 13:18:41 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/07 16:14:34 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/07 16:44:37 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,7 +205,8 @@ static void	ft_printindlab(t_par *par, t_instr **begin, t_instr **instr, int out
 	int cmd;
 
 	cmd = ft_findcmd((*begin)->cmd);
-	sizelab = count_label(instr, begin, par->par + 2, cmd);
+	sizelab = count_label(instr, begin, par->par + 1, cmd);
+	printf("IND-----------------------------------------------------------------------LABEL SIZE %u\n", sizelab);
 	ft_printindl(sizelab, cmd, out);
 }
 

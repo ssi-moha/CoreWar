@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 16:20:55 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/06 15:40:52 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/07 16:41:48 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ unsigned int		count_label(t_instr **instr, t_instr **begin, char *label, int cmd
 		printf("IIIIIIIIIIIIIIIIIIIIII\n");
 		while (tmp && ft_strcmp(label, tmp->label))
 		{
+			printf("hhhh %s\n", tmp->cmd);
 			i += tmp->sizeoctet;
 			tmp = tmp->next;
 		}
