@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:54:21 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/06 11:57:14 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/07 14:49:44 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	ft_parseasm(t_instr **instr, int fd, t_header *head)
 			continue ;
 		}
 		printf("%s\n", line);
-		new = new_instr("", instr); //mettre a 0
+		new = new_instr(NULL, instr); //mettre a 0
 		if (new)
 		{
 			pos = ft_parselabel(line, new);
@@ -88,6 +88,8 @@ int	main(int argc, char **argv)
 {
 	t_app	app;
 	int		fd;
+	int j;
+	t_par *p;
 
 	printf("%d\n", argc);
 	if (argc < 2)
@@ -107,7 +109,6 @@ int	main(int argc, char **argv)
 	{
 		printf("\nLABEL %s\n", tmp->label);
 		printf("INSTR %s SIZE %u \n", tmp->cmd, tmp->sizeoctet);
-		t_par *p;
 		p = tmp->params;
 		while (p)
 		{
@@ -116,11 +117,12 @@ int	main(int argc, char **argv)
 		}
 		tmp = tmp->next;
 	}
-	int j;
 	j = 0;
 	printf("\n");
 	while (j < COMMENT_LENGTH + 1)
 		printf("%c", app.header.comment[j++]);
 	printf("\n");
+	free_par(&app.instr->params);
+	free_instr(&app.instr);
 	return (0);
 }

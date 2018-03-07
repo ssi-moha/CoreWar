@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 10:02:11 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/05 14:28:55 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/07 14:51:50 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	ft_parseparams(char *line, int pos, t_instr *new)
 					start++;
 				if (!(line[start] == ' ' || line[start] == '\t'))
 				{
-					par = new_par("", &new->params);
+					par = new_par(NULL, &new->params);
 					ft_copypar(line, start, pos, par);
 					par->type = ft_checkparams(par->par);
 					if (par->type == -1)
