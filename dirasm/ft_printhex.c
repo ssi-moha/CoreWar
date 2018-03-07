@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 13:18:41 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/06 15:59:47 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/07 15:00:23 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,25 +69,34 @@ static void ft_printdir(t_par *par, int cmd, int out)
 	int				nb;
 	int				i;
 	int				d;
+	unsigned int	tp;
 
 	d = 0;
 	i = DIR_SIZE - 1;
 	nb = ft_atoi(par->par + 1);
+	if (nb >= 0)
+		tp = nb;
 	if (g_optab[cmd].dirsize == 0)
 	{
+		if (nb < 0)
+			tp = 4294967296 + nb;
+		printf("NNNNNNNBBBBBBBBBBB %u\n", nb);
 		while (i >= 0)
 		{
-			p[i--] = nb % 256;
-			nb /= 256;
+			p[i--] = tp % 256;
+			printf("OCTET %d\n", (tp % 256));
+			tp /= 256;
 		}
 		d = 0;
 	}
 	else if (g_optab[cmd].dirsize == 1)
 	{
+		if (nb < 0)
+			tp = 65536 + nb;
 		while (i >= DIR_SIZE / 2)
 		{
-			p[i--] = nb % 256;
-			nb /= 256;
+			p[i--] = tp % 256;
+			tp /= 256;
 		}
 		d = DIR_SIZE / 2;
 	}
@@ -164,6 +173,8 @@ static void ft_printind(t_par *par, int cmd, int out)
 
 	i = IND_SIZE - 1;
 	nb = ft_atoi(par->par + 1);
+	if (nb < 0)
+		nb = 65536 + nb;
 	while (i >= 0)
 	{
 		p[i--] = nb % 256;
@@ -205,6 +216,7 @@ static void	ft_printparams(t_par **par, char *cmd, int out, t_instr **instr, t_i
 
 	c = ft_findcmd(cmd);
 	tmp = *par;
+	printf("/*****************************************************/ %s\n", (*begin)->cmd);
 	while (tmp)
 	{
 		printf("TMP TYPE %d\n", tmp->type);
