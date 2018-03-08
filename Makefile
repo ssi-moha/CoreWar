@@ -6,7 +6,7 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/03/08 14:29:15 by lfujimot         ###   ########.fr        #
+#    Updated: 2018/03/08 14:41:50 by emerabet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRCSASM = dirasm/asm.c \
 		  dirasm/ft_findcmd.c \
 		  dirasm/check_format.c \
 		  dirasm/ft_isincharset.c\
-		  dirasm/ft_test.c\
+		  dirasm/ft_convertheader.c\
 		  dirasm/ft_converttohex.c\
 		  dirasm/ft_printhex.c\
 		  dirasm/prog_size.c\

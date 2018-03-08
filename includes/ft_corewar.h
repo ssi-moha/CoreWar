@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/08 14:33:01 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/08 14:55:39 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,22 +79,20 @@ int					ft_parseinstr(char *line, int pos, t_instr *new);
 void				ft_parseparams(char *line, int pos, t_instr *new);
 int					ft_skip_com_and_blank(char *line);
 int					check_name_cmt(char *str);
-//void				ft_managenameandcomment
-//void				ft_printhex
-//checkcomamnd
 int					cpy_head(int ret, t_header *head, char **line);
-int					ft_checkparams(char *par); //pour l'instant renvoi -1 si nb negatif
-//checkabel
+int					ft_checkparams(char *par);
 int					ft_findcmd(char *cmd);
 int					error_mess(char *str);
 int					make_pos(char **line, t_instr *new, t_par *tmp);
-int					ft_testhex(t_app *application);
+int					ft_convertheader(t_app *application);
 void				ft_converttohex(t_instr *instr);
 void				ft_printhex(t_instr *instr, int out);
 int					prog_size(t_instr **instr);
-unsigned int					count_label(t_instr **instr, t_instr **begin, char *label, int cmd);
+unsigned int		count_label(t_instr **instr, t_instr **begin, char *label,
+		int cmd);
 void				ft_printsizepar(t_instr *instr, int out);
 void				ft_printdiril(unsigned int lab, int cmd, int out);
 void				ft_printdir(t_par *par, int cmd, int out);
-void				ft_printindlab(t_par *par, t_instr **begin, t_instr **instr, int out);
+void				ft_printindlab(t_par *par, t_instr **begin, t_instr **instr,
+		int out);
 #endif
