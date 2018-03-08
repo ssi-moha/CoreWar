@@ -13,6 +13,5 @@ else
 fi
 rm test1
 rm test2
-rm -rf tes.cor
 (echo $s | sed s/..$/.cor/) | xargs rm
 done

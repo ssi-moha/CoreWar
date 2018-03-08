@@ -6,7 +6,7 @@
 /*   By: emerabet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 14:25:49 by emerabet          #+#    #+#             */
-/*   Updated: 2018/03/08 16:56:08 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/08 17:05:13 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int			ft_convertheader(t_app *application)
 	off_t		ret;
 	int			clo;
 
-	out = open("tes.cor", O_RDWR | O_APPEND | O_CREAT);
+	out = open("tes.cor", O_RDWR | O_APPEND | O_TRUNC | O_CREAT);
 	ret = lseek(out, 0, SEEK_SET);
 	header = application->header;
 	instructions = application->instr;
