@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printsizepar.c                                   :+:      :+:    :+:   */
+/*   ft_printsizepar.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/08 13:26:31 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/08 13:30:48 by lfujimot         ###   ########.fr       */
+/*   Created: 2018/03/08 13:33:08 by lfujimot          #+#    #+#             */
+/*   Updated: 2018/03/08 13:33:17 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void		ft_initprintsize(int *i, unsigned char *p)
 	*p = 0;
 }
 
-void		ft_printsizepar(t_instr *instr, int out)
+void			ft_printsizepar(t_instr *instr, int out)
 {
 	int				cmd;
 	t_par			*tmp;
