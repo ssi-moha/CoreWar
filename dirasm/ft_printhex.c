@@ -6,19 +6,11 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 11:56:03 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/08 14:26:03 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/08 14:35:40 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
-
-static void		ft_printcmd(char *cmd, int out)
-{
-	unsigned char c;
-
-	c = g_optab[ft_findcmd(cmd)].numcmd;
-	write(out, &c, 1);
-}
 
 static void		ft_printind(t_par *par, int cmd, int out)
 {
@@ -87,14 +79,16 @@ static void		ft_printparams(int out, t_instr **instr, t_instr **begin)
 	}
 }
 
-void	ft_printhex(t_instr *instr, int out)
+void			ft_printhex(t_instr *instr, int out)
 {
-	t_instr *tmp;
+	t_instr			*tmp;
+	unsigned char	c;
 
 	tmp = instr;
 	while (tmp)
 	{
-		ft_printcmd(tmp->cmd, out);
+		c = g_optab[ft_findcmd(tmp->cmd)].numcmd;
+		write(out, &c, 1);
 		ft_printsizepar(tmp, out);
 		ft_printparams(out, &instr, &tmp);
 		tmp = tmp->next;
