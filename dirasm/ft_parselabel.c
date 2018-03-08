@@ -6,13 +6,13 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 18:13:15 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/08 10:43:39 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/08 14:34:11 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-static int ft_findlabel(char *line)
+static int	ft_findlabel(char *line)
 {
 	int i;
 
@@ -49,14 +49,14 @@ static void	ft_copylabel(char *line, int size, t_instr *new, int start)
 	new->label[i] = '\0';
 }
 
-int		ft_parselabel(char *line, t_instr *new)
+int			ft_parselabel(char *line, t_instr *new)
 {
 	int	sizelabel;
 	int start;
 
 	start = 0;
 	while (line[start] && (line[start] == ' ' || line[start] == '\t'))
-			start++;
+		start++;
 	sizelabel = ft_findlabel(line + start);
 	if (sizelabel > 0)
 		ft_copylabel(line, sizelabel, new, start);
