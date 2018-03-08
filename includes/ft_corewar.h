@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/08 14:24:03 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/08 14:28:55 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,5 @@ unsigned int					count_label(t_instr **instr, t_instr **begin, char *label, int 
 void				ft_printsizepar(t_instr *instr, int out);
 void				ft_printdiril(unsigned int lab, int cmd, int out);
 void				ft_printdir(t_par *par, int cmd, int out);
+void				ft_printindlab(t_par *par, t_instr **begin, t_instr **instr, int out);
 #endif

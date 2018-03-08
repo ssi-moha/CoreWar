@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 11:56:03 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/08 13:56:15 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/08 14:26:03 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,6 @@ static void		ft_printcmd(char *cmd, int out)
 
 	c = g_optab[ft_findcmd(cmd)].numcmd;
 	write(out, &c, 1);
-}
-
-static void		ft_printindl(unsigned int lab, int cmd, int out)
-{
-	unsigned char	p[DIR_SIZE];
-	unsigned int	nb;
-	int				i;
-
-	i = IND_SIZE - 1;
-	nb = lab;
-	while (i >= 0)
-	{
-		p[i--] = nb % 256;
-		nb /= 256;
-	}
-	i = 0;
-	while (i < IND_SIZE)
-	{
-		write(out, &p[i++], 1);
-	}
 }
 
 static void		ft_printind(t_par *par, int cmd, int out)
@@ -71,17 +51,6 @@ static void		ft_printdirlab(t_par *par, t_instr **begin, t_instr **instr,
 	cmd = ft_findcmd((*instr)->cmd);
 	sizelab = count_label(instr, begin, par->par + 2, cmd);
 	ft_printdiril(sizelab, cmd, out);
-}
-
-static void		ft_printindlab(t_par *par, t_instr **begin, t_instr **instr,
-		int out)
-{
-	unsigned int	sizelab;
-	int				cmd;
-
-	cmd = ft_findcmd((*begin)->cmd);
-	sizelab = count_label(instr, begin, par->par + 1, cmd);
-	ft_printindl(sizelab, cmd, out);
 }
 
 static void		ft_printreg(int n, t_par *tmp, unsigned char p[4], int out)

@@ -6,7 +6,7 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/03/08 14:26:29 by ssi-moha         ###   ########.fr        #
+#    Updated: 2018/03/08 14:29:15 by lfujimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRCSASM = dirasm/asm.c \
 		  dirasm/cpy_head.c\
 		  dirasm/ft_printdir.c\
 		  dirasm/error_mess.c\
+		  dirasm/ft_printindl.c\
 		  dirasm/make_pos.c\
 
 OBJSASM = $(SRCSASM:.c=.o)
