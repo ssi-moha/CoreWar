@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:54:21 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/08 14:26:53 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/08 14:34:25 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,11 @@ static void		ft_init(t_app *app)
 static void		ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app)
 {
 	char	*line;
-	int		pos;
 	t_instr	*new;
 	int		ret;
 	t_par	*tmp;
 
 	ret = 0;
-	pos = 0;
 	line = 0;
 	while (get_next_line(fd, &line))
 	{
@@ -51,8 +49,7 @@ static void		ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app)
 		if (app->checkcmd != 2)
 			exit(error_mess("ERROR NO .NAME OR NO .COMMENT\n"));
 		new = new_instr(NULL, instr);
-		if (new)
-			make_pos(pos, &line, new, tmp);
+		new != NULL ? make_pos(&line, new, tmp) : 0;
 		ft_strdel(&line);
 	}
 }
