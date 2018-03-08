@@ -6,18 +6,18 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 13:18:41 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/08 10:49:55 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/08 14:00:02 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-static void	ft_convcmd(t_instr **instr)
+static void		ft_convcmd(t_instr **instr)
 {
 	(*instr)->sizeoctet += 1;
 }
 
-static void	ft_convparsize(t_instr **instr)
+static void		ft_convparsize(t_instr **instr)
 {
 	int cmd;
 
@@ -25,10 +25,10 @@ static void	ft_convparsize(t_instr **instr)
 	(*instr)->sizeoctet += g_optab[cmd].octpar;
 }
 
-static void	ft_convparams(t_instr **instr)
+static void		ft_convparams(t_instr **instr)
 {
-	t_par *tmp;
-	int cmd;
+	t_par	*tmp;
+	int		cmd;
 
 	tmp = (*instr)->params;
 	while (tmp)
@@ -49,7 +49,7 @@ static void	ft_convparams(t_instr **instr)
 	}
 }
 
-void	ft_converttohex(t_instr *instr)
+void			ft_converttohex(t_instr *instr)
 {
 	t_instr *tmp;
 
@@ -60,5 +60,5 @@ void	ft_converttohex(t_instr *instr)
 		ft_convparsize(&tmp);
 		ft_convparams(&tmp);
 		tmp = tmp->next;
-	}	
+	}
 }
