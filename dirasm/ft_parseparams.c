@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 10:02:11 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/08 11:19:01 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/08 15:29:35 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	ft_copypar(char *line, int start, int pos, t_par *par)
 {
 	int	i;
+
 	if (par == 0)
 		return ;
 	par->par = (char *)malloc(sizeof(char) * (pos - start));
@@ -43,7 +44,7 @@ static int	ft_checkpartype(t_par *par, int parindex, char *cmd)
 			type = 1;
 		else if (par->type == 2 || par->type == 10)
 			type = 2;
-		else if (par->type ==4 || par->type == 12)
+		else if (par->type == 4 || par->type == 12)
 			type = 4;
 		if (!((g_optab[i].typepar[parindex] & type) == type))
 			return (-1);
@@ -51,56 +52,69 @@ static int	ft_checkpartype(t_par *par, int parindex, char *cmd)
 	return (1);
 }
 
-void	ft_parseparams(char *line, int pos, t_instr *new)
+static int	ft_incpos(char *line, int pos)
 {
-	int start;
-	t_par *par;
-	int	parindex;
-	int s;
+	while (line[pos] && line[pos] != ' ' && line[pos] != '\t' && line[pos] !=
+			SEPARATOR_CHAR)
+	{
+		if (line[pos] == '\n' || line[pos] == COMMENT_CHAR)
+			break ;
+		pos++;
+	}
+	return (pos);
+}
+
+static void	ft_skipbk(char *line, int *pos, int *s, int *start)
+{
+	while (line[*pos] && (line[*pos] == ' ' || line[*pos] == '\t' || line[*pos]
+				== SEPARATOR_CHAR))
+	{
+		if (line[*pos] == SEPARATOR_CHAR)
+			*s = *s + 1;
+		*pos = *pos + 1;
+	}
+	*start = *pos;
+	*pos = ft_incpos(line, *pos);
+	if (line[*start] == SEPARATOR_CHAR)
+	{
+		*s = *s + 1;
+		*start = *start + 1;
+	}
+}
+
+static void	ft_addpar(t_par *par, int *parindex, t_instr *new)
+{
+	par->type = ft_checkparams(par->par);
+	if (par->type == -1)
+		exit(error_mess("ERREUR PARAMS\n"));
+	if (ft_checkpartype(par, *parindex, new->cmd) == -1)
+		exit(error_mess("INCORECT PAR TYPE FOR THIS CMD\n"));
+	*parindex = *parindex + 1;
+}
+
+void		ft_parseparams(char *line, int pos, t_instr *new)
+{
+	int		start;
+	t_par	*par;
+	int		parindex;
+	int		s;
 
 	s = 0;
-	if (line)
+	parindex = 0;
+	while (line[pos] && (line[pos] == ' ' || line[pos] == '\t'))
+		pos++;
+	while (line[pos] && line[pos] != '\n' && line[pos] != COMMENT_CHAR)
 	{
-		parindex = 0;	
-		if (pos < ft_strlen(line))
+		par = 0;
+		ft_skipbk(line, &pos, &s, &start);
+		if (!(line[start] == ' ' || line[start] == '\t' || line[start]
+			== COMMENT_CHAR || line[start] == '\n') && line[start] != '\0')
 		{
-			while (line[pos] && (line[pos] == ' ' || line[pos] == '\t'))
-				pos++;
-			while (line[pos] && line[pos] != '\n' && line[pos] != COMMENT_CHAR)
-			{
-				while (line[pos] && (line[pos] == ' '|| line[pos] == '\t' || line[pos] == SEPARATOR_CHAR))
-				{
-					if (line[pos] == SEPARATOR_CHAR)
-						s++;	
-					pos++;
-				}
-				start = pos;
-				par = 0;
-				while (line[pos] && line[pos] != ' ' && line[pos] != '\t' && line[pos] != SEPARATOR_CHAR)
-				{
-					if (line[pos] == '\n' || line[pos] == COMMENT_CHAR)
-						break ;
-					pos++;
-				}
-				if (line[start] == SEPARATOR_CHAR)
-				{
-					s++;
-					start++;
-				}
-				if (!(line[start] == ' ' || line[start] == '\t' || line[start] == COMMENT_CHAR || line[start] == '\n') && line[start] != '\0')
-				{
-					par = new_par(NULL, &new->params);
-					ft_copypar(line, start, pos, par);
-					par->type = ft_checkparams(par->par);
-					if (par->type == -1)
-						exit(error_mess("ERREUR PARAMS\n"));
-					if (ft_checkpartype(par, parindex, new->cmd) == -1)
-						exit(error_mess("INCORECT PAR TYPE FOR THIS CMD\n"));
-					parindex++;
-				}
-			}
+			par = new_par(NULL, &new->params);
+			ft_copypar(line, start, pos, par);
+			ft_addpar(par, &parindex, new);
 		}
-		if (s >= parindex)
-			exit(error_mess("ERROR SYNTAX ERROR\n"));
 	}
+	if (s >= parindex && s != 0)
+		exit(error_mess("ERROR SYNTAX ERROR\n"));
 }
