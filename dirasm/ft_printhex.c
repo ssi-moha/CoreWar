@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 11:56:03 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/08 13:30:55 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/08 13:42:24 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,39 +60,6 @@ static void		ft_printdir(t_par *par, int cmd, int out)
 	{
 		write(out, &p[i++], 1);
 	}
-}
-
-static void		ft_printdiril(unsigned int lab, int cmd, int out)
-{
-	unsigned char	p[DIR_SIZE];
-	unsigned int	nb;
-	int				i;
-	int				d;
-
-	d = 0;
-	i = DIR_SIZE - 1;
-	nb = lab;
-	if (g_optab[cmd].dirsize == 0)
-	{
-		while (i >= 0)
-		{
-			p[i--] = nb % 256;
-			nb /= 256;
-		}
-		d = 0;
-	}
-	else if (g_optab[cmd].dirsize == 1)
-	{
-		while (i >= DIR_SIZE / 2)
-		{
-			p[i--] = nb % 256;
-			nb /= 256;
-		}
-		d = DIR_SIZE / 2;
-	}
-	i = d;
-	while (i < DIR_SIZE)
-		write(out, &p[i++], 1);
 }
 
 static void		ft_printindl(unsigned int lab, int cmd, int out)
@@ -159,6 +126,15 @@ static void		ft_printindlab(t_par *par, t_instr **begin, t_instr **instr,
 	ft_printindl(sizelab, cmd, out);
 }
 
+static void		ft_printreg(int n, t_par *tmp, unsigned char p[4], int out)
+{
+	n = ft_atoi(tmp->par + 1);
+	if (n <= 0 || n > REG_NUMBER)
+		exit(error_mess("ERROR REGISTER DOES NOT EXIST\n"));
+	p[0] = (unsigned char)n;
+	write(out, &p[0], 1);
+}
+
 static void		ft_printparams(int out, t_instr **instr, t_instr **begin)
 {
 	t_par			*tmp;
@@ -171,13 +147,7 @@ static void		ft_printparams(int out, t_instr **instr, t_instr **begin)
 	while (tmp)
 	{
 		if (tmp->type == T_REG)
-		{
-			n = ft_atoi(tmp->par + 1);
-			if (n <= 0 || n > REG_NUMBER)
-				exit(error_mess("ERROR REGISTER DOES NOT EXIST\n"));
-			p[0] = (unsigned char)n;
-			write(out, &p[0], 1);
-		}
+			ft_printreg(n, tmp, p, out);
 		else if (tmp->type == T_DIR)
 			ft_printdir(tmp, c, out);
 		else if (tmp->type == T_IND)
