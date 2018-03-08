@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/08 13:57:49 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/08 14:24:03 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int					ft_checkparams(char *par); //pour l'instant renvoi -1 si nb negatif
 //checkabel
 int					ft_findcmd(char *cmd);
 int					error_mess(char *str);
-
+int					make_pos(int pos, char **line, t_instr *new, t_par *tmp);
 int					ft_testhex(t_app *application);
 void				ft_converttohex(t_instr *instr);
 void				ft_printhex(t_instr *instr, int out);
