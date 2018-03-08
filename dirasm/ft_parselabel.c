@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 18:13:15 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/06 15:56:00 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/08 10:43:39 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int ft_findlabel(char *line)
 		{
 			i++;
 		}
-		if (i < ft_strlen(line))	
+		if (i < ft_strlen(line))
 			if (line[i] == LABEL_CHAR)
 				return (i);
 	}

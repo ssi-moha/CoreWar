@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 10:02:11 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/07 18:49:51 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/08 11:19:01 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ void	ft_parseparams(char *line, int pos, t_instr *new)
 				}
 				if (!(line[start] == ' ' || line[start] == '\t' || line[start] == COMMENT_CHAR || line[start] == '\n') && line[start] != '\0')
 				{
-					printf("Creation Param %c \n", line[start]);
 					par = new_par(NULL, &new->params);
 					ft_copypar(line, start, pos, par);
 					par->type = ft_checkparams(par->par);

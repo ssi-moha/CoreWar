@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 14:38:07 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/07 17:51:52 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/08 10:50:21 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,3 @@ int		check_name_cmt(char *str)
 		exit(error_mess("Invalid .command"));
 	return (0);
 }
-/*
-int		check_format(char *str)
-{
-	int i;
-	int count;
-
-	i = 0;
-	if (skip_blank(str))
-		return (-1);
-	if (check_name_cmt(str))
-		return (1);
-	while (str[i])
-		i++;
-	return (1);
-}*/

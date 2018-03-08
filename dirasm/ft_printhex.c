@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printhex.c                                  :+:      :+:    :+:   */
+/*   ft_printhex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/04 13:18:41 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/07 19:11:13 by lfujimot         ###   ########.fr       */
+/*   Created: 2018/03/08 11:56:03 by ssi-moha          #+#    #+#             */
+/*   Updated: 2018/03/08 13:08:53 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-static void	ft_printcmd(char *cmd, int out)
+static void		ft_printcmd(char *cmd, int out)
 {
 	unsigned char c;
 
 	c = g_optab[ft_findcmd(cmd)].numcmd;
 	write(out, &c, 1);
-	printf("INSTRUCTION NUM %d\n", c);
 }
 
-static int	ft_rettype(int type)
+static int		ft_rettype(int type)
 {
 	if (type == T_REG)
 		return (REG_CODE);
@@ -32,12 +31,12 @@ static int	ft_rettype(int type)
 	return (-1);
 }
 
-static void	ft_printsizepar(t_instr *instr, int out)
+static void		ft_printsizepar(t_instr *instr, int out)
 {
-	int cmd;
-	t_par *tmp;
+	int				cmd;
+	t_par			*tmp;
 	unsigned char	p;
-	int i;
+	int				i;
 
 	i = 1;
 	p = 0;
@@ -50,7 +49,7 @@ static void	ft_printsizepar(t_instr *instr, int out)
 		while (tmp)
 		{
 			if (i == 1)
-				p = p  | (ft_rettype(tmp->type) << 6);
+				p = p | (ft_rettype(tmp->type) << 6);
 			else if (i == 2)
 				p = p | (ft_rettype(tmp->type) << 4);
 			else if (i == 3)
@@ -60,10 +59,9 @@ static void	ft_printsizepar(t_instr *instr, int out)
 		}
 	}
 	write(out, &p, 1);
-	printf("HEXAAAAAAAAAAAAAAAAAAA %x %d\n", p, p);		
 }
 
-static void ft_printdir(t_par *par, int cmd, int out)
+static void		ft_printdir(t_par *par, int cmd, int out)
 {
 	unsigned char	p[DIR_SIZE];
 	int				nb;
@@ -80,11 +78,9 @@ static void ft_printdir(t_par *par, int cmd, int out)
 	{
 		if (nb < 0)
 			tp = 4294967296 + nb;
-		printf("NNNNNNNBBBBBBBBBBB %u\n", nb);
 		while (i >= 0)
 		{
 			p[i--] = tp % 256;
-			printf("OCTET %d\n", (tp % 256));
 			tp /= 256;
 		}
 		d = 0;
@@ -107,15 +103,14 @@ static void ft_printdir(t_par *par, int cmd, int out)
 	}
 }
 
-static void ft_printdiril(unsigned int lab, int cmd, int out)
+static void		ft_printdiril(unsigned int lab, int cmd, int out)
 {
 	unsigned char	p[DIR_SIZE];
 	unsigned int	nb;
 	int				i;
-	int d;
+	int				d;
 
 	d = 0;
-	printf("XXXXXXXXXXXXXXXXXXX %u\n", lab);
 	i = DIR_SIZE - 1;
 	nb = lab;
 	if (g_optab[cmd].dirsize == 0)
@@ -137,45 +132,18 @@ static void ft_printdiril(unsigned int lab, int cmd, int out)
 		d = DIR_SIZE / 2;
 	}
 	i = d;
-	printf("DDDDDDDjjjj %d %so dirsize %dooo\n", d, g_optab[cmd].cmd, g_optab[cmd].dirsize);
 	while (i < DIR_SIZE)
-	{
 		write(out, &p[i++], 1);
-	}
 }
 
-static void ft_printindl(unsigned int lab, int cmd, int out)
+static void		ft_printindl(unsigned int lab, int cmd, int out)
 {
 	unsigned char	p[DIR_SIZE];
 	unsigned int	nb;
 	int				i;
 
-	printf("XXXXXXXXXXXXXXXXXXX %u\n", lab);
 	i = IND_SIZE - 1;
 	nb = lab;
-		while (i >= 0)
-		{
-			p[i--] = nb % 256;
-			nb /= 256;
-		}
-	i = 0;
-	while (i < IND_SIZE)
-	{
-		write(out, &p[i++], 1);
-	}
-}
-
-static void ft_printind(t_par *par, int cmd, int out)
-{
-	unsigned char	p[IND_SIZE];
-	int				nb;
-	int				i;
-
-	i = IND_SIZE - 1;
-	nb = ft_atoi(par->par);
-	if (nb < 0)
-		nb = 65536 + nb;
-	printf("NBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB %d\n", nb);
 	while (i >= 0)
 	{
 		p[i--] = nb % 256;
@@ -188,41 +156,61 @@ static void ft_printind(t_par *par, int cmd, int out)
 	}
 }
 
-static void	ft_printdirlab(t_par *par, t_instr **begin, t_instr **instr, int out)
+static void		ft_printind(t_par *par, int cmd, int out)
 {
-	unsigned int sizelab;
-	int cmd;
+	unsigned char	p[IND_SIZE];
+	int				nb;
+	int				i;
+
+	i = IND_SIZE - 1;
+	nb = ft_atoi(par->par);
+	if (nb < 0)
+		nb = 65536 + nb;
+	while (i >= 0)
+	{
+		p[i--] = nb % 256;
+		nb /= 256;
+	}
+	i = 0;
+	while (i < IND_SIZE)
+	{
+		write(out, &p[i++], 1);
+	}
+}
+
+static void		ft_printdirlab(t_par *par, t_instr **begin, t_instr **instr,
+		int out)
+{
+	unsigned int	sizelab;
+	int				cmd;
 
 	cmd = ft_findcmd((*instr)->cmd);
 	sizelab = count_label(instr, begin, par->par + 2, cmd);
-	printf("LABEL SIZE %u\n", sizelab);
 	ft_printdiril(sizelab, cmd, out);
 }
 
-static void	ft_printindlab(t_par *par, t_instr **begin, t_instr **instr, int out)
+static void		ft_printindlab(t_par *par, t_instr **begin, t_instr **instr,
+		int out)
 {
-	unsigned int sizelab;
-	int cmd;
+	unsigned int	sizelab;
+	int				cmd;
 
 	cmd = ft_findcmd((*begin)->cmd);
 	sizelab = count_label(instr, begin, par->par + 1, cmd);
-	printf("IND-----------------------------------------------------------------------LABEL SIZE %u\n", sizelab);
 	ft_printindl(sizelab, cmd, out);
 }
 
-static void	ft_printparams(t_par **par, char *cmd, int out, t_instr **instr, t_instr **begin)
+static void		ft_printparams(int out, t_instr **instr, t_instr **begin)
 {
-	t_par *tmp;
-	int c;
-	unsigned char p[4];
-	int	n;
+	t_par			*tmp;
+	int				c;
+	unsigned char	p[4];
+	int				n;
 
-	c = ft_findcmd(cmd);
-	tmp = *par;
-	printf("/*****************************************************/ %s\n", (*begin)->cmd);
+	c = ft_findcmd((*begin)->cmd);
+	tmp = (*begin)->params;
 	while (tmp)
 	{
-		printf("TMP TYPE %d\n", tmp->type);
 		if (tmp->type == T_REG)
 		{
 			n = ft_atoi(tmp->par + 1);
@@ -252,7 +240,7 @@ void	ft_printhex(t_instr *instr, int out)
 	{
 		ft_printcmd(tmp->cmd, out);
 		ft_printsizepar(tmp, out);
-		ft_printparams(&tmp->params, tmp->cmd, out, &instr, &tmp);
+		ft_printparams(out, &instr, &tmp);
 		tmp = tmp->next;
-	}	
+	}
 }

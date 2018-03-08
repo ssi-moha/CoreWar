@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:54:21 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/07 18:36:20 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/08 10:38:45 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,19 @@ static void	ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app)
 	int pos;
 	t_instr *new;
 	int ret;
+	t_par *tmp;
 
 	ret = 0;
 	pos = 0;
 	line = 0;
 	while (get_next_line(fd, &line))
 	{
-		//	if (line[0] == '\n')
-		//		continue ;
 		if (ft_skip_com_and_blank(line))
 		{
 			ft_strdel(&line);
 			continue ;
 		}
-		if ((ret = check_name_cmt(line)))
+		else if ((ret = check_name_cmt(line)))
 		{
 			app->checkcmd++;
 			if (ret == 1)
@@ -53,24 +52,17 @@ static void	ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app)
 			ft_strdel(&line);
 			continue ;
 		}
-		printf("%s\n", line);
 		if (app->checkcmd != 2)
 			exit(error_mess("ERROR NO .NAME OR NO .COMMENT\n"));
-		new = new_instr(NULL, instr); //mettre a 0
+		new = new_instr(NULL, instr);
 		if (new)
 		{
 			pos = ft_parselabel(line, new);
 			pos = ft_parseinstr(line, pos, new);
 			ft_parseparams(line, pos, new);
-			printf("LABEL %s\n", new->label);
-			printf("CMD %s\n", new->cmd);
-			t_par *tmp;
 			tmp = new->params;
 			while (tmp)
-			{
-				printf("PAR %s\n", tmp->par);
 				tmp = tmp->next;
-			}
 		}
 		ft_strdel(&line);
 	}
@@ -99,8 +91,8 @@ int	main(int argc, char **argv)
 	int		fd;
 	int j;
 	t_par *p;
+	t_instr *tmp;
 
-	printf("%d\n", argc);
 	if (argc < 2)
 		exit (-1);
 	if (ft_checkfilename(argv[1]) == 0)
@@ -110,29 +102,10 @@ int	main(int argc, char **argv)
 	if (fd < 0)
 		exit(error_mess("ERROR FILE CANNOT BE FOUD OR CANNOT BE OPENNED\n"));
 	ft_parseasm(&app.instr, fd, &app.header, &app);
-
-	t_instr *tmp;
 	tmp = app.instr;
 	ft_converttohex(app.instr);
 	app.header.prog_size = prog_size(&app.instr);
-	ft_testhex(&app);	
-	while (tmp)
-	{
-		printf("\nLABEL %s\n", tmp->label);
-		printf("INSTR %s SIZE %u \n", tmp->cmd, tmp->sizeoctet);
-		p = tmp->params;
-		while (p)
-		{
-			printf("PAR %s TYPE %d\n", p->par, p->type);
-			p = p->next;
-		}
-		tmp = tmp->next;
-	}
-	j = 0;
-	printf("\n");
-	while (j < COMMENT_LENGTH + 1)
-		printf("%c", app.header.comment[j++]);
-	printf("\n");
+	ft_testhex(&app);
 	free_par(&app.instr->params);
 	free_instr(&app.instr);
 	return (0);
