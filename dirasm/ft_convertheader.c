@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_test.c                                          :+:      :+:    :+:   */
+/*   ft_convertheader.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emerabet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/05 14:25:49 by emerabet          #+#    #+#             */
-/*   Updated: 2018/03/08 17:05:13 by ssi-moha         ###   ########.fr       */
+/*   Created: 2018/03/08 17:23:31 by ssi-moha          #+#    #+#             */
+/*   Updated: 2018/03/08 17:37:58 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,18 @@ static void	ft_printcomment(char name[COMMENT_LENGTH + 1], int out)
 	write(out, "\0\0\0\0", 4);
 }
 
-int			ft_convertheader(t_app *application)
+int			ft_convertheader(t_app *application, char **file_name)
 {
 	t_header	header;
 	t_instr		*instructions;
 	int			out;
-	off_t		ret;
-	int			clo;
+	char		*name;
+	char		*cor;
 
-	out = open("tes.cor", O_RDWR | O_APPEND | O_TRUNC | O_CREAT);
-	ret = lseek(out, 0, SEEK_SET);
+	cor = ft_strjoin(*file_name, ".cor");
+	name = ft_strrchr(cor, '/') + 1;
+	out = open(name, O_RDWR | O_APPEND | O_TRUNC | O_CREAT);
+	lseek(out, 0, SEEK_SET);
 	header = application->header;
 	instructions = application->instr;
 	ft_printmagic((wchar_t)(header.magic), out);
@@ -65,6 +67,8 @@ int			ft_convertheader(t_app *application)
 	ft_printmagic(header.prog_size, out);
 	ft_printcomment(header.comment, out);
 	ft_printhex(instructions, out);
-	clo = close (out);
+	close (out);
+	ft_strdel(&cor);
+	ft_strdel(file_name);
 	return (0);
 }

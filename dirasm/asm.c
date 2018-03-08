@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:54:21 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/08 16:48:05 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/08 17:31:52 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,11 @@ int				main(int argc, char **argv)
 {
 	t_app	app;
 	int		fd;
-	int		j;
+	char *file_name;
 	t_par	*p;
 	t_instr *tmp;
 
+	file_name = ft_strcdup(argv[1], '.');
 	if (argc < 2)
 		exit(error_mess("ERROR : WRONG NUMBER OF ARGUMENT\n"));
 	if (ft_checkfilename(argv[1]) == 0)
@@ -91,7 +92,7 @@ int				main(int argc, char **argv)
 	tmp = app.instr;
 	ft_converttohex(app.instr);
 	app.header.prog_size = prog_size(&app.instr);
-	ft_convertheader(&app);
+	ft_convertheader(&app, &file_name);
 	free_par(&app.instr->params);
 	free_instr(&app.instr);
 	close(fd);
