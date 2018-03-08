@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/07 18:10:03 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/08 13:27:50 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,5 @@ void				ft_converttohex(t_instr *instr);
 void				ft_printhex(t_instr *instr, int out);
 int					prog_size(t_instr **instr);
 unsigned int					count_label(t_instr **instr, t_instr **begin, char *label, int cmd);
+void				ft_printsizepar(t_instr *instr, int out);
 #endif
