@@ -1,7 +1,8 @@
 for s in files/*.s  ; do
 ../resources/asm $s 1>0
-./asm $s 1>0
-cat xxxxxxx.cor > test1
+./asm $s
+chmod 777 tes.cor
+cat tes.cor > test1
 (echo $s | sed s/..$/.cor/) | xargs cat  > test2
 res=$(diff test1 test2)
 if [ -z "$res" ]
@@ -12,6 +13,6 @@ else
 fi
 rm test1
 rm test2
-rm -rf xxxxxxx.cor
+rm -rf tes.cor
 (echo $s | sed s/..$/.cor/) | xargs rm
 done
