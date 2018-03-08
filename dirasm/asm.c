@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:54:21 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/08 14:42:45 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/03/08 16:48:05 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,6 @@ int				main(int argc, char **argv)
 	ft_convertheader(&app);
 	free_par(&app.instr->params);
 	free_instr(&app.instr);
+	close(fd);
 	return (0);
 }

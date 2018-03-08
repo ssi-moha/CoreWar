@@ -6,7 +6,7 @@
 /*   By: emerabet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 14:25:49 by emerabet          #+#    #+#             */
-/*   Updated: 2018/03/08 14:47:50 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/03/08 16:56:08 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,11 @@ int			ft_convertheader(t_app *application)
 	t_header	header;
 	t_instr		*instructions;
 	int			out;
+	off_t		ret;
+	int			clo;
 
-	out = open("xxxxxxx.cor", O_WRONLY | O_TRUNC | O_CREAT, 777);
+	out = open("tes.cor", O_RDWR | O_APPEND | O_CREAT);
+	ret = lseek(out, 0, SEEK_SET);
 	header = application->header;
 	instructions = application->instr;
 	ft_printmagic((wchar_t)(header.magic), out);
@@ -62,5 +65,6 @@ int			ft_convertheader(t_app *application)
 	ft_printmagic(header.prog_size, out);
 	ft_printcomment(header.comment, out);
 	ft_printhex(instructions, out);
+	clo = close (out);
 	return (0);
 }
