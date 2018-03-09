@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/08 14:55:39 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/08 18:25:21 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@
 # include "../printf/includes/ft_printf.h"
 # include "op.h"
 # include <stdio.h>
+
+# define L 1
+# define A 2
+# define K 4
+int g_arg;
 
 typedef struct		s_par
 {
@@ -84,7 +89,7 @@ int					ft_checkparams(char *par);
 int					ft_findcmd(char *cmd);
 int					error_mess(char *str);
 int					make_pos(char **line, t_instr *new, t_par *tmp);
-int					ft_convertheader(t_app *application);
+int					ft_convertheader(t_app *application, char **file_name);
 void				ft_converttohex(t_instr *instr);
 void				ft_printhex(t_instr *instr, int out);
 int					prog_size(t_instr **instr);
