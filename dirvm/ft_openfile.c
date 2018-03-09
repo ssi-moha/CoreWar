@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 13:45:53 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/09 18:27:30 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/03/09 18:53:32 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ char			*ft_openfile(char *file)
 	int		size;
 
 	fd = open(file, O_RDONLY);
+	if (fd < 0)
+		exit(error_mess("File can't be open\n"));
 	data = ft_strnew(0);
 	size = 0;
 	r = 1;
@@ -47,5 +49,6 @@ char			*ft_openfile(char *file)
 		data = realloc(data, size);
 		ft_custom_concat(data, buf, size - r, r);
 	}
+	close(fd);
 	return (data);
 }

@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 17:23:31 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/09 11:05:08 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/09 18:53:28 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int			ft_convertheader(t_app *application, char **file_name)
 	char		*name;
 	char		*cor;
 
-	cor = ft_strjoin(*file_name, ".cor");
+	cor = ft_strjoin(*file_name, EXT_COR);
 	name = ft_strrchr(cor, '/') + 1;
 	out = open(name, O_RDWR | O_APPEND | O_TRUNC | O_CREAT);
 	lseek(out, 0, SEEK_SET);
@@ -67,7 +67,7 @@ int			ft_convertheader(t_app *application, char **file_name)
 	ft_printmagic(header.prog_size, out);
 	ft_printcomment(header.comment, out);
 	ft_printhex(instructions, out);
-	close (out);
+	close(out);
 	ft_strdel(&cor);
 	ft_strdel(file_name);
 	return (0);
