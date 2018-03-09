@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 13:45:53 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/09 14:18:38 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/09 16:40:25 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,14 @@ char	*ft_openfile(char *file)
 	r = 1;
 	while (r > 0)
 	{
-		printf("ggg\n");	
 		r = read(fd, buf, BUF_SIZE);
 		buf[BUF_SIZE] = '\0';
 		size += r;
-		printf("BUF %s %d\n", buf, r);
+		//write(1, buf, r);
+		printf("sssssssssssssssssssss\n");
 		data = realloc(data, size);
-		ft_strcat(data, buf);
-		printf("DATA %s %d\n", data, r);
+		ft_strncat(data, buf, size);
 	}
-	printf("%s\n", data);
+	write(1, data, size);
 	return (data);
 }

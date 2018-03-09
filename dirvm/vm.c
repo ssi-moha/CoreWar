@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 12:48:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/09 14:03:23 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/09 16:40:33 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 int	main(int argc, char **argv)
 {
-	ft_openfile(argv[1]);	
+	
+	ft_openfile(argv[1]);
+
 }

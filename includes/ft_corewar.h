@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/09 14:03:43 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/09 16:40:35 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,10 @@ typedef struct		s_par
 
 typedef struct		s_process
 {
-	int				id;
-	unsigned char	r[REG_NUMBER][REG_SIZE];
+	unsigned char	r[REG_NUMBER][REG_SIZE]; //id stocke dans r1
 	int				pc;
 	short			carry;
-	int				currentcycle;
+	int				cycle;
 	unsigned char	curinstr[15];
 	struct s_process	*next;
 }					t_process;
