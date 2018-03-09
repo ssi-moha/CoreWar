@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/08 18:25:21 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/09 14:03:43 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 # define L 1
 # define A 2
 # define K 4
+
+# define	BUF_SIZE	1024
+
 int g_arg;
 
 typedef struct		s_par
@@ -41,6 +44,40 @@ typedef struct		s_par
 //DIR + LAB = 2 + 8 = 10
 //IND = 4
 //IND + LAB = 4 + 8 = 12
+
+typedef struct		s_process
+{
+	int				id;
+	unsigned char	r[REG_NUMBER][REG_SIZE];
+	int				pc;
+	short			carry;
+	int				currentcycle;
+	unsigned char	curinstr[15];
+	struct s_process	*next;
+}					t_process;
+
+typedef struct		s_ram
+{
+	unsigned char	octets[MEM_SIZE + 1];
+	unsigned char	id[MEM_SIZE + 1];
+}					t_ram;
+
+typedef struct		s_player
+{
+	char			*name;
+	char			*comment;
+	int				id;
+	struct s_player	*next;
+}					t_player;
+
+typedef struct		s_vm
+{
+	t_ram			*ram;
+	t_process		*processes;
+	t_player		*players;
+	int				curcycle;
+	int				cyclelimit;
+}					t_vm;
 
 typedef struct		s_instr
 {
@@ -100,4 +137,15 @@ void				ft_printdiril(unsigned int lab, int cmd, int out);
 void				ft_printdir(t_par *par, int cmd, int out);
 void				ft_printindlab(t_par *par, t_instr **begin, t_instr **instr,
 		int out);
+
+
+//open_filescor
+//checkvalidfile magic + prog size
+//getname
+//getcomment
+//setid player
+//create process
+//getbytecode ram
+//
+char			*ft_openfile(char *file);
 #endif

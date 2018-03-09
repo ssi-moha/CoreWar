@@ -6,7 +6,7 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/03/08 14:41:50 by emerabet         ###   ########.fr        #
+#    Updated: 2018/03/09 14:08:48 by lfujimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,13 @@ SRCSASM = dirasm/asm.c \
 
 OBJSASM = $(SRCSASM:.c=.o)
 
+VM = vm
+
+SRCSVM = dirvm/vm.c \
+		dirvm/ft_openfile.c \
+
+OBJSVM = $(SRCSVM:.c=.o)
+
 LIBFT = libft
 
 LFT = libft/libft.a
@@ -55,7 +62,7 @@ GNLO = get_next_line.o
 
 #CFLAGS = -Wall -Werror -Wextra
 
-all : $(ASM)
+all : $(ASM) $(VM)
 
 $(ASM): $(OBJSASM)
 	$(MAKE) -C $(LIBFT)
@@ -63,14 +70,17 @@ $(ASM): $(OBJSASM)
 	gcc -c $(GNL) $(LFT)
 	gcc $(OBJSASM) $(LFT) $(PF) -o $(ASM) $(GNLO)
 
+$(VM): $(OBJSVM)
+	gcc $(OBJSVM) $(LFT) $(PF) -o $(VM)
+
 clean: $(LIBFT) $(PRINTF)
-	rm -f $(OBJSASM)
+	rm -f $(OBJSASM) $(OBJSVM)
 	rm -f $(GNLO)
 	make -C "$(LIBFT)" clean
 	make -C "$(PRINTF)" clean
 
 fclean: clean $(LIBFT) $(PRINTF)
-	rm -f $(ASM)
+	rm -f $(ASM) $(VM)
 	make -C "$(LIBFT)" fclean
 	make -C "$(PRINTF)" fclean
 
