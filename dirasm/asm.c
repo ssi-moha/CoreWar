@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:54:21 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/09 11:12:38 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/09 18:27:23 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,23 +54,6 @@ static void		ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app)
 	}
 }
 
-static int		ft_checkfilename(char *name)
-{
-	int size;
-
-	size = 0;
-	if (name)
-	{
-		size = ft_strlen(name);
-		if (size > 2)
-		{
-			if (name[size - 1] == 's' && name[size - 2] == '.')
-				return (1);
-		}
-	}
-	return (0);
-}
-
 int				main(int argc, char **argv)
 {
 	t_app	app;
@@ -81,7 +64,7 @@ int				main(int argc, char **argv)
 
 	if (argc < 2)
 		exit(error_mess("ERROR : WRONG NUMBER OF ARGUMENT\n"));
-	if (ft_checkfilename(argv[1]) == 0)
+	if (ft_check_filename(argv[1], EXT_FILE) == -1)
 		exit(error_mess("ERROR : WRONG FILE NAME\n"));
 	file_name = ft_strcdup(argv[1], '.');
 	ft_init(&app);

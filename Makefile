@@ -6,7 +6,7 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/03/09 14:08:48 by lfujimot         ###   ########.fr        #
+#    Updated: 2018/03/09 18:23:27 by emerabet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRCSASM = dirasm/asm.c \
 		  dirasm/error_mess.c\
 		  dirasm/ft_printindl.c\
 		  dirasm/make_pos.c\
+		  dirvm/ft_check_filename.c\
 
 OBJSASM = $(SRCSASM:.c=.o)
 
@@ -45,6 +46,8 @@ VM = vm
 
 SRCSVM = dirvm/vm.c \
 		dirvm/ft_openfile.c \
+		dirvm/ft_check_filename.c \
+		dirasm/error_mess.c\
 
 OBJSVM = $(SRCSVM:.c=.o)
 

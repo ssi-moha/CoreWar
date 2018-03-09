@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/09 16:40:35 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/09 18:32:32 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # define K 4
 
 # define	BUF_SIZE	1024
+# define	EXT_FILE	".s"
+# define	EXT_COR		".cor"
 
 int g_arg;
 
@@ -108,7 +110,6 @@ typedef struct		s_app // structure globale de l'application
 }					t_app;
 
 extern	t_op		g_optab[17];
-int					ft_testhex(t_app *app);
 int					ft_isincharset(char c, char *charset);
 int					free_par(t_par **par);
 t_par				*new_par(char *par, t_par **prev);
@@ -147,4 +148,5 @@ void				ft_printindlab(t_par *par, t_instr **begin, t_instr **instr,
 //getbytecode ram
 //
 char			*ft_openfile(char *file);
+int				ft_check_filename(char *str, char *extension);
 #endif
