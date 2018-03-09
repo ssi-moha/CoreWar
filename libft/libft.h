@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 12:54:53 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/05 10:50:34 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/08 17:31:38 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void				ft_putchar(char c);
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
 size_t				ft_strlen(const char *c);
+int				ft_strclen(const char *s, char c);
 int					is_blank(char c);
 int					is_space(char c);
 int					ft_toupper(int c);
@@ -47,6 +48,7 @@ char				*ft_strnstr(const char *haystack,
 		const char *needle, size_t len);
 int					ft_atoi(const char *str);
 char				*ft_strdup(const char *s1);
+char				*ft_strcdup(const char *s1, int c);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);
