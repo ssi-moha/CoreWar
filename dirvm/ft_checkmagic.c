@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 10:01:29 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/10 10:18:09 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/10 11:13:47 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	ft_checkmagic(unsigned char *data)
 	int magic;
 
 	magic = COREWAR_EXEC_MAGIC;
-	i = 0;
-	while (i < 4)
+	i = 3;
+	while (i >= 0)
 	{
-		if (data[i] == (magic % 256))
+		if (!(data[i] == (magic % 256)))
 			exit(error_mess("ERROR WRONG MAGIC\n"));
 		magic /= 256;
-		i++;
+		i--;
 	}
 }
