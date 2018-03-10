@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 12:48:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/10 12:10:50 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/10 12:21:40 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int		main(int argc, char **argv)
 		{
 			ft_checkmagic(data);
 			ft_checkprogsize(data);
-			ft_getname(data);
 		}
 		ft_loadinram(data, i, argc - 1, &vm);
 		i++;
