@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/10 10:32:40 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/10 11:34:18 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,6 @@ typedef struct		s_process
 	struct s_process	*next;
 }					t_process;
 
-typedef struct		s_ram
-{
-	unsigned char	octets[MEM_SIZE + 1];
-	unsigned char	id[MEM_SIZE + 1];
-}					t_ram;
-
 typedef struct		s_player
 {
 	char			*name;
@@ -73,7 +67,7 @@ typedef struct		s_player
 
 typedef struct		s_vm
 {
-	t_ram			*ram;
+	unsigned char	ram[MEM_SIZE];
 	t_process		*processes;
 	t_player		*players;
 	int				curcycle;
@@ -151,4 +145,5 @@ unsigned char			*ft_openfile(char *file);
 int				ft_check_filename(char *str, char *extension);
 void			ft_checkmagic(unsigned char *data);
 void			ft_checkprogsize(unsigned char *data);
+void			ft_loadinram(unsigned char *data, int i, int nbplayers, t_vm *vm);
 #endif
