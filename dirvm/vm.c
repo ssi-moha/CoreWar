@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 12:48:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/10 12:21:40 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/03/10 12:52:58 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int		main(int argc, char **argv)
 	unsigned char	*data;
 	int				i;
 	t_vm			vm;
-
+	t_player		*p;
+	
 	if (argc < 2 || argc > 5)
 		exit(error_mess("ERROR NO PLAYER OR TOO MUCH PLAYER MUST BE BETWEEN 1 AND 4\n"));
 	i = 1;
@@ -38,10 +39,26 @@ int		main(int argc, char **argv)
 		data = ft_openfile(argv[1]);
 		if (data != NULL)
 		{
+			p = new_player(data, &(vm.players), i);
 			ft_checkmagic(data);
-			ft_checkprogsize(data);
+			ft_loadinram(data, argc - 1, &vm, p);
 		}
-		ft_loadinram(data, i, argc - 1, &vm);
 		i++;
+	}
+	int j;
+
+	j = 0;
+	int n;
+	n = 0;
+	while (j < MEM_SIZE)
+	{
+		printf("%3.2x", vm.ram[j]);
+		if (n == 64)
+		{
+			printf("\n");
+			n = -1;
+		}
+		n++;
+		j++;
 	}
 }

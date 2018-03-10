@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_checkprogsize.c                                 :+:      :+:    :+:   */
+/*   new_player.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/10 10:18:16 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/10 12:21:34 by lfujimot         ###   ########.fr       */
+/*   Created: 2018/03/10 12:15:39 by lfujimot          #+#    #+#             */
+/*   Updated: 2018/03/10 12:33:57 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-unsigned int	ft_checkprogsize(unsigned char *data)
+t_player	*new_player(unsigned char *data, t_player **prev, int id)
 {
-	int i;
-	unsigned int nb;
-	int decalage;
-
-	decalage = 3;
-	nb = 0;
-	i = PROG_NAME_LENGTH + 4 + 4;
-	while (i < PROG_NAME_LENGTH + 4 + 4 + 4)
+	t_player	*tmp;
+	t_player	*tmp2;
+	t_header	header;
+	tmp = NULL;
+	tmp2 = *prev;
+	if (!(tmp = (t_player*)malloc(sizeof(t_player))))
+		return (0);
+	header.prog_size = ft_checkprogsize(data);
+	tmp->header = header;
+	tmp->id = id;
+	tmp->next = NULL;
+	if (!*prev)
+		*prev = tmp;
+	else
 	{
-		nb = nb + (data[i] << (8 * decalage));
-		decalage--;
-		i++;
+		while (tmp2->next)
+			tmp2 = tmp2->next;
+		tmp2->next = tmp;
 	}
-	if (nb > CHAMP_MAX_SIZE)
-		exit(error_mess("ERROR CHAMP TOO BIG FOR THE VM\n"));
-	return (nb);
+	return (tmp);
 }
