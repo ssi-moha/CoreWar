@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 12:15:39 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/10 13:18:23 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/03/10 14:41:05 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_player	*new_player(unsigned char *data, t_player **prev, int id)
 		return (0);
 	header.prog_size = ft_checkprogsize(data);
 	ft_setname(data, &header);
+	ft_setcomment(data, &header);
 	tmp->header = header;
 	tmp->id = id;
 	tmp->next = NULL;

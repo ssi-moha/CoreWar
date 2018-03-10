@@ -6,7 +6,7 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/03/10 13:18:25 by emerabet         ###   ########.fr        #
+#    Updated: 2018/03/10 14:31:48 by emerabet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,7 @@ SRCSVM = dirvm/vm.c \
 		dirasm/error_mess.c\
 		dirvm/new_player.c\
 		dirvm/ft_setname.c\
+		dirvm/ft_setcomment.c\
 
 OBJSVM = $(SRCSVM:.c=.o)
 
