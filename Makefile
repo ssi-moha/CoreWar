@@ -6,7 +6,7 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/03/10 11:35:44 by lfujimot         ###   ########.fr        #
+#    Updated: 2018/03/10 11:48:00 by emerabet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRCSVM = dirvm/vm.c \
 		dirvm/ft_checkprogsize.c \
 		dirvm/ft_loadinram.c \
 		dirasm/error_mess.c\
+		dirvm/ft_getname.c\
 
 OBJSVM = $(SRCSVM:.c=.o)
 

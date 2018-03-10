@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 12:48:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/10 11:41:31 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/10 11:45:20 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ static void	ft_initvm(t_vm *vm)
 int		main(int argc, char **argv)
 {
 	unsigned char	*data;
-	int i;
-	t_vm vm;
+	int				i;
+	t_vm			vm;
 
 	if (argc < 2 || argc > 5)
-		exit(error_mess("ERROR NO PLAYEROR TOO MUCH PLAYER MUST BE BETWEEN 1 AND 4\n"));
+		exit(error_mess("ERROR NO PLAYER OR TOO MUCH PLAYER MUST BE BETWEEN 1 AND 4\n"));
 	i = 1;
 	ft_initvm(&vm);
 	while (i < argc)
@@ -36,6 +36,7 @@ int		main(int argc, char **argv)
 		{
 			ft_checkmagic(data);
 			ft_checkprogsize(data);
+			ft_getname(data);
 		}
 		ft_loadinram(data, i, argc - 1, &vm);
 		i++;
