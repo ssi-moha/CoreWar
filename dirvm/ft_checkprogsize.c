@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm.c                                               :+:      :+:    :+:   */
+/*   ft_checkprogsize.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/09 12:48:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/10 10:57:23 by lfujimot         ###   ########.fr       */
+/*   Created: 2018/03/10 10:18:16 by lfujimot          #+#    #+#             */
+/*   Updated: 2018/03/10 10:56:23 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-int		main(int argc, char **argv)
+void	ft_checkprogsize(unsigned char *data)
 {
-	unsigned char	*data;
+	int i;
+	int nb;
+	int decalage;
 
-	if (argc < 2)
-		return (0);
-	if (ft_check_filename(argv[1], EXT_COR) == -1)
-		exit(error_mess("Wrong filename\n"));
-	data = ft_openfile(argv[1]);
-	if (data != NULL)
+	decalage = 3;
+	nb = 0;
+	i = PROG_NAME_LENGTH + 4 + 4;
+	while (i < PROG_NAME_LENGTH + 4 + 4 + 4)
 	{
-		ft_checkmagic(data);
-		ft_checkprogsize(data);
+		nb = nb + (data[i] << (8 * decalage));
+		decalage--;
+		i++;
 	}
+	if (nb > CHAMP_MAX_SIZE)
+		exit(error_mess("ERROR CHAMP TOO BIG FOR THE VM\n"));
 }

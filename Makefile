@@ -6,7 +6,7 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/03/09 18:23:27 by emerabet         ###   ########.fr        #
+#    Updated: 2018/03/10 10:34:19 by lfujimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,8 @@ VM = vm
 SRCSVM = dirvm/vm.c \
 		dirvm/ft_openfile.c \
 		dirvm/ft_check_filename.c \
+		dirvm/ft_checkmagic.c \
+		dirvm/ft_checkprogsize.c \
 		dirasm/error_mess.c\
 
 OBJSVM = $(SRCSVM:.c=.o)
