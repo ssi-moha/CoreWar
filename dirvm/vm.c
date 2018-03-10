@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 12:48:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/10 11:35:12 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/10 11:41:31 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		main(int argc, char **argv)
 		exit(error_mess("ERROR NO PLAYEROR TOO MUCH PLAYER MUST BE BETWEEN 1 AND 4\n"));
 	i = 1;
 	ft_initvm(&vm);
-	while (1 < argc)
+	while (i < argc)
 	{
 		if (ft_check_filename(argv[1], EXT_COR) == -1)
 			exit(error_mess("Wrong filename\n"));
@@ -38,5 +38,6 @@ int		main(int argc, char **argv)
 			ft_checkprogsize(data);
 		}
 		ft_loadinram(data, i, argc - 1, &vm);
+		i++;
 	}
 }
