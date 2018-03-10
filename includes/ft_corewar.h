@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/10 12:37:20 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/10 13:18:21 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,6 @@ int				ft_check_filename(char *str, char *extension);
 void			ft_checkmagic(unsigned char *data);
 unsigned int			ft_checkprogsize(unsigned char *data);
 void			ft_loadinram(unsigned char *data, int nbplayers, t_vm *vm, t_player *p);
-void			ft_getname(unsigned char *data, t_player *player);
+void			ft_setname(unsigned char *data, t_header *header);
 t_player		*new_player(unsigned char *data, t_player **prev, int id);
 #endif

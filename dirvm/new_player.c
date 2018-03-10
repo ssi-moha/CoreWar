@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 12:15:39 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/10 12:33:57 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/10 13:18:23 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ t_player	*new_player(unsigned char *data, t_player **prev, int id)
 	t_player	*tmp;
 	t_player	*tmp2;
 	t_header	header;
+	
 	tmp = NULL;
 	tmp2 = *prev;
 	if (!(tmp = (t_player*)malloc(sizeof(t_player))))
 		return (0);
 	header.prog_size = ft_checkprogsize(data);
+	ft_setname(data, &header);
 	tmp->header = header;
 	tmp->id = id;
 	tmp->next = NULL;
