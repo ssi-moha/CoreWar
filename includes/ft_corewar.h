@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/10 12:01:42 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/03/10 12:10:44 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,7 @@ typedef struct		s_process
 
 typedef struct		s_player
 {
-	char			*name;
-	char			*comment;
+	t_header		header;
 	int				id;
 	struct s_player	*next;
 }					t_player;

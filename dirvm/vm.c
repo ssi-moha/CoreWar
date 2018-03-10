@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 12:48:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/10 11:45:20 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/03/10 12:10:50 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 static void	ft_initvm(t_vm *vm)
 {
+	vm->processes = 0;
+	vm->players = 0;
 	ft_bzero(vm->ram, MEM_SIZE);
+	vm->curcycle = 0;
+	vm->cyclelimit = CYCLE_TO_DIE;
 }
 
 int		main(int argc, char **argv)
