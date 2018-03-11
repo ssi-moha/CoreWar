@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 16:23:56 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/11 18:33:02 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/11 19:24:12 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 static void	ft_loadpartype(t_process *p, t_vm *vm)
 {
-	int	i;
-	unsigned char ptype;
+	int				i;
+	unsigned char	ptype;
 
 	ft_memset(p->partype, 0 , 3);
 	i = 0;
+	printf("CMD %d\n", p->cmd);
 	if (g_optab[p->cmd - 1].octpar == 0)
 	{
 		if (g_optab[p->cmd - 1].typepar[0] == T_DIR)
@@ -66,10 +67,7 @@ static int	ft_getparvalue(t_process *p, t_vm *vm, int np)
 static void	ft_loadpar(t_process *p, t_vm *vm)
 {
 	int i;
-	
-//	p->par[0] = 0;
-//	p->par[1] = 0;
-//	p->par[2] = 0;
+
 	ft_setint(p->par, 0, 3);
 	i = 0;
 	printf("NB PAR %d\n", g_optab[p->cmd - 1].nbpar);
@@ -83,16 +81,29 @@ static void	ft_loadpar(t_process *p, t_vm *vm)
 
 void	ft_loadnewinstr(t_process *p, t_vm *vm)
 {
+//	if (vm->start != 1)
+//		p->cycle--;
+	printf("P %d CYCLE %d\n", p->pc, p->cycle);
 	if (p->cycle == 0)
 	{
-		if (p->cmd != DEFAULT)
-			printf("DO ACTION\n");
 		p->cmd = vm->ram[p->pc++ % MEM_SIZE];
-		printf("CMD %d\n", p->cmd);
-		ft_loadpartype(p, vm);
+		//faire quelque chose si cmd = 0
+		if (p->cmd > 0 && p->cmd <= 16)
+		{
+			if (p->cmd != DEFAULT)
+				printf("DO ACTION\n");
+			printf("CMD %d\n", p->cmd);
+			ft_loadpartype(p, vm);
 
-		printf("PAR %d %d %d\n", p->partype[0], p->partype[1], p->partype[2]); 
-		ft_loadpar(p, vm);
-		printf("VALUE %d %d %d\n", p->par[0], p->par[1], p->par[2]);
+			printf("PAR %d %d %d\n", p->partype[0], p->partype[1], p->partype[2]); 
+			ft_loadpar(p, vm);
+			printf("VALUE %d %d %d\n", p->par[0], p->par[1], p->par[2]);
+			p->cycle = g_optab[p->cmd - 1].nbcycle;
+//			if (vm->start == 1)
+//			{
+//				vm->start = 0;
+//				p->cycle--;
+//			}
+		}
 	}
 }

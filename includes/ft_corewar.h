@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/11 19:28:16 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/03/11 19:48:12 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ typedef struct		s_vm
 	t_player		*players;
 	int				curcycle;
 	int				cyclelimit;
+	int				start;
 	unsigned int	totalprocess;
 }					t_vm;
 
