@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/10 14:41:20 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/03/11 12:49:42 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,4 +148,5 @@ void			ft_loadinram(unsigned char *data, int nbplayers, t_vm *vm, t_player *p);
 void			ft_setname(unsigned char *data, t_header *header);
 void			ft_setcomment(unsigned char *data, t_header *header);
 t_player		*new_player(unsigned char *data, t_player **prev, int id);
+void			ft_showram(unsigned char *ram);
 #endif

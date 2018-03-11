@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 12:48:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/10 12:52:58 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/11 14:35:35 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,5 @@ int		main(int argc, char **argv)
 		}
 		i++;
 	}
-	int j;
-
-	j = 0;
-	int n;
-	n = 0;
-	while (j < MEM_SIZE)
-	{
-		printf("%3.2x", vm.ram[j]);
-		if (n == 64)
-		{
-			printf("\n");
-			n = -1;
-		}
-		n++;
-		j++;
-	}
+	ft_showram(vm.ram);
 }
