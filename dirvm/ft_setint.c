@@ -1,39 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_startvm.c                                       :+:      :+:    :+:   */
+/*   ft_setint.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/11 15:13:43 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/11 17:42:16 by lfujimot         ###   ########.fr       */
+/*   Created: 2018/03/11 17:54:00 by lfujimot          #+#    #+#             */
+/*   Updated: 2018/03/11 18:04:41 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-static void	ft_loadinstructions(t_vm *vm)
+void	ft_setint(int *tab, int value, int size)
 {
-	t_process	*tmp;
 
-	tmp = vm->processes;
-	while (tmp)
-	{
-		if (tmp->cycle == 0)
-			ft_loadnewinstr(tmp, vm);
-		tmp = tmp->next;
-	}
-}
-
-void	ft_startvm(t_vm *vm)
-{
-	printf("LIMIT %d\n", vm->cyclelimit);
-	printf("CUR %d\n", vm->curcycle);
-//	while (vm->curcycle < vm->cyclelimit)
-//	{
-		ft_loadinstructions(vm);
-		ft_loadinstructions(vm);
-		ft_loadinstructions(vm);
-//		vm->curcycle++;
-//	}
 }

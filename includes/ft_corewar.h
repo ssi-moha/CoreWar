@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/11 16:53:24 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/11 18:04:25 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct		s_par
 
 typedef struct		s_process
 {
+	int				id;
 	unsigned char	r[REG_NUMBER][REG_SIZE]; //id stocke dans r1
 	int				pc;
 	short			carry;
@@ -96,6 +97,7 @@ typedef struct		s_vm
 	t_player		*players;
 	int				curcycle;
 	int				cyclelimit;
+	unsigned int	totalprocess;
 }					t_vm;
 
 typedef struct		s_instr
@@ -180,7 +182,8 @@ void			ft_setname(unsigned char *data, t_header *header);
 void			ft_setcomment(unsigned char *data, t_header *header);
 t_player		*new_player(unsigned char *data, t_player **prev, unsigned int id);
 void			ft_showram(unsigned char *ram);
-t_process		*new_process(t_player *player, t_process **prev);
+t_process		*new_process(t_player *player, t_process **prev, t_vm *vm);
 void			ft_startvm(t_vm *vm);
 void			ft_loadnewinstr(t_process *p, t_vm *vm);
+void			ft_setint(int *tab, int value, int size);
 #endif
