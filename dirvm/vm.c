@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 12:48:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/11 18:03:31 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/11 19:48:14 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ int		main(int argc, char **argv)
 	t_vm			vm;
 	t_player		*p;
 	
-	if (argc < 2 || argc > 5)
-		exit(error_mess("ERROR NO PLAYER OR TOO MUCH PLAYER MUST BE BETWEEN 1 AND 4\n"));
+//	if (argc < 2 || argc > 5)
+//		exit(error_mess("ERROR NO PLAYER OR TOO MUCH PLAYER MUST BE BETWEEN 1 AND 4\n"));
 	i = 1;
 	ft_initvm(&vm);
+	ft_parse_arg(argc, argv);
 	while (i < argc)
 	{
 		if (ft_check_filename(argv[1], EXT_COR) == -1)
