@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 15:13:43 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/11 17:42:16 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/11 19:18:35 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static void	ft_loadinstructions(t_vm *vm)
 	{
 		if (tmp->cycle == 0)
 			ft_loadnewinstr(tmp, vm);
+		tmp->cycle--;
+		printf("PC %d CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCYCLE %d\n", tmp->pc, tmp->cycle);
 		tmp = tmp->next;
 	}
 }
@@ -29,11 +31,10 @@ void	ft_startvm(t_vm *vm)
 {
 	printf("LIMIT %d\n", vm->cyclelimit);
 	printf("CUR %d\n", vm->curcycle);
-//	while (vm->curcycle < vm->cyclelimit)
-//	{
+	while (vm->curcycle < vm->cyclelimit)
+	{
 		ft_loadinstructions(vm);
-		ft_loadinstructions(vm);
-		ft_loadinstructions(vm);
-//		vm->curcycle++;
-//	}
+		printf("CYCLE %d\n", vm->curcycle);
+		vm->curcycle++;
+	}
 }
