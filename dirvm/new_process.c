@@ -1,34 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_player.c                                       :+:      :+:    :+:   */
+/*   new_process.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/10 12:15:39 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/11 16:05:41 by lfujimot         ###   ########.fr       */
+/*   Created: 2018/03/11 15:16:41 by lfujimot          #+#    #+#             */
+/*   Updated: 2018/03/11 15:59:58 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-t_player	*new_player(unsigned char *data, t_player **prev, unsigned int id)
+static void	ft_initreg(t_process *process, unsigned int number)
 {
-	t_player	*tmp;
-	t_player	*tmp2;
-	t_header	header;
-	
+	int	i;
+
+	i = 0;
+	while (i < REG_NUMBER)
+		ft_memset(process->r[i++], 0, REG_SIZE);
+	i = REG_SIZE - 1;
+	while (i >= 0)
+	{
+		process->r[0][i] = number % 256;
+		number /= 256;
+		i--;
+	}
+}
+
+t_process	*new_process(t_player *player, t_process **prev)
+{
+	t_process	*tmp;
+	t_process	*tmp2;
+
 	tmp = NULL;
 	tmp2 = *prev;
-	if (!(tmp = (t_player*)malloc(sizeof(t_player))))
+	if (!(tmp = (t_process*)malloc(sizeof(t_process))))
 		return (0);
-	header.prog_size = ft_checkprogsize(data);
-	ft_setname(data, &header);
-	ft_setcomment(data, &header);
-	tmp->header = header;
-	tmp->id = id;
-	tmp->number = 980; // a rajouter
-	tmp->startpos = 0;
+	ft_initreg(tmp, player->number);
+	tmp->pc = player->startpos;
+	tmp->cycle = 0;
+	tmp->carry = 0; //check
+	tmp->cmd = DEFAULT;
+	ft_memset(tmp->partype, P_DEFAULT, 4);
+	ft_memset(tmp->par, 0 , 3);
 	tmp->next = NULL;
 	if (!*prev)
 		*prev = tmp;

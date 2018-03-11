@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/11 12:49:42 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/11 16:11:14 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,35 @@
 
 int g_arg;
 
+typedef enum		e_cmd
+{
+	DEFAULT,
+	LIVE,
+	LD,
+	ST,
+	ADD,
+	SUB,
+	AND,
+	OR,
+	XOR,
+	ZJMP,
+	LDI,
+	STI,
+	FORK,
+	LLD,
+	LLDI,
+	LFORK,
+	AFF
+}					t_cmd;
+
+typedef enum		e_partype
+{
+	P_DEFAULT,
+	P_REG,
+	P_DIR,
+	P_IND
+}					t_partype;
+
 typedef struct		s_par
 {
 	char			*par;
@@ -53,14 +82,18 @@ typedef struct		s_process
 	int				pc;
 	short			carry;
 	int				cycle;
-	unsigned char	curinstr[15];
+	enum e_cmd		cmd;
+	enum e_partype	partype[3];
+	int				par[3];
 	struct s_process	*next;
 }					t_process;
 
 typedef struct		s_player
 {
 	t_header		header;
-	int				id;
+	unsigned int	id;
+	unsigned int	number; // a rajouter pour le dislay
+	unsigned int	startpos;
 	struct s_player	*next;
 }					t_player;
 
@@ -144,9 +177,11 @@ unsigned char			*ft_openfile(char *file);
 int				ft_check_filename(char *str, char *extension);
 void			ft_checkmagic(unsigned char *data);
 unsigned int			ft_checkprogsize(unsigned char *data);
-void			ft_loadinram(unsigned char *data, int nbplayers, t_vm *vm, t_player *p);
+void			ft_loadinram(unsigned char *data, unsigned int nbplayers, t_vm *vm, t_player *p);
 void			ft_setname(unsigned char *data, t_header *header);
 void			ft_setcomment(unsigned char *data, t_header *header);
-t_player		*new_player(unsigned char *data, t_player **prev, int id);
+t_player		*new_player(unsigned char *data, t_player **prev, unsigned int id);
 void			ft_showram(unsigned char *ram);
+t_process		*new_process(t_player *player, t_process **prev);
+void			ft_startvm(t_vm *vm);
 #endif

@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 12:48:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/11 14:35:35 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/11 16:11:50 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	ft_initvm(t_vm *vm)
 int		main(int argc, char **argv)
 {
 	unsigned char	*data;
-	int				i;
+	unsigned int				i;
 	t_vm			vm;
 	t_player		*p;
 	
@@ -36,14 +36,27 @@ int		main(int argc, char **argv)
 	{
 		if (ft_check_filename(argv[1], EXT_COR) == -1)
 			exit(error_mess("Wrong filename\n"));
-		data = ft_openfile(argv[1]);
+		data = ft_openfile(argv[i]);
 		if (data != NULL)
 		{
 			p = new_player(data, &(vm.players), i);
 			ft_checkmagic(data);
-			ft_loadinram(data, argc - 1, &vm, p);
+			ft_loadinram(data, argc - 1, &vm, p); //attention argc -1 si autres paramettre
+			new_process(p, &(vm.processes));
 		}
 		i++;
 	}
 	ft_showram(vm.ram);
+	
+	t_process *tmp;
+	tmp = vm.processes;
+	while (tmp)
+	{
+		printf("PROCESS %2.2x", tmp->r[0][0]);
+		printf("%2.2x", tmp->r[0][1]);
+		printf("%2.2x", tmp->r[0][2]);
+		printf("%2.2x\n", tmp->r[0][3]);
+		tmp = tmp->next;
+	}
+	ft_startvm(&vm);
 }
