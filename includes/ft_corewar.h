@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/11 16:28:31 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/03/11 16:53:24 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,6 @@ typedef enum		e_cmd
 	AFF
 }					t_cmd;
 
-typedef enum		e_partype
-{
-	P_DEFAULT,
-	P_REG,
-	P_DIR,
-	P_IND
-}					t_partype;
-
 typedef struct		s_par
 {
 	char			*par;
@@ -83,7 +75,7 @@ typedef struct		s_process
 	short			carry;
 	int				cycle;
 	enum e_cmd		cmd;
-	enum e_partype	partype[3];
+	unsigned char	partype[3];
 	int				par[3];
 	struct s_process	*next;
 }					t_process;
@@ -190,4 +182,5 @@ t_player		*new_player(unsigned char *data, t_player **prev, unsigned int id);
 void			ft_showram(unsigned char *ram);
 t_process		*new_process(t_player *player, t_process **prev);
 void			ft_startvm(t_vm *vm);
+void			ft_loadnewinstr(t_process *p, t_vm *vm);
 #endif

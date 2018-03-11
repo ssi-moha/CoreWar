@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 15:16:41 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/11 15:59:58 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/11 16:53:09 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_process	*new_process(t_player *player, t_process **prev)
 	tmp->cycle = 0;
 	tmp->carry = 0; //check
 	tmp->cmd = DEFAULT;
-	ft_memset(tmp->partype, P_DEFAULT, 4);
+	ft_memset(tmp->partype, 0, 3);
 	ft_memset(tmp->par, 0 , 3);
 	tmp->next = NULL;
 	if (!*prev)
