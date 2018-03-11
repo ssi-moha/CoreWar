@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/11 18:36:41 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/03/11 18:50:15 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,8 +153,10 @@ int					ft_checkparams(char *par);
 int					ft_findcmd(char *cmd);
 int					error_mess(char *str);
 int					make_pos(char **line, t_instr *new, t_par *tmp);
+int					rm_process(int id, t_process **proc);
 int					ft_convertheader(t_app *application, char **file_name);
 void				ft_converttohex(t_instr *instr);
+void				free_proc(t_process **proc);
 void				ft_printhex(t_instr *instr, int out);
 int					prog_size(t_instr **instr);
 unsigned int		count_label(t_instr **instr, t_instr **begin, char *label,
