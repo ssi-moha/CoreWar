@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/11 16:11:14 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/11 16:28:31 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,12 @@ typedef struct		s_app // structure globale de l'application
 	t_header		header;
 	int				checkcmd;
 }					t_app;
+
+typedef struct		s_args
+{
+	int				dump;
+	int				champion[4];
+}					t_args;
 
 extern	t_op		g_optab[17];
 int					ft_isincharset(char c, char *charset);
