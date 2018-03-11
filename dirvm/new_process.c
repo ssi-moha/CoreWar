@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 15:16:41 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/11 18:02:56 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/11 18:31:06 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ t_process	*new_process(t_player *player, t_process **prev, t_vm *vm)
 	tmp->cmd = DEFAULT;
 	ft_memset(tmp->partype, 0, 3);
 	ft_setint(tmp->par, 0, 3);
-	ft_memset(tmp->par, 0, 3);
 	tmp->next = NULL;
 	if (!*prev)
 		*prev = tmp;

@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 16:23:56 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/11 18:04:43 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/11 18:33:02 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static void	ft_loadpar(t_process *p, t_vm *vm)
 //	p->par[0] = 0;
 //	p->par[1] = 0;
 //	p->par[2] = 0;
-	ft_memset(p->par, 0, 3);
+	ft_setint(p->par, 0, 3);
 	i = 0;
 	printf("NB PAR %d\n", g_optab[p->cmd - 1].nbpar);
 	while (i < g_optab[p->cmd - 1].nbpar)

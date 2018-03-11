@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/11 18:04:25 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/11 18:30:54 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,5 +185,5 @@ void			ft_showram(unsigned char *ram);
 t_process		*new_process(t_player *player, t_process **prev, t_vm *vm);
 void			ft_startvm(t_vm *vm);
 void			ft_loadnewinstr(t_process *p, t_vm *vm);
-void			ft_setint(int *tab, int value, int size);
+void			ft_setint(int *tab, int value, unsigned int size);
 #endif
