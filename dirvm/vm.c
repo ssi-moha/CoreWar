@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 12:48:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/12 11:33:25 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/12 11:46:30 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,14 @@ int		main(int argc, char **argv)
 	
 //	if (argc < 2 || argc > 5)
 //		exit(error_mess("ERROR NO PLAYER OR TOO MUCH PLAYER MUST BE BETWEEN 1 AND 4\n"));
-	i = 1;
 	ft_initvm(&vm);
-	ft_parse_arg(argc, argv);
-	while (i < argc)
+	if (ft_parse_arg(argc, argv).isvalid != 1)
+		exit(error_mess("Wrong args\n"));
+	i = -1;
+	while (++i < argc)
 	{
-		if (ft_check_filename(argv[1], EXT_COR) == -1)
-			exit(error_mess("Wrong filename\n"));
+		if (ft_check_filename(argv[i], EXT_COR) == -1)
+			continue ;
 		data = ft_openfile(argv[i]);
 		if (data != NULL)
 		{
@@ -48,7 +49,6 @@ int		main(int argc, char **argv)
 			ft_loadinram(data, argc - 1, &vm, p); //attention argc -1 si autres paramettre
 			new_process(p, &(vm.processes), &vm);
 		}
-		i++;
 	}
 	ft_showram(vm.ram);
 	

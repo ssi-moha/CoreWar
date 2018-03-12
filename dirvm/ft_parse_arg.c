@@ -6,7 +6,7 @@
 /*   By: emerabet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 16:20:59 by emerabet          #+#    #+#             */
-/*   Updated: 2018/03/11 19:55:45 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/03/12 11:46:32 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static char		*ft_get_next_arg(char **argv, int argc, int key)
 	return (argv[key + 1]);
 }
 
-static int		ft_hasdump(int argc, char **argv, int key)
+static int		ft_hasdump(int argc, char **argv, int key, t_args *args)
 {
 	int		cycle;
 	char	*str;
@@ -29,7 +29,10 @@ static int		ft_hasdump(int argc, char **argv, int key)
 		return (-1);
 	str = ft_get_next_arg(argv, argc, key);
 	if (str == NULL)
+	{
+		args->isvalid = -1;
 		return (-2);
+	}
 	cycle = ft_atoi(argv[key + 1]);
 	return (cycle);
 }
@@ -56,7 +59,7 @@ static int		ft_check_champion(char **argv, int argc, t_args *args, int key)
 				else
 					return (-2);
 				args->nb = args->nb + 1;
-				return (2);
+				return (3);
 			}
 		}
 		return (-1);
@@ -73,24 +76,33 @@ static int		ft_check_champion(char **argv, int argc, t_args *args, int key)
 	return (-1);
 }
 
+static void		ft_init_args(t_args *args)
+{
+	args->dump = -1;
+	args->nb = 0;
+	args->champion[0] = -9;
+	args->champion[1] = -9;
+	args->champion[2] = -9;
+	args->champion[3] = -9;
+	args->isvalid = 1;
+}
+
 t_args			ft_parse_arg(int argc, char **argv)
 {
 	t_args		args;
 	int			i;
 	int			res;
 
-	args.dump = -1;
-	args.nb = 0;
 	i = 1;
-	printf("argc %d\n", argc);
-	while (i < argc - 1)
+	ft_init_args(&args);
+	while (i < argc && args.isvalid == 1)
 	{
 		if (args.dump < 0)
 		{
-			args.dump = ft_hasdump(argc, argv, i);
+			args.dump = ft_hasdump(argc, argv, i, &args);
 			if (args.dump >= 0)
 			{
-				i++;
+				i = i + 2;
 				continue ;
 			}
 		}
@@ -104,6 +116,6 @@ t_args			ft_parse_arg(int argc, char **argv)
 			break ;
 		i++;
 	}
-	printf("dump = %d\nn1 %d\nn2 %d\nn3 %d\nn4 %d", args.dump, args.champion[0], args.champion[1], args.champion[2], args.champion[3]);
+	fprintf(stderr, "\n#### RESULT PARSING ARGS ###\n\n-dump = %d\n-n [0] => %d\n-n [1] => %d\n-n [2] => %d\n-n [3] => %d\nisvalid = %d\n\n", args.dump, args.champion[0], args.champion[1], args.champion[2], args.champion[3], args.isvalid);
 	return (args);
 }
