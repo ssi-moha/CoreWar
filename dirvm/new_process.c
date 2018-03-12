@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 15:16:41 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/11 18:38:47 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/12 11:30:50 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ t_process	*new_process(t_player *player, t_process **prev, t_vm *vm)
 	ft_initreg(tmp, player->number);
 	tmp->pc = player->startpos;
 	tmp->cycle = 0;
+	tmp->inlive = 0;
 	tmp->carry = 0; //check
 	tmp->id = ++(vm->totalprocess); 
 	tmp->cmd = DEFAULT;

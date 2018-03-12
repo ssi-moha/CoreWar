@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/12 11:19:15 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/03/12 11:27:43 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct		s_process
 	int				pc;
 	short			carry;
 	int				cycle;
+	int				inlive;
 	enum e_cmd		cmd;
 	unsigned char	partype[3];
 	int				par[3];
