@@ -1,16 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_add.c                                           :+:      :+:    :+:   */
+/*   ft_zjmp.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emerabet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/12 14:15:16 by emerabet          #+#    #+#             */
-/*   Updated: 2018/03/12 14:28:17 by emerabet         ###   ########.fr       */
+/*   Created: 2018/03/12 14:03:17 by ssi-moha          #+#    #+#             */
+/*   Updated: 2018/03/12 14:19:06 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void		ft_add(t_process *proc, t_vm *vm)
-{
+#include "../includes/ft_corewar.h"
 
+void	ft_zjmp(t_process *proc, t_vm *vm)
+{
+	(void)vm;
+	if (proc->carry)
+		proc->pc = proc->par[0];
 }
