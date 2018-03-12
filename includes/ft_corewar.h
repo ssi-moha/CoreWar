@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/12 13:47:39 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/03/12 13:59:20 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include "../gnl/get_next_line.h"
 # include "../libft/libft.h"
 # include "../printf/includes/ft_printf.h"
-# include "cmd.h"
 # include "op.h"
 # include <stdio.h>
 
@@ -73,8 +72,8 @@ typedef struct		s_process
 {
 	int				id;
 	unsigned char	r[REG_NUMBER][REG_SIZE]; //id stocke dans r1
-	unsigned int	playernb;
 	int				pc;
+	int				playernb;
 	short			carry;
 	int				cycle;
 	int				inlive;
@@ -88,6 +87,7 @@ typedef struct		s_player
 {
 	t_header		header;
 	unsigned int	id;
+	int				inlive;
 	unsigned int	number; // a rajouter pour le dislay
 	unsigned int	startpos;
 	struct s_player	*next;
@@ -196,6 +196,4 @@ void			ft_startvm(t_vm *vm);
 void			ft_loadnewinstr(t_process *p, t_vm *vm);
 void			ft_setint(int *tab, int value, unsigned int size);
 t_args			ft_parse_arg(int argc, char **argv);
-void			ft_checkinlive(t_process **ps);
-int				rm_process(int id, t_process **proc);
 #endif
