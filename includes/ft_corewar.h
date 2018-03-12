@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/12 11:27:43 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/12 11:33:04 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ typedef struct		s_vm
 	int				curcycle;
 	int				cyclelimit;
 	int				start;
+	int				nblive;
 	unsigned int	totalprocess;
 }					t_vm;
 
