@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/11 19:48:12 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/12 11:19:15 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ typedef struct		s_args
 	int				dump;
 	int				nb;
 	int				champion[4];
+	int				isvalid;
 }					t_args;
 
 extern	t_op		g_optab[17];
