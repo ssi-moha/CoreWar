@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/12 13:45:07 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/12 13:47:39 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "../gnl/get_next_line.h"
 # include "../libft/libft.h"
 # include "../printf/includes/ft_printf.h"
+# include "cmd.h"
 # include "op.h"
 # include <stdio.h>
 
