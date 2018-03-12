@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 15:13:43 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/11 19:18:35 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/12 12:07:27 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,27 @@ void	ft_startvm(t_vm *vm)
 {
 	printf("LIMIT %d\n", vm->cyclelimit);
 	printf("CUR %d\n", vm->curcycle);
-	while (vm->curcycle < vm->cyclelimit)
+	while (vm->curcycle <= vm->cyclelimit)
 	{
-		ft_loadinstructions(vm);
-		printf("CYCLE %d\n", vm->curcycle);
-		vm->curcycle++;
+		if (vm->processes == 0)
+		{
+			printf("NO MORE PROCESSES\n");
+			exit(2);
+		}
+		if (vm->curcycle == vm->cyclelimit)
+		{
+			ft_checkinlive(&(vm->processes));
+			if (vm->nblive == 0)
+				printf("GAME OVER\n");
+			else if (vm->nblive < NBR_LIVE)
+				vm->cyclelimit -= CYCLE_DELTA;
+			vm->curcycle = 0;
+		}
+		else
+		{
+			ft_loadinstructions(vm);
+			printf("CYCLE %d\n", vm->curcycle);
+			vm->curcycle++;
+		}
 	}
 }

@@ -6,7 +6,7 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/03/11 19:21:19 by emerabet         ###   ########.fr        #
+#    Updated: 2018/03/12 12:01:06 by lfujimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,8 @@ SRCSVM = dirvm/vm.c \
 		dirvm/op.c \
 		dirvm/ft_setint.c \
 		dirvm/ft_parse_arg.c \
+		dirvm/ft_checkinlive.c \
+		dirvm/rm_proc.c \
 		dirvm/ft_setcomment.c\
 
 OBJSVM = $(SRCSVM:.c=.o)

@@ -6,15 +6,23 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 19:22:00 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/11 19:26:29 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/12 12:07:06 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include  "../includes/ft_corewar.h"
 
-void	ft_checkinlive(t_process *p)
+void	ft_checkinlive(t_process **ps)
 {
-	//if not in live
-	//remove p
-	//else in live = false
+	t_process *tmp;
+
+	tmp = *ps;
+	while (tmp)
+	{
+		if (tmp->inlive == 0)
+			rm_process(tmp->id, ps);	
+		else
+			tmp->inlive = 0;
+		tmp = tmp->next;
+	}
 }
