@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 14:44:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/12 15:49:17 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/12 16:14:19 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ static int	ft_getparvalue(t_process *proc, t_vm *vm, int i)
 	value = 0;
 	if (proc->partype[i] == REG_CODE)
 	{
-		value += proc->r[proc->par[i]][0] << 24;
-		value += proc->r[proc->par[i]][1] << 16;
-		value += proc->r[proc->par[i]][2] << 8;
-		value += proc->r[proc->par[i]][3];
+		value += proc->r[proc->par[i] - 1][0] << 24;
+		value += proc->r[proc->par[i] - 1][1] << 16;
+		value += proc->r[proc->par[i] - 1][2] << 8;
+		value += proc->r[proc->par[i] - 1][3];
 		return (value);
 	}
 	else if (proc->partype[i] == DIR_CODE)
@@ -45,7 +45,7 @@ void	ft_xor(t_process *proc, t_vm *vm)
 	i = REG_SIZE - 1;
 	while (i >= 0)
 	{
-		proc->r[proc->par[2]][i] = c % 256;
+		proc->r[proc->par[2] - 1][i] = c % 256;
 		c /= 256;
 		i--;
 	}

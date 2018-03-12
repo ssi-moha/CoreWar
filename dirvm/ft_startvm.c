@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 15:13:43 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/12 12:07:27 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/12 16:06:47 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	ft_startvm(t_vm *vm)
 			printf("NO MORE PROCESSES\n");
 			exit(2);
 		}
+		else
+			printf("REG %3.2x %3.2x %3.2x %3.2x\n", vm->processes->r[1][0], vm->processes->r[1][1], vm->processes->r[1][2], vm->processes->r[1][3]);
 		if (vm->curcycle == vm->cyclelimit)
 		{
 			ft_checkinlive(&(vm->processes));
