@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/12 15:52:57 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/03/12 17:21:57 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,10 +198,12 @@ void			ft_setint(int *tab, int value, unsigned int size);
 void			ft_checkinlive(t_process **ps);
 t_args			ft_parse_arg(int argc, char **argv);
 int				ft_uchar_toint(unsigned char tab[REG_SIZE]);
+int				ft_getparvalue(t_process *proc, t_vm *vm, int i);
 
 /*******************************************************************
  *****************COMMANDES****************************************/
 void			func_tab(t_cmd par, t_process *proc, t_vm *vm);
+void			ft_live(t_process *proc, t_vm *vm);
 void			ft_and(t_process *proc, t_vm *vm);
 void			ft_or(t_process *proc, t_vm *vm);
 void			ft_xor(t_process *proc, t_vm *vm);

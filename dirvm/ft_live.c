@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 11:39:09 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/12 14:01:28 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/12 16:22:40 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ void	ft_live(t_process *proc, t_vm *vm)
 	while (tmp2 && tmp2->playernb != proc->par[0])
 		tmp = tmp->next;
 	tmp2->inlive = 1;
+	tmp->inlive = 1;
 	vm->nblive++;
 }

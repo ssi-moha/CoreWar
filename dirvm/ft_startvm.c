@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 15:13:43 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/12 16:06:47 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/12 17:07:03 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,21 @@ void	ft_startvm(t_vm *vm)
 			exit(2);
 		}
 		else
-			printf("REG %3.2x %3.2x %3.2x %3.2x\n", vm->processes->r[1][0], vm->processes->r[1][1], vm->processes->r[1][2], vm->processes->r[1][3]);
+		{
+			t_process *t;
+			t = vm->processes;
+			while (t)
+			{
+				printf("REG1 %3.2x %3.2x %3.2x %3.2x\n", vm->processes->r[0][0], vm->processes->r[0][1], vm->processes->r[0][2], vm->processes->r[0][3]);
+				printf("REG2 %3.2x %3.2x %3.2x %3.2x\n", vm->processes->r[1][0], vm->processes->r[1][1], vm->processes->r[1][2], vm->processes->r[1][3]);
+				printf("REG3 %3.2x %3.2x %3.2x %3.2x\n", vm->processes->r[2][0], vm->processes->r[2][1], vm->processes->r[2][2], vm->processes->r[2][3]);
+				t = t->next;
+			}
+		}
 		if (vm->curcycle == vm->cyclelimit)
 		{
 			ft_checkinlive(&(vm->processes));
+			//reset inlive de player a 0
 			if (vm->nblive == 0)
 				printf("GAME OVER\n");
 			else if (vm->nblive < NBR_LIVE)

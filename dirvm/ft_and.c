@@ -6,31 +6,11 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 13:38:10 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/12 16:10:44 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/12 16:55:04 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
-
-static int	ft_getparvalue(t_process *proc, t_vm *vm, int i)
-{
-	int value;
-
-	value = 0;
-	if (proc->partype[i] == REG_CODE)
-	{
-		value += proc->r[proc->par[i] - 1][0] << 24;
-		value += proc->r[proc->par[i] - 1][0] << 16;
-		value += proc->r[proc->par[i] - 1][0] << 8;
-		value += proc->r[proc->par[i] - 1][0] << 0;
-		return (value);
-	}
-	else if (proc->partype[i] == DIR_CODE)
-		return (proc->par[i]);
-	else if (proc->partype[i] == IND_CODE)
-		return (vm->ram[proc->pc + proc->par[i]]);
-	return (0);
-}
 
 void	ft_and(t_process *proc, t_vm *vm)
 {
@@ -39,6 +19,7 @@ void	ft_and(t_process *proc, t_vm *vm)
 	int				b;
 	int				c;				
 
+	printf("%d %d %d\n", proc->par[0], proc->par[1], proc->par[2]);
 	a = ft_getparvalue(proc, vm, 0);
 	b = ft_getparvalue(proc, vm, 1);
 	c = a & b;

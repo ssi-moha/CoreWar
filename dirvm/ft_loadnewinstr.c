@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 16:23:56 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/12 16:17:58 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/12 16:39:30 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,16 @@ void	ft_loadnewinstr(t_process *p, t_vm *vm)
 	printf("P %d CYCLE %d\n", p->pc, p->cycle);
 	if (p->cycle == 0)
 	{
+		if (p->cmd != DEFAULT)
+			{
+				printf("DO ACTION\n");
+				func_tab(p->cmd, p, vm);
+			}
+
 		p->cmd = vm->ram[p->pc++ % MEM_SIZE];
 		//faire quelque chose si cmd = 0
 		if (p->cmd > 0 && p->cmd <= 16)
 		{
-			if (p->cmd != DEFAULT)
-				func_tab(p->cmd, p, vm);
 			printf("CMD %d\n", p->cmd);
 			ft_loadpartype(p, vm);
 
