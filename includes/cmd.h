@@ -6,9 +6,11 @@
 /*   By: emerabet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 13:42:14 by emerabet          #+#    #+#             */
-/*   Updated: 2018/03/12 13:47:48 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/03/12 13:48:57 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_corewar.h"
 
 #ifndef CMD_H
 # define CMD_H
