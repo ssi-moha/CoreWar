@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/12 11:58:08 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/12 13:45:07 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ typedef struct		s_process
 {
 	int				id;
 	unsigned char	r[REG_NUMBER][REG_SIZE]; //id stocke dans r1
+	unsigned int	playernb;
 	int				pc;
 	short			carry;
 	int				cycle;

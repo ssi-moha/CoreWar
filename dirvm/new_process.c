@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 15:16:41 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/12 11:30:50 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/12 13:46:30 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void	ft_initreg(t_process *process, unsigned int number)
 	int	i;
 
 	i = 0;
+	process->playernb = number;
 	while (i < REG_NUMBER)
 		ft_memset(process->r[i++], 0, REG_SIZE);
 	i = REG_SIZE - 1;
