@@ -6,16 +6,25 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 14:44:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/12 14:45:22 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/12 15:49:17 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_corewar"
+#include "../includes/ft_corewar.h"
 
 static int	ft_getparvalue(t_process *proc, t_vm *vm, int i)
 {
+	int	value;
+
+	value = 0;
 	if (proc->partype[i] == REG_CODE)
-		return (proc->r[proc->par[i]]);
+	{
+		value += proc->r[proc->par[i]][0] << 24;
+		value += proc->r[proc->par[i]][1] << 16;
+		value += proc->r[proc->par[i]][2] << 8;
+		value += proc->r[proc->par[i]][3];
+		return (value);
+	}
 	else if (proc->partype[i] == DIR_CODE)
 		return (proc->par[i]);
 	else if (proc->partype[i] == IND_CODE)

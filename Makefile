@@ -6,7 +6,7 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/03/12 14:45:44 by lfujimot         ###   ########.fr        #
+#    Updated: 2018/03/12 15:22:11 by lfujimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,8 @@ SRCSVM = dirvm/vm.c \
 		dirvm/ft_parse_arg.c \
 		dirvm/ft_checkinlive.c \
 		dirvm/rm_proc.c \
-		dirvm/ft_add.c \
+		dirvm/func_tab.c \
+		dirvm/ft_and.c \
 		dirvm/ft_or.c \
 		dirvm/ft_xor.c \
 		dirvm/ft_setcomment.c\

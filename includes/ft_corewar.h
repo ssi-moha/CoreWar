@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/12 13:59:20 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/12 15:16:01 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,5 +195,13 @@ t_process		*new_process(t_player *player, t_process **prev, t_vm *vm);
 void			ft_startvm(t_vm *vm);
 void			ft_loadnewinstr(t_process *p, t_vm *vm);
 void			ft_setint(int *tab, int value, unsigned int size);
+void			ft_checkinlive(t_process **ps);
 t_args			ft_parse_arg(int argc, char **argv);
+
+/*******************************************************************
+ *****************COMMANDES****************************************/
+void			func_tab(t_cmd par, t_process *proc, t_vm *vm);
+void			ft_and(t_process *proc, t_vm *vm);
+void			ft_or(t_process *proc, t_vm *vm);
+void			ft_xor(t_process *proc, t_vm *vm);
 #endif
