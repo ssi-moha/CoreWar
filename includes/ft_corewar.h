@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/13 13:34:59 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/13 13:41:27 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,7 +207,7 @@ int			ft_live(t_process *proc, t_vm *vm);
 int			ft_and(t_process *proc, t_vm *vm);
 int			ft_or(t_process *proc, t_vm *vm);
 int			ft_xor(t_process *proc, t_vm *vm);
-int			ft_writeinreg(t_process *p, int regnnb, int nb);
+void			ft_writeinreg(t_process *p, int regnnb, int nb);
 int			ft_fork(t_process *proc, t_vm *vm);
 int			ft_add(t_process *proc, t_vm *vm);
 int			ft_ld(t_process *proc, t_vm *vm);
