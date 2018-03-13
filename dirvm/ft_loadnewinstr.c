@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 16:23:56 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/12 16:39:30 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/13 12:50:36 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	ft_loadpartype(t_process *p, t_vm *vm)
 	}
 }
 
-static int	ft_getparvalue(t_process *p, t_vm *vm, int np)
+static int	ft_getparvalueinram(t_process *p, t_vm *vm, int np)
 {
 	int	value;
 
@@ -73,7 +73,7 @@ static void	ft_loadpar(t_process *p, t_vm *vm)
 	printf("NB PAR %d\n", g_optab[p->cmd - 1].nbpar);
 	while (i < g_optab[p->cmd - 1].nbpar)
 	{
-		p->par[i] = ft_getparvalue(p, vm, i);
+		p->par[i] = ft_getparvalueinram(p, vm, i);
 		printf("V %d\n", p->par[i]);
 		i++;
 	}
