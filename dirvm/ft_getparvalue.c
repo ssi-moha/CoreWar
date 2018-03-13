@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 16:55:40 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/13 13:40:49 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/13 13:49:39 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ int	ft_getparvalue(t_process *proc, t_vm *vm, int i)
 		return (proc->par[i]);
 	else if (proc->partype[i] == IND_CODE)
 		return (vm->ram[(proc->pc + proc->par[i]) % MEM_SIZE]);
+	//TAKE REG_SIZE OCTET
 	return (0);
 }
