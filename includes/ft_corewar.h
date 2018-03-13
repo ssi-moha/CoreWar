@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/13 13:26:51 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/03/13 13:34:59 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,11 +203,13 @@ int				ft_getparvalue(t_process *proc, t_vm *vm, int i);
 /*******************************************************************
  *****************COMMANDES****************************************/
 void			func_tab(t_cmd par, t_process *proc, t_vm *vm);
-void			ft_live(t_process *proc, t_vm *vm);
-void			ft_and(t_process *proc, t_vm *vm);
-void			ft_or(t_process *proc, t_vm *vm);
-void			ft_xor(t_process *proc, t_vm *vm);
-void			ft_writeinreg(t_process *p, int regnnb, int nb);
-void			ft_fork(t_process *proc, t_vm *vm);
-void			ft_add(t_process *proc, t_vm *vm);
+int			ft_live(t_process *proc, t_vm *vm);
+int			ft_and(t_process *proc, t_vm *vm);
+int			ft_or(t_process *proc, t_vm *vm);
+int			ft_xor(t_process *proc, t_vm *vm);
+int			ft_writeinreg(t_process *p, int regnnb, int nb);
+int			ft_fork(t_process *proc, t_vm *vm);
+int			ft_add(t_process *proc, t_vm *vm);
+int			ft_ld(t_process *proc, t_vm *vm);
+int			ft_sub(t_process *proc, t_vm *vm);
 #endif
