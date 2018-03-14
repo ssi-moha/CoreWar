@@ -6,13 +6,13 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 13:05:44 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/14 15:54:25 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/14 17:14:18 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-void	ft_writeinreg(t_process *p, int regnb, int nb)
+void	ft_writeinreg(t_process *p, int regnb, unsigned int nb)
 {
 	int i;
 

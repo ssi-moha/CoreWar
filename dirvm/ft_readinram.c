@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_writeinram.c                                    :+:      :+:    :+:   */
+/*   ft_readinram.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/14 13:23:42 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/14 17:42:58 by lfujimot         ###   ########.fr       */
+/*   Created: 2018/03/14 16:43:59 by lfujimot          #+#    #+#             */
+/*   Updated: 2018/03/14 17:04:12 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-void	ft_writeinram(t_vm *vm, unsigned int pos, unsigned int value, int nboct)
+unsigned int	ft_readinram(t_vm *vm, unsigned int pos, unsigned int nboctet)
 {
-	int i;
+	unsigned int	i;
+	unsigned int	value;
+	int				b;
 
-	i = nboct - 1;
-	while (i >= 0)
+	b = nboctet - 1;
+	value = 0;
+	i = pos - (nboctet - 1);
+	while (i <= pos)
 	{
-		vm->ram[(pos--) % MEM_SIZE] = value % 256;
-		value /= 256;
-		i--;
+		value += vm->ram[i % MEM_SIZE] << (8 * b);
+		b--;
+		i++;
 	}
+	return (value);
 }
