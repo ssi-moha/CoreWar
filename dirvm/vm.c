@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 12:48:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/14 14:41:43 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/14 15:35:19 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,15 @@ int		main(int argc, char **argv)
 //		exit(error_mess("ERROR NO PLAYER OR TOO MUCH PLAYER MUST BE BETWEEN 1 AND 4\n"));
 	ft_initvm(&vm);
 	vm.args = ft_parse_arg(argc, argv);
-	if (vm.args.isvalid != 1)
+	if (vm.args.isvalid == -1)
 		exit(error_mess("Wrong args\n"));
 	i = -1;
 	fprintf(stderr, "nb %d n1 =>%d\nn2 => %d\nn3 => %d\nn4 => %d\n", vm.args.nb, vm.args.champion[0], vm.args.champion[1], vm.args.champion[2], vm.args.champion[3]);
 	while (++i < vm.args.nb)
 	{
 		printf("DATA %s\n", data);
-		data = ft_openfile(argv[1]); // a changer;
+		fprintf(stderr, "pos argv %d %s\n", vm.args.posfile[i], argv[1]);
+		data = ft_openfile(argv[vm.args.posfile[i] + 1]); // a changer;
 		printf("DATA %s\n", data);
 		if (data != NULL)
 		{

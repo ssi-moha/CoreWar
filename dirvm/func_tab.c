@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 19:13:51 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/14 13:35:23 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/14 15:23:06 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ void	func_tab(t_cmd par, t_process *proc, t_vm *vm)
 //	tab[13] = ft_lld;
 //	tab[14] = ft_lldi;
 //	tab[15] = ft_lfork;
-//	tab[16] = ft_aff;
+	tab[16] = ft_aff;
 	tab[(int)par](proc, vm);
 }
