@@ -6,7 +6,7 @@
 /*   By: emerabet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 16:20:59 by emerabet          #+#    #+#             */
-/*   Updated: 2018/03/14 15:18:22 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/03/14 15:49:18 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,9 @@ static int		ft_check_champion(char **argv, int argc, t_args *args, int key)
 			{
 				num = ft_atoi(str);
 				args->champion[args->nb] = num;
-				args->posfile[args->nb] = key + 1;
+				args->posfile[args->nb] = key + 2;
 				args->nb = args->nb + 1;
+				fprintf(stderr, "KEY + 2: %d\n", key + 2);
 				return (3);
 			}
 		}
@@ -67,8 +68,9 @@ static int		ft_check_champion(char **argv, int argc, t_args *args, int key)
 		if (ft_check_filename(argv[key], EXT_COR) == 1)
 		{
 			args->champion[args->nb] = -1;
+			args->posfile[args->nb] = key;
+			fprintf(stderr, "KEY : %d\n", key);
 			args->nb = args->nb + 1;
-			args->posfile[args->nb] = key + 1;
 			return (1);
 		}
 	}

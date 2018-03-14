@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 12:48:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/14 15:35:19 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/14 15:49:22 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ int		main(int argc, char **argv)
 	while (++i < vm.args.nb)
 	{
 		printf("DATA %s\n", data);
-		fprintf(stderr, "pos argv %d %s\n", vm.args.posfile[i], argv[1]);
-		data = ft_openfile(argv[vm.args.posfile[i] + 1]); // a changer;
+		fprintf(stderr, "pos argv %d %s\n", vm.args.posfile[i], argv[vm.args.posfile[i]]);
+		data = ft_openfile(argv[vm.args.posfile[i]]); // a changer;
 		printf("DATA %s\n", data);
 		if (data != NULL)
 		{
