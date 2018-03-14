@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 19:13:51 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/14 15:23:06 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/14 16:02:25 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	func_tab(t_cmd par, t_process *proc, t_vm *vm)
 	static int		(*tab[17])(t_process *proc, t_vm *vm);
 //	tab[0] = ft_default;
 	tab[1] = ft_live;
-//	tab[2] = ft_ld;
-//	tab[3] = ft_st;
+	tab[2] = ft_ld;
+	tab[3] = ft_st;
 //	tab[4] = ft_add;
 //	tab[5] = ft_sub;
 	tab[6] = ft_and;

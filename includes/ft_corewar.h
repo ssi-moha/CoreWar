@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/14 15:21:55 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/14 16:02:51 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,6 +215,7 @@ int			ft_add(t_process *proc, t_vm *vm);
 int			ft_ld(t_process *proc, t_vm *vm);
 int			ft_sub(t_process *proc, t_vm *vm);
 int			ft_sti(t_process *proc, t_vm *vm);
+int			ft_st(t_process *proc, t_vm *vm);
 int			ft_aff(t_process *proc, t_vm *vm);
 
 void		ft_writeinram(t_vm *vm, unsigned int pos, unsigned int value, int nboct);
