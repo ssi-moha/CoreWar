@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/13 13:41:27 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/14 14:20:34 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,14 @@ typedef struct		s_player
 	struct s_player	*next;
 }					t_player;
 
+typedef struct		s_args
+{
+	int				dump;
+	int				nb;
+	int				champion[4];
+	int				isvalid;
+}					t_args;
+
 typedef struct		s_vm
 {
 	unsigned char	ram[MEM_SIZE];
@@ -103,6 +111,7 @@ typedef struct		s_vm
 	int				start;
 	int				nblive;
 	unsigned int	totalprocess;
+	t_args			args;
 }					t_vm;
 
 typedef struct		s_instr
@@ -133,14 +142,6 @@ typedef struct		s_app // structure globale de l'application
 	t_header		header;
 	int				checkcmd;
 }					t_app;
-
-typedef struct		s_args
-{
-	int				dump;
-	int				nb;
-	int				champion[4];
-	int				isvalid;
-}					t_args;
 
 extern	t_op		g_optab[17];
 int					ft_isincharset(char c, char *charset);
@@ -189,7 +190,7 @@ unsigned int			ft_checkprogsize(unsigned char *data);
 void			ft_loadinram(unsigned char *data, unsigned int nbplayers, t_vm *vm, t_player *p);
 void			ft_setname(unsigned char *data, t_header *header);
 void			ft_setcomment(unsigned char *data, t_header *header);
-t_player		*new_player(unsigned char *data, t_player **prev, unsigned int id);
+t_player		*new_player(unsigned char *data, t_player **prev, unsigned int id, t_vm *vm);
 void			ft_showram(unsigned char *ram);
 t_process		*new_process(t_player *player, t_process **prev, t_vm *vm);
 void			ft_startvm(t_vm *vm);
@@ -212,4 +213,7 @@ int			ft_fork(t_process *proc, t_vm *vm);
 int			ft_add(t_process *proc, t_vm *vm);
 int			ft_ld(t_process *proc, t_vm *vm);
 int			ft_sub(t_process *proc, t_vm *vm);
+int			ft_sti(t_process *proc, t_vm *vm);
+
+void		ft_writeinram(t_vm *vm, unsigned int pos, unsigned int value, int nboct);
 #endif

@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 12:48:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/12 16:06:41 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/03/14 14:16:36 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,21 @@ int		main(int argc, char **argv)
 //	if (argc < 2 || argc > 5)
 //		exit(error_mess("ERROR NO PLAYER OR TOO MUCH PLAYER MUST BE BETWEEN 1 AND 4\n"));
 	ft_initvm(&vm);
-	if (ft_parse_arg(argc, argv).isvalid != 1)
+	vm.args = ft_parse_arg(argc, argv);
+	if (vm.args.isvalid != 1)
 		exit(error_mess("Wrong args\n"));
 	i = -1;
-	while (++i < argc)
+	fprintf(stderr, "nb %d n1 =>%d\nn2 => %d\nn3 => %d\nn4 => %d\n", vm.args.nb, vm.args.champion[0], vm.args.champion[1], vm.args.champion[2], vm.args.champion[3]);
+	while (++i < vm.args.nb)
 	{
 		if (ft_check_filename(argv[i], EXT_COR) == -1)
 			continue ;
 		data = ft_openfile(argv[i]);
 		if (data != NULL)
 		{
-			p = new_player(data, &(vm.players), i);
+			p = new_player(data, &(vm.players), i, &vm);
 			ft_checkmagic(data);
-			ft_loadinram(data, argc - 1, &vm, p); //attention argc -1 si autres paramettre
+			ft_loadinram(data, vm.args.nb - 1, &vm, p); //attention argc -1 si autres paramettre
 			new_process(p, &(vm.processes), &vm);
 		}
 	}

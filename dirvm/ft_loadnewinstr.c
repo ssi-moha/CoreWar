@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 16:23:56 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/13 12:50:36 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/14 12:57:29 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,10 @@ void	ft_loadnewinstr(t_process *p, t_vm *vm)
 	{
 		if (p->cmd != DEFAULT)
 			{
-				printf("DO ACTION\n");
+				printf("DO ACTION %s\n", g_optab[p->cmd - 1].cmd);
 				func_tab(p->cmd, p, vm);
+				sleep(3);
+				ft_showram(vm->ram);
 			}
 
 		p->cmd = vm->ram[p->pc++ % MEM_SIZE];

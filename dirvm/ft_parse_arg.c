@@ -6,7 +6,7 @@
 /*   By: emerabet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 16:20:59 by emerabet          #+#    #+#             */
-/*   Updated: 2018/03/12 11:46:32 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/03/14 14:16:16 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ static int		ft_check_champion(char **argv, int argc, t_args *args, int key)
 			else
 			{
 				num = ft_atoi(str);
-				if (num > 0)
+			//	if (num > 0)
 					args->champion[args->nb] = num;
-				else
-					return (-2);
+			//	else
+			//		return (-2);
 				args->nb = args->nb + 1;
 				return (3);
 			}

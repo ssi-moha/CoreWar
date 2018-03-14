@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 15:16:41 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/12 15:04:19 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/14 14:18:18 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static void	ft_initreg(t_process *process, unsigned int number)
 {
 	int	i;
 
+	printf("**************************************************\n");
+	printf("%d %u\n", number, number);
 	i = 0;
 	process->playernb = number;
 	while (i < REG_NUMBER)

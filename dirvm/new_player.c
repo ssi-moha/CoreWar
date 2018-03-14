@@ -6,13 +6,13 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 12:15:39 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/11 16:05:41 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/14 14:12:32 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-t_player	*new_player(unsigned char *data, t_player **prev, unsigned int id)
+t_player	*new_player(unsigned char *data, t_player **prev, unsigned int id, t_vm *vm)
 {
 	t_player	*tmp;
 	t_player	*tmp2;
@@ -27,7 +27,7 @@ t_player	*new_player(unsigned char *data, t_player **prev, unsigned int id)
 	ft_setcomment(data, &header);
 	tmp->header = header;
 	tmp->id = id;
-	tmp->number = 980; // a rajouter
+	tmp->number = vm->args.champion[id]; // a rajouter
 	tmp->startpos = 0;
 	tmp->next = NULL;
 	if (!*prev)
