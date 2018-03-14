@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/14 14:20:34 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/14 15:18:31 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ typedef struct		s_args
 	int				dump;
 	int				nb;
 	int				champion[4];
+	int				posfile[4];
 	int				isvalid;
 }					t_args;
 

@@ -6,7 +6,7 @@
 /*   By: emerabet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 16:20:59 by emerabet          #+#    #+#             */
-/*   Updated: 2018/03/14 14:16:16 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/14 15:18:22 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,8 @@ static int		ft_check_champion(char **argv, int argc, t_args *args, int key)
 			else
 			{
 				num = ft_atoi(str);
-			//	if (num > 0)
-					args->champion[args->nb] = num;
-			//	else
-			//		return (-2);
+				args->champion[args->nb] = num;
+				args->posfile[args->nb] = key + 1;
 				args->nb = args->nb + 1;
 				return (3);
 			}
@@ -70,6 +68,7 @@ static int		ft_check_champion(char **argv, int argc, t_args *args, int key)
 		{
 			args->champion[args->nb] = -1;
 			args->nb = args->nb + 1;
+			args->posfile[args->nb] = key + 1;
 			return (1);
 		}
 	}
@@ -85,6 +84,10 @@ static void		ft_init_args(t_args *args)
 	args->champion[2] = -9;
 	args->champion[3] = -9;
 	args->isvalid = 1;
+	args->posfile[0] = -1;
+	args->posfile[1] = -1;
+	args->posfile[2] = -1;
+	args->posfile[3] = -1;
 }
 
 t_args			ft_parse_arg(int argc, char **argv)
