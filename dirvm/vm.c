@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 12:48:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/14 14:16:36 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/14 14:41:43 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,20 @@ int		main(int argc, char **argv)
 	fprintf(stderr, "nb %d n1 =>%d\nn2 => %d\nn3 => %d\nn4 => %d\n", vm.args.nb, vm.args.champion[0], vm.args.champion[1], vm.args.champion[2], vm.args.champion[3]);
 	while (++i < vm.args.nb)
 	{
-		if (ft_check_filename(argv[i], EXT_COR) == -1)
-			continue ;
-		data = ft_openfile(argv[i]);
+		printf("DATA %s\n", data);
+		data = ft_openfile(argv[1]); // a changer;
+		printf("DATA %s\n", data);
 		if (data != NULL)
 		{
+			fprintf(stderr, "1\n");
 			p = new_player(data, &(vm.players), i, &vm);
+			fprintf(stderr, "2\n");
 			ft_checkmagic(data);
-			ft_loadinram(data, vm.args.nb - 1, &vm, p); //attention argc -1 si autres paramettre
+			fprintf(stderr, "3\n");
+			ft_loadinram(data, vm.args.nb, &vm, p); //attention argc -1 si autres paramettre
+			fprintf(stderr, "4\n");
 			new_process(p, &(vm.processes), &vm);
+			fprintf(stderr, "5\n");
 		}
 	}
 	ft_showram(vm.ram);

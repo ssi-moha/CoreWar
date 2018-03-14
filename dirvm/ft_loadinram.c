@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 11:29:42 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/11 15:58:49 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/14 14:42:56 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ static void	ft_loadplayer(unsigned char *data, unsigned int start, t_vm *vm, t_p
 void	ft_loadinram(unsigned char *data, unsigned int nbplayers, t_vm *vm, t_player *p)
 {
 	unsigned int start;
-	
-	start = (MEM_SIZE / nbplayers) * (p->id - 1);
+
+	fprintf(stderr, "id => %d\n", p->id);	
+	start = (MEM_SIZE / nbplayers) * (p->id);
 	p->startpos = start;
 	printf("%d\n", start);
 	ft_loadplayer(data, start, vm, p);
