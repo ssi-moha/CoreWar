@@ -6,23 +6,28 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 12:00:41 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/14 16:01:58 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/15 16:53:52 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../includes/ft_corewar.h"
+#include "../includes/ft_corewar.h"
+
+/*
+** si par[0] == 0 met le carry a 1
+** sinon met le carry a 0
+*/
 
 int		ft_ld(t_process *proc, t_vm *vm)
 {
 	int i;
 
-	i = ft_getparvalue(proc, vm, 0);
-	if (proc->par[1] > REG_SIZE)
-	{
+	i = ft_getparvalue(proc, vm, 0, IDX_MOD);
+	if (i == 0)
+		proc->carry = 1;
+	else
 		proc->carry = 0;
+	if (proc->par[1] > REG_SIZE)
 		return (0);
-	}
 	ft_writeinreg(proc, proc->par[1], i);
-	proc->carry = 1;
 	return (1);
 }

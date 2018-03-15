@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 15:13:43 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/14 17:04:29 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/15 14:11:09 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	ft_startvm(t_vm *vm)
 				printf("REG1 %3.2x %3.2x %3.2x %3.2x\n", vm->processes->r[0][0], vm->processes->r[0][1], vm->processes->r[0][2], vm->processes->r[0][3]);
 				printf("REG2 %3.2x %3.2x %3.2x %3.2x\n", vm->processes->r[1][0], vm->processes->r[1][1], vm->processes->r[1][2], vm->processes->r[1][3]);
 				printf("REG3 %3.2x %3.2x %3.2x %3.2x\n", vm->processes->r[2][0], vm->processes->r[2][1], vm->processes->r[2][2], vm->processes->r[2][3]);
+				printf("REG4 %3.2x %3.2x %3.2x %3.2x\n", vm->processes->r[3][0], vm->processes->r[3][1], vm->processes->r[3][2], vm->processes->r[3][3]);
 				printf("REG6 %3.2x %3.2x %3.2x %3.2x\n", vm->processes->r[5][0], vm->processes->r[5][1], vm->processes->r[5][2], vm->processes->r[5][3]);
 				t = t->next;
 			}

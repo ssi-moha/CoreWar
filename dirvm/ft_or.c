@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 14:44:33 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/13 13:43:08 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/15 16:55:33 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ int	ft_or(t_process *proc, t_vm *vm)
 	int				b;
 	int				c;				
 
-	if ((proc->partype[0] == REG_CODE && (proc->par[0] < 1 || proc->par[0] > 16)) || (proc->partype[1] == REG_CODE && (proc->par[1] < 1 || proc->par[1] > 16)) || proc->par[2] < 1 || proc->par[2] > 16)
-		return (0);
-	a = ft_getparvalue(proc, vm, 0);
-	b = ft_getparvalue(proc, vm, 1);
+	a = ft_getparvalue(proc, vm, 0, MEM_SIZE);
+	b = ft_getparvalue(proc, vm, 1, MEM_SIZE);
 	c = a | b;
 	i = REG_SIZE - 1;
 	while (i >= 0)
@@ -32,5 +30,9 @@ int	ft_or(t_process *proc, t_vm *vm)
 		i--;
 	}
 	printf("A %d B %d C %d\n", a, b, c);
+	if (c == 0)
+		proc->carry = 1;
+	else
+		proc->carry = 0;
 	return (1);
 }

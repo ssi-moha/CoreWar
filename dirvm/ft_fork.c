@@ -6,16 +6,16 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 14:40:29 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/13 13:01:18 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/03/15 16:03:49 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-void	ft_fork(t_process *proc, t_vm *vm)
+int	ft_fork(t_process *proc, t_vm *vm)
 {
-	t_process *new;
-	t_player *player;
+	t_process	*new;
+	t_player	*player;
 
 	player = vm->players;
 	while (player && player->number != proc->playernb)
@@ -27,4 +27,5 @@ void	ft_fork(t_process *proc, t_vm *vm)
 	new->inlive = proc->inlive;
 	new->carry = proc->carry;
 	new->cmd = proc->cmd;
+	return (1);
 }

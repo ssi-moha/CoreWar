@@ -6,11 +6,16 @@
 /*   By: emerabet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 13:28:37 by emerabet          #+#    #+#             */
-/*   Updated: 2018/03/13 13:33:36 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/03/15 16:56:24 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
+
+/*
+** si a -> carry = 1
+** sinon carry = 0
+*/
 
 int			ft_sub(t_process *proc, t_vm *vm)
 {
@@ -18,10 +23,13 @@ int			ft_sub(t_process *proc, t_vm *vm)
 	int		b;
 	int		c;
 
-	a = ft_getparvalue(proc, vm, proc->par[0]);
-	b = ft_getparvalue(proc, vm, proc->par[1]);
+	a = ft_getparvalue(proc, vm, 0, MEM_SIZE);
+	b = ft_getparvalue(proc, vm, 1, MEM_SIZE);
 	c = a - b;
 	ft_writeinreg(proc, proc->par[2], c);
-	proc->carry = 1;
+	if (c == 0)
+		proc->carry = 1;
+	else
+		proc->carry = 0;
 	return (1);
 }

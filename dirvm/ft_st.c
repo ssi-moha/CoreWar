@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 14:52:01 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/14 17:43:23 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/15 16:55:43 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		ft_st(t_process *proc, t_vm *vm)
 {
 	int i;
 
-	i = ft_getparvalue(proc, vm, 0);
+	i = ft_getparvalue(proc, vm, 0, MEM_SIZE);
 	if (proc->partype[1] == REG_CODE)
 		ft_writeinreg(proc, proc->par[1], i);
 	else if (proc->partype[1] == IND_CODE)

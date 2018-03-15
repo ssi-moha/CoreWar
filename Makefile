@@ -6,7 +6,7 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/03/14 17:15:23 by lfujimot         ###   ########.fr        #
+#    Updated: 2018/03/15 16:41:49 by lfujimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,11 +65,15 @@ SRCSVM = dirvm/vm.c \
 		dirvm/func_tab.c \
 		dirvm/ft_live.c \
 		dirvm/ft_and.c \
+		dirvm/ft_add.c \
+		dirvm/ft_sub.c \
 		dirvm/ft_or.c \
 		dirvm/ft_xor.c \
 		dirvm/ft_sti.c \
 		dirvm/ft_aff.c \
+		dirvm/ft_zjmp.c \
 		dirvm/ft_ld.c \
+		dirvm/ft_lld.c \
 		dirvm/ft_ldi.c \
 		dirvm/ft_st.c \
 		dirvm/ft_setcomment.c\
