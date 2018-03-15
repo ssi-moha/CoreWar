@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 17:23:31 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/15 14:47:33 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/15 19:52:33 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,10 @@ int			ft_convertheader(t_app *application, char **file_name)
 	t_header	header;
 	t_instr		*instructions;
 	int			out;
-	char		*name;
 	char		*cor;
 
 	cor = ft_strjoin(*file_name, EXT_COR);
-//	name = ft_strrchr(cor, '/');
-	printf("name %s\n", cor);
-	out = open(cor, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
-//	lseek(out, 0, SEEK_SET);
+	out = open(cor, O_CREAT | O_RDWR | O_TRUNC, S_IRWXU);
 	header = application->header;
 	instructions = application->instr;
 	ft_printmagic((wchar_t)(header.magic), out);
