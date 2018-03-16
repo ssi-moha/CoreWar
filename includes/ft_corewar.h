@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/15 16:57:11 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/16 13:30:43 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "../libft/libft.h"
 # include "../printf/includes/ft_printf.h"
 # include "op.h"
+# include <limits.h>
 # include <stdio.h>
 
 # define L 1

@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 12:00:41 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/15 16:53:52 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/16 13:41:58 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@
 int		ft_ld(t_process *proc, t_vm *vm)
 {
 	int i;
-
+		
+	if (proc->partype[0] == IND_CODE)
+		proc->par[0] -= 2;
+	printf("PARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR %d\n", proc->par[0]);
 	i = ft_getparvalue(proc, vm, 0, IDX_MOD);
 	if (i == 0)
 		proc->carry = 1;

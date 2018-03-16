@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 19:13:51 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/15 16:41:36 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/16 14:45:24 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	func_tab(t_cmd par, t_process *proc, t_vm *vm)
 	tab[9] = ft_zjmp;
 	tab[10] = ft_ldi;
 	tab[11] = ft_sti;
-//	tab[12] = ft_fork;
+	tab[12] = ft_fork;
 	tab[13] = ft_lld;
 //	tab[14] = ft_lldi;
 //	tab[15] = ft_lfork;

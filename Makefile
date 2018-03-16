@@ -6,7 +6,7 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/03/15 16:41:49 by lfujimot         ###   ########.fr        #
+#    Updated: 2018/03/16 14:41:18 by lfujimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,7 @@ SRCSVM = dirvm/vm.c \
 		dirvm/ft_aff.c \
 		dirvm/ft_zjmp.c \
 		dirvm/ft_ld.c \
+		dirvm/ft_fork.c \
 		dirvm/ft_lld.c \
 		dirvm/ft_ldi.c \
 		dirvm/ft_st.c \

@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 15:16:41 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/14 14:18:18 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/16 16:07:25 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,26 +55,11 @@ t_process	*new_process(t_player *player, t_process **prev, t_vm *vm)
 		*prev = tmp;
 	else
 	{
-		while (tmp2->next)
-			tmp2 = tmp2->next;
-		tmp2->next = tmp;
+		tmp->next = *prev; // push front pour respecter l'ordre des processus
+		vm->processes = tmp;
+	//	while (tmp2->next)
+	//		tmp2 = tmp2->next;
+	//	tmp2->next = tmp;
 	}
 	return (tmp);
-}
-
-void	free_process(t_process **proc)
-{
-	t_process *tmp;
-
-	if (!*proc)
-		return ;
-	tmp = *proc;
-	if (tmp->next)
-		tmp = tmp->next;
-	while (*proc)
-	{
-		tmp = tmp->next;
-		free(*proc);
-		*proc = tmp;
-	}
 }

@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 15:13:43 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/15 14:11:09 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/16 15:37:52 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	ft_loadinstructions(t_vm *vm)
 	tmp = vm->processes;
 	while (tmp)
 	{
+		printf("\x1b[34mPROCESS %d\n\x1b[0m", tmp->id);
 		if (tmp->cycle == 0)
 			ft_loadnewinstr(tmp, vm);
 		tmp->cycle--;

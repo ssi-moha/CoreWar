@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 16:23:56 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/15 15:43:24 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/16 13:36:36 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ static void	ft_loadpartype(t_process *p, t_vm *vm)
 static int	ft_getparvalueinram(t_process *p, t_vm *vm, int np)
 {
 	int	value;
+	short v;
 
+	v = 0;
 	value = 0;
 	if (p->partype[np] == REG_CODE)
 		value += vm->ram[p->pc++ % MEM_SIZE];
@@ -58,8 +60,9 @@ static int	ft_getparvalueinram(t_process *p, t_vm *vm, int np)
 	}
 	else if (p->partype[np] == IND_CODE || (p->partype[np] == DIR_CODE && g_optab[p->cmd - 1].dirsize == 1))
 	{
-		value += vm->ram[p->pc++ % MEM_SIZE] << 8;
-		value += vm->ram[p->pc++ % MEM_SIZE];
+		v += vm->ram[p->pc++ % MEM_SIZE] << 8;
+		v += vm->ram[p->pc++ % MEM_SIZE];
+		value = v;
 	}
 	return (value);
 }

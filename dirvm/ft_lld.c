@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 16:40:47 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/15 19:40:33 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/16 13:46:35 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		ft_lld(t_process *proc, t_vm *vm)
 	int i;
 
 	if (proc->partype[0] == IND_CODE)
-		proc->par[0] += 3;
+		proc->par[0] += 1;
 	i = ft_getparvalue(proc, vm, 0, MEM_SIZE);
 	i = i << 16;
 	i = i >> 16;

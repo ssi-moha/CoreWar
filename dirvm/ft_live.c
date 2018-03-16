@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 11:39:09 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/15 15:57:00 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/16 15:24:51 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	ft_live(t_process *proc, t_vm *vm)
 	t_player	*tmp;
 	t_process	*tmp2;
 
+	printf("\x1b[31mLIVE DONE BY %d\n\x1b[0m", proc->id);
 	if (vm == 0 || proc == 0)
 		return (0);
 	tmp = vm->players;
