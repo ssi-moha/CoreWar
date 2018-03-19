@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/16 13:30:43 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/19 14:07:59 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ typedef struct		s_vm
 	t_player		*players;
 	int				curcycle;
 	int				cyclelimit;
+	int				cycletotal;
 	int				start;
 	int				nblive;
 	unsigned int	totalprocess;
@@ -212,11 +213,13 @@ int			ft_or(t_process *proc, t_vm *vm);
 int			ft_xor(t_process *proc, t_vm *vm);
 void			ft_writeinreg(t_process *p, int regnnb, unsigned int nb);
 int			ft_fork(t_process *proc, t_vm *vm);
+int			ft_lfork(t_process *proc, t_vm *vm);
 int			ft_add(t_process *proc, t_vm *vm);
 int			ft_sub(t_process *proc, t_vm *vm);
 int			ft_ld(t_process *proc, t_vm *vm);
 int			ft_lld(t_process *proc, t_vm *vm);
 int			ft_ldi(t_process *proc, t_vm *vm);
+int			ft_lldi(t_process *proc, t_vm *vm);
 int			ft_sub(t_process *proc, t_vm *vm);
 int			ft_zjmp(t_process *proc, t_vm *vm);
 int			ft_sti(t_process *proc, t_vm *vm);

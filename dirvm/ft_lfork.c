@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fork.c                                          :+:      :+:    :+:   */
+/*   ft_lfork.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/12 14:40:29 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/19 14:39:37 by lfujimot         ###   ########.fr       */
+/*   Created: 2018/03/19 14:06:47 by lfujimot          #+#    #+#             */
+/*   Updated: 2018/03/19 14:39:46 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,18 @@ static void	ft_copyreg(t_process *new, t_process *proc)
 	}
 }
 
-int			ft_fork(t_process *proc, t_vm *vm)
+int			ft_lfork(t_process *proc, t_vm *vm)
 {
 	t_process	*new;
 	t_player	*player;
 
-	printf("\x1b[33mFORK %d\n\x1b[0m", proc->id);
+	printf("\x1b[33mLFORK %d\n\x1b[0m", proc->id);
 	player = vm->players;
 	while (player && player->number != proc->playernb)
 		player = player->next;
 	if ((new = new_process(player, &proc, vm)) == NULL)
 		return (0);
-	new->pc = proc->pc + (proc->par[0] % IDX_MOD);
+	new->pc = proc->pc + proc->par[0];
 	new->cycle = 0;
 	new->inlive = proc->inlive;
 	new->carry = proc->carry;

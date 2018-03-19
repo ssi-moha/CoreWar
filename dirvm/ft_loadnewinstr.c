@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 16:23:56 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/16 13:36:36 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/19 14:36:48 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,21 +84,18 @@ static void	ft_loadpar(t_process *p, t_vm *vm)
 
 void	ft_loadnewinstr(t_process *p, t_vm *vm)
 {
-//	if (vm->start != 1)
-//		p->cycle--;
 	printf("P %d CYCLE %d\n", p->pc, p->cycle);
 	if (p->cycle == 0)
 	{
 		if (p->cmd != DEFAULT)
-			{
-				printf("DO ACTION %s\n", g_optab[p->cmd - 1].cmd);
-				func_tab(p->cmd, p, vm);
-				sleep(1);
-				ft_showram(vm->ram);
-			}
+		{
+			printf("DO ACTION %s\n", g_optab[p->cmd - 1].cmd);
+			func_tab(p->cmd, p, vm);
+			sleep(1);
+			ft_showram(vm->ram);
+		}
 
 		p->cmd = vm->ram[p->pc++ % MEM_SIZE];
-		//faire quelque chose si cmd = 0
 		if (p->cmd > 0 && p->cmd <= 16)
 		{
 			printf("CMD %d\n", p->cmd);
@@ -108,11 +105,6 @@ void	ft_loadnewinstr(t_process *p, t_vm *vm)
 			ft_loadpar(p, vm);
 			printf("VALUE %d %d %d\n", p->par[0], p->par[1], p->par[2]);
 			p->cycle = g_optab[p->cmd - 1].nbcycle;
-//			if (vm->start == 1)
-//			{
-//				vm->start = 0;
-//				p->cycle--;
-//			}
 		}
 	}
 }

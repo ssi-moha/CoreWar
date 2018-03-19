@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 13:38:10 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/15 19:53:58 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/19 14:25:05 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_and(t_process *proc, t_vm *vm)
 	int				i;
 	int				a;
 	int				b;
-	int				c;				
+	int				c;
 
 	printf("%d %d %d\n", proc->par[0], proc->par[1], proc->par[2]);
 	a = ft_getparvalue(proc, vm, 0, MEM_SIZE);

@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_xor.c                                           :+:      :+:    :+:   */
+/*   ft_lldi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/12 14:44:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/19 14:21:08 by lfujimot         ###   ########.fr       */
+/*   Created: 2018/03/19 12:46:03 by lfujimot          #+#    #+#             */
+/*   Updated: 2018/03/19 14:41:32 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-int	ft_xor(t_process *proc, t_vm *vm)
+int	ft_lldi(t_process *proc, t_vm *vm)
 {
-	int	i;
-	int	a;
-	int	b;
-	int	c;
+	unsigned int	a;
+	unsigned int	b;
+	unsigned int	c;
 
-	a = ft_getparvalue(proc, vm, 0, MEM_SIZE);
-	b = ft_getparvalue(proc, vm, 1, MEM_SIZE);
-	c = a ^ b;
-	i = REG_SIZE - 1;
-	while (i >= 0)
-	{
-		proc->r[proc->par[2] - 1][i] = c % 256;
-		c /= 256;
-		i--;
-	}
-	printf("A %d B %d C %d\n", a, b, c);
+	a = proc->par[0];
+	b = proc->par[1];
+	c = ft_readinram(vm, proc->pc + a + b - 4, REG_SIZE);
+	ft_writeinreg(proc, proc->par[2], c);
 	if (c == 0)
 		proc->carry = 1;
 	else

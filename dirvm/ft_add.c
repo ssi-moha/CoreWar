@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 14:22:01 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/15 19:54:17 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/19 14:24:55 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_add(t_process *proc, t_vm *vm)
 	a = ft_getparvalue(proc, vm, 0, MEM_SIZE);
 	b = ft_getparvalue(proc, vm, 1, MEM_SIZE);
 	c = a + b;
-	ft_writeinreg(proc, proc->par[2], c);	
+	ft_writeinreg(proc, proc->par[2], c);
 	if (c == 0)
 		proc->carry = 1;
 	else

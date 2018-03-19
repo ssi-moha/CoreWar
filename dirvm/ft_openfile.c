@@ -6,13 +6,14 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 13:45:53 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/10 11:00:25 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/19 14:38:13 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-static void		ft_custom_concat(unsigned char *data, unsigned char *buf, int start, int end)
+static void		ft_custom_concat(unsigned char *data, unsigned char *buf,
+									int start, int end)
 {
 	int		i;
 	int		j;

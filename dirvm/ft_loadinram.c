@@ -6,13 +6,14 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 11:29:42 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/14 14:42:56 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/19 14:40:56 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-static void	ft_loadplayer(unsigned char *data, unsigned int start, t_vm *vm, t_player *p)
+static void	ft_loadplayer(unsigned char *data, unsigned int start,
+							t_vm *vm, t_player *p)
 {
 	int i;
 	int prog;
@@ -27,11 +28,12 @@ static void	ft_loadplayer(unsigned char *data, unsigned int start, t_vm *vm, t_p
 	}
 }
 
-void	ft_loadinram(unsigned char *data, unsigned int nbplayers, t_vm *vm, t_player *p)
+void		ft_loadinram(unsigned char *data, unsigned int nbplayers,
+						t_vm *vm, t_player *p)
 {
 	unsigned int start;
 
-	fprintf(stderr, "id => %d\n", p->id);	
+	fprintf(stderr, "id => %d\n", p->id);
 	start = (MEM_SIZE / nbplayers) * (p->id);
 	p->startpos = start;
 	printf("%d\n", start);

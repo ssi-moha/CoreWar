@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 10:18:16 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/10 12:21:34 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/19 14:26:10 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 unsigned int	ft_checkprogsize(unsigned char *data)
 {
-	int i;
-	unsigned int nb;
-	int decalage;
+	int				i;
+	unsigned int	nb;
+	int				decalage;
 
 	decalage = 3;
 	nb = 0;

@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 14:44:33 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/15 16:55:33 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/19 14:23:24 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	ft_or(t_process *proc, t_vm *vm)
 {
-	int				i;
-	int				a;
-	int				b;
-	int				c;				
+	int	i;
+	int	a;
+	int	b;
+	int	c;
 
 	a = ft_getparvalue(proc, vm, 0, MEM_SIZE);
 	b = ft_getparvalue(proc, vm, 1, MEM_SIZE);

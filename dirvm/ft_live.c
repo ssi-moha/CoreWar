@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 11:39:09 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/16 15:24:51 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/19 14:37:04 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	ft_live(t_process *proc, t_vm *vm)
 	while (tmp && tmp->number != proc->par[0])
 		tmp = tmp->next;
 	if (tmp == NULL)
-		ft_printf("pas de player trouve avec cet id %d on continue\n", proc->par[0]);
+		ft_printf("pas de player trouve avec cet id %d on continue\n",
+					proc->par[0]);
 	else
 	{
 		ft_printf("un processus dit que le joueur %d(%s) est en vie",
