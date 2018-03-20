@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 15:13:43 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/19 10:40:24 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/19 14:52:00 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ft_startvm(t_vm *vm)
 		if (vm->curcycle == vm->cyclelimit)
 		{
 			ft_checkinlive(&(vm->processes));
-			//reset inlive de player a 0
+			ft_resetplayerinlive(&(vm->players));
 			if (vm->nblive == 0)
 				printf("GAME OVER\n");
 			else if (vm->nblive >= NBR_LIVE)

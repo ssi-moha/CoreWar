@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/19 14:07:59 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/20 11:45:21 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ typedef struct		s_vm
 	int				nblive;
 	unsigned int	totalprocess;
 	t_args			args;
+	int				lastlive;
 }					t_vm;
 
 typedef struct		s_instr
@@ -228,4 +229,5 @@ int			ft_aff(t_process *proc, t_vm *vm);
 
 void		ft_writeinram(t_vm *vm, unsigned int pos, unsigned int value, int nboct);
 unsigned int	ft_readinram(t_vm *vm, unsigned int pos, unsigned int nboctet);
+void			ft_checkplayerinlive(t_player **p);
 #endif

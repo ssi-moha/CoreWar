@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 11:39:09 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/19 14:37:04 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/20 11:48:28 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	ft_live(t_process *proc, t_vm *vm)
 		proc->inlive = 1;
 		tmp->inlive = 1;
 		vm->nblive++;
+		vm->lastlive = proc->par[0];
 		return (1);
 	}
 	return (0);
