@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 15:13:43 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/19 14:52:00 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/20 15:38:26 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	ft_startvm(t_vm *vm)
 		if (vm->processes == 0)
 		{
 			printf("NO MORE PROCESSES\n");
+			ft_winner(vm);
 			exit(2);
 		}
 		else

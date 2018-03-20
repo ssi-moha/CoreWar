@@ -6,7 +6,7 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/03/19 14:51:42 by lfujimot         ###   ########.fr        #
+#    Updated: 2018/03/20 15:48:20 by lfujimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,6 +85,7 @@ SRCSVM = dirvm/vm.c \
 		dirvm/ft_writeinram.c\
 		dirvm/ft_readinram.c\
 		dirvm/ft_resetplayerinlive.c\
+		dirvm/ft_winner.c\
 		dirvm/ft_uchar_toint.c\
 
 OBJSVM = $(SRCSVM:.c=.o)
