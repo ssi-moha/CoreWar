@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 15:13:43 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/20 15:38:26 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/20 16:03:52 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	ft_startvm(t_vm *vm)
 		if (vm->processes == 0)
 		{
 			printf("NO MORE PROCESSES\n");
-			ft_winner(vm);
 			exit(2);
 		}
 		else
@@ -59,9 +58,13 @@ void	ft_startvm(t_vm *vm)
 			ft_checkinlive(&(vm->processes));
 			ft_resetplayerinlive(&(vm->players));
 			if (vm->nblive == 0)
+			{
+				ft_winner(vm);
 				printf("GAME OVER\n");
+			}
 			else if (vm->nblive >= NBR_LIVE)
 				vm->cyclelimit -= CYCLE_DELTA;
+			vm->nblive = 0;
 			vm->curcycle = 0;
 		}
 		else
