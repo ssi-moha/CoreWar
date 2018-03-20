@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:54:21 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/09 18:27:23 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/03/20 17:05:59 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ int				main(int argc, char **argv)
 	tmp = app.instr;
 	ft_converttohex(app.instr);
 	app.header.prog_size = prog_size(&app.instr);
+	if (app.instr == 0)
+		exit(error_mess("NO PROGRAM TO CONVERT\n"));
 	ft_convertheader(&app, &file_name);
 	free_par(&app.instr->params);
 	free_instr(&app.instr);

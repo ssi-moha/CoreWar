@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 10:02:11 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/08 15:29:35 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/20 16:40:30 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,19 @@ static int	ft_checkpartype(t_par *par, int parindex, char *cmd)
 {
 	int i;
 	int type;
+	int n;
 
 	type = 0;
 	i = ft_findcmd(cmd);
 	if (i >= 0)
 	{
 		if (par->type == 1)
+		{
+			n = ft_atoi(par->par + 1);
+			if (n <= 0 || n > REG_NUMBER)
+				exit(error_mess("ERROR REGISTER DOES NOT EXIST\n"));
 			type = 1;
+		}
 		else if (par->type == 2 || par->type == 10)
 			type = 2;
 		else if (par->type == 4 || par->type == 12)
