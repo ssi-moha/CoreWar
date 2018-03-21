@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 10:42:58 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/08 14:31:43 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/03/21 18:56:00 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ static int	ft_check_type_except_register(char *par)
 		lab = 1;
 	else
 	{
+		if (ft_atoi(par + i) < INT_MIN || ft_atoi(par + i) > INT_MAX)
+			exit(error_mess("ERROR ARGS VALUE\n"));
 		if (par[i] == '-' || par[i] == '+')
 			i++;
 		while (par[i])
@@ -85,14 +87,26 @@ static int	ft_checkparamvalid(char *par)
 	if (par)
 	{
 		i = 0;
+		if (par[i] == 'r')
+			i++;
 		if (par[i] == DIRECT_CHAR)
 			i++;
-		while (par[i] && (ft_isincharset(par[i], LABEL_CHARS) == 1
-					|| par[i] == LABEL_CHAR
-					|| par[i] == DIRECT_CHAR || par[i] == '-'))
-			i++;
-		if (par[i] == '\0')
-			return (1);
+		if (par[i] == LABEL_CHAR)
+		{	i++;
+			while (par[i] && (ft_isincharset(par[i], LABEL_CHARS) == 1))
+				i++;
+			if (par[i] == '\0')
+				return (1);
+		}
+		else if (par[i] == '-' || par[i] == '+' || (ft_isincharset(par[i], "0123456789") == 1))
+		{
+			if (par[i] == '-' || par[i] == '+')
+				i++;
+			while (par[i] && (ft_isincharset(par[i], "0123456789") == 1))
+				i++;
+			if (par[i] == '\0')
+				return (1);
+		}
 	}
 	return (-1);
 }

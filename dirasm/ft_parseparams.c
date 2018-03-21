@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 10:02:11 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/20 16:40:30 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/21 18:42:12 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,19 @@ static void	ft_copypar(char *line, int start, int pos, t_par *par)
 	par->par[i] = '\0';
 }
 
+static void ft_checkvalidchar(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (ft_isincharset(str[i], "0123456789") == -1)
+			exit(error_mess("ERROR WRONG ARGS VALUE\n"));
+		i++;
+	}
+}
+
 static int	ft_checkpartype(t_par *par, int parindex, char *cmd)
 {
 	int i;
@@ -43,6 +56,7 @@ static int	ft_checkpartype(t_par *par, int parindex, char *cmd)
 	{
 		if (par->type == 1)
 		{
+			ft_checkvalidchar(par->par + 1);
 			n = ft_atoi(par->par + 1);
 			if (n <= 0 || n > REG_NUMBER)
 				exit(error_mess("ERROR REGISTER DOES NOT EXIST\n"));

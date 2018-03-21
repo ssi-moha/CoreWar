@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 12:34:59 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/02/15 12:35:01 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/21 18:31:53 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ static	int		ft_in_charset(char c)
 	return (0);
 }
 
-int				ft_atoi(const char *str)
+intmax_t		ft_atoi(const char *str)
 {
-	int result;
-	int	is_neg;
-	int	count;
+	intmax_t	result;
+	int			is_neg;
+	int			count;
 
 	is_neg = 1;
 	result = 0;
