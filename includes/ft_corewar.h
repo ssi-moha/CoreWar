@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/21 18:08:48 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/22 14:18:26 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,10 +118,16 @@ typedef struct		s_vm
 	int				lastlive;
 }					t_vm;
 
+typedef struct		s_lab
+{
+	char			*l;
+	struct s_lab	*next;
+}					t_lab;
+
 typedef struct		s_instr
 {
 	char			*cmd;
-	char			*label;
+	t_lab			*label;
 	unsigned int	sizeoctet;
 	t_par			*params;
 	struct s_instr	*next;
@@ -144,6 +150,7 @@ typedef struct		s_app // structure globale de l'application
 {
 	t_instr			*instr;
 	t_header		header;
+	t_lab			*tmplab;
 	int				checkcmd;
 }					t_app;
 
@@ -177,8 +184,8 @@ void				ft_printdiril(unsigned int lab, int cmd, int out);
 void				ft_printdir(t_par *par, int cmd, int out);
 void				ft_printindlab(t_par *par, t_instr **begin, t_instr **instr,
 		int out);
-
-
+t_lab				*new_label(char *l, t_lab **prev);
+int					ft_labonly(t_app *app, char *line);
 //open_filescor
 //checkvalidfile magic + prog size
 //getname

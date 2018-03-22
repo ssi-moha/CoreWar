@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 18:13:15 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/09 11:11:52 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/22 15:01:46 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,23 @@ static int	ft_findlabel(char *line)
 static void	ft_copylabel(char *line, int size, t_instr *new, int start)
 {
 	int i;
+	char 	*tmp;
 
 	i = 0;
 	if (new == 0)
 		return ;
-	new->label = (char *)malloc(sizeof(char) * size);
-	if (new->label == 0)
+	tmp = (char *)malloc(sizeof(char) * size);
+	if (tmp == 0)
 		return ;
 	while (i < size)
 	{
-		new->label[i] = line[start];
+		tmp[i] = line[start];
 		i++;
 		start++;
 	}
-	new->label[i] = '\0';
+	tmp[i] = '\0';
+	new_label(ft_strdup(tmp), &(new->label));
+	free(tmp);
 }
 
 int			ft_parselabel(char *line, t_instr *new)
@@ -55,6 +58,7 @@ int			ft_parselabel(char *line, t_instr *new)
 	int start;
 
 	start = 0;
+	sizelabel = 0;
 	while (line[start] && (line[start] == ' ' || line[start] == '\t'))
 		start++;
 	sizelabel = ft_findlabel(line + start);

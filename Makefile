@@ -6,7 +6,7 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/03/20 15:48:20 by lfujimot         ###   ########.fr        #
+#    Updated: 2018/03/22 14:18:46 by lfujimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRCSASM = dirasm/asm.c \
 		  dirasm/free_par.c \
 		  dirasm/new_par.c \
 		  dirasm/new_instr.c \
+		  dirasm/new_label.c \
 		  dirasm/free_instr.c \
 		  dirasm/ft_parselabel.c \
 		  dirasm/ft_parseinstr.c \
@@ -38,6 +39,7 @@ SRCSASM = dirasm/asm.c \
 		  dirasm/error_mess.c\
 		  dirasm/ft_printindl.c\
 		  dirasm/make_pos.c\
+		  dirasm/ft_labonly.c\
 		  dirvm/ft_check_filename.c\
 
 OBJSASM = $(SRCSASM:.c=.o)

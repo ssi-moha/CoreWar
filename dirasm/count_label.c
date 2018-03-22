@@ -6,11 +6,25 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 16:20:55 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/08 13:53:04 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/03/21 19:47:15 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
+
+static int				ft_strcmplst(char *label, t_lab **lst)
+{
+	t_lab	*tmp;
+
+	tmp = *lst;
+	while (tmp)
+	{
+		if (ft_strcmp(label, tmp->l) == 0)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (-1);
+}
 
 static unsigned int		ft_count_positive(t_instr *tmp, t_instr **instr,
 									char *label, int cmd)
@@ -19,7 +33,7 @@ static unsigned int		ft_count_positive(t_instr *tmp, t_instr **instr,
 	unsigned int	j;
 
 	i = 0;
-	while (tmp && ft_strcmp(label, tmp->label))
+	while (tmp && ft_strcmplst(label, &(tmp->label)))
 	{
 		i += tmp->sizeoctet;
 		tmp = tmp->next;
@@ -58,11 +72,11 @@ unsigned int			count_label(t_instr **instr, t_instr **begin,
 
 	tmp = *begin;
 	i = 0;
-	while (tmp && tmp != *instr && ft_strcmp(label, tmp->label))
+	while (tmp && tmp != *instr && ft_strcmplst(label, &(tmp->label)))
 		tmp = tmp->next;
 	if (tmp == *instr)
 		j = ft_count_positive(tmp, instr, label, cmd);
-	else if (!ft_strcmp(label, tmp->label))
+	else if (!ft_strcmplst(label, &(tmp->label)))
 		j = ft_count_negative(tmp, instr, cmd);
 	else
 		exit(error_mess("ERROR ILLEGAL LABEL\n"));

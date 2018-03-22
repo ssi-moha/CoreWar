@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:54:21 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/20 17:05:59 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/03/22 14:54:07 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void		ft_init(t_app *app)
 	h.magic = COREWAR_EXEC_MAGIC;
 	h.prog_size = 0;
 	app->instr = 0;
+	app->tmplab = 0;
 	app->header = h;
 	ft_bzero(app->header.prog_name, PROG_NAME_LENGTH + 1);
 	ft_bzero(app->header.comment, COMMENT_LENGTH + 1);
@@ -41,6 +42,8 @@ static void		ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app)
 			ft_strdel(&line);
 			continue ;
 		}
+		else if (ft_labonly(app, line) == 1)
+			continue ;
 		else if ((ret = check_name_cmt(line)))
 		{
 			app->checkcmd += cpy_head(ret, head, &line);
@@ -50,6 +53,19 @@ static void		ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app)
 			exit(error_mess("ERROR NO .NAME OR NO .COMMENT\n"));
 		new = new_instr(NULL, instr);
 		new != NULL ? make_pos(&line, new, tmp) : 0;
+		if (app->tmplab != 0)
+		{
+			t_lab *t;
+
+			t = app->tmplab;
+			while (t)
+			{
+				new_label(ft_strdup(t->l), &(new->label));
+				t = t->next;
+			}
+		}
+		new->label = app->tmplab;
+		app->tmplab = 0;//to free
 		ft_strdel(&line);
 	}
 }
