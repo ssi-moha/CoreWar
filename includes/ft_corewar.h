@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/22 14:18:26 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/11 10:27:50 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ typedef struct		s_process
 	int				cycle;
 	int				inlive;
 	enum e_cmd		cmd;
+	int				num;
 	unsigned char	partype[3];
 	int				par[3];
 	struct s_process	*next;
@@ -89,7 +90,9 @@ typedef struct		s_player
 	t_header		header;
 	unsigned int	id;
 	int				inlive;
+	int				nblive;
 	unsigned int	number; // a rajouter pour le dislay
+	unsigned int	num;
 	unsigned int	startpos;
 	struct s_player	*next;
 }					t_player;
@@ -106,6 +109,7 @@ typedef struct		s_args
 typedef struct		s_vm
 {
 	unsigned char	ram[MEM_SIZE];
+	unsigned char	ramplayer[MEM_SIZE];
 	t_process		*processes;
 	t_player		*players;
 	int				curcycle;
@@ -113,6 +117,7 @@ typedef struct		s_vm
 	int				cycletotal;
 	int				start;
 	int				nblive;
+	unsigned int	incplayer;
 	unsigned int	totalprocess;
 	t_args			args;
 	int				lastlive;
@@ -203,6 +208,8 @@ void			ft_setname(unsigned char *data, t_header *header);
 void			ft_setcomment(unsigned char *data, t_header *header);
 t_player		*new_player(unsigned char *data, t_player **prev, unsigned int id, t_vm *vm);
 void			ft_showram(unsigned char *ram);
+void			ft_showramplayer(unsigned char *ram, t_vm *vm);
+void			ft_showplayer(unsigned char *ram);
 t_process		*new_process(t_player *player, t_process **prev, t_vm *vm);
 void			ft_startvm(t_vm *vm);
 void			ft_loadnewinstr(t_process *p, t_vm *vm);
@@ -234,9 +241,10 @@ int			ft_sti(t_process *proc, t_vm *vm);
 int			ft_st(t_process *proc, t_vm *vm);
 int			ft_aff(t_process *proc, t_vm *vm);
 
-void		ft_writeinram(t_vm *vm, unsigned int pos, unsigned int value, int nboct);
+void		ft_writeinram(t_vm *vm, unsigned int pos, unsigned int value, int nboct, t_process *p);
 unsigned int	ft_readinram(t_vm *vm, unsigned int pos, unsigned int nboctet);
 void			ft_checkplayerinlive(t_player **p);
 void			ft_resetplayerinlive(t_player **p);
 void			ft_winner(t_vm *vm);
+int ft_printffd(int fd, const char *format, ...);
 #endif

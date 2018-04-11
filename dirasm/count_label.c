@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 16:20:55 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/21 19:47:15 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/11 14:58:54 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@ static int				ft_strcmplst(char *label, t_lab **lst)
 	t_lab	*tmp;
 
 	tmp = *lst;
+	printf("ooooo\n");
 	while (tmp)
 	{
+	printf("ppppppp\n");
+		fprintf(stderr, "LAB %s  TMP %s", label, tmp->l);
 		if (ft_strcmp(label, tmp->l) == 0)
 			return (0);
 		tmp = tmp->next;
@@ -33,13 +36,16 @@ static unsigned int		ft_count_positive(t_instr *tmp, t_instr **instr,
 	unsigned int	j;
 
 	i = 0;
+	printf("INSTR %s", tmp->cmd);
+	if (tmp->label)
+		printf("llll\n");
 	while (tmp && ft_strcmplst(label, &(tmp->label)))
 	{
 		i += tmp->sizeoctet;
 		tmp = tmp->next;
 	}
 	if (tmp == 0)
-		exit(error_mess("ERROR ILLEGAL LABEL\n"));
+		exit(error_mess("ERROR ILLEGAL LABEL1\n"));
 	j = (unsigned int)i;
 	return (j);
 }
@@ -72,13 +78,17 @@ unsigned int			count_label(t_instr **instr, t_instr **begin,
 
 	tmp = *begin;
 	i = 0;
+	printf("wdwfw %s %s\n", tmp->cmd, tmp->label);
 	while (tmp && tmp != *instr && ft_strcmplst(label, &(tmp->label)))
+	{
+		printf("test\n");
 		tmp = tmp->next;
+	}
 	if (tmp == *instr)
 		j = ft_count_positive(tmp, instr, label, cmd);
 	else if (!ft_strcmplst(label, &(tmp->label)))
 		j = ft_count_negative(tmp, instr, cmd);
 	else
-		exit(error_mess("ERROR ILLEGAL LABEL\n"));
+		exit(error_mess("ERROR ILLEGAL LABEL2\n"));
 	return (j);
 }

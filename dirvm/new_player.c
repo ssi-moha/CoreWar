@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 12:15:39 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/19 14:20:27 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/11 10:43:58 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ t_player	*new_player(unsigned char *data, t_player **prev,
 	ft_setcomment(data, &header);
 	tmp->header = header;
 	tmp->id = id;
+	tmp->nblive = 0;
+	tmp->num = vm->incplayer++;
+	printf("NUM PLAYER:%d %d\n", tmp->num, vm->incplayer);
 	tmp->number = vm->args.champion[id];
 	tmp->startpos = 0;
 	tmp->next = NULL;

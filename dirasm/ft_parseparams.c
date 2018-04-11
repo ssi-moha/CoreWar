@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 10:02:11 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/21 18:42:12 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/11 15:59:17 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static int	ft_incpos(char *line, int pos)
 	while (line[pos] && line[pos] != ' ' && line[pos] != '\t' && line[pos] !=
 			SEPARATOR_CHAR)
 	{
-		if (line[pos] == '\n' || line[pos] == COMMENT_CHAR)
+		if (line[pos] == '\n' || line[pos] == COMMENT_CHAR || line[pos] == ';')
 			break ;
 		pos++;
 	}
@@ -123,12 +123,12 @@ void		ft_parseparams(char *line, int pos, t_instr *new)
 	parindex = 0;
 	while (line[pos] && (line[pos] == ' ' || line[pos] == '\t'))
 		pos++;
-	while (line[pos] && line[pos] != '\n' && line[pos] != COMMENT_CHAR)
+	while (line[pos] && line[pos] != '\n' && line[pos] != COMMENT_CHAR && line[pos] != ';')
 	{
 		par = 0;
 		ft_skipbk(line, &pos, &s, &start);
 		if (!(line[start] == ' ' || line[start] == '\t' || line[start]
-			== COMMENT_CHAR || line[start] == '\n') && line[start] != '\0')
+			== COMMENT_CHAR || line[start] == '\n' || line[start] == ';') && line[start] != '\0')
 		{
 			par = new_par(NULL, &new->params);
 			ft_copypar(line, start, pos, par);

@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_resetplayerinlive.c                             :+:      :+:    :+:   */
+/*   ft_uintmaxt.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/19 14:49:44 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/11 10:29:27 by lfujimot         ###   ########.fr       */
+/*   Created: 2017/12/07 17:16:15 by lfujimot          #+#    #+#             */
+/*   Updated: 2017/12/15 15:09:25 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_corewar.h"
+#include "../includes/ft_printf.h"
 
-void	ft_resetplayerinlive(t_player **p)
+void	ft_uintmaxt(uintmax_t nb, t_arg *current, t_ctx *ctx)
 {
-	t_player	*tmp;
+	char sign[2];
 
-	tmp = *p;
-	while (tmp)
-	{
-		tmp->inlive = 0;
-		tmp->nblive = 0;
-		tmp = tmp->next;
-	}
+	sign[0] = 0;
+	ft_fornb(nb, current, ctx, sign);
 }

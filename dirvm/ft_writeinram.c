@@ -6,20 +6,34 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 13:23:42 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/14 17:42:58 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/10 15:27:02 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-void	ft_writeinram(t_vm *vm, unsigned int pos, unsigned int value, int nboct)
+void	ft_writeinram(t_vm *vm, unsigned int pos, unsigned int value, int nboct, t_process *p)
 {
 	int i;
+	char c;
+
+	c = 'p';
+	printf("PPPPP %d", p->num);
+	if (p->num == 1)
+		c = 'A';
+	else if (p->num == 2)
+		c = 'B';
+	else if (p->num == 3)
+		c = 'C';
+	else if (p->num == 4)
+		c = 'D';
 
 	i = nboct - 1;
 	while (i >= 0)
 	{
+		vm->ramplayer[(pos) % MEM_SIZE] = c;
 		vm->ram[(pos--) % MEM_SIZE] = value % 256;
+		printf("cooo %cc", c);
 		value /= 256;
 		i--;
 	}

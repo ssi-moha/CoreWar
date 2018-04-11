@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 14:40:29 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/19 14:39:37 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/10 10:08:37 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int			ft_fork(t_process *proc, t_vm *vm)
 	t_process	*new;
 	t_player	*player;
 
-	printf("\x1b[33mFORK %d\n\x1b[0m", proc->id);
+//	printf("\x1b[33mFORK %d\n\x1b[0m", proc->id);
 	player = vm->players;
 	while (player && player->number != proc->playernb)
 		player = player->next;

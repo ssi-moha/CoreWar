@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 13:38:10 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/19 14:25:05 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/10 10:08:18 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	ft_and(t_process *proc, t_vm *vm)
 	int				b;
 	int				c;
 
-	printf("%d %d %d\n", proc->par[0], proc->par[1], proc->par[2]);
 	a = ft_getparvalue(proc, vm, 0, MEM_SIZE);
 	b = ft_getparvalue(proc, vm, 1, MEM_SIZE);
 	c = a & b;
@@ -30,7 +29,6 @@ int	ft_and(t_process *proc, t_vm *vm)
 		c /= 256;
 		i--;
 	}
-	printf("A %d B %d C %d\n", a, b, c);
 	if (c == 0)
 		proc->carry = 1;
 	else

@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_resetplayerinlive.c                             :+:      :+:    :+:   */
+/*   ft_ischarflag.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/19 14:49:44 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/11 10:29:27 by lfujimot         ###   ########.fr       */
+/*   Created: 2017/11/27 16:56:27 by lfujimot          #+#    #+#             */
+/*   Updated: 2017/11/30 20:07:55 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_corewar.h"
+#include "../includes/ft_printf.h"
 
-void	ft_resetplayerinlive(t_player **p)
+int	ft_ischarflag(char c)
 {
-	t_player	*tmp;
-
-	tmp = *p;
-	while (tmp)
-	{
-		tmp->inlive = 0;
-		tmp->nblive = 0;
-		tmp = tmp->next;
-	}
+	if (c == 'o' || c == 'x' || c == 'X' || c == 'e' || c == 'E'
+			|| c == 'f' || c == 'g' || c == 'G')
+		return (1);
+	else
+		return (0);
 }

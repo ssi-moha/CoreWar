@@ -1,0 +1,6 @@
+class Ram
+{
+    public Ram()
+    {
+    }
+}

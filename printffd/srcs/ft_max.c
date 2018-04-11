@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_resetplayerinlive.c                             :+:      :+:    :+:   */
+/*   ft_mac.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/19 14:49:44 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/11 10:29:27 by lfujimot         ###   ########.fr       */
+/*   Created: 2017/11/15 19:15:26 by lfujimot          #+#    #+#             */
+/*   Updated: 2017/12/17 16:13:25 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_corewar.h"
+#include "../includes/ft_printf.h"
 
-void	ft_resetplayerinlive(t_player **p)
+int	ft_max(int a, int b)
 {
-	t_player	*tmp;
-
-	tmp = *p;
-	while (tmp)
-	{
-		tmp->inlive = 0;
-		tmp->nblive = 0;
-		tmp = tmp->next;
-	}
+	if (a > b)
+		return (a);
+	else
+		return (b);
 }

@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:54:21 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/22 14:54:07 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/11 15:51:24 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void		ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app)
 				t = t->next;
 			}
 		}
-		new->label = app->tmplab;
+	//	new->label = app->tmplab;
 		app->tmplab = 0;//to free
 		ft_strdel(&line);
 	}
@@ -86,13 +86,24 @@ int				main(int argc, char **argv)
 	ft_init(&app);
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-		exit(error_mess("ERROR : FILE CANNOT BE FOUD OR CANNOT BE OPENNED\n"));
+		exit(error_mess("ERROR : FILE CANNOT BE FOUND OR CANNOT BE OPENNED\n"));
 	ft_parseasm(&app.instr, fd, &app.header, &app);
 	tmp = app.instr;
+	t_instr *t;
+	t = tmp;
+	while (t)
+	{
+		printf("C\n");
+		if (t->label)
+			printf("t %s\n", t->label->l);
+		t = t->next;
+	}
+
 	ft_converttohex(app.instr);
 	app.header.prog_size = prog_size(&app.instr);
 	if (app.instr == 0)
 		exit(error_mess("NO PROGRAM TO CONVERT\n"));
+	
 	ft_convertheader(&app, &file_name);
 	free_par(&app.instr->params);
 	free_instr(&app.instr);

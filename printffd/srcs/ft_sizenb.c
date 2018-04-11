@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_resetplayerinlive.c                             :+:      :+:    :+:   */
+/*   ft_sizenb.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/19 14:49:44 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/11 10:29:27 by lfujimot         ###   ########.fr       */
+/*   Created: 2017/12/14 19:05:00 by lfujimot          #+#    #+#             */
+/*   Updated: 2017/12/16 15:18:57 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_corewar.h"
+#include "../includes/ft_printf.h"
 
-void	ft_resetplayerinlive(t_player **p)
+int	ft_sizenb(uintmax_t value, int base)
 {
-	t_player	*tmp;
+	int size;
 
-	tmp = *p;
-	while (tmp)
+	if (value == 0)
+		return (1);
+	size = 0;
+	if (value == 0)
+		return (1);
+	while (value >= 1)
 	{
-		tmp->inlive = 0;
-		tmp->nblive = 0;
-		tmp = tmp->next;
+		value = value / base;
+		size++;
 	}
+	return (size);
 }

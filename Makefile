@@ -6,7 +6,7 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/03/22 14:18:46 by lfujimot         ###   ########.fr        #
+#    Updated: 2018/04/11 11:15:16 by lfujimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,6 +100,10 @@ PRINTF = printf
 
 PF = printf/libftprintf.a
 
+PRINTFFD = printffd
+
+PFFD = printffd/libftprintffd.a
+
 GNL = gnl/get_next_line.c
 
 GNLO = get_next_line.o
@@ -111,21 +115,24 @@ all : $(ASM) $(VM)
 $(ASM): $(OBJSASM)
 	$(MAKE) -C $(LIBFT)
 	$(MAKE) -C $(PRINTF)
+	$(MAKE) -C $(PRINTFFD)
 	gcc -c $(GNL) $(LFT)
-	gcc $(OBJSASM) $(LFT) $(PF) -o $(ASM) $(GNLO)
+	gcc $(OBJSASM) $(LFT) $(PF) $(PFFD) -o $(ASM) $(GNLO)
 
 $(VM): $(OBJSVM)
-	gcc $(OBJSVM) $(LFT) $(PF) -o $(VM)
+	gcc $(OBJSVM) $(LFT) $(PF) $(PFFD) -o $(VM) -fsanitize=address
 
-clean: $(LIBFT) $(PRINTF)
+clean: $(LIBFT) $(PRINTF) $(PRINTFFD)
 	rm -f $(OBJSASM) $(OBJSVM)
 	rm -f $(GNLO)
 	make -C "$(LIBFT)" clean
 	make -C "$(PRINTF)" clean
+	make -C "$(PRINTFFD)" clean
 
-fclean: clean $(LIBFT) $(PRINTF)
+fclean: clean $(LIBFT) $(PRINTF) $(PRINTFFD)
 	rm -f $(ASM) $(VM)
 	make -C "$(LIBFT)" fclean
 	make -C "$(PRINTF)" fclean
+	make -C "$(PRINTFFD)" fclean
 
-re: fclean all $(LIBFT) $(PRINTF)
+re: fclean all $(LIBFT) $(PRINTF) $(PRINTFFD)

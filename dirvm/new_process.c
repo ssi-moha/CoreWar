@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 15:16:41 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/19 14:18:54 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/11 11:12:52 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_process	*new_process(t_player *player, t_process **prev, t_vm *vm)
 	t_process	*tmp2;
 	static int	i;
 
+//	printf("PNUM %d\n", player->num);
 	tmp = NULL;
 	tmp2 = *prev;
 	if (!(tmp = (t_process*)malloc(sizeof(t_process))))
@@ -47,6 +48,8 @@ t_process	*new_process(t_player *player, t_process **prev, t_vm *vm)
 	tmp->inlive = 0;
 	tmp->carry = 0;
 	tmp->id = ++(vm->totalprocess);
+	printf("PNUM %d\n", player->num);
+	tmp->num = player->num;
 	tmp->cmd = DEFAULT;
 	tmp->next = NULL;
 	if (!*prev)

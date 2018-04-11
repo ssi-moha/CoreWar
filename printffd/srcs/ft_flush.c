@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_resetplayerinlive.c                             :+:      :+:    :+:   */
+/*   ft_flush.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/19 14:49:44 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/11 10:29:27 by lfujimot         ###   ########.fr       */
+/*   Created: 2017/12/16 10:43:31 by lfujimot          #+#    #+#             */
+/*   Updated: 2018/04/10 17:38:21 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_corewar.h"
+#include "../includes/ft_printf.h"
 
-void	ft_resetplayerinlive(t_player **p)
+void	ft_flush(t_ctx *ctx, char c)
 {
-	t_player	*tmp;
-
-	tmp = *p;
-	while (tmp)
+	if (ctx->pos == BUFF_SIZE - 1)
 	{
-		tmp->inlive = 0;
-		tmp->nblive = 0;
-		tmp = tmp->next;
+		write(ctx->fd, ctx->buf, ctx->pos);
+		ctx->pos = 0;
 	}
+	ctx->size++;
+	ctx->buf[ctx->pos++] = c;
 }

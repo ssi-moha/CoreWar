@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_resetplayerinlive.c                             :+:      :+:    :+:   */
+/*   ft_forpp.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/19 14:49:44 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/11 10:29:27 by lfujimot         ###   ########.fr       */
+/*   Created: 2017/12/16 14:11:01 by lfujimot          #+#    #+#             */
+/*   Updated: 2017/12/16 19:46:24 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_corewar.h"
+#include "../includes/ft_printf.h"
 
-void	ft_resetplayerinlive(t_player **p)
+void	ft_forpp(uintptr_t p, t_arg *current, t_ctx *ctx)
 {
-	t_player	*tmp;
+	t_arg cur;
 
-	tmp = *p;
-	while (tmp)
+	cur.type = 'x';
+	cur.width = current->width;
+	cur.prec = current->prec;
+	cur.mod = current->mod;
+	cur.flags = current->flags;
+	cur.flags.hash = 1;
+	if (p == 0)
 	{
-		tmp->inlive = 0;
-		tmp->nblive = 0;
-		tmp = tmp->next;
+		cur.mod = UNDEF;
+		if (cur.flags.moins)
+			cur.flags.zero = -1;
 	}
+	ft_uintmaxt(p, &cur, ctx);
 }
