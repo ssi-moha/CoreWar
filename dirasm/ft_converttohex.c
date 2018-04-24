@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 13:18:41 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/08 14:00:02 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/04/24 11:59:44 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,12 @@ void			ft_converttohex(t_instr *instr)
 	tmp = instr;
 	while (tmp)
 	{
-		ft_convcmd(&tmp);
-		ft_convparsize(&tmp);
-		ft_convparams(&tmp);
+		if (ft_strcmp(tmp->cmd, "tmp") != 0)
+		{
+			ft_convcmd(&tmp);
+			ft_convparsize(&tmp);
+			ft_convparams(&tmp);
+		}
 		tmp = tmp->next;
 	}
 }

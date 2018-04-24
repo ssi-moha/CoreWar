@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 11:56:03 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/08 14:35:40 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/24 12:01:20 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,13 @@ void			ft_printhex(t_instr *instr, int out)
 	tmp = instr;
 	while (tmp)
 	{
-		c = g_optab[ft_findcmd(tmp->cmd)].numcmd;
-		write(out, &c, 1);
-		ft_printsizepar(tmp, out);
-		ft_printparams(out, &instr, &tmp);
+		if (ft_strcmp(tmp->cmd, "tmp") != 0)
+		{
+			c = g_optab[ft_findcmd(tmp->cmd)].numcmd;
+			write(out, &c, 1);
+			ft_printsizepar(tmp, out);
+			ft_printparams(out, &instr, &tmp);
+		}
 		tmp = tmp->next;
 	}
 }

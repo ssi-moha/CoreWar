@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:54:21 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/11 15:51:24 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/24 11:57:45 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,20 @@ static void		ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app)
 		app->tmplab = 0;//to free
 		ft_strdel(&line);
 	}
+	t_lab *p;
+	p = app->tmplab;
+	if (p)
+	{
+		new = new_instr(NULL, instr);
+		new->cmd = "tmp";
+		//new->sizeoctet = 0;
+		new->label = app->tmplab;
+	}
+	while(p)
+	{
+		printf("TMP REMAIN %s\n", p->l);
+		p = p->next;
+	}
 }
 
 int				main(int argc, char **argv)
@@ -105,8 +119,8 @@ int				main(int argc, char **argv)
 		exit(error_mess("NO PROGRAM TO CONVERT\n"));
 	
 	ft_convertheader(&app, &file_name);
-	free_par(&app.instr->params);
-	free_instr(&app.instr);
+//	free_par(&app.instr->params);
+//	free_instr(&app.instr);
 	close(fd);
 	return (0);
 }
