@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/11 10:27:50 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/24 13:35:55 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,6 @@
 # include "op.h"
 # include <limits.h>
 # include <stdio.h>
-
-# define L 1
-# define A 2
-# define K 4
 
 # define	BUF_SIZE	1024
 # define	EXT_FILE	".s"
@@ -218,7 +214,8 @@ void			ft_checkinlive(t_process **ps);
 t_args			ft_parse_arg(int argc, char **argv);
 int				ft_uchar_toint(unsigned char tab[REG_SIZE]);
 int				ft_getparvalue(t_process *proc, t_vm *vm, int i, int mod);
-
+int				cnt_char(char *str, char c);
+char			*join_lines(int fd, char *line);
 /*******************************************************************
  *****************COMMANDES****************************************/
 void			func_tab(t_cmd par, t_process *proc, t_vm *vm);

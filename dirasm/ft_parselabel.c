@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 18:13:15 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/11 15:13:33 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/24 15:00:12 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	ft_copylabel(char *line, int size, t_instr *new, int start)
 		start++;
 	}
 	tmp[i] = '\0';
-	new_label(ft_strdup(tmp), &(new->label));
+	new_label(tmp, &(new->label));
 	printf("%s %s\n", tmp, new->label->l);
 	free(tmp);
 }

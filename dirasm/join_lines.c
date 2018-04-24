@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cpy_head.c                                         :+:      :+:    :+:   */
+/*   join_lines.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/08 13:39:43 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/04/24 13:29:54 by ssi-moha         ###   ########.fr       */
+/*   Created: 2018/04/24 13:36:50 by ssi-moha          #+#    #+#             */
+/*   Updated: 2018/04/24 14:39:10 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-int		cpy_head(int ret, t_header *head, char **line)
+char	*join_lines(int fd, char *line)
 {
-	if (ret == 1)
-		ft_strncpy(head->prog_name, ft_strchr(*line, '"') + 1,
-				ft_strclen(ft_strchr(*line, '"') + 1, '"'));
-	else if (ret == 2)
-		ft_strncpy(head->comment, ft_strchr(*line, '"') + 1,
-				ft_strclen(ft_strchr(*line, '"') + 1, '"'));
-	ft_strdel(line);
-	return (1);
+	char *str;
+	char *ret;
+
+	get_next_line(fd, &str);
+	ret = ft_strjoin(line, "\n");
+	return (ft_strjoin(ret, str));
 }

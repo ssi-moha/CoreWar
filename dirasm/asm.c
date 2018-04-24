@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:54:21 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/24 11:57:45 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/24 15:04:56 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static void		ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app)
 
 	ret = 0;
 	line = 0;
+	new = NULL;
 	while (get_next_line(fd, &line))
 	{
 		if (ft_skip_com_and_blank(line))
@@ -46,6 +47,8 @@ static void		ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app)
 			continue ;
 		else if ((ret = check_name_cmt(line)))
 		{
+			while (cnt_char(line, '"') != 2)
+				line = join_lines(fd, line);
 			app->checkcmd += cpy_head(ret, head, &line);
 			continue ;
 		}
@@ -119,8 +122,9 @@ int				main(int argc, char **argv)
 		exit(error_mess("NO PROGRAM TO CONVERT\n"));
 	
 	ft_convertheader(&app, &file_name);
-//	free_par(&app.instr->params);
-//	free_instr(&app.instr);
+	free_par(&app.instr->params);
+	free_instr(&app.instr);
+	printf("%s\n", app.header.prog_name);
 	close(fd);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/04/11 11:15:16 by lfujimot         ###   ########.fr        #
+#    Updated: 2018/04/24 13:36:31 by ssi-moha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,8 @@ SRCSASM = dirasm/asm.c \
 		  dirasm/ft_printindl.c\
 		  dirasm/make_pos.c\
 		  dirasm/ft_labonly.c\
+		  dirasm/cnt_char.c\
+		  dirasm/join_lines.c\
 		  dirvm/ft_check_filename.c\
 
 OBJSASM = $(SRCSASM:.c=.o)
