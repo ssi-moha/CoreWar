@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 15:16:41 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/11 11:12:52 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/24 17:37:46 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,12 @@ t_process	*new_process(t_player *player, t_process **prev, t_vm *vm)
 
 //	printf("PNUM %d\n", player->num);
 	tmp = NULL;
-	tmp2 = *prev;
+//	tmp2 = *prev;
 	if (!(tmp = (t_process*)malloc(sizeof(t_process))))
+	{
+		fprintf(stderr, "ERROR MALLOC\n");
 		return (0);
+	}
 	ft_initreg(tmp, player->number);
 	tmp->pc = player->startpos;
 	tmp->cycle = 0;
@@ -52,11 +55,16 @@ t_process	*new_process(t_player *player, t_process **prev, t_vm *vm)
 	tmp->num = player->num;
 	tmp->cmd = DEFAULT;
 	tmp->next = NULL;
-	if (!*prev)
-		*prev = tmp;
+	if (!vm->processes)
+	{
+		fprintf(stderr, "NO PREV\n");
+		vm->processes = tmp;
+	}
 	else
 	{
-		tmp->next = *prev;
+	
+		fprintf(stderr, "PREV\n");
+		tmp->next = vm->processes;
 		vm->processes = tmp;
 	}
 	return (tmp);

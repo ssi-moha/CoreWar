@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 14:03:17 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/04/11 13:44:25 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/24 15:47:44 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_zjmp(t_process *proc, t_vm *vm)
 	{
 		value = ft_getparvalue(proc, vm, 0, MEM_SIZE);
 		proc->pc = proc->pc - 3 + value % IDX_MOD;
-		fprintf(stderr, "FORK AT %d\n", proc->pc);
+		fprintf(stderr, "/nZJUMP AT %d VALUE %d\n", proc->pc, value);
 	}
 	return (1);
 }

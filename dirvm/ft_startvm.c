@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 15:13:43 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/10 17:29:27 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/24 17:31:18 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	ft_loadinstructions(t_vm *vm)
 	tmp = vm->processes;
 	while (tmp)
 	{
+	fprintf(stderr, "ICII %u %d ID %d\n", tmp->cmd, tmp->cycle, tmp->id);
 //		printf("\x1b[34mPROCESS %d\n\x1b[0m", tmp->id);
 		if (tmp->cycle == 0)
 			ft_loadnewinstr(tmp, vm);
@@ -38,30 +39,24 @@ void	ft_startvm(t_vm *vm)
 
 	while (vm->curcycle <= vm->cyclelimit)
 	{
-	printf("CUR %d\n", vm->curcycle);
+		printf("CUR %d\n", vm->curcycle);
 		if ((fd = open("OUTPUT.txt", O_RDONLY)) < 0)
-	{
-		close(fd);
-		ft_showramplayer(vm->ramplayer, vm);
-	}
-	else
-	{
-		while ((fd = open("OUTPUT.txt", O_RDONLY)) > 0)
 		{
-			
-//			printf("ddwdw %d\n", fd);
-			if (fd < 0)
+			close(fd);
+			ft_showramplayer(vm->ramplayer, vm);
+		}
+		else
+		{
+			while ((fd = open("OUTPUT.txt", O_RDONLY)) > 0)
 			{
+//			printf("ddwdw %d\n", fd);
+				if (fd < 0)
+				{
+					close(fd);
+					ft_showramplayer(vm->ramplayer, vm);
+				}
 				close(fd);
-
-				ft_showramplayer(vm->ramplayer, vm);
-				printf("NOOOOOOOOOOOOOOOOOOOOOO\n");
 			}
-
-				close(fd);
-	}
-
-			printf("pppp %d\n", fd);
 			t_process *p = vm->processes;
 			while (p)
 			{
@@ -74,9 +69,7 @@ void	ft_startvm(t_vm *vm)
 				pp = pp->next;
 			}
 
-	}
-
-
+		}
 		if (vm->processes == 0)
 		{
 			printf("NO MORE PROCESSES\n");
@@ -98,7 +91,7 @@ void	ft_startvm(t_vm *vm)
 		}
 		if (vm->curcycle == vm->cyclelimit)
 		{
-			ft_checkinlive(&(vm->processes));
+			ft_checkinlive(&(vm->processes), vm);
 			ft_resetplayerinlive(&(vm->players));
 			if (vm->nblive == 0)
 			{

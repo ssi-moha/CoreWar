@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/24 13:35:55 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/04/24 15:22:49 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,7 +210,7 @@ t_process		*new_process(t_player *player, t_process **prev, t_vm *vm);
 void			ft_startvm(t_vm *vm);
 void			ft_loadnewinstr(t_process *p, t_vm *vm);
 void			ft_setint(int *tab, int value, unsigned int size);
-void			ft_checkinlive(t_process **ps);
+void			ft_checkinlive(t_process **ps, t_vm *vm);
 t_args			ft_parse_arg(int argc, char **argv);
 int				ft_uchar_toint(unsigned char tab[REG_SIZE]);
 int				ft_getparvalue(t_process *proc, t_vm *vm, int i, int mod);

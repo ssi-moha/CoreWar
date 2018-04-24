@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 16:23:56 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/10 17:11:35 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/24 17:14:34 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,12 @@ static void	ft_loadpar(t_process *p, t_vm *vm)
 void	ft_loadnewinstr(t_process *p, t_vm *vm)
 {
 //	printf("P %d CYCLE %d\n", p->pc, p->cycle);
+	fprintf(stderr, "test\n");
 	if (p->cycle == 0)
 	{
-		if (p->cmd != DEFAULT)
+		if (p->cmd > 0 && p->cmd <= 16)
 		{
-//			printf("DO ACTION %s\n", g_optab[p->cmd - 1].cmd);
+			printf("DO ACTION %s\n", g_optab[p->cmd - 1].cmd);
 			func_tab(p->cmd, p, vm);
 		//	sleep(1);
 			ft_showram(vm->ram);
@@ -102,7 +103,10 @@ void	ft_loadnewinstr(t_process *p, t_vm *vm)
 //			printf("PAR %d %d %d\n", p->partype[0], p->partype[1], p->partype[2]); 
 			ft_loadpar(p, vm);
 //			printf("VALUE %d %d %d\n", p->par[0], p->par[1], p->par[2]);
+			fprintf(stderr, "okweiwoh\n");
 			p->cycle = g_optab[p->cmd - 1].nbcycle;
 		}
+		else
+			p->cycle = 1;
 	}
 }

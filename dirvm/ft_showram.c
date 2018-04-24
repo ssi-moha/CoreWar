@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 12:44:29 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/11 13:53:06 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/24 16:26:22 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,19 @@ void	ft_showram(unsigned char *ram)
 			n = -1;
 		}
 		n++;
+		i++;
+	}
+}
+
+static void ft_tolow(t_vm *vm)
+{
+	int i;
+
+	i = 0;
+	while (i < MEM_SIZE)
+	{
+		if (vm->ramplayer[i] >= 'A' && vm->ramplayer[i] <= 'Z')
+			vm->ramplayer[i] = vm->ramplayer[i] + 32;
 		i++;
 	}
 }
@@ -72,6 +85,7 @@ void	ft_showramplayer(unsigned char *ram, t_vm *vm)
 		i++;
 	}
 
+	ft_tolow(vm);
 	write(out, "\n", 1);
 	close(out);
 }

@@ -6,13 +6,13 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 19:22:00 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/19 14:35:43 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/24 15:22:54 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-void	ft_checkinlive(t_process **ps)
+void	ft_checkinlive(t_process **ps, t_vm *vm)
 {
 	t_process *tmp;
 
@@ -20,7 +20,10 @@ void	ft_checkinlive(t_process **ps)
 	while (tmp)
 	{
 		if (tmp->inlive == 0)
+		{
 			rm_process(tmp->id, ps);
+			--(vm->totalprocess);
+		}
 		else
 			tmp->inlive = 0;
 		tmp = tmp->next;

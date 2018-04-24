@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 11:39:09 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/04/11 12:13:59 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/24 16:19:27 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	ft_live(t_process *proc, t_vm *vm)
 
 	fprintf(stderr, "\x1b[31mLIVE DONE BY %d\n\x1b[0m", proc->id);
 	printf("\x1b[31mLIVE DONE BY %d\n\x1b[0m", proc->id);
+	proc->inlive = 1;
+	vm->nblive++;
 	if (vm == 0 || proc == 0)
 		return (0);
 	tmp = vm->players;
@@ -52,10 +54,10 @@ int	ft_live(t_process *proc, t_vm *vm)
 		fprintf(stderr, "un processus dit que le joueur %d(%s) est en vie", tmp->number, tmp->header.prog_name);
 		ft_printf("un processus dit que le joueur %d(%s) est en vie",
 				tmp->number, tmp->header.prog_name);
-		proc->inlive = 1;
+	//	proc->inlive = 1;
 		tmp->inlive = 1;
 		tmp->nblive++;
-		vm->nblive++;
+	//	vm->nblive++;
 		if (ft_correctplayer(&(vm->players), proc->par[0]) == 1)
 			vm->lastlive = proc->par[0];
 		return (1);
