@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 10:42:58 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/21 18:56:00 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/25 13:36:25 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ static int	ft_check_type_except_register(char *par)
 		lab = 1;
 	else
 	{
-		if (ft_atoi(par + i) < INT_MIN || ft_atoi(par + i) > INT_MAX)
-			exit(error_mess("ERROR ARGS VALUE\n"));
+//		if (ft_atoi(par + i) < INT_MIN || ft_atoi(par + i) > INT_MAX)
+//			exit(error_mess("ERROR ARGS VALUE\n"));
 		if (par[i] == '-' || par[i] == '+')
 			i++;
 		while (par[i])

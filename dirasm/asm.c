@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:54:21 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/24 15:04:56 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/04/25 13:17:52 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void		ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app)
 			t = app->tmplab;
 			while (t)
 			{
-				new_label(ft_strdup(t->l), &(new->label));
+				new_label(t->l, &(new->label));
 				t = t->next;
 			}
 		}
@@ -75,8 +75,7 @@ static void		ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app)
 	p = app->tmplab;
 	if (p)
 	{
-		new = new_instr(NULL, instr);
-		new->cmd = "tmp";
+		new = new_instr("tmp", instr);
 		//new->sizeoctet = 0;
 		new->label = app->tmplab;
 	}

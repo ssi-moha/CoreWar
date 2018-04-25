@@ -6,7 +6,7 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/04/24 13:36:31 by ssi-moha         ###   ########.fr        #
+#    Updated: 2018/04/25 12:32:37 by ssi-moha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ ASM = asm
 
 SRCSASM = dirasm/asm.c \
 		  dirasm/free_par.c \
+		  dirasm/free_lab.c \
 		  dirasm/new_par.c \
 		  dirasm/new_instr.c \
 		  dirasm/new_label.c \

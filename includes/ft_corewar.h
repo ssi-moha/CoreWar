@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/24 15:22:49 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/25 13:19:14 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,6 +216,7 @@ int				ft_uchar_toint(unsigned char tab[REG_SIZE]);
 int				ft_getparvalue(t_process *proc, t_vm *vm, int i, int mod);
 int				cnt_char(char *str, char c);
 char			*join_lines(int fd, char *line);
+int				free_lab(t_lab **lab);
 /*******************************************************************
  *****************COMMANDES****************************************/
 void			func_tab(t_cmd par, t_process *proc, t_vm *vm);

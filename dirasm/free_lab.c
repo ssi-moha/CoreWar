@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_instr.c                                       :+:      :+:    :+:   */
+/*   free_lab.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/03 18:25:31 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/04/25 13:14:06 by ssi-moha         ###   ########.fr       */
+/*   Created: 2018/04/25 12:17:11 by ssi-moha          #+#    #+#             */
+/*   Updated: 2018/04/25 13:14:26 by ssi-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-int		free_instr(t_instr **instr)
+int		free_lab(t_lab **lab)
 {
-	if (!*instr)
+	if (!*lab)
 		return (0);
-	while (*instr)
+	while (*lab)
 	{
-		if (ft_strcmp((*instr)->cmd, "tmp"))
-		{
-			if ((*instr)->params)
-				free_par(&(*instr)->params);
-		}
-		if ((*instr)->cmd)
-			free((*instr)->cmd);
-		if ((*instr)->label)
-			free_lab(&(*instr)->label);
-		free(*instr);
-		*instr = (*instr)->next;
+		if ((*lab)->l)
+			free((*lab)->l);
+		free(*lab);
+		*lab = (*lab)->next;
 	}
 	return (0);
 }
