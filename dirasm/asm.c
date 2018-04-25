@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:54:21 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/25 13:17:52 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/04/25 16:19:33 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,11 @@ static void		ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app)
 		else if ((ret = check_name_cmt(line)))
 		{
 			while (cnt_char(line, '"') != 2)
+			{
 				line = join_lines(fd, line);
+				if (line == 0)
+					exit(error_mess("ERROR NO .NAME OR NO .COMMENT\n"));
+			}
 			app->checkcmd += cpy_head(ret, head, &line);
 			continue ;
 		}

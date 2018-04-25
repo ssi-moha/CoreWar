@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 15:13:43 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/24 17:31:18 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/25 15:12:01 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	ft_loadinstructions(t_vm *vm)
 	tmp = vm->processes;
 	while (tmp)
 	{
-	fprintf(stderr, "ICII %u %d ID %d\n", tmp->cmd, tmp->cycle, tmp->id);
+//	fprintf(stderr, "ICII %u %d ID %d\n", tmp->cmd, tmp->cycle, tmp->id);
 //		printf("\x1b[34mPROCESS %d\n\x1b[0m", tmp->id);
 		if (tmp->cycle == 0)
 			ft_loadnewinstr(tmp, vm);
@@ -34,22 +34,28 @@ void	ft_startvm(t_vm *vm)
 	int fd;
 	int out;
 
-	printf("LIMIT %d\n", vm->cyclelimit);
+//	printf("LIMIT %d\n", vm->cyclelimit);
 			//printf("YES\n");
 
 	while (vm->curcycle <= vm->cyclelimit)
 	{
-		printf("CUR %d\n", vm->curcycle);
+	//	printf("CUR %d\n", vm->curcycle);
+		printf("C %d CUR %d CYCLE TO DIE %d NBLIVE %d\n", vm->curcycle, vm->cycletotal, vm->cyclelimit, vm->nblive);
+
+		if (vm->args.visu == 1)
+		{
 		if ((fd = open("OUTPUT.txt", O_RDONLY)) < 0)
 		{
 			close(fd);
+			printf("FDD %d\n", fd);
+			
 			ft_showramplayer(vm->ramplayer, vm);
 		}
 		else
 		{
 			while ((fd = open("OUTPUT.txt", O_RDONLY)) > 0)
 			{
-//			printf("ddwdw %d\n", fd);
+//			printf("FD %d\n", fd);
 				if (fd < 0)
 				{
 					close(fd);
@@ -57,19 +63,19 @@ void	ft_startvm(t_vm *vm)
 				}
 				close(fd);
 			}
-			t_process *p = vm->processes;
-			while (p)
-			{
-				printf("prod %d\n", p->num);
-				p = p->next;
-			}t_player *pp = vm->players;
-			while (pp)
-			{
-				printf("prodddd %d\n", pp->num);
-				pp = pp->next;
-			}
+	//		t_process *p = vm->processes;
+	//		while (p)
+	//		{
+	//			printf("prod %d\n", p->num);
+	//			p = p->next;
+	//		}t_player *pp = vm->players;
+	//		while (pp)
+	//		{
+	//			printf("prodddd %d\n", pp->num);
+	//			pp = pp->next;
+	//		}
 
-		}
+		}}
 		if (vm->processes == 0)
 		{
 			printf("NO MORE PROCESSES\n");
@@ -93,13 +99,24 @@ void	ft_startvm(t_vm *vm)
 		{
 			ft_checkinlive(&(vm->processes), vm);
 			ft_resetplayerinlive(&(vm->players));
-			if (vm->nblive == 0)
+			if (vm->nblive == 0 || vm->cyclelimit < CYCLE_DELTA)
 			{
 				ft_winner(vm);
 				printf("GAME OVER\n");
+				exit(2);
 			}
 			else if (vm->nblive >= NBR_LIVE)
+			{
 				vm->cyclelimit -= CYCLE_DELTA;
+				vm->maxchecks = 0;
+			}
+			else
+				vm->maxchecks++;
+			if (vm->maxchecks >= MAX_CHECKS)
+			{
+				vm->cyclelimit -= CYCLE_DELTA;
+				vm->maxchecks = 0;
+			}
 			vm->nblive = 0;
 			vm->curcycle = 0;
 		}

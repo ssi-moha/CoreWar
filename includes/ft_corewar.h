@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/25 13:19:14 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/04/25 15:05:39 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ typedef struct		s_args
 {
 	int				dump;
 	int				nb;
+	int				visu;
 	int				champion[4];
 	int				posfile[4];
 	int				isvalid;
@@ -113,6 +114,7 @@ typedef struct		s_vm
 	int				cycletotal;
 	int				start;
 	int				nblive;
+	int				maxchecks;
 	unsigned int	incplayer;
 	unsigned int	totalprocess;
 	t_args			args;

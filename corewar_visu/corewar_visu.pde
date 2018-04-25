@@ -9,14 +9,14 @@ String          linepc;
 int             x;
 int             y;
 String          path;
-
+int              test;
 void setup()
 {
   size(2000, 1200);
   background(0);
   x = 40;
   y = 40;
-  path = "/Users/lfujimot/COREWARRESTART/OUTPUT.txt";
+  path = "/Users/lfujimot/C/OUTPUT.txt";
   textSize(40);
 }
 //http://couleurs.optimisation-web.com/rgb
@@ -24,7 +24,7 @@ void draw()
 {
   x = 40;
   y = 40;
-  
+  test = 0;
   File f = new File(path);
   if (f.getAbsoluteFile().exists())
   {
@@ -32,16 +32,35 @@ void draw()
     try
     {
       line = reader.readLine();
+      if (line == null)
+      {
+        test = 1;
+        f.delete();  
+    }
+    else
+    {
       parsePlayers(line);
       line = reader.readLine();
+      if (line == null)
+       {
+         test = 1;
+       f.delete();  
+     }
+     else
+     {
       parseVM(line);
       linepc = reader.readLine();
-      
+      if (linepc == null)
+        {
+          test = 1;
+        f.delete();  
+      }}}
     }catch (IOException e) {
         e.printStackTrace();
         line = null;
       }
     line = "x";
+    if (test == 0){
     while (line != null)
     {
       try {
@@ -64,7 +83,8 @@ void draw()
       //int y = int(pieces[1]);
       //point(x, y);
     }
-    }
+    }}
+    if (test == 0)
       parsePC(linepc);
   }
 }
@@ -109,6 +129,7 @@ String readOnce()
 
 void  parsePlayers(String line)
 {
+  if (line != null){
  List<String> player_num = new ArrayList<String>();
  List<String> player_live = new ArrayList<String>();
  List<String> player_name = new ArrayList<String>();
@@ -137,11 +158,12 @@ void  parsePlayers(String line)
    posY += 120;
    println(player_num.get(i));
    textSize(40);
- }
+ }}
 }
 
  void  parseVM(String line)
 {
+  if (line != null){
  List<String> cycle = new ArrayList<String>();
  List<String> cycle_delta = new ArrayList<String>();
  List<String> cycle_to_die = new ArrayList<String>();
@@ -181,10 +203,11 @@ void  parsePlayers(String line)
   text("NBR_LIVE: " + nb_live.get(0), 1200, 280, -30);
   text("MAX_CHECKS: " + max_checks.get(0), 1200, 340, -30);
   text("Processes: " + process.get(0), 1200, 440, -30);
-}
+}}
 
 void  parsePC(String line)
 {
+  if (line != null){
  List<String> pc = new ArrayList<String>();
  
  Matcher m = Pattern.compile("(?<=pos:)[+-]?[0-9]+(?=;)").matcher(line); 
@@ -201,4 +224,4 @@ void  parsePC(String line)
     rect(40 + (Integer.parseInt(pc.get(i)) % 64) * 17, 40 + ((Integer.parseInt(pc.get(i))) / 64) * 15, 15, 15);   
  }
  fill(255);
-} 
+} }

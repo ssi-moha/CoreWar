@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 13:23:42 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/10 15:27:02 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/25 14:44:28 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	ft_writeinram(t_vm *vm, unsigned int pos, unsigned int value, int nboct, t_
 	char c;
 
 	c = 'p';
-	printf("PPPPP %d", p->num);
 	if (p->num == 1)
 		c = 'A';
 	else if (p->num == 2)
@@ -33,7 +32,6 @@ void	ft_writeinram(t_vm *vm, unsigned int pos, unsigned int value, int nboct, t_
 	{
 		vm->ramplayer[(pos) % MEM_SIZE] = c;
 		vm->ram[(pos--) % MEM_SIZE] = value % 256;
-		printf("cooo %cc", c);
 		value /= 256;
 		i--;
 	}

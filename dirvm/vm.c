@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 12:48:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/11 11:11:44 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/25 15:44:37 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	ft_initvm(t_vm *vm)
 	vm->curcycle = 0;
 	vm->cycletotal = 0;
 	vm->totalprocess = 0;
+	vm->maxchecks = 0;
 	vm->start = 1;
 	vm->incplayer = 1;
 	vm->nblive = 0;
@@ -64,11 +65,12 @@ int		main(int argc, char **argv)
 			fprintf(stderr, "5\n");
 		}
 	}
-	ft_showram(vm.ram);
+//	ft_showram(vm.ram);
 	//ft_showramplayer(vm.ramplayer, &vm);
 	
 	t_process *tmp;
 	tmp = vm.processes;
+	printf("HAS VISU %d\n", vm.args.visu);
 	while (tmp)
 	{
 //		printf("PROCESS %2.2x", tmp->r[0][0]);
