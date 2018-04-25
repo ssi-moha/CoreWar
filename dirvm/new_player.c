@@ -6,11 +6,18 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 12:15:39 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/25 16:32:28 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/25 16:52:42 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
+
+void		ft_initpl(t_player *p)
+{
+	p->nblive = 0;
+	p->startpos = 0;
+	p->next = NULL;
+}
 
 t_player	*new_player(unsigned char *data, t_player **prev,
 						unsigned int id, t_vm *vm)
@@ -28,12 +35,9 @@ t_player	*new_player(unsigned char *data, t_player **prev,
 	ft_setcomment(data, &header);
 	tmp->header = header;
 	tmp->id = id;
-	tmp->nblive = 0;
 	tmp->num = vm->incplayer++;
-	printf("NUM PLAYER:%d %d\n", tmp->num, vm->incplayer);
 	tmp->number = vm->args.champion[tmp->num - 1];
-	tmp->startpos = 0;
-	tmp->next = NULL;
+	ft_initpl(tmp);
 	if (!*prev)
 		*prev = tmp;
 	else

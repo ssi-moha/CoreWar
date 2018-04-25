@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 15:33:40 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/25 16:21:53 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/25 17:00:02 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ void	ft_winner(t_vm *vm)
 			break ;
 		tmp = tmp->next;
 	}
-	printf("VM LAST LIVE %d\n", vm->lastlive);
 	if (tmp != 0)
-		ft_printf("le joueur %d(%s) a gagne\n",tmp->number, tmp->header.prog_name);
+		ft_printf("le joueur %d(%s) a gagne\n", tmp->number,
+		tmp->header.prog_name);
 	else
-		ft_printf("le joueur %d(%s) a gagne\n",vm->players->number, vm->players->header.prog_name);
+		ft_printf("le joueur %d(%s) a gagne\n", vm->players->number,
+		vm->players->header.prog_name);
+	exit(2);
 }

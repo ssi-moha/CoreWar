@@ -6,7 +6,7 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/04/25 15:52:29 by lfujimot         ###   ########.fr        #
+#    Updated: 2018/04/25 17:39:39 by lfujimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,6 +92,7 @@ SRCSVM = dirvm/vm.c \
 		dirvm/ft_resetplayerinlive.c\
 		dirvm/ft_winner.c\
 		dirvm/ft_uchar_toint.c\
+		dirvm/ft_check_champion.c\
 
 OBJSVM = $(SRCSVM:.c=.o)
 

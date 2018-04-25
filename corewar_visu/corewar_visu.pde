@@ -134,6 +134,7 @@ void  parsePlayers(String line)
  List<String> player_live = new ArrayList<String>();
  List<String> player_name = new ArrayList<String>();
  Matcher m = Pattern.compile("(?<=p:)[+-]?[0-9]+(?=;)").matcher(line); 
+println(line);
  while (m.find()) {
    player_num.add(m.group());
  }
@@ -141,10 +142,12 @@ void  parsePlayers(String line)
  while (n.find()) {
    player_live.add(n.group());
  }
- Matcher o = Pattern.compile("(?<=nm:)[a-z0-9]+(?=;)").matcher(line); 
+ Matcher o = Pattern.compile("(?<=nm:)[^;]+(?=;)").matcher(line); 
  while (o.find()) {
+   println(o.group());
    player_name.add(o.group());
  }
+ println("SIZE" + player_name.size());
  fill(44, 62, 80);
  rect(1175, 25, 700,1000);
  fill(255);
@@ -152,7 +155,7 @@ void  parsePlayers(String line)
  for (int i = 0; i < player_num.size(); i++)
  {
    fill(255);
-   text("Player(" + player_num.get(i) +"):", 1200, posY, -30);
+   text("Player(" + player_num.get(i) +"): " + player_name.get(i), 1200, posY, -30);
    textSize(30);
    text("lives in current period: " + player_live.get(i), 1200 + 50, posY + 60 - 20, -30);
    posY += 120;

@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 16:55:40 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/10 10:09:18 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/25 17:27:45 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,13 @@ int			ft_getparvalue(t_process *proc, t_vm *vm, int i, int mod)
 {
 	if (proc == 0 || vm == 0 || i < 0 || i > 2)
 	{
-		ft_printf("error\n");
 		return (0);
 	}
 	if (proc->partype[i] == REG_CODE && (proc->par[i] < 1 ||
 		proc->par[i] > REG_NUMBER))
 	{
-		ft_printf("try to access wrong reg number\n");
 		return (0);
 	}
-//	printf("PROC PAR OR %d\n", proc->par[i]);
-//	printf("TYPE %d\n", proc->partype[i]);
 	if (proc->partype[i] == REG_CODE)
 		return (ft_getreg(proc, i));
 	else if (proc->partype[i] == DIR_CODE)

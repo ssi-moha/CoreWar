@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 12:48:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/25 15:44:37 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/25 16:58:18 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,55 +29,28 @@ static void	ft_initvm(t_vm *vm)
 	vm->cyclelimit = CYCLE_TO_DIE;
 }
 
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	unsigned char	*data;
-	unsigned int				i;
+	unsigned int	i;
 	t_vm			vm;
 	t_player		*p;
-	
-//	if (argc < 2 || argc > 5)
-//		exit(error_mess("ERROR NO PLAYER OR TOO MUCH PLAYER MUST BE BETWEEN 1 AND 4\n"));
+
 	ft_initvm(&vm);
 	vm.args = ft_parse_arg(argc, argv);
 	if (vm.args.isvalid == -1)
 		exit(error_mess("Wrong args\n"));
 	i = -1;
-	fprintf(stderr, "nb %d n1 =>%d\nn2 => %d\nn3 => %d\nn4 => %d\n", vm.args.nb, vm.args.champion[0], vm.args.champion[1], vm.args.champion[2], vm.args.champion[3]);
 	while (++i < vm.args.nb)
 	{
-//		printf("DATA %s\n", data);
-		fprintf(stderr, "pos argv %d %s\n", vm.args.posfile[i], argv[vm.args.posfile[i]]);
-		data = ft_openfile(argv[vm.args.posfile[i]]); // a changer;
-		printf("DATA %s\n", data);
+		data = ft_openfile(argv[vm.args.posfile[i]]);
 		if (data != NULL)
 		{
-			fprintf(stderr, "1\n");
 			p = new_player(data, &(vm.players), i, &vm);
-			printf("WDWDWDW %d\n", p->num);
-			fprintf(stderr, "2\n");
 			ft_checkmagic(data);
-			fprintf(stderr, "3\n");
-			ft_loadinram(data, vm.args.nb, &vm, p); //attention argc -1 si autres paramettre
-			fprintf(stderr, "4\n");
-			printf("BEFORE PROCESS %d\n", p->num);
+			ft_loadinram(data, vm.args.nb, &vm, p);
 			new_process(p, &(vm.processes), &vm);
-			fprintf(stderr, "5\n");
 		}
-	}
-//	ft_showram(vm.ram);
-	//ft_showramplayer(vm.ramplayer, &vm);
-	
-	t_process *tmp;
-	tmp = vm.processes;
-	printf("HAS VISU %d\n", vm.args.visu);
-	while (tmp)
-	{
-//		printf("PROCESS %2.2x", tmp->r[0][0]);
-//		printf("%2.2x", tmp->r[0][1]);
-//		printf("%2.2x", tmp->r[0][2]);
-//		printf("%2.2x\n", tmp->r[0][3]);
-		tmp = tmp->next;
 	}
 	ft_startvm(&vm);
 }

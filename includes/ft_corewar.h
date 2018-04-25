@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/25 15:05:39 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/25 17:39:16 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -241,10 +241,13 @@ int			ft_sti(t_process *proc, t_vm *vm);
 int			ft_st(t_process *proc, t_vm *vm);
 int			ft_aff(t_process *proc, t_vm *vm);
 
-void		ft_writeinram(t_vm *vm, unsigned int pos, unsigned int value, int nboct, t_process *p);
+void		ft_writeinram(t_vm *vm, unsigned int pos, unsigned int value, t_process *p);
 unsigned int	ft_readinram(t_vm *vm, unsigned int pos, unsigned int nboctet);
 void			ft_checkplayerinlive(t_player **p);
 void			ft_resetplayerinlive(t_player **p);
 void			ft_winner(t_vm *vm);
 int ft_printffd(int fd, const char *format, ...);
+char		*ft_get_next_arg(char **argv, int argc, int key);
+int			ft_hasvisu(int argc, char **argv, int key, t_args *args);
+int			ft_check_champion(char **argv, int argc, t_args *args, int key);
 #endif

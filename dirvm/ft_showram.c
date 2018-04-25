@@ -6,13 +6,13 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 12:44:29 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/24 16:26:22 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/25 17:15:29 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-void	ft_showram(unsigned char *ram)
+void		ft_showram(unsigned char *ram)
 {
 	int				i;
 	int				n;
@@ -32,7 +32,7 @@ void	ft_showram(unsigned char *ram)
 	}
 }
 
-static void ft_tolow(t_vm *vm)
+static void	ft_tolow(t_vm *vm)
 {
 	int i;
 
@@ -45,32 +45,41 @@ static void ft_tolow(t_vm *vm)
 	}
 }
 
-void	ft_showramplayer(unsigned char *ram, t_vm *vm)
+static void	ft_printp(t_vm *vm, int out)
 {
-	int				i;
-	int				n;
-	int				out;
-	t_player		*p;
-	t_process		*proc;
+	t_player	*p;
+	t_process	*proc;
 
-	i = 0;
-	n = 0;
-	out = open("OUTPUT.txt", O_CREAT | O_RDWR | O_TRUNC, S_IRWXU);
 	p = vm->players;
 	while (p)
 	{
-		ft_printffd(out, "p:%d;nbl:%d;nm:%s;", p->number, p->nblive, p->header.prog_name);	
+		ft_printffd(out, "p:%d;nbl:%d;nm:%s;", p->number,
+		p->nblive, p->header.prog_name);
 		p = p->next;
 	}
-		ft_printffd(out, "\nc:%d;ctd:%d;cd:%d;nbl:%d;pc:%d;max:%d;\n", vm->cycletotal, vm->cyclelimit, CYCLE_DELTA, NBR_LIVE, vm->totalprocess, MAX_CHECKS);
+	ft_printffd(out, "\nc:%d;ctd:%d;cd:%d;nbl:%d;pc:%d;max:%d;\n",
+	vm->cycletotal, vm->cyclelimit, CYCLE_DELTA, NBR_LIVE,
+	vm->totalprocess, MAX_CHECKS);
 	proc = vm->processes;
 	while (proc)
 	{
 		ft_printffd(out, "pos:%d;", proc->pc);
 		proc = proc->next;
 	}
+}
+
+void		ft_showramplayer(unsigned char *ram, t_vm *vm)
+{
+	int				i;
+	int				n;
+	int				out;
+
+	i = -1;
+	n = 0;
+	out = open("OUTPUT.txt", O_CREAT | O_RDWR | O_TRUNC, S_IRWXU);
+	ft_printp(vm, out);
 	write(out, "\n", 1);
-	while (i < MEM_SIZE)
+	while (++i < MEM_SIZE)
 	{
 		if (ram[i] == '\0')
 			write(out, "x", 1);
@@ -82,9 +91,7 @@ void	ft_showramplayer(unsigned char *ram, t_vm *vm)
 			n = -1;
 		}
 		n++;
-		i++;
 	}
-
 	ft_tolow(vm);
 	write(out, "\n", 1);
 	close(out);
