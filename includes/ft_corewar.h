@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/26 11:25:18 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/26 15:27:30 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,6 @@ typedef struct		s_op
 	char			*descr;
 	int				octpar; //octet de codage des parametres
 	int				dirsize; //1 = 2 0 = 4
-	struct s_op		*next;
 }					t_op;
 
 typedef struct		s_app // structure globale de l'application
@@ -175,7 +174,7 @@ int					cpy_head(int ret, t_header *head, char **line);
 int					ft_checkparams(char *par);
 int					ft_findcmd(char *cmd);
 int					error_mess(char *str);
-int					make_pos(char **line, t_instr *new, t_par *tmp);
+int					make_pos(char **line, t_instr *new);
 int					rm_process(int id, t_process **proc);
 int					ft_convertheader(t_app *application, char **file_name);
 void				ft_converttohex(t_instr *instr);

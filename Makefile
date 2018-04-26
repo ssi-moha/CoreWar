@@ -6,7 +6,7 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/04/25 17:39:39 by lfujimot         ###   ########.fr        #
+#    Updated: 2018/04/26 15:52:54 by lfujimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -121,7 +121,7 @@ $(ASM): $(OBJSASM)
 	$(MAKE) -C $(PRINTF)
 	$(MAKE) -C $(PRINTFFD)
 	gcc -c $(GNL) $(LFT)
-	gcc $(OBJSASM) $(LFT) $(PF) $(PFFD) -o $(ASM) $(GNLO)
+	gcc $(OBJSASM) $(LFT) $(PF) $(PFFD) -o $(ASM) $(GNLO) #-fsanitize=address
 
 $(VM): $(OBJSVM)
 	gcc $(OBJSVM) $(LFT) $(PF) $(PFFD) -o $(VM) #-fsanitize=address

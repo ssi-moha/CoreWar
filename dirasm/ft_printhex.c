@@ -6,13 +6,13 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 11:56:03 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/04/24 12:01:20 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/26 15:29:03 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-static void		ft_printind(t_par *par, int cmd, int out)
+static void		ft_printind(t_par *par, int out)
 {
 	unsigned char	p[IND_SIZE];
 	int				nb;
@@ -45,8 +45,10 @@ static void		ft_printdirlab(t_par *par, t_instr **begin, t_instr **instr,
 	ft_printdiril(sizelab, cmd, out);
 }
 
-static void		ft_printreg(int n, t_par *tmp, unsigned char p[4], int out)
+static void		ft_printreg(t_par *tmp, unsigned char p[4], int out)
 {
+	int				n;
+
 	n = ft_atoi(tmp->par + 1);
 	if (n <= 0 || n > REG_NUMBER)
 		exit(error_mess("ERROR REGISTER DOES NOT EXIST\n"));
@@ -59,18 +61,17 @@ static void		ft_printparams(int out, t_instr **instr, t_instr **begin)
 	t_par			*tmp;
 	int				c;
 	unsigned char	p[4];
-	int				n;
 
 	c = ft_findcmd((*begin)->cmd);
 	tmp = (*begin)->params;
 	while (tmp)
 	{
 		if (tmp->type == T_REG)
-			ft_printreg(n, tmp, p, out);
+			ft_printreg(tmp, p, out);
 		else if (tmp->type == T_DIR)
 			ft_printdir(tmp, c, out);
 		else if (tmp->type == T_IND)
-			ft_printind(tmp, c, out);
+			ft_printind(tmp, out);
 		else if (tmp->type == T_DIR + T_LAB)
 			ft_printdirlab(tmp, instr, begin, out);
 		else if (tmp->type == T_IND + T_LAB)

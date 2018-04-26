@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 14:19:44 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/26 15:05:10 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/26 15:49:20 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,50 @@ static void		ft_lastlab(t_instr **instr, t_app *app, t_instr *new)
 	}
 }
 
+static void		ft_copy_label(t_app *app, t_instr **new, char **line,
+		t_instr **instr)
+{
+	t_lab *t;
+
+	*new = new_instr(NULL, instr);
+	*new != NULL ? make_pos(line, *new) : 0;
+	if (app->tmplab != 0)
+	{
+		t = app->tmplab;
+		while (t)
+		{
+			new_label(t->l, &((*new)->label));
+			t = t->next;
+		}
+	}
+	app->tmplab = 0;
+	ft_strdel(line);
+}
+
+static void		ft_initparseasm(char **line, int *ret, t_instr **new)
+{
+	*ret = 0;
+	*line = 0;
+	*new = NULL;
+}
+
+static void		ft_join(int fd, char **line)
+{
+	while (cnt_char(*line, '"') != 2)
+	{
+		*line = join_lines(fd, *line);
+		if (line == 0)
+			exit(error_mess("ERROR NO .NAME OR NO .COMMENT\n"));
+	}
+}
+
 static void		ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app)
 {
 	char	*line;
 	t_instr	*new;
 	int		ret;
-	t_par	*tmp;
 
-	ret = 0;
-	line = 0;
-	new = NULL;
+	ft_initparseasm(&line, &ret, &new);
 	while (get_next_line(fd, &line))
 	{
 		if (ft_skip_com_and_blank(line))
@@ -59,36 +93,15 @@ static void		ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app)
 			continue ;
 		else if ((ret = check_name_cmt(line)))
 		{
-			while (cnt_char(line, '"') != 2)
-			{
-				line = join_lines(fd, line);
-				if (line == 0)
-					exit(error_mess("ERROR NO .NAME OR NO .COMMENT\n"));
-			}
+			ft_join(fd, &line);
 			app->checkcmd += cpy_head(ret, head, &line);
 			continue ;
 		}
 		if (app->checkcmd != 2)
 			exit(error_mess("ERROR NO .NAME OR NO .COMMENT\n"));
-		new = new_instr(NULL, instr);
-		new != NULL ? make_pos(&line, new, tmp) : 0;
-		if (app->tmplab != 0)
-		{
-			t_lab *t;
-
-			t = app->tmplab;
-			while (t)
-			{
-				new_label(t->l, &(new->label));
-				t = t->next;
-			}
-		}
-		app->tmplab = 0;
-		ft_strdel(&line);
+		ft_copy_label(app, &new, &line, instr);
 	}
-
 	ft_lastlab(instr, app, new);
-
 }
 
 int				main(int argc, char **argv)
@@ -96,8 +109,6 @@ int				main(int argc, char **argv)
 	t_app	app;
 	int		fd;
 	char	*file_name;
-	t_par	*p;
-	t_instr	*tmp;
 
 	if (argc < 2)
 		exit(error_mess("ERROR : WRONG NUMBER OF ARGUMENT\n"));
@@ -109,16 +120,6 @@ int				main(int argc, char **argv)
 	if (fd < 0)
 		exit(error_mess("ERROR : FILE CANNOT BE FOUND OR CANNOT BE OPENNED\n"));
 	ft_parseasm(&app.instr, fd, &app.header, &app);
-	tmp = app.instr;
-	t_instr *t;
-	t = tmp;
-	while (t)
-	{
-		printf("C\n");
-		if (t->label)
-			printf("t %s\n", t->label->l);
-		t = t->next;
-	}
 	ft_converttohex(app.instr);
 	app.header.prog_size = prog_size(&app.instr);
 	if (app.instr == 0)
@@ -126,7 +127,7 @@ int				main(int argc, char **argv)
 	ft_convertheader(&app, &file_name);
 	free_par(&app.instr->params);
 	free_instr(&app.instr);
-	printf("%s\n", app.header.prog_name);
+	ft_printf("file created %s.cor\n", app.header.prog_name);
 	close(fd);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 10:11:04 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/26 12:51:36 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/04/26 15:27:04 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,10 @@ static void		ft_copycmd(char *line, int start, int newpos, t_instr *instr)
 
 int				ft_parseinstr(char *line, int pos, t_instr *new)
 {
-	int newpos;
-	int start;
+	size_t	newpos;
+	int		start;
 
+	start = 0;
 	newpos = pos;
 	if (line == NULL)
 	{

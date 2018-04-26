@@ -6,13 +6,13 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 14:22:19 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/08 14:31:42 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/26 15:31:06 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-static void		ft_printindl(unsigned int lab, int cmd, int out)
+static void		ft_printindl(unsigned int lab, int out)
 {
 	unsigned char	p[DIR_SIZE];
 	unsigned int	nb;
@@ -40,5 +40,5 @@ void			ft_printindlab(t_par *par, t_instr **begin, t_instr **instr,
 
 	cmd = ft_findcmd((*begin)->cmd);
 	sizelab = count_label(instr, begin, par->par + 1, cmd);
-	ft_printindl(sizelab, cmd, out);
+	ft_printindl(sizelab, out);
 }

@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 16:20:55 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/04/24 11:35:20 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/26 15:30:23 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ static int				ft_strcmplst(char *label, t_lab **lst)
 	return (-1);
 }
 
-static unsigned int		ft_count_positive(t_instr *tmp, t_instr **instr,
-									char *label, int cmd)
+static unsigned int		ft_count_positive(t_instr *tmp, char *label)
 {
 	int				i;
 	unsigned int	j;
@@ -77,7 +76,7 @@ unsigned int			count_label(t_instr **instr, t_instr **begin,
 		tmp = tmp->next;
 	}
 	if (tmp == *instr)
-		j = ft_count_positive(tmp, instr, label, cmd);
+		j = ft_count_positive(tmp, label);
 	else if (!ft_strcmplst(label, &(tmp->label)))
 		j = ft_count_negative(tmp, instr, cmd);
 	else
