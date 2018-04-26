@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 13:45:53 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/26 12:28:56 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/26 12:49:55 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ static void		ft_checksize(int size, unsigned char *data, int fd)
 	{
 		free(data);
 		close(fd);
-		exit(error_mess("ERROR CHAMP SIZE NOT EQUAL TO THE SIZE IN THE HEADER
-					\n"));
+		exit(error_mess("CHAMP SIZE NOT EQUAL TO THE SIZE IN THE HEADER\n"));
 	}
 }
 
