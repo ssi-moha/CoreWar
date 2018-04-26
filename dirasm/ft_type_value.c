@@ -1,38 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_label.c                                        :+:      :+:    :+:   */
+/*   ft_type_value.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/21 19:03:59 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/26 17:07:29 by lfujimot         ###   ########.fr       */
+/*   Created: 2018/04/26 17:42:50 by lfujimot          #+#    #+#             */
+/*   Updated: 2018/04/26 17:44:00 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-t_lab	*new_label(char *l, t_lab **prev)
+int	ft_type_value(int dir, int lab)
 {
-	t_lab *tmp;
-	t_lab *tmp2;
-
-	tmp = NULL;
-	tmp2 = *prev;
-	if (!(tmp = (t_lab*)malloc(sizeof(t_lab))))
-		return (0);
-	if (l)
-		tmp->l = ft_strdup(l);
-	else
-		tmp->l = NULL;
-	tmp->next = NULL;
-	if (!*prev)
-		*prev = tmp;
-	else
-	{
-		while (tmp2->next)
-			tmp2 = tmp2->next;
-		tmp2->next = tmp;
-	}
-	return (tmp);
+	if (dir == 1 && lab == 0)
+		return (T_DIR);
+	else if (dir == 1 && lab == 1)
+		return (T_DIR + T_LAB);
+	else if (dir == 0 && lab == 0)
+		return (T_IND);
+	else if (dir == 0 && lab == 1)
+		return (T_IND + T_LAB);
+	return (-1);
 }

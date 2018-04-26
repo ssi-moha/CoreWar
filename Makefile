@@ -6,7 +6,7 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/04/26 15:52:54 by lfujimot         ###   ########.fr        #
+#    Updated: 2018/04/26 17:53:40 by lfujimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,9 @@ SRCSASM = dirasm/asm.c \
 		  dirasm/cnt_char.c\
 		  dirasm/join_lines.c\
 		  dirvm/ft_check_filename.c\
+		  dirasm/ft_type_value.c\
+		  dirasm/ft_checkpartype.c\
+		  dirasm/ft_parseasm.c\
 
 OBJSASM = $(SRCSASM:.c=.o)
 
@@ -112,7 +115,7 @@ GNL = gnl/get_next_line.c
 
 GNLO = get_next_line.o
 
-#CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 
 all : $(ASM) $(VM)
 

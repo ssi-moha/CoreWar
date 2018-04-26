@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/26 15:27:30 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/26 17:52:35 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,6 +190,8 @@ void				ft_printindlab(t_par *par, t_instr **begin, t_instr **instr,
 		int out);
 t_lab				*new_label(char *l, t_lab **prev);
 int					ft_labonly(t_app *app, char *line);
+int					ft_type_value(int dir, int lab);
+int					ft_checkpartype(t_par *par, int parindex, char *cmd);
 //open_filescor
 //checkvalidfile magic + prog size
 //getname
@@ -220,6 +222,7 @@ int				ft_getparvalue(t_process *proc, t_vm *vm, int i, int mod);
 int				cnt_char(char *str, char c);
 char			*join_lines(int fd, char *line);
 int				free_lab(t_lab **lab);
+void			ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app);
 /*******************************************************************
  *****************COMMANDES****************************************/
 void			func_tab(t_cmd par, t_process *proc, t_vm *vm);

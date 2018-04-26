@@ -6,24 +6,11 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 10:42:58 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/26 13:46:55 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/26 17:44:14 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
-
-static int	ft_type_value(int dir, int lab)
-{
-	if (dir == 1 && lab == 0)
-		return (T_DIR);
-	else if (dir == 1 && lab == 1)
-		return (T_DIR + T_LAB);
-	else if (dir == 0 && lab == 0)
-		return (T_IND);
-	else if (dir == 0 && lab == 1)
-		return (T_IND + T_LAB);
-	return (-1);
-}
 
 static int	ft_check_type_except_register(char *par)
 {
