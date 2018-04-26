@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/04 09:54:21 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/26 12:47:48 by emerabet         ###   ########.fr       */
+/*   Created: 2018/04/26 14:19:44 by lfujimot          #+#    #+#             */
+/*   Updated: 2018/04/26 14:59:44 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,18 @@ static void		ft_init(t_app *app)
 	ft_bzero(app->header.prog_name, PROG_NAME_LENGTH + 1);
 	ft_bzero(app->header.comment, COMMENT_LENGTH + 1);
 	app->checkcmd = 0;
+}
+
+static void		ft_lastlab(t_instr **instr, t_app *app, t_instr *new)
+{
+	t_lab		*p;
+
+	p = app->tmplab;
+	if (p)
+	{
+		new = new_instr("tmp", instr);
+		new->label = app->tmplab;
+	}
 }
 
 static void		ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app)
@@ -60,17 +72,32 @@ static void		ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app)
 			exit(error_mess("ERROR NO .NAME OR NO .COMMENT\n"));
 		new = new_instr(NULL, instr);
 		new != NULL ? make_pos(&line, new, tmp) : 0;
+		if (app->tmplab != 0)
+		{
+			t_lab *t;
+
+			t = app->tmplab;
+			while (t)
+			{
+				new_label(t->l, &(new->label));
+				t = t->next;
+			}
+		}
 		app->tmplab = 0;
 		ft_strdel(&line);
 	}
+
+	ft_lastlab(instr, app, new);
+
 }
 
 int				main(int argc, char **argv)
 {
 	t_app	app;
 	int		fd;
-	char *file_name;
+	char	*file_name;
 	t_par	*p;
+	t_instr	*tmp;
 
 	if (argc < 2)
 		exit(error_mess("ERROR : WRONG NUMBER OF ARGUMENT\n"));
@@ -82,6 +109,16 @@ int				main(int argc, char **argv)
 	if (fd < 0)
 		exit(error_mess("ERROR : FILE CANNOT BE FOUND OR CANNOT BE OPENNED\n"));
 	ft_parseasm(&app.instr, fd, &app.header, &app);
+	tmp = app.instr;
+	t_instr *t;
+	t = tmp;
+	while (t)
+	{
+		printf("C\n");
+		if (t->label)
+			printf("t %s\n", t->label->l);
+		t = t->next;
+	}
 	ft_converttohex(app.instr);
 	app.header.prog_size = prog_size(&app.instr);
 	if (app.instr == 0)
