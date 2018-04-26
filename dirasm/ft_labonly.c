@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 13:26:20 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/22 14:53:52 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/26 12:56:52 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	ft_addlabel(char *line, int size, int start, t_app *app)
 {
-	int i;
-	char 	*tmp;
+	int		i;
+	char	*tmp;
 
 	i = 0;
 	tmp = (char *)malloc(sizeof(char) * size);
@@ -32,12 +32,12 @@ static void	ft_addlabel(char *line, int size, int start, t_app *app)
 	free(tmp);
 }
 
-int	ft_labonly(t_app *app, char *line)
+int			ft_labonly(t_app *app, char *line)
 {
-	int	i;
-	int	j;
-	int lab;
-	int x;
+	int		i;
+	int		j;
+	int		lab;
+	int		x;
 
 	lab = 0;
 	i = 0;
@@ -48,14 +48,13 @@ int	ft_labonly(t_app *app, char *line)
 		j++;
 	if (line[j] == LABEL_CHAR)
 	{
-		j++;
 		lab = 1;
-		x = j;
+		x = (j + 1);
 		while (line[x] && (line[x] == ' ' || line[x] == '\t'))
 			x++;
 		if (line[x] == '\0')
 		{
-			ft_addlabel(line, j - i - 1, i, app);
+			ft_addlabel(line, (j + 1) - i - 1, i, app);
 			return (1);
 		}
 	}

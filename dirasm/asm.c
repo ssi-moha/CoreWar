@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:54:21 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/25 16:19:33 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/26 12:47:48 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,33 +60,8 @@ static void		ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app)
 			exit(error_mess("ERROR NO .NAME OR NO .COMMENT\n"));
 		new = new_instr(NULL, instr);
 		new != NULL ? make_pos(&line, new, tmp) : 0;
-		if (app->tmplab != 0)
-		{
-			t_lab *t;
-
-			t = app->tmplab;
-			while (t)
-			{
-				new_label(t->l, &(new->label));
-				t = t->next;
-			}
-		}
-	//	new->label = app->tmplab;
-		app->tmplab = 0;//to free
+		app->tmplab = 0;
 		ft_strdel(&line);
-	}
-	t_lab *p;
-	p = app->tmplab;
-	if (p)
-	{
-		new = new_instr("tmp", instr);
-		//new->sizeoctet = 0;
-		new->label = app->tmplab;
-	}
-	while(p)
-	{
-		printf("TMP REMAIN %s\n", p->l);
-		p = p->next;
 	}
 }
 
@@ -96,7 +71,6 @@ int				main(int argc, char **argv)
 	int		fd;
 	char *file_name;
 	t_par	*p;
-	t_instr *tmp;
 
 	if (argc < 2)
 		exit(error_mess("ERROR : WRONG NUMBER OF ARGUMENT\n"));
@@ -108,22 +82,10 @@ int				main(int argc, char **argv)
 	if (fd < 0)
 		exit(error_mess("ERROR : FILE CANNOT BE FOUND OR CANNOT BE OPENNED\n"));
 	ft_parseasm(&app.instr, fd, &app.header, &app);
-	tmp = app.instr;
-	t_instr *t;
-	t = tmp;
-	while (t)
-	{
-		printf("C\n");
-		if (t->label)
-			printf("t %s\n", t->label->l);
-		t = t->next;
-	}
-
 	ft_converttohex(app.instr);
 	app.header.prog_size = prog_size(&app.instr);
 	if (app.instr == 0)
 		exit(error_mess("NO PROGRAM TO CONVERT\n"));
-	
 	ft_convertheader(&app, &file_name);
 	free_par(&app.instr->params);
 	free_instr(&app.instr);
