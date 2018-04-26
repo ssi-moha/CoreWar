@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 15:13:43 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/25 17:33:24 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/26 11:44:21 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,11 @@ void		ft_startvm(t_vm *vm)
 
 	while (vm->curcycle <= vm->cyclelimit)
 	{
+		if (vm->args.dump > 0 && vm->cycletotal == vm->args.dump)
+		{
+			ft_showram(vm->ram);
+			exit(2);
+		}
 		ft_visu(vm);
 		if (vm->curcycle == vm->cyclelimit)
 		{

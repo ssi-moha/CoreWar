@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 15:16:41 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/25 16:48:48 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/26 09:46:44 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ t_process	*new_process(t_player *player, t_process **prev, t_vm *vm)
 		return (0);
 	ft_initreg(tmp, player->number);
 	tmp->pc = player->startpos;
+	tmp->lastpc = player->startpos;
 	tmp->cycle = 0;
 	tmp->inlive = 0;
 	tmp->carry = 0;

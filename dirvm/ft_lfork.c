@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 14:06:47 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/25 17:24:26 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/26 09:50:13 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ int			ft_lfork(t_process *proc, t_vm *vm)
 		player = player->next;
 	if ((new = new_process(player, &proc, vm)) == NULL)
 		return (0);
-	new->pc = proc->pc + proc->par[0];
+	new->pc = proc->lastpc + proc->par[0];
+	new->lastpc = new->pc;
 	new->cycle = 0;
 	new->inlive = proc->inlive;
 	new->carry = proc->carry;

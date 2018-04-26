@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 14:44:33 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/19 14:23:24 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/26 08:01:25 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	ft_or(t_process *proc, t_vm *vm)
 		c /= 256;
 		i--;
 	}
-	printf("A %d B %d C %d\n", a, b, c);
 	if (c == 0)
 		proc->carry = 1;
 	else

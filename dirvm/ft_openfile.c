@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 13:45:53 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/19 14:38:13 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/26 12:28:56 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,26 @@ static void		ft_custom_concat(unsigned char *data, unsigned char *buf,
 		data[i] = buf[j];
 		i++;
 		j++;
+	}
+}
+
+static void		ft_checksize(int size, unsigned char *data, int fd)
+{
+	int sizeh;
+
+	sizeh = 4 + PROG_NAME_LENGTH + 4 + 4 + COMMENT_LENGTH + 4;
+	if (size < sizeh)
+	{
+		free(data);
+		close(fd);
+		exit(error_mess("ERROR CHAMP TOO SMALL FOR THE VM\n"));
+	}
+	else if (size != (ft_checkprogsize(data) + sizeh))
+	{
+		free(data);
+		close(fd);
+		exit(error_mess("ERROR CHAMP SIZE NOT EQUAL TO THE SIZE IN THE HEADER
+					\n"));
 	}
 }
 
@@ -50,6 +70,7 @@ unsigned char	*ft_openfile(char *file)
 		data = realloc(data, size);
 		ft_custom_concat(data, buf, size - r, r);
 	}
+	ft_checksize(size, data, fd);
 	close(fd);
 	return (data);
 }

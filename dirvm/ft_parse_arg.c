@@ -6,7 +6,7 @@
 /*   By: emerabet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 16:20:59 by emerabet          #+#    #+#             */
-/*   Updated: 2018/04/25 18:01:32 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/26 12:27:06 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static void		ft_init_args(t_args *args)
 {
 	args->dump = -1;
 	args->visu = -1;
+	args->verb = -1;
 	args->nb = 0;
 	args->champion[0] = -9;
 	args->champion[1] = -9;
@@ -46,7 +47,7 @@ static void		ft_init_args(t_args *args)
 	args->posfile[3] = -1;
 }
 
-void	ft_incpar(t_args *args)
+void			ft_incpar(t_args *args)
 {
 	int i;
 
@@ -61,6 +62,29 @@ void	ft_incpar(t_args *args)
 	}
 }
 
+static int		ft_flags(int argc, char **argv, int i, t_args *args)
+{
+	if (args->dump < 0)
+	{
+		args->dump = ft_hasdump(argc, argv, i, args);
+		if (args->dump >= 0)
+			return (i + 2);
+	}
+	if (args->visu < 0)
+	{
+		args->visu = ft_hasvisu(argc, argv, i, args);
+		if (args->visu >= 0)
+			return (i + 1);
+	}
+	if (args->verb < 0)
+	{
+		args->verb = ft_hasverb(argc, argv, i, args);
+		if (args->verb >= 0)
+			return (i + 1);
+	}
+	return (i);
+}
+
 t_args			ft_parse_arg(int argc, char **argv)
 {
 	t_args		args;
@@ -71,18 +95,7 @@ t_args			ft_parse_arg(int argc, char **argv)
 	ft_init_args(&args);
 	while (i < argc && args.isvalid == 1)
 	{
-		if (args.dump < 0)
-		{
-			args.dump = ft_hasdump(argc, argv, i, &args);
-			if (args.dump >= 0)
-				i = i + 2;
-		}
-		if (args.visu < 0)
-		{
-			args.visu = ft_hasvisu(argc, argv, i, &args);
-			if (args.visu >= 0)
-				i++;
-		}
+		i = ft_flags(argc, argv, i, &args);
 		res = ft_check_champion(argv, argc, &args, i);
 		if (res > 0)
 		{

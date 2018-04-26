@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 16:23:56 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/25 17:18:45 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/26 12:26:43 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,15 +80,37 @@ static void	ft_loadpar(t_process *p, t_vm *vm)
 	}
 }
 
+static void	ft_verb(t_process *p)
+{
+	int i;
+
+	ft_printf("(pc at %d) P %d do -> %s", p->pc, p->id,
+			g_optab[p->cmd - 1].cmd);
+	i = 0;
+	while (i < g_optab[p->cmd - 1].nbpar)
+	{
+		if (p->partype[i] == 1)
+			ft_printf(" REG: %d", p->par[i]);
+		else if (p->partype[i] == 2)
+			ft_printf(" DIR: %d", p->par[i]);
+		else if (p->partype[i] == 3)
+			ft_printf(" IND: %d", p->par[i]);
+		i++;
+	}
+	ft_printf("\n");
+}
+
 void		ft_loadnewinstr(t_process *p, t_vm *vm)
 {
 	if (p->cycle == 0)
 	{
 		if (p->cmd > 0 && p->cmd <= 16)
 		{
-			fprintf(stderr, "DO ACTION %s\n", g_optab[p->cmd - 1].cmd);
+			if (vm->args.verb == 1)
+				ft_verb(p);
 			func_tab(p->cmd, p, vm);
 		}
+		p->lastpc = p->pc;
 		p->cmd = vm->ram[p->pc++ % MEM_SIZE];
 		if (p->cmd > 0 && p->cmd <= 16)
 		{

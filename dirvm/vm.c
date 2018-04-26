@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 12:48:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/25 16:58:18 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/26 11:39:31 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int			main(int argc, char **argv)
 			ft_loadinram(data, vm.args.nb, &vm, p);
 			new_process(p, &(vm.processes), &vm);
 		}
+		free(data);
 	}
 	ft_startvm(&vm);
 }

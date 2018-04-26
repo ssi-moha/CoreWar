@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 17:36:04 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/25 17:54:21 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/26 12:29:52 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,13 @@ char		*ft_get_next_arg(char **argv, int argc, int key)
 int			ft_hasvisu(int argc, char **argv, int key, t_args *args)
 {
 	if (ft_strcmp(argv[key], "-visu") != 0)
+		return (-1);
+	return (1);
+}
+
+int			ft_hasverb(int argc, char **argv, int key, t_args *args)
+{
+	if (ft_strcmp(argv[key], "-verb") != 0)
 		return (-1);
 	return (1);
 }
