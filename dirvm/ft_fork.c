@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 14:40:29 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/04/26 12:30:33 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/26 18:02:55 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int			ft_fork(t_process *proc, t_vm *vm)
 	player = vm->players;
 	while (player && player->number != proc->playernb)
 		player = player->next;
-	if ((new = new_process(player, &proc, vm)) == NULL)
+	if ((new = new_process(player, vm)) == NULL)
 		return (0);
 	new->pc = proc->lastpc + (proc->par[0] % IDX_MOD);
 	if (vm->args.verb == 1)

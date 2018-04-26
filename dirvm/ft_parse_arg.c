@@ -6,7 +6,7 @@
 /*   By: emerabet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 16:20:59 by emerabet          #+#    #+#             */
-/*   Updated: 2018/04/26 12:27:06 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/26 18:09:54 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,13 @@ static int		ft_flags(int argc, char **argv, int i, t_args *args)
 	}
 	if (args->visu < 0)
 	{
-		args->visu = ft_hasvisu(argc, argv, i, args);
+		args->visu = ft_hasvisu(argv, i);
 		if (args->visu >= 0)
 			return (i + 1);
 	}
 	if (args->verb < 0)
 	{
-		args->verb = ft_hasverb(argc, argv, i, args);
+		args->verb = ft_hasverb(argv, i);
 		if (args->verb >= 0)
 			return (i + 1);
 	}

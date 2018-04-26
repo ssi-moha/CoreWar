@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 13:45:53 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/26 12:49:55 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/26 18:00:06 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ static void		ft_custom_concat(unsigned char *data, unsigned char *buf,
 	}
 }
 
-static void		ft_checksize(int size, unsigned char *data, int fd)
+static void		ft_checksize(unsigned int size, unsigned char *data, int fd)
 {
-	int sizeh;
+	unsigned int sizeh;
 
 	sizeh = 4 + PROG_NAME_LENGTH + 4 + 4 + COMMENT_LENGTH + 4;
 	if (size < sizeh)
@@ -53,7 +53,7 @@ unsigned char	*ft_openfile(char *file)
 	int				fd;
 	unsigned char	buf[BUF_SIZE + 1];
 	int				r;
-	int				size;
+	unsigned int	size;
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)

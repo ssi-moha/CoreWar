@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 15:13:43 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/26 11:44:21 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/26 18:04:05 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,6 @@ void		ft_checknblive(t_vm *vm)
 
 void		ft_startvm(t_vm *vm)
 {
-	int		out;
-
 	while (vm->curcycle <= vm->cyclelimit)
 	{
 		if (vm->args.dump > 0 && vm->cycletotal == vm->args.dump)

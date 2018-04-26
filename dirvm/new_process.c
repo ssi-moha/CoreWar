@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 15:16:41 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/26 09:46:44 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/26 18:01:52 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,9 @@ static void	ft_initreg(t_process *process, unsigned int number)
 	ft_setint(process->par, 0, 3);
 }
 
-t_process	*new_process(t_player *player, t_process **prev, t_vm *vm)
+t_process	*new_process(t_player *player, t_vm *vm)
 {
 	t_process	*tmp;
-	t_process	*tmp2;
-	static int	i;
 
 	tmp = NULL;
 	if (!(tmp = (t_process*)malloc(sizeof(t_process))))

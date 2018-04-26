@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 11:29:42 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/26 11:26:56 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/26 18:00:49 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 static void	ft_loadplayer(unsigned char *data, unsigned int start,
 							t_vm *vm, t_player *p)
 {
-	int		i;
-	int		prog;
-	char	c;
+	unsigned int		i;
+	int					prog;
+	char				c;
 
 	c = 'p';
 	if (p->num == 1)
