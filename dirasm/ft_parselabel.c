@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 18:13:15 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/24 15:00:12 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/04/26 12:52:34 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ static int	ft_findlabel(char *line)
 
 static void	ft_copylabel(char *line, int size, t_instr *new, int start)
 {
-	int i;
-	char 	*tmp;
+	int		i;
+	char	*tmp;
 
 	i = 0;
 	if (new == 0)
@@ -69,8 +69,8 @@ int			ft_parselabel(char *line, t_instr *new)
 		ft_copylabel(line, sizelabel, new, start);
 	}
 	if (new->label)
-	printf("ICI %s\n", new->label->l);
+		printf("ICI %s\n", new->label->l);
 	else
-	printf("PASLAB %s\n", new->cmd);
+		printf("PASLAB %s\n", new->cmd);
 	return (sizelabel + start);
 }

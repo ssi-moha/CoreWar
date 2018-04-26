@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 10:02:11 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/11 15:59:17 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/26 12:42:41 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	ft_copypar(char *line, int start, int pos, t_par *par)
 	par->par[i] = '\0';
 }
 
-static void ft_checkvalidchar(char *str)
+static void	ft_checkvalidchar(char *str)
 {
 	int	i;
 
@@ -123,12 +123,14 @@ void		ft_parseparams(char *line, int pos, t_instr *new)
 	parindex = 0;
 	while (line[pos] && (line[pos] == ' ' || line[pos] == '\t'))
 		pos++;
-	while (line[pos] && line[pos] != '\n' && line[pos] != COMMENT_CHAR && line[pos] != ';')
+	while (line[pos] && line[pos] != '\n' && line[pos] !=
+			COMMENT_CHAR && line[pos] != ';')
 	{
 		par = 0;
 		ft_skipbk(line, &pos, &s, &start);
 		if (!(line[start] == ' ' || line[start] == '\t' || line[start]
-			== COMMENT_CHAR || line[start] == '\n' || line[start] == ';') && line[start] != '\0')
+			== COMMENT_CHAR || line[start] == '\n' || line[start] == ';')
+				&& line[start] != '\0')
 		{
 			par = new_par(NULL, &new->params);
 			ft_copypar(line, start, pos, par);
