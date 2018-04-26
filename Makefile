@@ -6,7 +6,7 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/04/26 18:10:35 by lfujimot         ###   ########.fr        #
+#    Updated: 2018/04/26 18:33:26 by lfujimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ SRCSASM = dirasm/asm.c \
 
 OBJSASM = $(SRCSASM:.c=.o)
 
-VM = vm
+VM = corewar
 
 SRCSVM = dirvm/vm.c \
 		dirvm/ft_openfile.c \
