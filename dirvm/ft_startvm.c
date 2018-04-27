@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 15:13:43 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/27 18:22:31 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/27 18:51:02 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ static void		ft_maxchecksandreset(t_vm *vm)
 	{
 		vm->cyclelimit -= CYCLE_DELTA;
 		vm->maxchecks = 0;
-		ft_printf("cycle to die is now at %d\n", vm->cyclelimit);
+		if (vm->args.verb == 1)
+			ft_printf("cycle to die is now at %d\n", vm->cyclelimit);
 	}
 	vm->nblive = 0;
 	vm->curcycle = 0;
@@ -54,7 +55,8 @@ static void		ft_checknblive(t_vm *vm, int out)
 	{
 		vm->cyclelimit -= CYCLE_DELTA;
 		vm->maxchecks = 0;
-		ft_printf("cycle to die is now at %d\n", vm->cyclelimit);
+		if (vm->args.verb == 1)
+			ft_printf("cycle to die is now at %d\n", vm->cyclelimit);
 	}
 	else
 		vm->maxchecks++;
