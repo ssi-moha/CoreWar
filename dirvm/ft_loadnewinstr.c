@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 16:23:56 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/26 12:26:43 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/27 10:35:12 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,11 @@ static void	ft_loadpar(t_process *p, t_vm *vm)
 	}
 }
 
-static void	ft_verb(t_process *p)
+static void	ft_verb(t_process *p, t_vm *vm)
 {
 	int i;
 
-	ft_printf("(pc at %d) P %d do -> %s", p->pc, p->id,
+	ft_printf("cycle %d (pc at %d) P %d do -> %s", vm->cycletotal, p->pc, p->id,
 			g_optab[p->cmd - 1].cmd);
 	i = 0;
 	while (i < g_optab[p->cmd - 1].nbpar)
@@ -102,12 +102,12 @@ static void	ft_verb(t_process *p)
 
 void		ft_loadnewinstr(t_process *p, t_vm *vm)
 {
-	if (p->cycle == 0)
+	if (p->cycle <= 0)
 	{
 		if (p->cmd > 0 && p->cmd <= 16)
 		{
 			if (vm->args.verb == 1)
-				ft_verb(p);
+				ft_verb(p, vm);
 			func_tab(p->cmd, p, vm);
 		}
 		p->lastpc = p->pc;
@@ -116,7 +116,10 @@ void		ft_loadnewinstr(t_process *p, t_vm *vm)
 		{
 			ft_loadpartype(p, vm);
 			ft_loadpar(p, vm);
-			p->cycle = g_optab[p->cmd - 1].nbcycle;
+			if (p->cycle == -1)
+				p->cycle = g_optab[p->cmd - 1].nbcycle - 1;
+			else
+				p->cycle = g_optab[p->cmd - 1].nbcycle;
 		}
 		else
 			p->cycle = 1;

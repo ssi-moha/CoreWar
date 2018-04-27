@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 15:13:43 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/26 18:04:05 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/27 10:34:04 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	ft_loadinstructions(t_vm *vm)
 	tmp = vm->processes;
 	while (tmp)
 	{
-		if (tmp->cycle == 0)
+		if (tmp->cycle <= 0)
 			ft_loadnewinstr(tmp, vm);
 		tmp->cycle--;
 		tmp = tmp->next;

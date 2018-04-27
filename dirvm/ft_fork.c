@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 14:40:29 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/04/26 18:02:55 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/27 10:33:19 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int			ft_fork(t_process *proc, t_vm *vm)
 	if (vm->args.verb == 1)
 		ft_verbfork(proc->lastpc + (proc->par[0] % IDX_MOD));
 	new->lastpc = new->pc;
-	new->cycle = 0;
+	new->cycle = -1;
 	new->inlive = proc->inlive;
 	new->carry = proc->carry;
 	ft_copyreg(new, proc);
