@@ -16,7 +16,7 @@ void setup()
   background(0);
   x = 40;
   y = 40;
-  path = "/Users/lfujimot/C/OUTPUT.txt";
+  path = "/Users/lfujimot/TC/OUTPUT.txt";
   textSize(40);
 }
 //http://couleurs.optimisation-web.com/rgb
@@ -26,6 +26,7 @@ void draw()
   y = 40;
   test = 0;
   File f = new File(path);
+  try{
   if (f.getAbsoluteFile().exists())
   {
     reader = createReader(path);
@@ -86,7 +87,8 @@ void draw()
     }}
     if (test == 0)
       parsePC(linepc);
-  }
+  }}
+  catch(Exception e){}
 }
 
 void  printLine(String line, int x, int y)
