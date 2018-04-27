@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 14:19:44 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/26 17:53:50 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/27 13:13:07 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int				main(int argc, char **argv)
 	ft_convertheader(&app, &file_name);
 	free_par(&app.instr->params);
 	free_instr(&app.instr);
-	ft_printf("file created %s.cor\n", app.header.prog_name);
+	ft_printf("file created for %s --> .cor\n", argv[1]);
 	close(fd);
 	return (0);
 }

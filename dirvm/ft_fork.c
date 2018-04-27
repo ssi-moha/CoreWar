@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 14:40:29 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/04/27 10:33:19 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/27 13:06:19 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	ft_copyreg(t_process *new, t_process *proc)
 
 static void	ft_verbfork(int addr)
 {
-	ft_printf("\t\tad adress %d\n", addr);
+	ft_printf("\t\tat adress %d\n", addr);
 }
 
 int			ft_fork(t_process *proc, t_vm *vm)

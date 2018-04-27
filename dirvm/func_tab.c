@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 19:13:51 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/19 14:41:57 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/27 13:07:31 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ void	func_tab(t_cmd par, t_process *proc, t_vm *vm)
 	static int		(*tab[17])(t_process *proc, t_vm *vm);
 
 	if (proc == 0 || vm == 0)
-	{
-		ft_printf("plus de process ou vm corrompue\n");
 		return ;
-	}
 	tab[1] = ft_live;
 	tab[2] = ft_ld;
 	tab[3] = ft_st;

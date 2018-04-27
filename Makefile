@@ -6,11 +6,15 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/04/27 11:17:02 by lfujimot         ###   ########.fr        #
+#    Updated: 2018/04/27 13:34:19 by lfujimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ASM = asm
+
+.PHONY: all, clean, fclean, re
+
+CORH = includes/ft_corewar.h includes/op.h
 
 SRCSASM = dirasm/asm.c \
 		  dirasm/free_par.c \
@@ -114,21 +118,20 @@ PFFD = printffd/libftprintffd.a
 
 GNL = gnl/get_next_line.c
 
-GNLO = get_next_line.o
+GNLO = $(GNL:.c=.o)
 
 CFLAGS = -Wall -Werror -Wextra
 
 all : $(ASM) $(VM)
 
-$(ASM): $(OBJSASM)
+$(ASM): $(OBJSASM) $(CORH) $(GNLO)
 	$(MAKE) -C $(LIBFT)
 	$(MAKE) -C $(PRINTF)
 	$(MAKE) -C $(PRINTFFD)
-	gcc -c $(GNL) $(LFT)
-	gcc $(OBJSASM) $(LFT) $(PF) $(PFFD) -o $(ASM) $(GNLO) -fsanitize=address
+	gcc $(OBJSASM) $(GNLO) $(LFT) $(PF) $(PFFD) -o $(ASM) # -fsanitize=address
 
-$(VM): $(OBJSVM)
-	gcc $(OBJSVM) $(LFT) $(PF) $(PFFD) -o $(VM) -fsanitize=address
+$(VM): $(OBJSVM) $(CORH) $(GNLO)
+	gcc $(OBJSVM) $(GNLO) $(LFT) $(PF) $(PFFD) -o $(VM) #-fsanitize=address
 
 clean: $(LIBFT) $(PRINTF) $(PRINTFFD)
 	rm -f $(OBJSASM) $(OBJSVM)

@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 13:05:44 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/15 13:59:22 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/27 13:05:46 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ void	ft_writeinreg(t_process *p, int regnb, unsigned int nb)
 
 	i = REG_SIZE - 1;
 	if (regnb < 1 || regnb > REG_NUMBER)
-	{
-		ft_printf("try to access to wrong reg number\n");
 		return ;
-	}
 	while (i >= 0)
 	{
 		p->r[regnb - 1][i] = nb % 256;

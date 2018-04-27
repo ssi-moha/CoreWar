@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 17:51:48 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/26 17:52:51 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/27 13:36:24 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void		ft_join(int fd, char **line)
 	}
 }
 
-void		ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app)
+void			ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app)
 {
 	char	*line;
 	t_instr	*new;
