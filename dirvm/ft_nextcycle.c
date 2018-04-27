@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_mess.c                                       :+:      :+:    :+:   */
+/*   ft_nextcycle.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/02 10:14:12 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/04/27 16:05:30 by lfujimot         ###   ########.fr       */
+/*   Created: 2018/04/27 17:26:32 by lfujimot          #+#    #+#             */
+/*   Updated: 2018/04/27 17:29:58 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-int		error_mess(char *str)
+static void	ft_loadinstructions(t_vm *vm)
 {
-	if (!str)
-		ft_putstr_fd("ERROR\n", 2);
-	else
-		ft_putstr_fd(str, 2);
-	return (EXIT_FAILURE);
+	t_process	*tmp;
+
+	tmp = vm->processes;
+	while (tmp)
+	{
+		if (tmp->cycle <= 0)
+			ft_loadnewinstr(tmp, vm);
+		tmp->cycle--;
+		tmp = tmp->next;
+	}
+}
+
+void		ft_nextcycle(t_vm *vm)
+{
+	ft_loadinstructions(vm);
+	vm->curcycle++;
+	vm->cycletotal++;
 }

@@ -6,7 +6,7 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/04/27 13:34:19 by lfujimot         ###   ########.fr        #
+#    Updated: 2018/04/27 17:28:35 by lfujimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,6 +101,7 @@ SRCSVM = dirvm/vm.c \
 		dirvm/ft_uchar_toint.c\
 		dirvm/ft_check_champion.c\
 		dirvm/ft_haslive.c\
+		dirvm/ft_nextcycle.c\
 
 OBJSVM = $(SRCSVM:.c=.o)
 

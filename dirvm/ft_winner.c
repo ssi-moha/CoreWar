@@ -6,13 +6,13 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 15:33:40 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/25 17:00:02 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/27 17:56:45 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-void	ft_winner(t_vm *vm)
+void	ft_winner(t_vm *vm, int out)
 {
 	t_player	*tmp;
 
@@ -29,5 +29,7 @@ void	ft_winner(t_vm *vm)
 	else
 		ft_printf("le joueur %d(%s) a gagne\n", vm->players->number,
 		vm->players->header.prog_name);
-	exit(2);
+	ft_visu(vm, out, vm->players->header.prog_name);
+	close(out);
+	exit(EXIT_SUCCESS);
 }

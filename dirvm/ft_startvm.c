@@ -6,98 +6,83 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 15:13:43 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/27 10:34:04 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/27 18:22:31 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-static void	ft_loadinstructions(t_vm *vm)
+void			ft_visu(t_vm *vm, int out, char *winner)
 {
-	t_process	*tmp;
+	char	buf[6];
+	int		r;
 
-	tmp = vm->processes;
-	while (tmp)
-	{
-		if (tmp->cycle <= 0)
-			ft_loadnewinstr(tmp, vm);
-		tmp->cycle--;
-		tmp = tmp->next;
-	}
-}
-
-void		ft_visu(t_vm *vm)
-{
-	int	fd;
-
+	r = -1;
 	if (vm->args.visu == 1)
 	{
-		if ((fd = open("OUTPUT.txt", O_RDONLY)) < 0)
+		if (out >= 0)
 		{
-			close(fd);
-			ft_showramplayer(vm->ramplayer, vm);
-		}
-		else
-		{
-			while ((fd = open("OUTPUT.txt", O_RDONLY)) > 0)
+			lseek(out, 0, SEEK_SET);
+			r = read(out, buf, 5);
+			while (r > 1)
 			{
-				if (fd < 0)
-				{
-					close(fd);
-					ft_showramplayer(vm->ramplayer, vm);
-				}
-				close(fd);
+				lseek(out, 0, SEEK_SET);
+				r = read(out, buf, 5);
 			}
+			ft_showramplayer(vm->ramplayer, vm, out, winner);
 		}
 	}
 }
 
-void		ft_maxchecksandreset(t_vm *vm)
+static void		ft_maxchecksandreset(t_vm *vm)
 {
 	if (vm->maxchecks >= MAX_CHECKS)
 	{
 		vm->cyclelimit -= CYCLE_DELTA;
 		vm->maxchecks = 0;
+		ft_printf("cycle to die is now at %d\n", vm->cyclelimit);
 	}
 	vm->nblive = 0;
 	vm->curcycle = 0;
 }
 
-void		ft_checknblive(t_vm *vm)
+static void		ft_checknblive(t_vm *vm, int out)
 {
-	if (vm->nblive == 0 || vm->cyclelimit < CYCLE_DELTA)
-		ft_winner(vm);
+	if (vm->nblive == 0 || vm->cyclelimit < 0)
+		ft_winner(vm, out);
 	else if (vm->nblive >= NBR_LIVE)
 	{
 		vm->cyclelimit -= CYCLE_DELTA;
 		vm->maxchecks = 0;
+		ft_printf("cycle to die is now at %d\n", vm->cyclelimit);
 	}
 	else
 		vm->maxchecks++;
 }
 
-void		ft_startvm(t_vm *vm)
+void			ft_startvm(t_vm *vm)
 {
-	while (vm->curcycle <= vm->cyclelimit)
+	int	out;
+
+	out = -1;
+	if (vm->args.visu == 1)
+		out = open("OUTPUT.txt", O_CREAT | O_RDWR, S_IRWXU);
+	while (vm->curcycle <= vm->cyclelimit || vm->cyclelimit <= 0)
 	{
 		if (vm->args.dump > 0 && vm->cycletotal == vm->args.dump)
 		{
 			ft_showram(vm->ram);
-			exit(2);
+			exit(EXIT_SUCCESS);
 		}
-		ft_visu(vm);
-		if (vm->curcycle == vm->cyclelimit)
+		ft_visu(vm, out, "");
+		if (vm->curcycle == vm->cyclelimit || vm->cyclelimit <= 0)
 		{
 			ft_checkinlive(&(vm->processes), vm);
 			ft_resetplayerinlive(&(vm->players));
-			ft_checknblive(vm);
+			ft_checknblive(vm, out);
 			ft_maxchecksandreset(vm);
 		}
 		else
-		{
-			ft_loadinstructions(vm);
-			vm->curcycle++;
-			vm->cycletotal++;
-		}
+			ft_nextcycle(vm);
 	}
 }

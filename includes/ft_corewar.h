@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/27 11:15:42 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/27 17:59:59 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include "../printf/includes/ft_printf.h"
 # include "op.h"
 # include <limits.h>
-# include <stdio.h>
 # define BUF_SIZE	1024
 # define EXT_FILE	".s"
 # define EXT_COR	".cor"
@@ -199,7 +198,8 @@ void						ft_setcomment(unsigned char *data,
 t_player					*new_player(unsigned char *data, t_player **prev,
 							unsigned int id, t_vm *vm);
 void						ft_showram(unsigned char *ram);
-void						ft_showramplayer(unsigned char *ram, t_vm *vm);
+void						ft_showramplayer(unsigned char *ram, t_vm *vm,
+							int out, char *winner);
 void						ft_showplayer(unsigned char *ram);
 t_process					*new_process(t_player *player, t_vm *vm);
 void						ft_startvm(t_vm *vm);
@@ -242,7 +242,7 @@ unsigned int				ft_readinram(t_vm *vm, unsigned int pos,
 							unsigned int nboctet);
 void						ft_checkplayerinlive(t_player **p);
 void						ft_resetplayerinlive(t_player **p);
-void						ft_winner(t_vm *vm);
+void						ft_winner(t_vm *vm, int out);
 int							ft_printffd(int fd, const char *format, ...);
 char						*ft_get_next_arg(char **argv, int argc, int key);
 int							ft_hasvisu(char **argv, int key);
@@ -250,4 +250,6 @@ int							ft_hasverb(char **argv, int key);
 int							ft_haslive(char **argv, int key);
 int							ft_check_champion(char **argv, int argc,
 							t_args *args, int key);
+void						ft_visu(t_vm *vm, int out, char *winner);
+void						ft_nextcycle(t_vm *vm);
 #endif

@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 12:44:29 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/27 11:12:57 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/27 18:41:49 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ static void	ft_printp(t_vm *vm, int out)
 	while (p)
 	{
 		ft_printffd(out, "p:%d;nbl:%d;nm:%s;", p->number,
-		p->nblive, p->header.prog_name);
+				p->nblive, p->header.prog_name);
 		p = p->next;
 	}
 	ft_printffd(out, "\nc:%d;ctd:%d;cd:%d;nbl:%d;pc:%d;max:%d;\n",
-	vm->cycletotal, vm->cyclelimit, CYCLE_DELTA, NBR_LIVE,
-	vm->totalprocess, MAX_CHECKS);
+			vm->cycletotal, vm->cyclelimit, CYCLE_DELTA, NBR_LIVE,
+			vm->totalprocess, MAX_CHECKS);
 	proc = vm->processes;
 	while (proc)
 	{
@@ -68,15 +68,16 @@ static void	ft_printp(t_vm *vm, int out)
 	}
 }
 
-void		ft_showramplayer(unsigned char *ram, t_vm *vm)
+void		ft_showramplayer(unsigned char *ram, t_vm *vm,
+			int out, char *winner)
 {
 	int				i;
 	int				n;
-	int				out;
 
 	i = -1;
 	n = 0;
-	out = open("OUTPUT.txt", O_CREAT | O_RDWR | O_TRUNC, S_IRWXU);
+	lseek(out, 0, SEEK_SET);
+	ft_printffd(out, "winner:%s\n", winner);
 	ft_printp(vm, out);
 	write(out, "\n", 1);
 	while (++i < MEM_SIZE)
@@ -94,5 +95,4 @@ void		ft_showramplayer(unsigned char *ram, t_vm *vm)
 	}
 	ft_tolow(vm);
 	write(out, "\n", 1);
-	close(out);
 }

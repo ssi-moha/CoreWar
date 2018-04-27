@@ -2,7 +2,7 @@ import java.nio.file.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.*;
- 
+import java.io.*; 
 BufferedReader  reader;
 String          line;
 String          linepc;
@@ -10,12 +10,15 @@ int             x;
 int             y;
 String          path;
 int              test;
+int              pause;
+
 void setup()
 {
   size(2000, 1200);
   background(0);
   x = 40;
   y = 40;
+  pause = 0;
   path = "/Users/lfujimot/TC/OUTPUT.txt";
   textSize(40);
 }
@@ -27,16 +30,20 @@ void draw()
   test = 0;
   File f = new File(path);
   try{
-  if (f.getAbsoluteFile().exists())
+    
+    if (f.getAbsoluteFile().exists() && countLines(path) == 69 && pause == 0)
   {
     reader = createReader(path);
-    try
+   try
     {
+   
+      line = reader.readLine();
+      displayWinner(line);
       line = reader.readLine();
       if (line == null)
       {
         test = 1;
-        f.delete();  
+        cleanFile(f);  
     }
     else
     {
@@ -45,7 +52,7 @@ void draw()
       if (line == null)
        {
          test = 1;
-       f.delete();  
+       cleanFile(f);  
      }
      else
      {
@@ -54,7 +61,7 @@ void draw()
       if (linepc == null)
         {
           test = 1;
-        f.delete();  
+        cleanFile(f);  
       }}}
     }catch (IOException e) {
         e.printStackTrace();
@@ -71,7 +78,7 @@ void draw()
         line = null;
       }
       if (line == null) {
-        f.delete();
+        cleanFile(f);
         break ;
         // Stop reading because of an error or file is empty
         //noLoop();  
@@ -212,6 +219,8 @@ println(line);
 
 void  parsePC(String line)
 {
+  int pcCounter;
+  
   if (line != null){
  List<String> pc = new ArrayList<String>();
  
@@ -225,8 +234,62 @@ void  parsePC(String line)
  println ("size: "+ pc.size());
  for (int i = 0; i < pc.size(); i++)
  {
+   pcCounter = Integer.parseInt(pc.get(i)) % 4096;
    println ("pc: " + i + "pc" + Integer.parseInt(pc.get(i)));
-    rect(40 + (Integer.parseInt(pc.get(i)) % 64) * 17, 40 + ((Integer.parseInt(pc.get(i))) / 64) * 15, 15, 15);   
+    rect(40 + (pcCounter % 64) * 17, 40 + (pcCounter / 64) * 15, 15, 15);   
  }
  fill(255);
-} }
+}  
+}
+
+void  displayWinner(String line)
+{
+  fill(0);
+  rect(0, 1050, 1880, 100);
+ fill(255);
+ textSize(60);
+ text(line, 50, 1120, -30);
+ textSize(40);
+}
+
+
+void  cleanFile(File f)
+{
+    try{
+    PrintWriter writer = new PrintWriter(f);
+    writer.print("");
+    writer.close();
+    }catch (Exception e){}
+}
+
+int countLines(String filename) throws IOException {
+    InputStream is = new BufferedInputStream(new FileInputStream(filename));
+    try {
+        byte[] c = new byte[1024];
+        int count = 0;
+        int readChars = 0;
+        boolean empty = true;
+        while ((readChars = is.read(c)) != -1) {
+            empty = false;
+            for (int i = 0; i < readChars; ++i) {
+                if (c[i] == '\n') {
+                    ++count;
+                }
+            }
+        }
+        return (count == 0 && !empty) ? 1 : count;
+    } finally {
+        is.close();
+    }
+}
+
+void keyPressed() {
+  if (key == 'p') {
+    
+    if (pause == 1)
+      pause = 0;
+    else
+      pause = 1;
+
+  }
+}
