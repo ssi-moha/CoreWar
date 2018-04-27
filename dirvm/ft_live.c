@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 11:39:09 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/04/26 12:29:22 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/27 11:18:32 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ int			ft_live(t_process *proc, t_vm *vm)
 		tmp = tmp->next;
 	if (tmp != NULL)
 	{
-		ft_printf("un processus dit que le joueur %d(%s) est en vie\n",
+		if (vm->args.live == 1)
+			ft_printf("un processus dit que le joueur %d(%s) est en vie\n",
 				tmp->number, tmp->header.prog_name);
 		tmp->inlive = 1;
 		tmp->nblive++;

@@ -6,7 +6,7 @@
 /*   By: emerabet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 16:20:59 by emerabet          #+#    #+#             */
-/*   Updated: 2018/04/26 18:09:54 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/27 11:46:43 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static void		ft_init_args(t_args *args)
 	args->dump = -1;
 	args->visu = -1;
 	args->verb = -1;
+	args->live = -1;
 	args->nb = 0;
 	args->champion[0] = -9;
 	args->champion[1] = -9;
@@ -51,6 +52,8 @@ void			ft_incpar(t_args *args)
 {
 	int i;
 
+	if (args->champion[0] == -1)
+		args->champion[0] = 1;
 	i = 1;
 	while (i < 4)
 	{
@@ -80,6 +83,12 @@ static int		ft_flags(int argc, char **argv, int i, t_args *args)
 	{
 		args->verb = ft_hasverb(argv, i);
 		if (args->verb >= 0)
+			return (i + 1);
+	}
+	if (args->live < 0)
+	{
+		args->live = ft_haslive(argv, i);
+		if (args->live >= 0)
 			return (i + 1);
 	}
 	return (i);

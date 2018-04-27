@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 12:44:29 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/25 17:15:29 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/27 11:12:57 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void		ft_showram(unsigned char *ram)
 	while (i < MEM_SIZE)
 	{
 		ft_printf("%3.2x", ram[i]);
-		if (n == 63)
+		if (n == 31)
 		{
 			ft_printf("\n");
 			n = -1;

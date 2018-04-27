@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/26 18:21:20 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/27 11:15:42 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ typedef struct				s_args
 	int						nb;
 	int						visu;
 	int						verb;
+	int						live;
 	int						champion[4];
 	int						posfile[4];
 	int						isvalid;
@@ -246,6 +247,7 @@ int							ft_printffd(int fd, const char *format, ...);
 char						*ft_get_next_arg(char **argv, int argc, int key);
 int							ft_hasvisu(char **argv, int key);
 int							ft_hasverb(char **argv, int key);
+int							ft_haslive(char **argv, int key);
 int							ft_check_champion(char **argv, int argc,
 							t_args *args, int key);
 #endif
