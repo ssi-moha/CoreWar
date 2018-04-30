@@ -6,26 +6,22 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 16:55:40 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/30 12:23:28 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/25 17:27:45 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-int	ft_getreg(t_process *proc, int i)
+static int	ft_getreg(t_process *proc, int i)
 {
 	int	value;
-	
-	if (i >= 0 || i <= 2)
-	{
-		value = 0;
-		value += proc->r[proc->par[i] - 1][0] << 24;
-		value += proc->r[proc->par[i] - 1][1] << 16;
-		value += proc->r[proc->par[i] - 1][2] << 8;
-		value += proc->r[proc->par[i] - 1][3];
-		return (value);
-	}
-	return (0);
+
+	value = 0;
+	value += proc->r[proc->par[i] - 1][0] << 24;
+	value += proc->r[proc->par[i] - 1][1] << 16;
+	value += proc->r[proc->par[i] - 1][2] << 8;
+	value += proc->r[proc->par[i] - 1][3];
+	return (value);
 }
 
 static int	ft_getind(t_vm *vm, t_process *proc, int mod, int i)

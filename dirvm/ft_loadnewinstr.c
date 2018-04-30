@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 16:23:56 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/30 12:22:27 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/04/27 10:35:12 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ static void	ft_loadpar(t_process *p, t_vm *vm)
 	while (i < g_optab[p->cmd - 1].nbpar)
 	{
 		p->par[i] = ft_getparvalueinram(p, vm, i);
-	//	ft_printf("P%d: %d\n", i, ft_getparvalueinram(p, vm, i));
 		i++;
 	}
 }
@@ -85,14 +84,14 @@ static void	ft_verb(t_process *p, t_vm *vm)
 {
 	int i;
 
-	ft_printf("cycle %d (pc at %d) P %d do -> %s carry: %d", vm->cycletotal,
-			p->pc, p->id, g_optab[p->cmd - 1].cmd, p->carry);
+	ft_printf("cycle %d (pc at %d) P %d do -> %s", vm->cycletotal, p->pc, p->id,
+			g_optab[p->cmd - 1].cmd);
 	i = 0;
 	while (i < g_optab[p->cmd - 1].nbpar)
 	{
 		if (p->partype[i] == 1)
-			ft_printf(" REG: %d (%d)", p->par[i], ft_getreg(p, i));
-			else if (p->partype[i] == 2)
+			ft_printf(" REG: %d", p->par[i]);
+		else if (p->partype[i] == 2)
 			ft_printf(" DIR: %d", p->par[i]);
 		else if (p->partype[i] == 3)
 			ft_printf(" IND: %d", p->par[i]);
@@ -113,8 +112,6 @@ void		ft_loadnewinstr(t_process *p, t_vm *vm)
 		}
 		p->lastpc = p->pc;
 		p->cmd = vm->ram[p->pc++ % MEM_SIZE];
-//	ft_printf("pc%d CMD %d pc %d\n", p->id, p->cmd, p->pc);
-
 		if (p->cmd > 0 && p->cmd <= 16)
 		{
 			ft_loadpartype(p, vm);
@@ -127,5 +124,4 @@ void		ft_loadnewinstr(t_process *p, t_vm *vm)
 		else
 			p->cycle = 1;
 	}
-//	ft_printf("pc%d CMD %d pc %d\n", p->id, p->cmd, p->pc);
 }
