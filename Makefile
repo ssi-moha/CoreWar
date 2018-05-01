@@ -6,7 +6,7 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/05/01 10:38:01 by lfujimot         ###   ########.fr        #
+#    Updated: 2018/05/01 12:32:41 by lfujimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -121,7 +121,7 @@ GNL = gnl/get_next_line.c
 
 GNLO = $(GNL:.c=.o)
 
-CFLAGS = -Wall -Werror -Wextra
+#CFLAGS = -Wall -Werror -Wextra
 
 all : $(ASM) $(VM)
 

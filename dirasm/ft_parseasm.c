@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 17:51:48 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/01 12:00:12 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/01 14:00:49 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ static void		ft_initparseasm(char **line, int *ret, t_instr **new)
 
 static void		ft_join(int fd, char **line)
 {
-	while (cnt_char(*line, '"') != 2)
+	while (line && cnt_char(*line, '"') != 2)
 	{
 		*line = join_lines(fd, *line);
-		if (line == 0)
+		if (*line == 0)
 			exit(error_mess("ERROR NO .NAME OR NO .COMMENT\n"));
 	}
 }
