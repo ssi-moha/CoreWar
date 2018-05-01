@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 12:17:11 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/04/26 17:41:08 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/01 11:51:01 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ int		free_lab(t_lab **lab)
 	while (*lab)
 	{
 		if ((*lab)->l)
+		{
 			free((*lab)->l);
+			(*lab)->l = 0;	
+		}
 		free(*lab);
 		*lab = (*lab)->next;
 	}

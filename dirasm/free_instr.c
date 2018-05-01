@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 18:25:31 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/04/25 13:14:06 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/05/01 12:03:42 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ int		free_instr(t_instr **instr)
 				free_par(&(*instr)->params);
 		}
 		if ((*instr)->cmd)
+		{
 			free((*instr)->cmd);
+			(*instr)->cmd = 0;
+		}
 		if ((*instr)->label)
 			free_lab(&(*instr)->label);
 		free(*instr);

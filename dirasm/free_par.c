@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 18:12:11 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/03/20 17:00:19 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/01 11:49:17 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		free_par(t_par **par)
 	while (*par)
 	{
 		if ((*par)->par)
-			free((*par)->par);
+			ft_strdel(&(*par)->par);
 		free(*par);
 		*par = (*par)->next;
 	}

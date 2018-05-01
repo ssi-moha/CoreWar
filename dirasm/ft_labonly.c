@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 13:26:20 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/26 17:33:33 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/01 11:47:47 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void	ft_addlabel(char *line, int size, int start, t_app *app)
 	tmp[i] = '\0';
 	new_label(tmp, &(app->tmplab));
 	free(tmp);
+	tmp = 0;
 }
 
 int			ft_labonly(t_app *app, char *line)
