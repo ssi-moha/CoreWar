@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 14:19:44 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/01 11:46:21 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/01 16:15:38 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void		ft_init(t_app *app)
 	h.prog_size = 0;
 	app->instr = 0;
 	app->tmplab = 0;
+	app->li = 0;
 	app->header = h;
 	ft_bzero(app->header.prog_name, PROG_NAME_LENGTH + 1);
 	ft_bzero(app->header.comment, COMMENT_LENGTH + 1);
@@ -49,6 +50,17 @@ int				main(int argc, char **argv)
 	ft_convertheader(&app, &file_name);
 	free_par(&app.instr->params);
 	free_instr(&app.instr);
+/*	t_l *l;
+	t_l *n;
+	n = 0;
+	l = app.li;
+	while (l)
+	{
+		n = l->next;
+		free(l->li);
+		free(l);
+		l = n;	
+	}*/
 	ft_printf("file created for %s --> .cor\n", argv[1]);
 	close(fd);
 	return (0);

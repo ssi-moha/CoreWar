@@ -6,7 +6,7 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/05/01 12:32:41 by lfujimot         ###   ########.fr        #
+#    Updated: 2018/05/01 15:58:56 by lfujimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRCSASM = dirasm/asm.c \
 		  dirasm/ft_type_value.c\
 		  dirasm/ft_checkpartype.c\
 		  dirasm/ft_parseasm.c\
+		  dirasm/ft_pushline.c\
 
 OBJSASM = $(SRCSASM:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 17:51:48 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/01 14:00:49 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/01 18:13:38 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void		ft_copy_label(t_app *app, t_instr **new, char **line,
 		t_instr **instr)
 {
 	t_lab *t;
-
+//	char *tmp = ft_strdup(*line);
 	*new = new_instr(NULL, instr);
 	*new != NULL ? make_pos(line, *new) : 0;
 	if (app->tmplab != 0)
@@ -40,8 +40,9 @@ static void		ft_copy_label(t_app *app, t_instr **new, char **line,
 			t = t->next;
 		}
 	}
-	free_lab(&(app->tmplab));
-	app->tmplab = 0;
+//	free_lab(&(app->tmplab));
+//	app->tmplab = 0;
+	//ft_pushline(&(app->li), line);	
 	ft_strdel(line);
 }
 
@@ -54,9 +55,13 @@ static void		ft_initparseasm(char **line, int *ret, t_instr **new)
 
 static void		ft_join(int fd, char **line)
 {
+	char *tmp;
+
 	while (line && cnt_char(*line, '"') != 2)
 	{
+		tmp = *line;
 		*line = join_lines(fd, *line);
+		ft_strdel(&tmp);
 		if (*line == 0)
 			exit(error_mess("ERROR NO .NAME OR NO .COMMENT\n"));
 	}
@@ -77,14 +82,19 @@ void			ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app)
 			ft_strdel(&line);
 		else if ((ret = check_name_cmt(line)))
 		{
+			ft_printf("dd\n");
 			ft_join(fd, &line);
 			app->checkcmd += cpy_head(ret, head, &line);
 			ft_strdel(&line);
 		}
 		else if (app->checkcmd != 2)
+		{
+			ft_printf("N %d\n", app->checkcmd);
 			exit(error_mess("ERROR NO .NAME OR NO .COMMENT\n"));
+		}
 		else
 			ft_copy_label(app, &new, &line, instr);
+	//	ft_strdel(&line);
 	}
 	ft_lastlab(instr, app, new);
 }

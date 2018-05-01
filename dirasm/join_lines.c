@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 13:36:50 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/05/01 14:01:06 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/01 16:40:15 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,14 @@ char	*join_lines(int fd, char *line)
 {
 	char *str;
 	char *ret;
-
+	char *tmp;
+	
 	if (get_next_line(fd, &str) <= 0)
 		return (0);
 	ret = ft_strjoin(line, "\n");
-	return (ft_strjoin(ret, str));
+	tmp = ret;
+	ret = ft_strjoin(ret, str);
+	ft_strdel(&str);
+	ft_strdel(&tmp);
+	return (ret);
 }

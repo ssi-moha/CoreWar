@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/27 17:59:59 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/01 16:09:17 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,11 +142,18 @@ typedef struct				s_op
 	int						dirsize;
 }							t_op;
 
+typedef struct				s_l
+{
+	char					*li;
+	struct s_l				*next;
+}							t_l;
+
 typedef struct				s_app
 {
 	t_instr					*instr;
 	t_header				header;
 	t_lab					*tmplab;
+	t_l						*li;
 	int						checkcmd;
 }							t_app;
 
@@ -252,4 +259,6 @@ int							ft_check_champion(char **argv, int argc,
 							t_args *args, int key);
 void						ft_visu(t_vm *vm, int out, char *winner);
 void						ft_nextcycle(t_vm *vm);
+//void						ft_rmline(t_l **li);
+void						ft_pushline(t_l **li, char **line);
 #endif
