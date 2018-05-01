@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 16:40:47 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/19 12:44:37 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/01 17:24:57 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		ft_lld(t_process *proc, t_vm *vm)
 		proc->carry = 1;
 	else
 		proc->carry = 0;
-	if (proc->par[1] > REG_SIZE)
+	if (proc->par[1] > REG_NUMBER)
 		return (0);
 	ft_writeinreg(proc, proc->par[1], i);
 	return (1);

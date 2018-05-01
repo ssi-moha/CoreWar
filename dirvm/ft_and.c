@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 13:38:10 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/30 20:12:29 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/01 20:17:38 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ int	ft_and(t_process *proc, t_vm *vm)
 	{
 		proc->carry = 0;
 		return (1);
-	}	if (c == 0)
-	proc->carry = 1;
+	}
+	if (c == 0)
+		proc->carry = 1;
 	else
 		proc->carry = 0;
 	while (i >= 0)

@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 16:23:56 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/27 10:35:12 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/01 18:59:10 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ static void	ft_verb(t_process *p, t_vm *vm)
 {
 	int i;
 
-	ft_printf("cycle %d (pc at %d) P %d do -> %s", vm->cycletotal, p->pc, p->id,
-			g_optab[p->cmd - 1].cmd);
+	ft_printf("cycle %d (pc at %d) P %d do -> %s (carry = %d)", vm->cycletotal, p->pc, p->id,
+			g_optab[p->cmd - 1].cmd, p->carry);
 	i = 0;
 	while (i < g_optab[p->cmd - 1].nbpar)
 	{

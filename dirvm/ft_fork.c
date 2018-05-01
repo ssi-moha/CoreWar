@@ -6,13 +6,13 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 14:40:29 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/04/27 13:06:19 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/01 20:18:12 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-static void	ft_copyreg(t_process *new, t_process *proc)
+static void	ft_copyreg(t_process **new, t_process *proc)
 {
 	int i;
 	int j;
@@ -23,7 +23,8 @@ static void	ft_copyreg(t_process *new, t_process *proc)
 		j = 0;
 		while (j < REG_SIZE)
 		{
-			new->r[i][j] = proc->r[i][j];
+//			ft_printf("REG %d V %d\n", i + 1, proc->r[i][j]); 
+			(*new)->r[i][j] = proc->r[i][j];
 			j++;
 		}
 		i++;
@@ -52,6 +53,21 @@ int			ft_fork(t_process *proc, t_vm *vm)
 	new->cycle = -1;
 	new->inlive = proc->inlive;
 	new->carry = proc->carry;
-	ft_copyreg(new, proc);
+	ft_copyreg(&new, proc);
+/*	int i;
+	int j;
+
+	i = 0;
+	while (i < REG_NUMBER)
+	{
+		j = 0;
+		while (j < REG_SIZE)
+		{
+			ft_printf("P%d REG %d V %d\n", new->id, i + 1, new->r[i][j]); 
+			j++;
+		}
+		i++;
+	}
+*/
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 17:51:48 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/01 18:13:38 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/01 19:40:15 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,16 +82,12 @@ void			ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app)
 			ft_strdel(&line);
 		else if ((ret = check_name_cmt(line)))
 		{
-			ft_printf("dd\n");
 			ft_join(fd, &line);
 			app->checkcmd += cpy_head(ret, head, &line);
 			ft_strdel(&line);
 		}
 		else if (app->checkcmd != 2)
-		{
-			ft_printf("N %d\n", app->checkcmd);
 			exit(error_mess("ERROR NO .NAME OR NO .COMMENT\n"));
-		}
 		else
 			ft_copy_label(app, &new, &line, instr);
 	//	ft_strdel(&line);

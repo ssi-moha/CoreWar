@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 15:34:44 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/04/26 12:25:47 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/01 19:14:42 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ int			ft_sti(t_process *proc, t_vm *vm)
 	value = ft_getparvalue(proc, vm, 0, MEM_SIZE);
 	startpos = (proc->pc - 4 + ((a + b) % IDX_MOD)) % MEM_SIZE;
 	ft_writeinram(vm, startpos, value, proc);
+	if (value == 0)
+		proc->carry = 1;
+	else
+		proc->carry = 0;
 	if (vm->args.verb == 1)
 		ft_verbsti(a, b, (proc->pc - 4 + ((a + b) % IDX_MOD)) % MEM_SIZE);
 	return (1);
