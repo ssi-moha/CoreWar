@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 16:01:49 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/04/27 17:21:43 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/02 19:09:38 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strcdup(const char *src, int c)
 	i = 0;
 	if (src == 0)
 		return (0);
-	dest = malloc(sizeof(char) * ft_strlen(src) + 1);
+	dest = ft_strnew(ft_strlen(src));
 	if (dest == 0)
 		return (0);
 	while (src[i] && src[i] != c)
