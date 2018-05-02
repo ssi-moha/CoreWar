@@ -6,7 +6,7 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 17:07:49 by lfujimot          #+#    #+#              #
-#    Updated: 2018/05/02 14:25:01 by lfujimot         ###   ########.fr        #
+#    Updated: 2018/05/02 19:27:48 by emerabet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -122,7 +122,7 @@ GNL = gnl/get_next_line.c
 
 GNLO = $(GNL:.c=.o)
 
-#CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 
 all : $(ASM) $(VM)
 
@@ -130,10 +130,10 @@ $(ASM): $(OBJSASM) $(CORH) $(GNLO)
 	$(MAKE) -C $(LIBFT)
 	$(MAKE) -C $(PRINTF)
 	$(MAKE) -C $(PRINTFFD)
-	gcc -g $(OBJSASM) $(GNLO) $(LFT) $(PF) $(PFFD) -o $(ASM) #-fsanitize=address
+	gcc $(OBJSASM) $(GNLO) $(LFT) $(PF) $(PFFD) -o $(ASM)
 
 $(VM): $(OBJSVM) $(CORH) $(GNLO)
-	gcc $(OBJSVM) $(GNLO) $(LFT) $(PF) $(PFFD) -o $(VM) #-fsanitize=address
+	gcc $(OBJSVM) $(GNLO) $(LFT) $(PF) $(PFFD) -o $(VM)
 
 clean: $(LIBFT) $(PRINTF) $(PRINTFFD)
 	rm -f $(OBJSASM) $(OBJSVM)
