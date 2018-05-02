@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 10:11:04 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/02 15:45:26 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/02 19:17:38 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static void		ft_copycmd(char *line, int start, int newpos, t_instr *instr)
 		i++;
 	}
 	instr->cmd[i] = '\0';
-//	ft_printf("CMD %s\n", instr->cmd);
 }
 
 int				ft_parseinstr(char *line, int pos, t_instr *new)

@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 17:51:48 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/02 18:09:37 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/05/02 19:20:38 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ static void		ft_lastlab(t_instr **instr, t_app *app, t_instr *new)
 	}
 }
 
-static void		ft_copy_label(t_app **app, t_instr **new, char **line,
-		t_instr **instr)
+static void		ft_copy_label(t_app **app, t_instr **new,
+								char **line, t_instr **instr)
 {
-	t_lab *t;
-	
+	t_lab		*t;
+	t_instr		*l;
+
 	*new = new_instr(NULL, instr);
 	*new != NULL ? make_pos(line, *new) : 0;
-	t_instr *l;
 	l = (*app)->instr;
 	if ((*app)->tmplab != 0)
 	{
@@ -42,9 +42,6 @@ static void		ft_copy_label(t_app **app, t_instr **new, char **line,
 			t = t->next;
 		}
 	}
-//	free_lab(&(app->tmplab));
-//	app->tmplab = 0;
-	//ft_pushline(&(app->li), line);	
 	ft_strdel(line);
 }
 
@@ -57,8 +54,8 @@ static void		ft_initparseasm(char **line, int *ret, t_instr **new)
 
 static void		ft_join(int fd, char **line)
 {
-	char *tmp;
-	
+	char		*tmp;
+
 	if (*line && cnt_char(line, '"') > 2)
 		exit(error_mess("INVALID .NAME OR NO .COMMENT\n"));
 	while (*line && cnt_char(line, '"') != 2)
@@ -94,7 +91,6 @@ void			ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app)
 			exit(error_mess("ERROR NO .NAME OR NO .COMMENT\n"));
 		else
 			ft_copy_label(&app, &new, &line, instr);
-	//	ft_strdel(&line);
 	}
 	ft_lastlab(instr, app, new);
 }

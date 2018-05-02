@@ -6,15 +6,15 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 15:55:04 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/01 16:10:32 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/02 19:21:37 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-void	ft_pushline(t_l **li, char **line)
+void		ft_pushline(t_l **li, char **line)
 {
-	t_l *new;
+	t_l		*new;
 
 	new = *li;
 	if (new)
@@ -34,9 +34,8 @@ void	ft_pushline(t_l **li, char **line)
 	{
 		*li = (t_l *)malloc(sizeof(*new));
 		if (!*li)
-				return ;
-			(*li)->li = *line;
-			(*li)->next = 0;
+			return ;
+		(*li)->li = *line;
+		(*li)->next = 0;
 	}
-
 }

@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 14:38:07 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/05/02 14:51:24 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/02 19:15:28 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,11 @@ int				check_name_cmt(char **str)
 	i = 0;
 	while ((*str)[j] == ' ' || (*str)[j] == '\t')
 		j++;
-	if ((*str)[j] && !ft_strncmp(*str + j, NAME_CMD_STRING, ft_strlen(NAME_CMD_STRING)))
+	if ((*str)[j] &&
+			!ft_strncmp(*str + j, NAME_CMD_STRING, ft_strlen(NAME_CMD_STRING)))
 		return (ft_check_name(*str + j));
-	else if ((*str)[j] &&
-			!ft_strncmp(*str + j, COMMENT_CMD_STRING, ft_strlen(COMMENT_CMD_STRING)))
+	else if ((*str)[j] && !ft_strncmp(*str + j, COMMENT_CMD_STRING,
+				ft_strlen(COMMENT_CMD_STRING)))
 		return (ft_check_comment(*str + j));
 	else if ((*str)[j] == '.')
 		exit(error_mess("Invalid .command"));
