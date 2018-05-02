@@ -6,25 +6,36 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 16:40:27 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/19 14:37:20 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/02 18:00:18 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
+static void	ft_verbldi(int a, int b, int c, int pc)
+{
+	ft_printf("\t\tload from %d + %d = %d (%d at pc %d)\n",a, b, a + b, c, pc);
+}
+
 int	ft_ldi(t_process *proc, t_vm *vm)
 {
-	unsigned int a;
-	unsigned int b;
-	unsigned int c;
-
+	int a;
+	int b;
+	int c;
+	int pc;
 	a = proc->par[0];
 	b = proc->par[1];
-	c = ft_readinram(vm, proc->pc + ((a + b) % IDX_MOD) - 4, REG_SIZE);
+	if ((a + b) < 0)
+		pc = proc->pc + a + b - 4;
+	else
+		pc = proc->pc + ((a + b) % IDX_MOD) - 4;
+	c = ft_readinram(vm, pc, REG_SIZE);
 	ft_writeinreg(proc, proc->par[2], c);
 	if (c == 0)
 		proc->carry = 1;
 	else
 		proc->carry = 0;
+	if (vm->args.verb == 1)
+		ft_verbldi(a, b, c, pc);
 	return (1);
 }

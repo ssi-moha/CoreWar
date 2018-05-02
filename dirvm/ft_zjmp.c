@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 14:03:17 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/05/02 16:52:23 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/02 18:39:21 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ int			ft_zjmp(t_process *proc, t_vm *vm)
 		value = ft_getparvalue(proc, vm, 0, MEM_SIZE);
 		p = proc->pc - 3 + value;
 		if (p < 0)
-			proc->pc = p + MEM_SIZE - 3;
-		else proc->pc = p;
-		ft_printf("ZZZZZZZZZZZZ %d\n", p);
+			proc->pc = p + MEM_SIZE -1;
+		else
+			proc->pc = p;
 	}
 	if (vm->args.verb == 1)
 		ft_verbzjmp(proc->carry, proc);

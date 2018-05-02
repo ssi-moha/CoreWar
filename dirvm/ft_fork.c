@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 14:40:29 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/05/01 20:18:12 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/02 18:44:45 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void	ft_copyreg(t_process **new, t_process *proc)
 		j = 0;
 		while (j < REG_SIZE)
 		{
-//			ft_printf("REG %d V %d\n", i + 1, proc->r[i][j]); 
 			(*new)->r[i][j] = proc->r[i][j];
 			j++;
 		}
@@ -54,20 +53,5 @@ int			ft_fork(t_process *proc, t_vm *vm)
 	new->inlive = proc->inlive;
 	new->carry = proc->carry;
 	ft_copyreg(&new, proc);
-/*	int i;
-	int j;
-
-	i = 0;
-	while (i < REG_NUMBER)
-	{
-		j = 0;
-		while (j < REG_SIZE)
-		{
-			ft_printf("P%d REG %d V %d\n", new->id, i + 1, new->r[i][j]); 
-			j++;
-		}
-		i++;
-	}
-*/
 	return (1);
 }
