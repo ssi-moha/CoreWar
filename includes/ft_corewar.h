@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/01 16:09:17 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/02 14:51:50 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,11 +164,11 @@ t_par						*new_par(char *par, t_par **prev);
 t_instr						*new_instr(char *cmd, t_instr **prev);
 int							free_instr(t_instr **instr);
 int							skip_cmt(char *str);
-int							ft_parselabel(char *line, t_instr *new);
+int							ft_parselabel(char **line, t_instr **new);
 int							ft_parseinstr(char *line, int pos, t_instr *new);
 void						ft_parseparams(char *line, int pos, t_instr *new);
-int							ft_skip_com_and_blank(char *line);
-int							check_name_cmt(char *str);
+int							ft_skip_com_and_blank(char **line);
+int							check_name_cmt(char **str);
 int							cpy_head(int ret, t_header *head, char **line);
 int							ft_checkparams(char *par);
 int							ft_findcmd(char *cmd);
@@ -177,7 +177,7 @@ int							make_pos(char **line, t_instr *new);
 int							rm_process(int id, t_process **proc);
 int							ft_convertheader(t_app *application,
 							char **file_name);
-void						ft_converttohex(t_instr *instr);
+void						ft_converttohex(t_instr **instr);
 void						free_proc(t_process **proc);
 void						ft_printhex(t_instr *instr, int out);
 int							prog_size(t_instr **instr);
@@ -189,7 +189,7 @@ void						ft_printdir(t_par *par, int cmd, int out);
 void						ft_printindlab(t_par *par, t_instr **begin,
 							t_instr **instr, int out);
 t_lab						*new_label(char *l, t_lab **prev);
-int							ft_labonly(t_app *app, char *line);
+int							ft_labonly(t_app **app, char **line);
 int							ft_type_value(int dir, int lab);
 int							ft_checkpartype(t_par *par, int parindex,
 							char *cmd);
@@ -217,8 +217,8 @@ t_args						ft_parse_arg(int argc, char **argv);
 int							ft_uchar_toint(unsigned char tab[REG_SIZE]);
 int							ft_getparvalue(t_process *proc, t_vm *vm, int i,
 							int mod);
-int							cnt_char(char *str, char c);
-char						*join_lines(int fd, char *line);
+int							cnt_char(char **str, char c);
+char						*join_lines(int fd, char **line);
 int							free_lab(t_lab **lab);
 void						ft_parseasm(t_instr **instr, int fd,
 							t_header *head, t_app *app);

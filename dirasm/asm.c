@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 14:19:44 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/01 16:15:38 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/02 16:29:39 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,24 +43,13 @@ int				main(int argc, char **argv)
 	if (fd < 0)
 		exit(error_mess("ERROR : FILE CANNOT BE FOUND OR CANNOT BE OPENNED\n"));
 	ft_parseasm(&app.instr, fd, &app.header, &app);
-	ft_converttohex(app.instr);
+	ft_converttohex(&app.instr);
 	app.header.prog_size = prog_size(&app.instr);
 	if (app.instr == 0)
 		exit(error_mess("NO PROGRAM TO CONVERT\n"));
 	ft_convertheader(&app, &file_name);
 	free_par(&app.instr->params);
 	free_instr(&app.instr);
-/*	t_l *l;
-	t_l *n;
-	n = 0;
-	l = app.li;
-	while (l)
-	{
-		n = l->next;
-		free(l->li);
-		free(l);
-		l = n;	
-	}*/
 	ft_printf("file created for %s --> .cor\n", argv[1]);
 	close(fd);
 	return (0);

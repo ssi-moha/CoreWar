@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 14:38:07 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/05/01 10:32:02 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/02 14:51:24 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,21 @@ static int		ft_check_name(char *str)
 	return (1);
 }
 
-int				check_name_cmt(char *str)
+int				check_name_cmt(char **str)
 {
 	int		i;
+	int		j;
 
+	j = 0;
 	i = 0;
-	while (*str == ' ' || *str == '\t')
-		str++;
-	if (str && !ft_strncmp(str, NAME_CMD_STRING, ft_strlen(NAME_CMD_STRING)))
-		return (ft_check_name(str));
-	else if (str &&
-			!ft_strncmp(str, COMMENT_CMD_STRING, ft_strlen(COMMENT_CMD_STRING)))
-		return (ft_check_comment(str));
-	else if (str[0] == '.')
+	while ((*str)[j] == ' ' || (*str)[j] == '\t')
+		j++;
+	if ((*str)[j] && !ft_strncmp(*str + j, NAME_CMD_STRING, ft_strlen(NAME_CMD_STRING)))
+		return (ft_check_name(*str + j));
+	else if ((*str)[j] &&
+			!ft_strncmp(*str + j, COMMENT_CMD_STRING, ft_strlen(COMMENT_CMD_STRING)))
+		return (ft_check_comment(*str + j));
+	else if ((*str)[j] == '.')
 		exit(error_mess("Invalid .command"));
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 10:02:11 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/01 15:07:48 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/02 15:46:35 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	ft_copypar(char *line, int start, int pos, t_par *par)
 
 	if (par == 0)
 		return ;
-	par->par = (char *)malloc(sizeof(char) * (pos - start));
+	par->par = ft_strnew(pos - start);
 	if (par->par == 0)
 		return ;
 	i = 0;

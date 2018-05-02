@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 13:18:41 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/24 11:59:44 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/02 13:52:38 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ static void		ft_convparams(t_instr **instr)
 	}
 }
 
-void			ft_converttohex(t_instr *instr)
+void			ft_converttohex(t_instr **instr)
 {
 	t_instr *tmp;
 
-	tmp = instr;
+	tmp = *instr;
 	while (tmp)
 	{
 		if (ft_strcmp(tmp->cmd, "tmp") != 0)

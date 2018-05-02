@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 13:39:43 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/04/24 13:29:54 by ssi-moha         ###   ########.fr       */
+/*   Updated: 2018/05/02 15:42:02 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ int		cpy_head(int ret, t_header *head, char **line)
 	else if (ret == 2)
 		ft_strncpy(head->comment, ft_strchr(*line, '"') + 1,
 				ft_strclen(ft_strchr(*line, '"') + 1, '"'));
-	ft_strdel(line);
+//	ft_strdel(line);
 	return (1);
 }

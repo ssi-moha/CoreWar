@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 13:38:10 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/01 20:17:38 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/02 09:55:56 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_and(t_process *proc, t_vm *vm)
 	i = REG_SIZE - 1;
 	if (proc->par[2] < 1 || proc->par[2] > 16)
 	{
-		proc->carry = 0;
+//		proc->carry = 0;
 		return (1);
 	}
 	if (c == 0)
