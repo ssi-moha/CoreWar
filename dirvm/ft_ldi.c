@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 16:40:27 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/02 18:00:18 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/02 19:06:30 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 
 static void	ft_verbldi(int a, int b, int c, int pc)
 {
-	ft_printf("\t\tload from %d + %d = %d (%d at pc %d)\n",a, b, a + b, c, pc);
+	ft_printf("\t\tload from %d + %d = %d (%d at pc %d)\n", a, b, a + b, c, pc);
 }
 
-int	ft_ldi(t_process *proc, t_vm *vm)
+int			ft_ldi(t_process *proc, t_vm *vm)
 {
 	int a;
 	int b;
 	int c;
 	int pc;
+
 	a = proc->par[0];
 	b = proc->par[1];
 	if ((a + b) < 0)

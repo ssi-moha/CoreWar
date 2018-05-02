@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 14:44:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/02 18:53:51 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/02 19:00:19 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,11 @@ int	ft_xor(t_process *proc, t_vm *vm)
 		proc->carry = 1;
 	else
 		proc->carry = 0;
-
 	while (i >= 0)
 	{
 		proc->r[proc->par[2] - 1][i] = c % 256;
 		c /= 256;
 		i--;
 	}
-		ft_printf("C%d\n", proc->carry);
 	return (1);
 }

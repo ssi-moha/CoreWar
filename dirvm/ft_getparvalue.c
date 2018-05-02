@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 16:55:40 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/01 19:17:38 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/02 19:06:53 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,8 @@ static int	ft_getind(t_vm *vm, t_process *proc, int mod, int i)
 {
 	int	value;
 	int	p;
+
 	p = (proc->pc + ((proc->par[i]) % mod)) % MEM_SIZE;
-//	if (p < 0)
-//		p = MEM_SIZE + p;
 	value = 0;
 	value += vm->ram[p] << 24;
 	value += vm->ram[p] << 16;
