@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 12:52:44 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/02/15 12:52:45 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/02 18:09:29 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	i = 0;
 	while (i < len)
 	{
-		dst[i] = s[i + start];
+		if (i + start < len)
+		{
+			dst[i] = s[i + start];
+		}
 		i++;
 	}
 	dst[i] = '\0';
