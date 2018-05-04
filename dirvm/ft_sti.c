@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 15:34:44 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/05/02 17:52:14 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/03 08:46:54 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static void	ft_verbsti(int a, int b, int to)
 {
-	ft_printf("\t\tstore %d + %d = %d to adress %d\n", a, b, a + b, to - 3);
+	ft_printffd(1, "\t\tstore %d + %d = %d to adress %d\n",
+			a, b, a + b, to - 3);
 }
 
 int			ft_sti(t_process *proc, t_vm *vm)

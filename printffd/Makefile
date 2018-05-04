@@ -6,12 +6,13 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/30 19:27:45 by lfujimot          #+#    #+#              #
-#    Updated: 2018/05/02 19:37:36 by emerabet         ###   ########.fr        #
+#    Updated: 2018/05/03 09:14:24 by emerabet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintffd.a
 
+.PHONY: all, clean, fclean, re
 
 INC = includes/ft_printf.h
 

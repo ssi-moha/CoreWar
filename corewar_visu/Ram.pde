@@ -1,6 +1,0 @@
-class Ram
-{
-    public Ram()
-    {
-    }
-}

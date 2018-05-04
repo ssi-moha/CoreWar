@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 16:23:56 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/02 19:05:39 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/03 08:42:36 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,20 +84,20 @@ static void	ft_verb(t_process *p, t_vm *vm)
 {
 	int i;
 
-	ft_printf("cycle %d (pc at %d) P %d do -> %s (carry = %d)",
+	ft_printffd(1, "cycle %d (pc at %d) P %d do -> %s (carry = %d)",
 			vm->cycletotal, p->pc, p->id, g_optab[p->cmd - 1].cmd, p->carry);
 	i = 0;
 	while (i < g_optab[p->cmd - 1].nbpar)
 	{
 		if (p->partype[i] == 1)
-			ft_printf(" REG: %d", p->par[i]);
+			ft_printffd(1, " REG: %d", p->par[i]);
 		else if (p->partype[i] == 2)
-			ft_printf(" DIR: %d", p->par[i]);
+			ft_printffd(1, " DIR: %d", p->par[i]);
 		else if (p->partype[i] == 3)
-			ft_printf(" IND: %d", p->par[i]);
+			ft_printffd(1, " IND: %d", p->par[i]);
 		i++;
 	}
-	ft_printf("\n");
+	ft_printffd(1, "\n");
 }
 
 void		ft_loadnewinstr(t_process *p, t_vm *vm)

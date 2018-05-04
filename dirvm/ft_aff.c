@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:13:24 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/03/15 19:54:48 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/03 08:39:53 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@ int	ft_aff(t_process *proc, t_vm *vm)
 	unsigned int	value;
 
 	value = ft_getparvalue(proc, vm, 0, MEM_SIZE);
-	ft_printf("%c", value % 256);
+	ft_printffd(1, "%c", value % 256);
 	return (1);
 }

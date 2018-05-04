@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 12:48:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/26 18:11:19 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/03 09:09:10 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int			main(int argc, char **argv)
 	t_vm			vm;
 	t_player		*p;
 
+	if (argc < 2)
+		exit(error_mess("Wrong args\n"));
 	ft_initvm(&vm);
 	vm.args = ft_parse_arg(argc, argv);
 	if (vm.args.isvalid == -1)

@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/02 14:51:50 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/03 08:49:36 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <unistd.h>
 # include "../gnl/get_next_line.h"
 # include "../libft/libft.h"
-# include "../printf/includes/ft_printf.h"
+# include "../printffd/includes/ft_printf.h"
 # include "op.h"
 # include <limits.h>
 # define BUF_SIZE	1024
@@ -259,6 +259,5 @@ int							ft_check_champion(char **argv, int argc,
 							t_args *args, int key);
 void						ft_visu(t_vm *vm, int out, char *winner);
 void						ft_nextcycle(t_vm *vm);
-//void						ft_rmline(t_l **li);
 void						ft_pushline(t_l **li, char **line);
 #endif

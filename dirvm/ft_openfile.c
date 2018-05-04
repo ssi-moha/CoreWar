@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 13:45:53 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/04/26 18:00:06 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/03 09:00:38 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ unsigned char	*ft_openfile(char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		exit(error_mess("File can't be open\n"));
+		exit(error_mess("File error\n"));
 	data = (unsigned char*)ft_strnew(0);
 	size = 0;
 	r = 1;
