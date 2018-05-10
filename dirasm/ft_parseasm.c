@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 17:51:48 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/02 19:20:38 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/05/03 13:05:42 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void			ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app)
 	int		ret;
 
 	ft_initparseasm(&line, &ret, &new);
-	while (get_next_line(fd, &line))
+	while (get_next_line(fd, &line) > 0)
 	{
 		if (ft_skip_com_and_blank(&line))
 			ft_strdel(&line);

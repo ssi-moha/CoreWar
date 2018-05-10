@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 12:48:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/03 09:09:10 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/03 15:08:17 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ int			main(int argc, char **argv)
 		data = ft_openfile(argv[vm.args.posfile[i]]);
 		if (data != NULL)
 		{
-			p = new_player(data, &(vm.players), i, &vm);
 			ft_checkmagic(data);
+			p = new_player(data, &(vm.players), i, &vm);
 			ft_loadinram(data, vm.args.nb, &vm, p);
 			new_process(p, &vm);
 		}

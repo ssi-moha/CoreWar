@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 13:45:53 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/03 09:00:38 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/03 15:14:27 by emerabet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,7 @@ unsigned char	*ft_openfile(char *file)
 	unsigned int	size;
 
 	fd = open(file, O_RDONLY);
-	if (fd < 0)
-		exit(error_mess("File error\n"));
+	fd < 0 ? exit(error_mess("File error\n")) : 0;
 	data = (unsigned char*)ft_strnew(0);
 	size = 0;
 	r = 1;
@@ -68,6 +67,9 @@ unsigned char	*ft_openfile(char *file)
 		size += r;
 		data = realloc(data, size);
 		ft_custom_concat(data, buf, size - r, r);
+		if (size > 4 + PROG_NAME_LENGTH + 4 + 4 + COMMENT_LENGTH
+				+ 4 + CHAMP_MAX_SIZE)
+			ft_checksize(size, data, fd);
 	}
 	ft_checksize(size, data, fd);
 	close(fd);
