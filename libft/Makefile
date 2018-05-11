@@ -6,7 +6,7 @@
 #    By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/15 12:55:01 by lfujimot          #+#    #+#              #
-#    Updated: 2018/05/02 19:09:49 by emerabet         ###   ########.fr        #
+#    Updated: 2018/05/11 11:10:56 by lfujimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,6 +81,7 @@ SRC = ft_arraytolst.c \
 	  is_space.c \
 	  ft_strclen.c \
 	  ft_strcdup.c \
+	  ft_strendup.c \
 	  ft_strndup.c
 
 OBJ = $(SRC:.c=.o)

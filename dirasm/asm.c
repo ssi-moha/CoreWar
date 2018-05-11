@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 14:19:44 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/03 13:05:56 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/05/11 11:11:33 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ int				main(int argc, char **argv)
 		exit(error_mess("ERROR : WRONG NUMBER OF ARGUMENT\n"));
 	if (ft_check_filename(argv[1], EXT_FILE) == -1)
 		exit(error_mess("ERROR : WRONG FILE NAME\n"));
-	file_name = ft_strcdup(argv[1], '.');
+	if ((file_name = ft_strendup(argv[1], '.')) == 0)
+		return (0);
 	ft_init(&app);
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)

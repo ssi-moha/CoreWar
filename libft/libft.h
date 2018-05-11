@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 12:54:53 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/03 13:12:44 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/05/11 11:12:09 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,5 @@ t_list				*ft_arraytolst(char **arr);
 size_t				ft_lstcount(t_list **alst);
 void				ft_lstprint(t_list *list);
 char				*ft_strndup(const char *src, int n);
+char				*ft_strendup(const char *src, int c);
 #endif

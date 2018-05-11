@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 17:51:48 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/03 13:05:42 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/05/11 10:43:22 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void		ft_join(int fd, char **line)
 
 	if (*line && cnt_char(line, '"') > 2)
 		exit(error_mess("INVALID .NAME OR NO .COMMENT\n"));
-	while (*line && cnt_char(line, '"') != 2)
+	while (*line && cnt_char(line, '"') < 2)
 	{
 		tmp = *line;
 		*line = join_lines(fd, line);
@@ -84,6 +84,16 @@ void			ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app)
 		else if ((ret = check_name_cmt(&line)))
 		{
 			ft_join(fd, &line);
+			if (ret == 1)
+			{
+				if (ft_strlen(line) > PROG_NAME_LENGTH)
+					exit(error_mess("ERROR NAME TOO LONG\n"));
+			}
+			else if (ret == 2)
+			{
+				if (ft_strlen(line) > COMMENT_LENGTH)
+					exit(error_mess("ERROR COMMENT TOO LONG\n"));
+			}
 			app->checkcmd += cpy_head(ret, head, &line);
 			ft_strdel(&line);
 		}

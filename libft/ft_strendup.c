@@ -1,22 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_aff.c                                           :+:      :+:    :+:   */
+/*   ft_strendup.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/14 15:13:24 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/10 15:23:38 by lfujimot         ###   ########.fr       */
+/*   Created: 2018/05/11 11:10:10 by lfujimot          #+#    #+#             */
+/*   Updated: 2018/05/11 11:12:01 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_corewar.h"
+#include "libft.h"
+#include <stdlib.h>
 
-int	ft_aff(t_process *proc, t_vm *vm)
+char	*ft_strendup(const char *src, int c)
 {
-	unsigned int	value;
+	char	*dest;
+	int		i;
+	int		len;
 
-	value = ft_getparvalue(proc, vm, 0, MEM_SIZE);
-	ft_printffd(1, "%c", value % 256);
-	return (1);
+	len = ft_strlen(src);
+	i = 0;
+if (src == 0)
+	return (0);
+while (len > 0 && src[len] != c)
+	len--;
+	dest = ft_strnew(len);
+if (dest == 0)
+	return (0);
+while (src[i] && i < len)
+{
+	dest[i] = src[i];
+	i++;
+}
+dest[i] = '\0';
+return (dest);
 }
