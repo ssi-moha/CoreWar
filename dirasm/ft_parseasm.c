@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 17:51:48 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/11 10:43:22 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/18 12:09:03 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void		ft_lastlab(t_instr **instr, t_app *app, t_instr *new)
 }
 
 static void		ft_copy_label(t_app **app, t_instr **new,
-								char **line, t_instr **instr)
+		char **line, t_instr **instr)
 {
 	t_lab		*t;
 	t_instr		*l;
@@ -56,6 +56,7 @@ static void		ft_join(int fd, char **line)
 {
 	char		*tmp;
 
+	tmp = NULL;
 	if (*line && cnt_char(line, '"') > 2)
 		exit(error_mess("INVALID .NAME OR NO .COMMENT\n"));
 	while (*line && cnt_char(line, '"') < 2)
@@ -84,20 +85,11 @@ void			ft_parseasm(t_instr **instr, int fd, t_header *head, t_app *app)
 		else if ((ret = check_name_cmt(&line)))
 		{
 			ft_join(fd, &line);
-			if (ret == 1)
-			{
-				if (ft_strlen(line) > PROG_NAME_LENGTH)
-					exit(error_mess("ERROR NAME TOO LONG\n"));
-			}
-			else if (ret == 2)
-			{
-				if (ft_strlen(line) > COMMENT_LENGTH)
-					exit(error_mess("ERROR COMMENT TOO LONG\n"));
-			}
-			app->checkcmd += cpy_head(ret, head, &line);
+			ft_check_error(ret, line);
+			cpy_head(ret, head, &line, app);
 			ft_strdel(&line);
 		}
-		else if (app->checkcmd != 2)
+		else if (app->checkcmd + app->checkcmdn != 2)
 			exit(error_mess("ERROR NO .NAME OR NO .COMMENT\n"));
 		else
 			ft_copy_label(&app, &new, &line, instr);

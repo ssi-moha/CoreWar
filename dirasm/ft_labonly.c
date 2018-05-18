@@ -6,13 +6,13 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 13:26:20 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/02 15:41:34 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/18 09:54:50 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-static void	ft_addlabel(char **line, int size, int start, t_app **app)
+static int	ft_addlabel(char **line, int size, int start, t_app **app)
 {
 	int		i;
 	char	*tmp;
@@ -20,7 +20,7 @@ static void	ft_addlabel(char **line, int size, int start, t_app **app)
 	i = 0;
 	tmp = ft_strnew(size);
 	if (tmp == 0)
-		return ;
+		return (1);
 	while (i < size)
 	{
 		tmp[i] = line[0][start];
@@ -31,6 +31,7 @@ static void	ft_addlabel(char **line, int size, int start, t_app **app)
 	new_label(tmp, &(*app)->tmplab);
 	free(tmp);
 	tmp = 0;
+	return (1);
 }
 
 int			ft_labonly(t_app **app, char **line)
@@ -53,11 +54,9 @@ int			ft_labonly(t_app **app, char **line)
 		x = (j + 1);
 		while (line[0][x] && (line[0][x] == ' ' || line[0][x] == '\t'))
 			x++;
-		if (line[0][x] == '\0')
-		{
-			ft_addlabel(line, (j + 1) - i - 1, i, app);
-			return (1);
-		}
+		if (line[0][x] == '\0' || line[0][x] == COMMENT_CHAR || line[0][x]
+			== ';')
+			return (ft_addlabel(line, (j + 1) - i - 1, i, app));
 	}
 	return (0);
 }

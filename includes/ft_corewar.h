@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 09:53:57 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/03 08:49:36 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/05/18 11:52:09 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,7 @@ typedef struct				s_app
 	t_lab					*tmplab;
 	t_l						*li;
 	int						checkcmd;
+	int						checkcmdn;
 }							t_app;
 
 extern	t_op				g_optab[17];
@@ -169,7 +170,9 @@ int							ft_parseinstr(char *line, int pos, t_instr *new);
 void						ft_parseparams(char *line, int pos, t_instr *new);
 int							ft_skip_com_and_blank(char **line);
 int							check_name_cmt(char **str);
-int							cpy_head(int ret, t_header *head, char **line);
+void						cpy_head(int ret, t_header *head, char **line,
+							t_app *app);
+void						ft_check_error(int ret, char *line);
 int							ft_checkparams(char *par);
 int							ft_findcmd(char *cmd);
 int							error_mess(char *str);

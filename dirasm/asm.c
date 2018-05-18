@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 14:19:44 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/11 11:11:33 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/18 11:49:13 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void		ft_init(t_app *app)
 	ft_bzero(app->header.prog_name, PROG_NAME_LENGTH + 1);
 	ft_bzero(app->header.comment, COMMENT_LENGTH + 1);
 	app->checkcmd = 0;
+	app->checkcmdn = 0;
 }
 
 int				main(int argc, char **argv)

@@ -6,25 +6,25 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 18:13:15 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/02 15:47:48 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/18 09:43:51 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_corewar.h"
 
-static int	ft_findlabel(char **line)
+static int	ft_findlabel(char *line)
 {
 	size_t	i;
 
 	i = 0;
-	if (*line)
+	if (line)
 	{
-		while (line[0][i] && ft_isincharset(line[0][i], LABEL_CHARS) == 1)
+		while (line[i] && ft_isincharset(line[i], LABEL_CHARS) == 1)
 		{
 			i++;
 		}
-		if (i < ft_strlen(*line))
-			if (line[0][i] == LABEL_CHAR)
+		if (i < ft_strlen(line))
+			if (line[i] == LABEL_CHAR)
 				return (i);
 	}
 	return (0);
@@ -62,7 +62,8 @@ int			ft_parselabel(char **line, t_instr **new)
 	sizelabel = 0;
 	while (line[0][start] && (line[0][start] == ' ' || line[0][start] == '\t'))
 		start++;
-	sizelabel = ft_findlabel(line + start);
+	if (ft_strlen(*line) > (unsigned long)start)
+		sizelabel = ft_findlabel(*line + start);
 	if (sizelabel > 0)
 		ft_copylabel(line, sizelabel, new, start);
 	return (sizelabel + start);

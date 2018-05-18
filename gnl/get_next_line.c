@@ -6,7 +6,7 @@
 /*   By: lfujimot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 12:34:01 by lfujimot          #+#    #+#             */
-/*   Updated: 2018/05/03 13:04:31 by emerabet         ###   ########.fr       */
+/*   Updated: 2018/05/18 11:07:04 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static char			*ft_custom_strjoin(char *s1, char const *s2)
 	len2 = 0;
 	while (s2[len2])
 		tmp[len1++] = s2[len2++];
-	free(s1);
+	ft_strdel(&s1);
 	s1 = NULL;
 	return (tmp);
 }
@@ -76,23 +76,22 @@ static char			*get_line(t_file *file)
 		i++;
 	tmp = ft_strsub(file->b, 0, i);
 	file->b = ft_strsub(str, i + 1, ft_strlen(file->b));
-	free(str);
+	ft_strdel(&str);
 	str = NULL;
 	return (tmp);
 }
 
-static int			ft_remove_fd(t_file *cur, t_file **lst, char **line)
+static int			ft_remove_fd(t_file *cur, t_file **lst)
 {
 	t_file *tmp;
 	t_file *tmp2;
 
 	tmp = *lst;
 	tmp2 = tmp->next;
-	ft_strclr(*line);
 	if (cur == *lst)
 	{
 		*lst = cur->next;
-		free(cur->b);
+		ft_strdel(&(cur->b));
 		free(cur);
 	}
 	else
@@ -101,7 +100,7 @@ static int			ft_remove_fd(t_file *cur, t_file **lst, char **line)
 			if (tmp2 == cur)
 			{
 				tmp->next = tmp2->next;
-				free(tmp2->b);
+				ft_strdel(&(tmp2->b));
 				free(tmp2);
 			}
 			tmp = tmp2;
@@ -127,7 +126,7 @@ int					get_next_line(const int fd, char **line)
 		buf[res] = '\0';
 		current->b = ft_custom_strjoin(current->b, buf);
 		if (res == 0 && current->b[0] == '\0')
-			return (ft_remove_fd(current, &file, line));
+			return (ft_remove_fd(current, &file));
 		else if (res == 0)
 			break ;
 	}
