@@ -6,7 +6,7 @@
 /*   By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 14:38:07 by ssi-moha          #+#    #+#             */
-/*   Updated: 2018/05/18 10:15:34 by lfujimot         ###   ########.fr       */
+/*   Updated: 2018/05/18 13:30:53 by lfujimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int		ft_check_comment(char *str)
 	while (str[i])
 		i++;
 	if (i > COMMENT_LENGTH)
-		exit(error_mess("COMMENT IS TOO LARGE"));
+		exit(error_mess("COMMENT IS TOO LARGE\n"));
 	return (2);
 }
 
@@ -32,7 +32,7 @@ static int		ft_check_name(char *str)
 	while (str[i])
 		i++;
 	if (i > PROG_NAME_LENGTH)
-		exit(error_mess("PROG_NAME IS TOO LARGE"));
+		exit(error_mess("PROG_NAME IS TOO LARGE\n"));
 	return (1);
 }
 
@@ -52,6 +52,6 @@ int				check_name_cmt(char **str)
 				ft_strlen(COMMENT_CMD_STRING)))
 		return (ft_check_comment(*str + j));
 	else if ((*str)[j] == '.')
-		exit(error_mess("Invalid .command"));
+		exit(error_mess("Invalid .command\n"));
 	return (0);
 }
